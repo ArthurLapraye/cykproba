@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\usetheme{Boadilla}
 \usepackage[utf8]{inputenc} 
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
@@ -7,67 +8,105 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 
+
+
 \begin{document}
 
-\title{CKY Probabilisé}
+\title{CKY Probabilisé}  %PAGE 1
+\author{Viegas\\Lapraye\\Lévêque}
+
+\institute{Paris Diderot VII}
+\date{\today}
 \maketitle
+\addtobeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
 
-\begin{frame}
-\frametitle{Forme Normale de Chomsky}
-\framesubtitle{}
 
-Contenu du transparent.
-
+\begin{frame} % PAGE 2
+\frametitle{Plan}
+\section{Extraction de la grammaire}
+\section{Binarisation (CNF, CYK)}
+\subsection{intégrer les probas dans CYK}
+\subsection{minimiser la grammaire}
+\subsection{les traits morphosyntaxiques ( FCFG, NT en plus ? )}
+\subsection{gestion des mots inconnus (lemmatisation, lissage...)}
+\section{Evaluation}
+\subsection{Reconversion plus comparaison au analyse gold}
+\subsection{? neutralisation de la grammaire}
+\subsection{comment retient on le bon parsing ?}
 \end{frame}
 
 
-
+\frametitle{Forme Normale de Chomsky}
 \begin{algorithm}
 \caption{CKY}
 \label{cky}
-	\begin{algorithmic}
-		\Function{CKY}{$w[1..n]$, $G: < Q, X, P, \rho>$}
-			\State $T[1..n,1..n];$
-			\State $S \gets 1;$
-			\For{$t \gets 1, n$}
-				\State $x \gets t-1;$
-				\For{$j \gets 1, |Q|$}
-					\State $efibzouv$
+	\small{\begin{algorithmic}
+		\Function{CKY}{$w[1..n]$, $G: < Q, X, P, \rho>$} \Comment w est un mot à parser
+			\State $M \gets tab[1..m];$ \Comment m est la longueur du mot
+			\For{$i \gets 1, |m|$} \Comment boucle qui remplit la diagonale
+				\State $M[i, i] \gets \{ N / N \rightarrow m[i]\};$
+				\For{$d \gets 1, |m|-1$}
+					\For{$i \gets 1, |m|-d$}
+						\State $j \gets i+d$
+						\State $M[i, j] \gets \{\}$
+						\ForAll{$k \gets i, j-1$}
+							\ForAll{$B \in M[i, k] and C \in M[k+1, j]$}
+								\ForAll{$N \in \{ N / N \rightarrow BC \in P \}$}
+									\State $M[i, j] \gets M[i, j] \cup N;$
+								\EndFor
+							\EndFor
+						\EndFor
+					\EndFor
 				\EndFor
 			\EndFor
+			\State \Return $M$
 		\EndFunction
-	\end{algorithmic}
+	\end{algorithmic}}
 \end{algorithm}
-1 - Extraction de la grammaire
-2 - Binarisation (CNF, CYK)
-	i -    intégrer les probas dans CYK
-	ii -   minimiser la grammaire
-	iii -  les traits morphosyntaxiques ( FCFG, NT en plus ? )
-	iv -  gestion des mots inconnus (lemmatisation, lissage...)
-	v - 
-3 - Evaluation
-	Reconversion plus comparaison au analyse gold
-	? neutralisation de la grammaire
-	comment retient on le bon parsing ?
-			soit n-premiers
-			soit seuil
-
-\begin{frame}
-\frametitle{Modèle de langue PCFG}
-\framesubtitle{}
-
-Contenu du transparent.
-
-\end{frame}
 
 
-\begin{frame}
-\frametitle{}
-\framesubtitle{}
+\begin{algorithm}
+\caption{CNF}
+\label{cnf}
+	\small{\begin{algorithmic}
+		\Function{ChomskyNormalForm}{$G: < Q, X, S, P>$} \Comment Q: terminaux, X: non-terminaux, S: axiome, P: productions
+			\State $P' \gets \{\};$
+			\State $X' \gets X;$
+			\If{$S \in r.h.s\ de\ p \in P$}
+				\State $S' \gets S;$
+				\State $P' \gets P' \cup S' \rightarrow S;$
+			\EndIf
+			\State $P' \gets \Call{RemoveNullProductions}{$P'$}$
+			\State $P' \gets \Call{RemoveUnitProductions}{$P'$}$
+			\For{$p \in \{ A \rightarrow B_1..B_n/ n > 2\}$}
+				\State $C \gets B_2..B_n;$
+				\State $P' \gets P' \cup A \rightarrow B_1C;$
+			\EndFor
+			\For{$p \in \{ A \rightarrow aB, a \in Q \}$}
+				\State $A_a \gets a;$
+				\State $P' \gets P' \cup \{ A \rightarrow A_aB, A_a \rightarrow a \}$
+			\EndFor
+			\State \Return $G': < Q, X', S', P' >$
+		\EndFunction
+	\end{algorithmic}}
+\end{algorithm}
 
-Contenu du transparent.
-
-\end{frame}
+%\begin{frame}
+%\frametitle{Modèle de langue PCFG}
+%\framesubtitle{}
+%
+%Contenu du transparent.
+%
+%\end{frame}
+%
+%
+%\begin{frame}
+%\frametitle{}
+%\framesubtitle{}
+%
+%Contenu du transparent.
+%
+%\end{frame}
 
 
 \end{document}

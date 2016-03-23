@@ -1,14 +1,26 @@
 \beamer@endinputifotherversion {3.36pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\sectionentry {1}{Extraction de la grammaire}{2}{Extraction de la grammaire}{0}}
+\headcommand {\beamer@sectionpages {1}{1}}
+\headcommand {\beamer@subsectionpages {1}{1}}
+\headcommand {\sectionentry {2}{Binarisation (CNF, CYK)}{2}{Binarisation (CNF, CYK)}{0}}
+\headcommand {\beamer@sectionpages {2}{1}}
+\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{2}{int\IeC {\'e}grer les probas dans CYK}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{2}{minimiser la grammaire}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{2}{les traits morphosyntaxiques ( FCFG, NT en plus ? )}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{2}{gestion des mots inconnus (lemmatisation, lissage...)}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\sectionentry {3}{Evaluation}{2}{Evaluation}{0}}
+\headcommand {\beamer@sectionpages {2}{1}}
+\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{2}{Reconversion plus comparaison au analyse gold}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{2}{? neutralisation de la grammaire}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{2}{comment retient on le bon parsing ?}}\headcommand {\beamer@subsectionpages {2}{1}}
+\headcommand {\slideentry {3}{3}{0}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\slideentry {0}{0}{3}{3/3}{}{0}}
-\headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {0}{0}{4}{5/5}{}{0}}
-\headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@partpages {1}{5}}
-\headcommand {\beamer@subsectionpages {1}{5}}
-\headcommand {\beamer@sectionpages {1}{5}}
-\headcommand {\beamer@documentpages {5}}
-\headcommand {\def \inserttotalframenumber {4}}
+\headcommand {\beamer@partpages {1}{4}}
+\headcommand {\beamer@subsectionpages {1}{4}}
+\headcommand {\beamer@sectionpages {1}{4}}
+\headcommand {\beamer@documentpages {4}}
+\headcommand {\def \inserttotalframenumber {2}}
