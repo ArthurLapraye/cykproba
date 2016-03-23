@@ -1,20 +1,73 @@
 \documentclass{beamer}
+\usepackage[utf8]{inputenc} 
 \usepackage{amsmath}
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
 \begin{document}
 
 \title{CKY Probabilisé}
 \maketitle
 
-\begin{frame} % premier transparent
-\frametitle{Introduction}
-\framesubtitle{CKY}
+\begin{frame}
+\frametitle{Forme Normale de Chomsky}
+\framesubtitle{}
 
 Contenu du transparent.
 
 \end{frame}
 
-\begin{frame} % deuxième transparent
-…
+
+
+\begin{algorithm}
+\caption{CKY}
+\label{cky}
+	\begin{algorithmic}
+		\Function{CKY}{$w[1..n]$, $G: < Q, X, P, \rho>$}
+			\State $T[1..n,1..n];$
+			\State $S \gets 1;$
+			\For{$t \gets 1, n$}
+				\State $x \gets t-1;$
+				\For{$j \gets 1, |Q|$}
+					\State $efibzouv$
+				\EndFor
+			\EndFor
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+1 - Extraction de la grammaire
+2 - Binarisation (CNF, CYK)
+	i -    intégrer les probas dans CYK
+	ii -   minimiser la grammaire
+	iii -  les traits morphosyntaxiques ( FCFG, NT en plus ? )
+	iv -  gestion des mots inconnus (lemmatisation, lissage...)
+	v - 
+3 - Evaluation
+	Reconversion plus comparaison au analyse gold
+	? neutralisation de la grammaire
+	comment retient on le bon parsing ?
+			soit n-premiers
+			soit seuil
+
+\begin{frame}
+\frametitle{Modèle de langue PCFG}
+\framesubtitle{}
+
+Contenu du transparent.
+
 \end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\framesubtitle{}
+
+Contenu du transparent.
+
+\end{frame}
+
 
 \end{document}
