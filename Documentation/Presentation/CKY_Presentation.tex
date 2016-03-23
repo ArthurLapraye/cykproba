@@ -17,22 +17,40 @@
 
 \institute{Paris Diderot VII}
 \date{\today}
-\maketitle
+
 \addtobeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+
+\begin{frame}
+ \maketitle
+\end{frame}
+
 
 
 \begin{frame} % PAGE 2
 \frametitle{Plan}
-\section{Extraction de la grammaire}
-\section{Binarisation (CNF, CYK)}
-\subsection{intégrer les probas dans CYK}
-\subsection{minimiser la grammaire}
-\subsection{les traits morphosyntaxiques ( FCFG, NT en plus ? )}
-\subsection{gestion des mots inconnus (lemmatisation, lissage...)}
-\section{Evaluation}
-\subsection{Reconversion plus comparaison au analyse gold}
-\subsection{? neutralisation de la grammaire}
-\subsection{comment retient on le bon parsing ?}
+\end{frame}
+
+\begin{frame}
+\frametitle{Extraction de la grammaire}
+
+ 
+\end{frame}
+
+\begin{frame}
+ \frametitle{CYK}
+ Binarisation 
+ intégrer les probas dans CYK
+ minimiser la grammaire
+ les traits morphosyntaxiques ( FCFG, NT en plus ? )
+ gestion des mots inconnus (lemmatisation, lissage...)
+ 
+\end{frame}
+
+\begin{frame}
+\frametitle{Evaluation}
+ Reconversion plus comparaison au analyse gold
+? neutralisation de la grammaire
+comment retient on le bon parsing ?
 \end{frame}
 
 
@@ -63,7 +81,7 @@
 		\EndFunction
 	\end{algorithmic}}
 \end{algorithm}
-
+ 
 
 \begin{algorithm}
 \caption{CNF}
@@ -90,6 +108,7 @@
 		\EndFunction
 	\end{algorithmic}}
 \end{algorithm}
+
 
 %\begin{frame}
 %\frametitle{Modèle de langue PCFG}
