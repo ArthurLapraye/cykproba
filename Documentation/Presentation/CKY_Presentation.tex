@@ -48,10 +48,10 @@
  \begin{itemize}
   \item<1-3>{Passage en forme normale de Chomsky}
   \item<2-3>{Intégrer les probas dans CYK}
-  \item<3>Analyses multiples
-    
-%  \item<4> les traits morphosyntaxiques ( FCFG, NT en plus ? )
-  \item<4> gestion des mots inconnus (lemmatisation, lissage...)
+  \begin{itemize}
+   \item<2-3>{Gestion des analyses multiples}
+  \end{itemize}
+  \item<3>{Tokens inconnus}
  
  \end{itemize}
 
@@ -60,9 +60,17 @@
 
 \begin{frame}
 \frametitle{Evaluation}
- Reconversion plus comparaison au analyse gold
-? neutralisation de la grammaire
-comment retient on le bon parsing ?
+ \begin{itemize}
+  
+  \item<1-3>{Tests manuels}
+  
+  \item{Comparaison avec l'analyse gold}
+  \begin{itemize}
+   \item{Nécessite une conversion de l'arbre vers la grammaire originale}
+  \end{itemize}
+
+ \end{itemize}
+
 \end{frame}
 
 

@@ -5,10 +5,11 @@ Presentation :
 	
 Extraction de la Grammaire
 	=> Corpus Séquoia
-	=> Arbres de constituants
-	=> Probabilisation des règles
+		=> un corpus relativement diversifié, qui comprend des textes de presse, des textes juridiques et médicaux et des extraits de wikipédia
+	=> Présenté sous la forme d'Arbres de constituants dont on extraira la grammaire utilisée 
+	=> Probabilisation des règles afin d'obtenir une PCFG
 		
-	Quid des traits morphosyntaxiques ? On lemmatise;
+	Quid des traits morphosyntaxiques ? On lemmatise pour ne pas s'en occuper => on les réintègrera peut-être dans un second temps.
 		
 
 CYK
