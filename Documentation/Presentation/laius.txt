@@ -1,0 +1,25 @@
+Presentation :
+	CYK probabiliste
+		=> Algo de Cocke Younger Kasami (dans les années 60)
+		=> Probabiliste = PCFG
+	
+Extraction de la Grammaire
+	=> Corpus Séquoia
+	=> Arbres de constituants
+	=> Probabilisation des règles
+		
+	Quid des traits morphosyntaxiques ? On lemmatise;
+		
+
+CYK
+	Forme normale de chomsky
+		=> Détails de CYK
+	Integrer probas dans CYK
+	=> Argmax ? ou K-meilleurs éléments? forêt ?
+
+Evaluation
+	=> Reconversion de CNF vers structures plus plates et comparaisons avec gold
+		
+		
+		
+		http://tech.grammarly.com/blog/posts/The-Dirty-Little-Secret-of-Constituency-Parser-Evaluation.html
