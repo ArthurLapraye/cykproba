@@ -11,3 +11,6 @@
 *.nav
 *.toc
 *.backup
+*.out
+*.blg
+*.bbl
