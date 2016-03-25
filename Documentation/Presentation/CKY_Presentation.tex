@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
-
+\usepackage{biblatex}
 
 
 \begin{document}
@@ -75,28 +75,21 @@
 
 
 
-\begin{frame}[allowframebreaks]
-        \frametitle{References}
-        %\bibliographystyle{amsalpha}
-       % \bibliography{../bib_files/jabrefmaster.bib}
+\begin{frame}[allowframebreaks]{References}
+  \begin{thebibliography}{10}    
+  \beamertemplatebookbibitems
+  \bibitem{roark}
+    Brian Roark, Jane Austen.
+    \newblock {\em Computational Approaches to Morphology and Syntax}.
+    \newblock Oxford University Press, 2007.
+  \beamertemplatearticlebibitems
+  \bibitem{parserEval}
+    Mariana Romanyshyn, Vsevolod Dyomkin.
+    \newblock {\em The Dirty Little Secret of Constituency Parser Evaluation}, 2014.
+    \newblock {http://tech.grammarly.com/blog/posts/The-Dirty-Little-Secret-of-Constituency-Parser-Evaluation.html}
+    
+  \end{thebibliography}
 \end{frame}
-
-%\begin{frame}
-%\frametitle{Modèle de langue PCFG}
-%\framesubtitle{}
-%
-%Contenu du transparent.
-%
-%\end{frame}
-%
-%
-%\begin{frame}
-%\frametitle{}
-%\framesubtitle{}
-%
-%Contenu du transparent.
-%
-%\end{frame}
 
 
 \end{document}

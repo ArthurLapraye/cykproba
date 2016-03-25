@@ -1,0 +1,55 @@
+
+\frametitle{Forme Normale de Chomsky}
+\begin{algorithm}
+\caption{CKY}
+\label{cky}
+	\small{\begin{algorithmic}
+		\Function{CKY}{$w[1..n]$, $G: < Q, X, P, \rho>$} \Comment w est un mot à parser
+			\State $M \gets tab[1..m];$ \Comment m est la longueur du mot
+			\For{$i \gets 1, |m|$} \Comment boucle qui remplit la diagonale
+				\State $M[i, i] \gets \{ N / N \rightarrow m[i]\};$
+				\For{$d \gets 1, |m|-1$}
+					\For{$i \gets 1, |m|-d$}
+						\State $j \gets i+d$
+						\State $M[i, j] \gets \{\}$
+						\ForAll{$k \gets i, j-1$}
+							\ForAll{$B \in M[i, k] and C \in M[k+1, j]$}
+								\ForAll{$N \in \{ N / N \rightarrow BC \in P \}$}
+									\State $M[i, j] \gets M[i, j] \cup N;$
+								\EndFor
+							\EndFor
+						\EndFor
+					\EndFor
+				\EndFor
+			\EndFor
+			\State \Return $M$
+		\EndFunction
+	\end{algorithmic}}
+\end{algorithm}
+ 
+
+\begin{algorithm}
+\caption{CNF}
+\label{cnf}
+	\small{\begin{algorithmic}
+		\Function{ChomskyNormalForm}{$G: < Q, X, S, P>$} \Comment Q: terminaux, X: non-terminaux, S: axiome, P: productions
+			\State $P' \gets \{\};$
+			\State $X' \gets X;$
+			\If{$S \in r.h.s\ de\ p \in P$}
+				\State $S' \gets S;$
+				\State $P' \gets P' \cup S' \rightarrow S;$
+			\EndIf
+			\State $P' \gets \Call{RemoveNullProductions}{$P'$}$
+			\State $P' \gets \Call{RemoveUnitProductions}{$P'$}$
+			\For{$p \in \{ A \rightarrow B_1..B_n/ n > 2\}$}
+				\State $C \gets B_2..B_n;$
+				\State $P' \gets P' \cup A \rightarrow B_1C;$
+			\EndFor
+			\For{$p \in \{ A \rightarrow aB, a \in Q \}$}
+				\State $A_a \gets a;$
+				\State $P' \gets P' \cup \{ A \rightarrow A_aB, A_a \rightarrow a \}$
+			\EndFor
+			\State \Return $G': < Q, X', S', P' >$
+		\EndFunction
+	\end{algorithmic}}
+\end{algorithm}
