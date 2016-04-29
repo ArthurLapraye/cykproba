@@ -80,6 +80,6 @@ with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
         (nomcorpus_numerophrase, phrase) = ligne.split("\t")
         phrases.append(phrase.strip())
 
-for phrase in phrases:
+for phrase in phrases[:10]:
     result = parser.parse(phrase)
     print(yaml.dump(result,default_flow_style=False, allow_unicode=True))
