@@ -2,9 +2,9 @@
 
 import ParserLexer
 import codecs
-from Terminal import Terminal
-from Nonterminal import Nonterminal
-from Production import Production
+#from Terminal import Terminal
+#from Nonterminal import Nonterminal
+#from Production import Production
 import ply.yacc as yacc
 import yaml
 
@@ -74,12 +74,12 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-with codecs.open("../Ressources/sequoia-corpus+fct.id_mrg") as id_mrg:
+with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
     phrases = []
     for ligne in id_mrg:
         (nomcorpus_numerophrase, phrase) = ligne.split("\t")
         phrases.append(phrase.strip())
 
-for phrase in phrases:
+for phrase in phrases[:10]:
     result = parser.parse(phrase)
     print(yaml.dump(result,default_flow_style=False, allow_unicode=True))
