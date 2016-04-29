@@ -16,3 +16,6 @@
 *.bbl
 
 *.pyc
+*/gloseur.py
+
+__pycache__/*
