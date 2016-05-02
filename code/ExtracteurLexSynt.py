@@ -1,26 +1,43 @@
 # coding: utf-8
 
-import ParserLexer
+
 import codecs
-#from Terminal import Terminal
-#from Nonterminal import Nonterminal
-#from Production import Production
+import ply.lex as lex
 import ply.yacc as yacc
 import yaml
 
-tokens = ParserLexer.tokens
 
-# alphabet terminal représente dans une grammaire formelle, les états finaux
-terminals = {}
-counter_term = {}
-# alphabet non-terminal représente dans une grammaire formelle soit un ou plusieurs état initiaux ou intermédiaires
-non_terminals = {}
-counter_nonterm = {}
-# #
+#################### PARTIE LEXICALE ####################################
+
+literals = '()'
+
+tokens = ( 'MOT', )
+
+def t_MOT(t):
+    r'[\µ\©\#\±\°\á\Î\É\ÀA-Za-z0-9\ó\-\_\+\à\â\ä\é\è\ê\ë\î\ï\ô\ö\ù\ü\û\ç\'\.\,\:\;\/\"\ß\?\%\<\>\=\[\]\&\!\^\$\½][\©\µ\#\½\±\°\ó\á\Î\$\!\^\&\É\ÀA-Za-z0-9\-\_\+\'\.\,\à\â\ä\é\è\ê\ë\î\ï\ô\ö\ù\ü\û\ç\:\;\/\"ß\?\%\<\>\=\[\]]*'
+    return t
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
+t_ignore  = ' '
+
+def t_error(t):
+    print("Illegal character '%s'" % t.value[0])
+    t.lexer.skip(1)
+
+lex.lex(optimize=1,lextab="lexique")
+
+
+########################################################################
+
+#################### PARTIE SYNTAXIQUE ####################################
 
 def p_axiome(p):
     """Sprim : '(' S ')'"""
     p[0] = p[2][0]
+
 
 def p_S_1(p):
     """S : '(' syntagme ')'"""
@@ -72,7 +89,15 @@ def p_error(p):
     else:
         print("Syntax error at EOF")
 
+
 parser = yacc.yacc()
+
+########################################################################
+
+
+
+
+############ TESTS #####################################################
 
 with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
     phrases = []
@@ -83,3 +108,5 @@ with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
 for phrase in phrases[:10]:
     result = parser.parse(phrase)
     print(yaml.dump(result,canonical=True, default_flow_style=False, allow_unicode=True))
+
+########################################################################

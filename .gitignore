@@ -16,6 +16,8 @@
 *.bbl
 
 *.pyc
-*/gloseur.py
+*/lexique.py
+*/parser.out
+*/parsetab.py
 
 __pycache__/*

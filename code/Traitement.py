@@ -3,8 +3,8 @@
 # import yaml
 # import codecs
 # import sqlite3
+# from Extracteur import *
 
-from classes import T, NT
 
 
 
