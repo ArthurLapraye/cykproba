@@ -82,4 +82,4 @@ with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
 
 for phrase in phrases[:10]:
     result = parser.parse(phrase)
-    print(yaml.dump(result,default_flow_style=False, allow_unicode=True))
+    print(yaml.dump(result,canonical=True, default_flow_style=False, allow_unicode=True))

@@ -6,18 +6,18 @@ class Terminal(object):
 
     def __init__(self, terminal):
         self.__terminal = terminal
-        self.terminals.add(terminal)
+        type(self).__terminals.add(terminal)
 
     @property
     def terminals(self):
         return type(self).__terminals
 
     @property
-    def selfterminal(self):
+    def terminal(self):
         return self.__terminal
 
     def __repr__(self):
-        return self.selfterminal
+        return self.__terminal
 
     def __str__(self):
         return repr(self)

@@ -6,7 +6,7 @@ class Nonterminal(object):
 
     def __init__(self, nonterminal):
         self.__nonterminal = nonterminal
-        self.nonterminals.add(nonterminal)
+        type(self)._nonterminals.add(nonterminal)
 
     @property
     def nonterminal(self):
@@ -15,10 +15,6 @@ class Nonterminal(object):
     @property
     def nonterminals(self):
         return type(self)._nonterminals
-
-    @nonterminals.setter
-    def nonterminals(self, value):
-        pass
 
     def __repr__(self):
         return self.nonterminal
