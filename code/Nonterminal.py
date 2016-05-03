@@ -17,7 +17,7 @@ class Nonterminal(object):
         return type(self)._nonterminals
 
     def __repr__(self):
-        return self.nonterminal
+        return self.__nonterminal
 
     def __str__(self):
         return repr(self)

@@ -1,16 +1,8 @@
 # coding: utf8
 
-class Probabilite(object):
-    def __init__(self, proba):
-        self.__proba = proba
+from fractions import Fraction
 
-    @property
-    def proba(self):
-        return self.__proba
-
-    @proba.setter
-    def proba(self, value):
-        pass
+class Probabilite(Fraction):
 
     def __repr__(self):
         return ...

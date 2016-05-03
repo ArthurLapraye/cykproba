@@ -3,6 +3,7 @@
 from collections import defaultdict
 from Terminal import Terminal
 from Nonterminal import Nonterminal
+from fractions import Fraction
 
 
 class Production(object):
@@ -91,13 +92,20 @@ class ProductionHorsContexteBinaire(ProductionHorsContexte):
         return repr(self)
 
 
-class ProductionHorsContexteBinaireProbabilisee(ProductionHorsContexteBinaire, Probabilite):
+class ProductionHorsContexteBinaireProbabilisee(ProductionHorsContexteBinaire):
     def __init__(self, lhs, rhs, proba):
         ProductionHorsContexteBinaire.__init__(self, lhs, rhs)
-        Probabilite.__init__(self, proba)
+        self.__proba = Fraction(
+            numerator=proba[0],
+            denominator=proba[1]
+        )
+
+    @property
+    def getproba(self):
+        return self.__proba
 
     def __repr__(self):
-        return
+        return (str(self.getlhs), str(self.getrhs), str(self.__proba))
 
     def __str__(self):
         return repr(self)
@@ -126,10 +134,13 @@ class ProductionHorsContexteUnaire(ProductionHorsContexte):
         return repr(self)
 
 
-class ProductionHorsContexteUnaireProbabilisee(ProductionHorsContexteUnaire, Probabilite):
+class ProductionHorsContexteUnaireProbabilisee(ProductionHorsContexteUnaire):
     def __init__(self, lhs, rhs, proba):
         super(ProductionHorsContexteUnaireProbabilisee, self).__init__(lhs, rhs)
-        self.proba = proba
+        self.proba = Fraction(
+            numerator=proba[0],
+            denominator=proba[1]
+        )
 
     def __repr__(self):
         return ...
@@ -161,10 +172,13 @@ class ProductionHorsContexteLexicale(ProductionHorsContexte):
         return repr(self)
 
 
-class ProductionHorsContexteLexicaleProbabilisee(ProductionHorsContexteLexicale, Probabilite):
+class ProductionHorsContexteLexicaleProbabilisee(ProductionHorsContexteLexicale):
     def __init__(self, lhs, rhs, proba):
         super(ProductionHorsContexteLexicaleProbabilisee, self).__init__(lhs, rhs)
-        self.proba = proba
+        self.proba = Fraction(
+            numerator=proba[0],
+            denominator=proba[1]
+        )
 
     def __repr__(self):
         return ...
