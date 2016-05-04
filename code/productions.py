@@ -1,27 +1,21 @@
 # coding: utf8
 
 from collections import defaultdict
-from Terminal import Terminal
-from Nonterminal import Nonterminal
-from fractions import Fraction
+from terminal import Terminal
+from nonterminal import Nonterminal
+from probabilite import Probabilite
+from lefthandsides import *
+from righthandsides import *
 
 
-class Production(object):
+class Production():
     ___productions = set()
 
     def __init__(self, lhs, rhs):
-        self.__lhs = lhs
-        self.__rhs = rhs
+        self.lhs = Lefthandside(lhs)
+        self.rhs = Righthandside(rhs)
+
         self.getproductions.add(self)
-
-
-    @property
-    def getlhs(self):
-        return self.__lhs
-
-    @property
-    def getrhs(self):
-        return self.__rhs
 
     @property
     def getproductions(self):
@@ -32,41 +26,38 @@ class Production(object):
         pass
 
     def is_horscontexte(self):
-        if isinstance(self.getlhs, Nonterminal):
+        if isinstance(self.lhs, LefthandsideHorsContexte):
             return True
 
     def is_binary(self):
-        if (len(self.getrhs) == 2) and all(isinstance(x, Nonterminal) for x in self.getrhs):
+        if isinstance(self.rhs, RighthandsideBinaire):
             return True
         else:
             return False
 
     def is_unary(self):
-        if isinstance(self.getrhs, Nonterminal):
+        if isinstance(self.rhs, RighthandsideUnaire):
             return True
         else:
             return False
 
     def is_lexical(self):
-        if isinstance(self.getrhs, Terminal):
+        if isinstance(self.rhs, RighthandsideLexicale):
             return True
         else:
             return False
 
-    def repre(self):
-        return (str(self.getlhs), str(self.getrhs))
+    def __repr__(self):
+        return "({0} {1})".format(self.lhs, self.rhs)
+
+    def __str__(self):
+        return repr(self)
 
 
 class ProductionHorsContexte(Production):
     def __init__(self, lhs, rhs):
         super(ProductionHorsContexte, self).__init__(lhs, rhs)
-        assert isinstance(lhs, Nonterminal)
-
-    def __repr__(self):
-        return ...
-
-    def __str__(self):
-        return repr(self)
+        self.lhs = LefthandsideHorsContexte(lhs)
 
 
 class ProductionHorsContexteBinaire(ProductionHorsContexte):
@@ -74,38 +65,29 @@ class ProductionHorsContexteBinaire(ProductionHorsContexte):
 
     def __init__(self, lhs, rhs):
         super(ProductionHorsContexteBinaire, self).__init__(lhs, rhs)
-        assert (len(rhs) == 2) and (all(isinstance(x, Nonterminal) for x in rhs))
+        self.rhs = RighthandsideBinaire(rhs)
+
         self.getproductionsBinaires.add(self)
 
     @property
     def getproductionsBinaires(self):
         return type(self).__productionsBinaires
 
-    @getproductionsBinaires.setter
-    def getproductionsBinaires(self, value):
-        pass
-
-    def __repr__(self):
-        return ...
-
-    def __str__(self):
-        return repr(self)
-
 
 class ProductionHorsContexteBinaireProbabilisee(ProductionHorsContexteBinaire):
     def __init__(self, lhs, rhs, proba):
         ProductionHorsContexteBinaire.__init__(self, lhs, rhs)
-        self.__proba = Fraction(
+        self.__proba = Probabilite(
             numerator=proba[0],
             denominator=proba[1]
         )
 
     @property
-    def getproba(self):
+    def proba(self):
         return self.__proba
 
     def __repr__(self):
-        return (str(self.getlhs), str(self.getrhs), str(self.__proba))
+        return " ".join([super(ProductionHorsContexteBinaireProbabilisee, self).__repr__(), str(self.__proba)])
 
     def __str__(self):
         return repr(self)
@@ -116,7 +98,8 @@ class ProductionHorsContexteUnaire(ProductionHorsContexte):
 
     def __init__(self, lhs, rhs):
         super(ProductionHorsContexteUnaire, self).__init__(lhs, rhs)
-        assert isinstance(rhs, Nonterminal)
+        self.rhs = RighthandsideUnaire(rhs)
+
         self.getproductionsUnaires.add(self)
 
     @property
@@ -127,23 +110,21 @@ class ProductionHorsContexteUnaire(ProductionHorsContexte):
     def getproductionsUnaires(self, value):
         pass
 
-    def __repr__(self):
-        return ...
-
-    def __str__(self):
-        return repr(self)
-
 
 class ProductionHorsContexteUnaireProbabilisee(ProductionHorsContexteUnaire):
     def __init__(self, lhs, rhs, proba):
         super(ProductionHorsContexteUnaireProbabilisee, self).__init__(lhs, rhs)
-        self.proba = Fraction(
+        self.__proba = Probabilite(
             numerator=proba[0],
             denominator=proba[1]
         )
 
+    @property
+    def proba(self):
+        return self.__proba
+
     def __repr__(self):
-        return ...
+        return " ".join([super(ProductionHorsContexteUnaireProbabilisee, self).__repr__(), str(self.__proba)])
 
     def __str__(self):
         return repr(self)
@@ -154,7 +135,8 @@ class ProductionHorsContexteLexicale(ProductionHorsContexte):
 
     def __init__(self, lhs, rhs):
         super(ProductionHorsContexteLexicale, self).__init__(lhs, rhs)
-        assert isinstance(rhs, Terminal)
+        self.rhs = RighthandsideLexicale(rhs)
+
         self.getproductionsLexicales.add(self)
 
     @property
@@ -165,23 +147,21 @@ class ProductionHorsContexteLexicale(ProductionHorsContexte):
     def getproductionsLexicales(self, value):
         pass
 
-    def __repr__(self):
-        return ...
-
-    def __str__(self):
-        return repr(self)
-
 
 class ProductionHorsContexteLexicaleProbabilisee(ProductionHorsContexteLexicale):
     def __init__(self, lhs, rhs, proba):
         super(ProductionHorsContexteLexicaleProbabilisee, self).__init__(lhs, rhs)
-        self.proba = Fraction(
+        self.__proba = Probabilite(
             numerator=proba[0],
             denominator=proba[1]
         )
 
+    @property
+    def proba(self):
+        return self.__proba
+
     def __repr__(self):
-        return ...
+        return " ".join([super(ProductionHorsContexteLexicaleProbabilisee, self).__repr__(), str(self.__proba)])
 
     def __str__(self):
         return repr(self)

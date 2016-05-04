@@ -42,13 +42,13 @@ class CYK(object):
         """
         for i in range(2, len(mot)+1):                                       # On utilise y et i pour parcourir la chart
             for y in range(1, (len(mot)-i+2)):
-                for j in range(y+1, i+y):                # La variable j est utilisée pour trouver la moitié du protomot
-                    for (a, b) in self.chart[(y, j)]:  # On regarde dans paires de cases nécéssaire pour remplir la prochaine
+                for j in range(y+1, i+y):                                    # La variable j est utilisée pour trouver la moitié du protomot
+                    for (a, b) in self.chart[(y, j)]:                        # On regarde dans paires de cases nécéssaire pour remplir la prochaine
                         for (c, d) in self.chart[(j, i+y)]:
-                            for (l, r) in grammaire:                                # On parcourt la grammaire
-                                if r == a+c:           # S'il y a une règle dans la grammaire qui a en partie droite la concaténation des parties gauches des règles présentes dans les paires de cases
+                            for (l, r) in grammaire:                         # On parcourt la grammaire
+                                if r == a+c:                                 # S'il y a une règle dans la grammaire qui a en partie droite la concaténation des parties gauches des règles présentes dans les paires de cases
                                     if (y, i+y) not in self.chart:
-                                        self.chart[(y, i+y)] = [(l, r)]                   # On remplit la case
+                                        self.chart[(y, i+y)] = [(l, r)]      # On remplit la case
                                     else:
                                         self.chart[(y, i+y)].append((l, r))  # ajout de la règle si elle n'existe pas
                     if (y, i+y) not in self.chart:
@@ -63,6 +63,16 @@ class CYK(object):
         if "S" in self.chart[(1, len(mot)+1)]:
             return True
         return False
+
+    def get_arbre(self, best=True, nbest=1):
+        """
+            Cette fonction suivant les options passées, va retourner un arbre ou plusieurs.
+
+        :param best: renvoie le meilleur arbre
+        :param nbest: renvoie les n-meilleurs arbres
+        :return: arbre ou liste d'arbres
+        """
+        pass
 
     def __repr__(self):
         """

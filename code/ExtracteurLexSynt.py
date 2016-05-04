@@ -68,6 +68,7 @@ def p_exprs(p):
 def p_lexique(p):
     """ lexique : head leaf """
     # p[0] = [Production(lhs=p[1], rhs=p[2])]
+    # p[] = [{p[1]: p[1].lower()}]
     p[0] = [{p[1]: p[2]}]
 
 
@@ -107,6 +108,6 @@ with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
 
 for phrase in phrases[:10]:
     result = parser.parse(phrase)
-    print(yaml.dump(result,canonical=True, default_flow_style=False, allow_unicode=True))
+    print(yaml.dump(result, default_flow_style=False, allow_unicode=True))
 
 ########################################################################

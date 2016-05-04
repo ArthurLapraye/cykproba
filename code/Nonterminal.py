@@ -24,3 +24,6 @@ class Nonterminal(object):
 
     def __len__(self):
         return 1
+
+    def __iter__(self):
+        yield self

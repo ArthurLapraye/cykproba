@@ -2,6 +2,7 @@
 
 from Nonterminal import Nonterminal
 from Terminal import Terminal
+import productions
 
 
 class Grammaire(object):
@@ -37,10 +38,10 @@ class GrammaireHorsContexte(Grammaire):
             isinstance(
                 x,
                 (
-                    ProductionHorsContexteUnaire,
-                    ProductionHorsContexteBinaire,
-                    ProductionHorsContexteLexicale,
-                    ProductionHorsContexteNaire
+                    productions.ProductionHorsContexteUnaire,
+                    productions.ProductionHorsContexteBinaire,
+                    productions.ProductionHorsContexteLexicale,
+                    productions.ProductionHorsContexteNaire
                 )
             ) for x in productionsHorsContexte
         ), "Une grammaire hors-contexte peut contenir des productions unaires, binaires, lexicales ou encore n-aires"
@@ -65,8 +66,8 @@ class GrammaireHorsContexteCNF(GrammaireHorsContexte):
             isinstance(
                 x,
                 (
-                    ProductionHorsContexteBinaire,
-                    ProductionHorsContexteLexicale
+                    productions.ProductionHorsContexteBinaire,
+                    productions.ProductionHorsContexteLexicale
                 )
             ) for x in productionsHorsContexte
         ), """
@@ -82,8 +83,8 @@ class GrammaireHorsContexteCNFProbabilisee(GrammaireHorsContexteCNF):
             isinstance(
                 x,
                 (
-                    ProductionHorsContexteBinaireProbabilisee,
-                    ProductionHorsContexteLexicaleProbabilisee
+                    productions.ProductionHorsContexteBinaireProbabilisee,
+                    productions.ProductionHorsContexteLexicaleProbabilisee
                 )
             ) for x in productionsHorsContexte
         ), """
@@ -99,10 +100,10 @@ class GrammaireHorsContexteProbabilisee(GrammaireHorsContexte):
             isinstance(
                 x,
                 (
-                    ProductionHorsContexteUnaireProbabilisee,
-                    ProductionHorsContexteBinaireProbabilisee,
-                    ProductionHorsContexteLexicaleProbabilisee,
-                    ProductionHorsContexteNaireProbabilisee
+                    productions.ProductionHorsContexteUnaireProbabilisee,
+                    productions.ProductionHorsContexteBinaireProbabilisee,
+                    productions.ProductionHorsContexteLexicaleProbabilisee,
+                    productions.ProductionHorsContexteNaireProbabilisee
                 )
             ) for x in productionsHorsContextesProbabilisees
         ), """
@@ -123,7 +124,10 @@ class GrammaireHorsContexteProbabilisee(GrammaireHorsContexte):
                 # prod1.proba += prod2.proba
                 # del prod2
             #
+            pass
         def ununarise(productionsHorsContexteUnairesProbabilisees):
+            for unary in productionsHorsContexteUnairesProbabilisees:
+
             # pour chaque regle unaire:
                 # 1 - ajouter un nouveau nouveau nonterminal
                 # 2 - del regle unaire

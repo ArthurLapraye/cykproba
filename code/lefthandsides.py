@@ -1,7 +1,7 @@
 # coding: utf8
 
-from Terminal import Terminal
-from Nonterminal import Nonterminal
+from terminal import Terminal
+from nonterminal import Nonterminal
 
 class Lefthandside(object):
     """
@@ -17,7 +17,7 @@ class Lefthandside(object):
             self.__lhs = lhs
 
     @property
-    def getlhs(self):
+    def __getlhs(self):
         return self.__lhs
 
     def __repr__(self):
@@ -31,9 +31,7 @@ class LefthandsideHorsContexte(Lefthandside):
         Restriction sur le type de l'attribut d'instance lhs
     """
     def __init__(self, lhs):
-        super(LefthandsideHorsContexte, self).__init__(lhs)
         if not ((len(lhs) == 1 ) and isinstance(lhs, Nonterminal)):
-            raise TypeError('En hors-contexte, la partie gauche doit être un Nonterminal.', type(lhs))
-
-    def __repr__(self):
-        return str(self.getlhs)
+            raise TypeError('En hors-contexte, la partie gauche doit être un Nonterminal. %s' % type(lhs).__name__)
+        else:
+            self._Lefthandside__lhs = lhs
