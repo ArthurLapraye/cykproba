@@ -11,6 +11,13 @@ class Righthandside(object):
         else:
             raise TypeError("Une Righthandside est composée de Terminal et/ou de Nonterminal.")
 
+    def replace(self, obj1, obj2):
+        return [obj2 if obj1 == x else x for x in self.__rhs]
+
+    def __iter__(self):
+        for x in self.__rhs:
+            yield x
+
     def __repr__(self):
         if len(self.__rhs) != 1:
             return "({0})".format(" ".join([str(x) for x in self.__rhs]))
@@ -55,11 +62,5 @@ class RighthandsideBinaire(Righthandside):
 
 
 if __name__ == '__main__':
-    x = Righthandside([Nonterminal("X"), Terminal('y')])
-    print(x)
-    y = RighthandsideBinaire([Nonterminal("X"), Nonterminal("R")])
-    print(y)
-    z = RighthandsideUnaire(Nonterminal('R'))
-    print(z)
-    t = RighthandsideLexicale(Terminal('r'))
-    print(t)
+    x = Righthandside([Nonterminal("X"), Terminal('y'), Nonterminal("Z")])
+    print(x.replace(Nonterminal("X"), Nonterminal("X|U")))

@@ -9,7 +9,7 @@ from righthandsides import *
 
 
 class Production():
-    ___productions = set()
+    ___productions = set([])
 
     def __init__(self, lhs, rhs):
         self.lhs = Lefthandside(lhs)
@@ -17,13 +17,9 @@ class Production():
 
         self.getproductions.add(self)
 
-    @property
-    def getproductions(self):
-        return type(self).___productions
-
-    @getproductions.setter
-    def getproductions(self, value):
-        pass
+    @staticmethod
+    def getproductions():
+        return Production.___productions
 
     def is_horscontexte(self):
         if isinstance(self.lhs, LefthandsideHorsContexte):
@@ -47,6 +43,10 @@ class Production():
         else:
             return False
 
+    @staticmethod
+    def vider_productions():
+        Production.___productions = set([])
+
     def __repr__(self):
         return "({0} {1})".format(self.lhs, self.rhs)
 
@@ -59,6 +59,16 @@ class ProductionHorsContexte(Production):
         super(ProductionHorsContexte, self).__init__(lhs, rhs)
         self.lhs = LefthandsideHorsContexte(lhs)
 
+    @staticmethod
+    def ununarise():
+        productions = Production.getproductions()
+        for gunary in [x for x in productions if isinstance(x, ProductionHorsContexteUnaire)]:
+            new_nt = Nonterminal("|".join([str(gunary.lhs), str(gunary.rhs)]))
+            for dunary in [x for x in productions if gunary.lhs in x.rhs]:
+                new_droite = dunary.rhs.replace(gunary.lhs, new_nt)
+                Production(dunary.lhs, new_droite)
+            for funary in [x for x in productions if gunary.rhs == x.lhs]:
+                Production(new_nt, funary.rhs)
 
 class ProductionHorsContexteProbabilisee(ProductionHorsContexte):
     def __init__(self, lhs, rhs, proba):
@@ -71,6 +81,18 @@ class ProductionHorsContexteProbabilisee(ProductionHorsContexte):
     @property
     def proba(self):
         return self.__proba
+
+    @staticmethod
+    def ununarise():
+        nonterminals = set([])
+        productions = Production.___productions.copy()
+        for gunary in [x for x in productions if isinstance(x, ProductionHorsContexteUnaire)]:
+            new_nt = Nonterminal("|".join([str(gunary.lhs), str(gunary.rhs)]))
+            for dunary in [x for x in productions if gunary.lhs in x.rhs]:
+                new_droite = dunary.rhs.replace(gunary.lhs, new_nt)
+                Production(dunary.lhs, new_droite)
+            for funary in [x for x in productions if gunary.rhs == x.lhs]:
+                Production(new_nt, funary.rhs)
 
     def __repr__(self):
         return " ".join([super(ProductionHorsContexteProbabilisee, self).__repr__(), str(self.__proba)])
@@ -198,7 +220,7 @@ if __name__ == '__main__':
     print(c)
     d = ProductionHorsContexteLexicaleProbabilisee(Nonterminal("X"), Terminal("x"), (12, 90))
     print(d)
-    e = ProductionHorsContexteUnaire(Nonterminal("X"), Nonterminal("x"))
+    e = ProductionHorsContexteUnaire(Nonterminal("X"), Nonterminal("X"))
     print(e)
     f = ProductionHorsContexteUnaireProbabilisee(Nonterminal("X"), Nonterminal("x"), (52, 50))
     print(f)

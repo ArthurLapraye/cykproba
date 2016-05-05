@@ -5,6 +5,12 @@ from Terminal import Terminal
 import productions
 
 
+
+
+# extraire une grammaire hors contexte probabilisee
+# soit appliquer calculproba sur
+
+
 class Grammaire(object):
     def __init__(self, terminals, nonterminals, axiome, productions):
         """
@@ -135,38 +141,43 @@ class GrammaireHorsContexteProbabilisee(GrammaireHorsContexte):
         axiome = set()
         productions = set()
 
-        def calculProba(productionsHorsContexteProbabilisees):
-            # temp = groupby(lhs)
-            # x.proba /= len(nt) for x in nt for nt in temp
-            # si prod1 == prod2:
-                # prod1.proba += prod2.proba
-                # del prod2
-            #
-            pass
-        def ununarise(productionsHorsContexteUnairesProbabilisees):
-            for unary in productionsHorsContexteUnairesProbabilisees:
+        self.calculProba()
+        self.ununarise()
+        self.binarise()
 
-            # pour chaque regle unaire:
-                # 1 - ajouter un nouveau nouveau nonterminal
-                # 2 - del regle unaire
-                # 3 - pour chaque regle n-aire dont la partie droite de la regle unaire est contenu dans la partie droite de la regle n-aire
-                    # - ajouter une prod avec nouveau nonterminal, proba p1*p2
-                    # - fixer à l'ancienne prod p2*(1-p1)
-                # 4 - pour chaque production lexicale avec partie gauche de regle unaire dans partie gauche de prod lexicale
-                    # - fixer proba à p3/(1 - p1)
-                # 5 - pour chaque prod lexicale avec partie droite de regle unaire en lhs
-                    # - proba de la nouvelle regle == proba de l'ancienne
-            pass
-        def binarise(productionsHorsContexteNairesProbabilisees):
-            # - ajouter nonterminal jusqu'à n-1 séparateur '-'
-            # - ajouter regle binaire à productions avec même proba
-            # - si la regle est binaire:
-                # ajouter la prudction à productions, avec proba de 1
-            # - sinon:
-                # binarise(regle)
-            # -
-            pass
         return GrammaireHorsContexteCNFProbabilisee(terminals, nonterminals, axiome, productions)
+
+    def calculProba(self, productionsHorsContexteProbabilisees):
+        # temp = groupby(lhs)
+        # x.proba /= len(nt) for x in nt for nt in temp
+        # si prod1 == prod2:
+            # prod1.proba += prod2.proba
+            # del prod2
+        #
+        pass
+    def ununarise(self, productionsHorsContexteUnairesProbabilisees):
+        for unary in productionsHorsContexteUnairesProbabilisees:
+
+        # pour chaque regle unaire:
+            # 1 - ajouter un nouveau nouveau nonterminal
+            # 2 - del regle unaire
+            # 3 - pour chaque regle n-aire dont la partie droite de la regle unaire est contenu dans la partie droite de la regle n-aire
+                # - ajouter une prod avec nouveau nonterminal, proba p1*p2
+                # - fixer à l'ancienne prod p2*(1-p1)
+            # 4 - pour chaque production lexicale avec partie gauche de regle unaire dans partie gauche de prod lexicale
+                # - fixer proba à p3/(1 - p1)
+            # 5 - pour chaque prod lexicale avec partie droite de regle unaire en lhs
+                # - proba de la nouvelle regle == proba de l'ancienne
+        pass
+    def binarise(self, productionsHorsContexteNairesProbabilisees):
+        # - ajouter nonterminal jusqu'à n-1 séparateur '-'
+        # - ajouter regle binaire à productions avec même proba
+        # - si la regle est binaire:
+            # ajouter la prudction à productions, avec proba de 1
+        # - sinon:
+            # binarise(regle)
+        # -
+        pass
 
 
 

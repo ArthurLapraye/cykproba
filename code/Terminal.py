@@ -3,15 +3,16 @@
 
 class Terminal(object):
 
-    __terminals = set([])
+    __terminals = []
 
     def __init__(self, terminal):
         self.__terminal = terminal
-        type(self).__terminals.add(terminal)
+        if self not in type(self).__terminals:
+            Terminal.__terminals.append(terminal)
 
-    @property
-    def terminals(self):
-        return type(self).__terminals
+    @staticmethod
+    def terminals():
+        return Terminal.__terminals
 
     @property
     def terminal(self):
@@ -26,6 +27,12 @@ class Terminal(object):
     def __len__(self):
         return 1
 
+    def __eq__(self, other):
+        if self.__terminal == str(other):
+            return True
+        else:
+            return False
+
     def __iter__(self):
         yield self
 
@@ -36,4 +43,4 @@ if __name__ == '__main__':
     print(x.terminal)
     print(len(x))
     print(iter(x))
-    print(x.terminals)
+    print(Terminal.terminals())
