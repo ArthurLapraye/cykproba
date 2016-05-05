@@ -5,6 +5,7 @@ import codecs
 import ply.lex as lex
 import ply.yacc as yacc
 import yaml
+from phrases import Phrase
 
 
 #################### PARTIE LEXICALE ####################################
@@ -32,6 +33,9 @@ lex.lex(optimize=1,lextab="lexique")
 
 ########################################################################
 
+phrase = []
+
+
 #################### PARTIE SYNTAXIQUE ####################################
 
 def p_axiome(p):
@@ -52,6 +56,11 @@ def p_S_2(p):
 def p_syntagme(p):
     """ syntagme : head exprs """
     # p[0] = [Production(lhs=p[1], rhs=[x.lhs for x in p[2]])]
+    global phrase
+    if p[1] == "SENT":
+        print(phrase)
+        Phrase(phrase)
+        phrase = []
     p[0] = [{p[1]: [p[2]]}]
 
 
@@ -69,6 +78,7 @@ def p_lexique(p):
     """ lexique : head leaf """
     # p[0] = [Production(lhs=p[1], rhs=p[2])]
     # p[] = [{p[1]: p[1].lower()}]
+    phrase.append(p[1].lower())
     p[0] = [{p[1]: p[2]}]
 
 
@@ -102,12 +112,13 @@ parser = yacc.yacc()
 
 with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
     phrases = []
+    phrase = []
     for ligne in id_mrg:
-        (nomcorpus_numerophrase, phrase) = ligne.split("\t")
-        phrases.append(phrase.strip())
+        (nomcorpus_numerophrase, phras) = ligne.split("\t")
+        phrases.append(phras.strip())
 
-for phrase in phrases[:10]:
-    result = parser.parse(phrase)
+for phras in phrases[:10]:
+    result = parser.parse(phras)
     print(yaml.dump(result, default_flow_style=False, allow_unicode=True))
 
 ########################################################################
