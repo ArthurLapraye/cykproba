@@ -60,6 +60,25 @@ class ProductionHorsContexte(Production):
         self.lhs = LefthandsideHorsContexte(lhs)
 
 
+class ProductionHorsContexteProbabilisee(ProductionHorsContexte):
+    def __init__(self, lhs, rhs, proba):
+        super(ProductionHorsContexteProbabilisee, self).__init__(lhs, rhs)
+        self.__proba = Probabilite(
+            numerator=proba[0],
+            denominator=proba[1]
+        )
+
+    @property
+    def proba(self):
+        return self.__proba
+
+    def __repr__(self):
+        return " ".join([super(ProductionHorsContexteProbabilisee, self).__repr__(), str(self.__proba)])
+
+    def __str__(self):
+        return repr(self)
+
+
 class ProductionHorsContexteBinaire(ProductionHorsContexte):
     __productionsBinaires = set([])
 
@@ -165,3 +184,21 @@ class ProductionHorsContexteLexicaleProbabilisee(ProductionHorsContexteLexicale)
 
     def __str__(self):
         return repr(self)
+
+if __name__ == '__main__':
+    x = Production(Nonterminal("X"), [Nonterminal('X'), Terminal('r')])
+    print(x)
+    y = ProductionHorsContexte(Nonterminal("X"), [Nonterminal("Y"), Terminal('r')])
+    print(y)
+    a = ProductionHorsContexteBinaire(Nonterminal("X"), [Nonterminal("Y"), Nonterminal("Z")])
+    print(a)
+    b = ProductionHorsContexteBinaireProbabilisee(Nonterminal("X"), [Nonterminal("Y"), Nonterminal("Z")], (1, 4))
+    print(b)
+    c = ProductionHorsContexteLexicale(Nonterminal("X"), Terminal("x"))
+    print(c)
+    d = ProductionHorsContexteLexicaleProbabilisee(Nonterminal("X"), Terminal("x"), (12, 90))
+    print(d)
+    e = ProductionHorsContexteUnaire(Nonterminal("X"), Nonterminal("x"))
+    print(e)
+    f = ProductionHorsContexteUnaireProbabilisee(Nonterminal("X"), Nonterminal("x"), (52, 50))
+    print(f)

@@ -13,16 +13,43 @@ class Grammaire(object):
         :param nonterminals:
         :param axiome:
         :param productions:
-        :return:
+        :return: None
         """
-        assert isinstance(terminals, set) and all(isinstance(x, Terminal) for x in terminals), "L'alphabet terminal ne doit être composé que de terminaux"
-        assert isinstance(nonterminals, set) and all(isinstance(x, Nonterminal) for x in nonterminals), "l'alphabet nonterminal ne doit être composé que de nonterminaux"
-        assert isinstance(axiome, Nonterminal) and (axiome in nonterminals), "L'axiome doit nécessairement faire partie de l'ensemble nonterminals"
-        assert isinstance(productions, set), "Les productions doivent être encapsulées dans un set"
-        self.terminals = terminals
-        self.nonterminals = nonterminals
-        self.axiome = axiome
-        self.productions = productions
+        if all(isinstance(t, Terminal) for t in terminals):
+            self.__terminals = terminals
+        else:
+            raise TypeError("L'alphabet terminal ne doit être composé que de Terminal")
+
+        if all(isinstance(nt, Nonterminal) for nt in nonterminals):
+            self.__nonterminals = nonterminals
+        else:
+            raise TypeError("l'alphabet nonterminal ne doit être composé que de Nonterminal")
+
+        if axiome in nonterminals:
+            self.__axiome = axiome
+        else:
+            raise TypeError("L'axiome doit nécessairement faire partie de l'ensemble nonterminals")
+
+        if all(isinstance(prod, productions.Production) for prod in productions):
+            self.__productions = productions
+        else:
+            raise TypeError("Les productions doivent être composées de Production")
+
+    @property
+    def terminals(self):
+        return self.__terminals
+
+    @property
+    def nonterminals(self):
+        return self.__nonterminals
+
+    @property
+    def axiome(self):
+        return self.__axiome
+
+    @property
+    def productions(self):
+        return self.__productions
 
     def __repr__(self):
         return
@@ -32,19 +59,12 @@ class Grammaire(object):
 
 
 class GrammaireHorsContexte(Grammaire):
-    def __init__(self, terminals, nonterminals, axiome, productionsHorsContexte):
-        Grammaire.__init__(self, terminals, nonterminals, axiome, productionsHorsContexte)
-        assert all(
-            isinstance(
-                x,
-                (
-                    productions.ProductionHorsContexteUnaire,
-                    productions.ProductionHorsContexteBinaire,
-                    productions.ProductionHorsContexteLexicale,
-                    productions.ProductionHorsContexteNaire
-                )
-            ) for x in productionsHorsContexte
-        ), "Une grammaire hors-contexte peut contenir des productions unaires, binaires, lexicales ou encore n-aires"
+    def __init__(self, terminals, nonterminals, axiome, prods):
+        Grammaire.__init__(self, terminals, nonterminals, axiome, productions)
+        if all(isinstance(prod.lhs, productions.ProductionHorsContexte) for prod in prods):
+            self.__productions = prods
+        else:
+            raise TypeError("Une grammaire hors-contexte peut contenir des productions unaires, binaires, lexicales ou encore n-aires")
 
     def GrammaireHorsContexte2GrammaireHorsContexteCNF(self):
         terminals = set()
@@ -60,56 +80,54 @@ class GrammaireHorsContexte(Grammaire):
 
 
 class GrammaireHorsContexteCNF(GrammaireHorsContexte):
-    def __init__(self, terminals, nonterminals, axiome, productionsHorsContexte):
-        GrammaireHorsContexte.__init__(self, terminals, nonterminals, axiome, productionsHorsContexte)
-        assert all(
+    def __init__(self, terminals, nonterminals, axiome, prods):
+        GrammaireHorsContexte.__init__(self, terminals, nonterminals, axiome, prods)
+        if all(
             isinstance(
                 x,
                 (
                     productions.ProductionHorsContexteBinaire,
                     productions.ProductionHorsContexteLexicale
                 )
-            ) for x in productionsHorsContexte
-        ), """
-            Une grammaire hors-contexte en forme normale de Chomsky ne peut contenir
-            que des productions de la forme binaire ou lexicale
-        """
+            ) for x in prods
+        ):
+            self.__productions = prods
+        else:
+            raise TypeError("""
+                Une grammaire hors-contexte en forme normale de Chomsky ne peut contenir
+                que des productions de la forme binaire ou lexicale
+            """)
 
 
 class GrammaireHorsContexteCNFProbabilisee(GrammaireHorsContexteCNF):
-    def __init__(self, terminals, nonterminals, axiome, productionsHorsContexte):
-        GrammaireHorsContexteCNF.__init__(self, terminals, nonterminals, axiome, productionsHorsContexte)
-        assert all(
+    def __init__(self, terminals, nonterminals, axiome, prods):
+        GrammaireHorsContexteCNF.__init__(self, terminals, nonterminals, axiome, prods)
+        if all(
             isinstance(
                 x,
                 (
                     productions.ProductionHorsContexteBinaireProbabilisee,
                     productions.ProductionHorsContexteLexicaleProbabilisee
                 )
-            ) for x in productionsHorsContexte
-        ), """
-            Une grammaire hors-contexte probabilisee en forme normale de Chomsky ne peut contenir
-            que des productions de la forme binaire ou lexicale et une probabilité associée à chaque règle
-        """
+            ) for x in prods
+        ):
+            self.__productions = prods
+        else:
+            raise TypeError("""
+                Une grammaire hors-contexte probabilisee en forme normale de Chomsky ne peut contenir
+                que des productions de la forme binaire ou lexicale et une probabilité associée à chaque règle
+                """)
 
 
 class GrammaireHorsContexteProbabilisee(GrammaireHorsContexte):
-    def __init__(self, terminals, nonterminals, axiome, productionsHorsContextesProbabilisees):
-        GrammaireHorsContexte.__init__(self, terminals, nonterminals, axiome, productionsHorsContextesProbabilisees)
-        assert all(
-            isinstance(
-                x,
-                (
-                    productions.ProductionHorsContexteUnaireProbabilisee,
-                    productions.ProductionHorsContexteBinaireProbabilisee,
-                    productions.ProductionHorsContexteLexicaleProbabilisee,
-                    productions.ProductionHorsContexteNaireProbabilisee
-                )
-            ) for x in productionsHorsContextesProbabilisees
-        ), """
-                Une grammaire hors-contexte probabilisee peut contenir
-                des productions unaires, binaires, lexicales ou encore n-aires mais avec une probabilité
-        """
+    def __init__(self, terminals, nonterminals, axiome, prods):
+        GrammaireHorsContexte.__init__(self, terminals, nonterminals, axiome, prods)
+        if all(isinstance(x, productions.ProductionHorsContexteProbabilisee) for x in prods):
+            self.__prductions = prods
+        else:
+            raise TypeError(
+                """Une grammaire hors-contexte probabilisee doit contenir des ProductionHorsContexteProbabilisee"""
+            )
 
     def GrammaireHorsContexteProbabilisee2GrammaireHorsContexteCNFProbabilisee(self):
         terminals = set()
@@ -153,5 +171,12 @@ class GrammaireHorsContexteProbabilisee(GrammaireHorsContexte):
 
 
 
-
-
+if __name__ == '__main__':
+    productions.Production(Nonterminal("X"), Terminal("x"))
+    productions.Production(Nonterminal("Y"), [Nonterminal("X"), Nonterminal("Z")])
+    productions.Production(Nonterminal("Z"), Terminal("z"))
+    terminals = Terminal
+    nonterminals = Nonterminal
+    axiome = Nonterminal("Y")
+    productions = productions.Production
+    print()

@@ -1,5 +1,6 @@
 # coding: utf8
 
+
 class Terminal(object):
 
     __terminals = set([])
@@ -27,3 +28,12 @@ class Terminal(object):
 
     def __iter__(self):
         yield self
+
+
+if __name__ == '__main__':
+    x = Terminal("X")
+    print(type(x).__name__)
+    print(x.terminal)
+    print(len(x))
+    print(iter(x))
+    print(x.terminals)

@@ -2,19 +2,19 @@
 
 class Nonterminal(object):
 
-    _nonterminals = set([])
+    __nonterminals = set([])
 
     def __init__(self, nonterminal):
         self.__nonterminal = nonterminal
-        type(self)._nonterminals.add(nonterminal)
+        type(self).__nonterminals.add(self)
 
     @property
     def nonterminal(self):
         return self.__nonterminal
 
-    @property
-    def nonterminals(self):
-        return type(self)._nonterminals
+    @staticmethod
+    def nonterminals():
+        return Nonterminal.__nonterminals
 
     def __repr__(self):
         return self.__nonterminal
@@ -27,3 +27,10 @@ class Nonterminal(object):
 
     def __iter__(self):
         yield self
+
+if __name__ == '__main__':
+    x = Nonterminal("X")
+    print(type(x).__name__)
+    print(x.nonterminal)
+    print(len(x))
+    print(iter(x))
