@@ -15,7 +15,7 @@ class Production():
         self.lhs = Lefthandside(lhs)
         self.rhs = Righthandside(rhs)
 
-        self.getproductions.add(self)
+        self.___productions.add(self)
 
     @staticmethod
     def getproductions():
@@ -109,7 +109,7 @@ class ProductionHorsContexteProbabilisee(ProductionHorsContexte):
     @staticmethod
     def binarise():
         for nary in ProductionHorsContexteProbabilisee.getprodnaire():
-
+            pass
 
     @staticmethod
     def getprodunaire():

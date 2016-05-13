@@ -61,8 +61,17 @@ def p_syntagme(p):
         print(phrase)
         Phrase(phrase)
         phrase = []
-    p[0] = [{p[1]: [p[2]]}]
+    if len(p[2]) == 2:
+        #ProductionBinaire
+    elif len(p[2]) == 1:
+        if isinstance(p[2], Nonterminal):
+            #ProductionUnaire
+        if isinstance(p[2], Terminal):
+            # ProductionLexicale
+    # p[0] = [{p[1]: [p[2]]}]
 
+
+# (VP (V v) (NP ((D d) (N n))))
 
 def p_exprs(p):
     """ exprs : S exprs
@@ -79,6 +88,7 @@ def p_lexique(p):
     # p[0] = [Production(lhs=p[1], rhs=p[2])]
     # p[] = [{p[1]: p[1].lower()}]
     phrase.append(p[1].lower())
+    ProductionHorsContexteLexicaleProbabilisee(Nonterminal(p[0]), Terminal(p[1]))
     p[0] = [{p[1]: p[2]}]
 
 
@@ -112,7 +122,6 @@ parser = yacc.yacc()
 
 with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
     phrases = []
-    phrase = []
     for ligne in id_mrg:
         (nomcorpus_numerophrase, phras) = ligne.split("\t")
         phrases.append(phras.strip())
@@ -120,5 +129,6 @@ with codecs.open("../Corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
 for phras in phrases[:10]:
     result = parser.parse(phras)
     print(yaml.dump(result, default_flow_style=False, allow_unicode=True))
-
+# parser phrases
+# instancier PCFG
 ########################################################################

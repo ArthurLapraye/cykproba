@@ -1,7 +1,89 @@
 # coding: utf8
 
+from collections import defaultdict
 
-class CYK(object):
+class LengthError(IndexError):
+    '''
+        Raise a IndexError when a sequence is not right adjusted.
+    '''
+
+
+class Cellule(object):
+    def __init__(self, nonterminal, proba, backpointer=None, index=1):
+        if len(args) != 4:
+            raise LengthError("Attention, Cellule reçoit nécessairement 4 arguments")
+        self.lhs = nonterminal
+        self.proba = proba
+        self.backpointer = backpointer
+        self.index = index
+
+    def __repr__(self):
+        return "[{self.lhs}, {self.proba}, {self.backpointer}, {self.index}]".format(self=self)
+
+    def __str__(self):
+        return repr(self)
+
+
+class CKY(object):
+    def __init__(self):
+        self.chart = defaultdict(list)
+
+    def initialise(self):
+        s = next(self.span)
+        for (t, mot) in enumerate(iterable=self.phrase, start=1):
+            x = t-1
+            for lexical in [x for x in self.grammaire if isinstance(x, ProductionHorsContexteLexicaleProbabilisee)]:
+                r = len(self.chart[x][s])+1
+                self.chart[x][s] |= Cellule(
+                                    nonterminal=lexical.lhs,
+                                    proba=lexical.proba,
+                                    backpointer=None,
+                                    index=r
+                                )
+
+    def remplit(self):
+        for s in self.span:
+            for t in range(len(self.phrase)-S+1):
+                x = t-1
+                for m in range(t, t+s-2):
+                    p = m-x
+                    q = s-p
+                    for cellj in self.chart[x][p]:
+                        for cellk in self.chart[m][q]:
+                            for regle in [x for x in self.grammaire.productions if not isinstance(x, ProductionHorsContexteLexicaleProbabilisee)]:
+                                if regle.proba > 0:
+                                    r = len(self.chart[x][s])+1
+                                    self.chart[][] |= Cellule(
+                                        nonterminal=regle.lhs,
+                                        proba=regle.proba*cellj.proba*cellk.proba,
+                                        backpointer=(m, cellj.index, cellk.index),
+                                        index=r
+                                    )
+
+    def get_arbre(self, cellule, coord=(1,1)):
+        (span, index) = coord
+        chaine = "({0} {1})"
+        if cellule.backpointer is None:
+            return chaine.format(cellule.lhs, cellule.lhs.lower())
+        else:
+            children = [(cellule.backpointer[0], index), (span-cellule.backpointer[0], index-span-1)]
+            # children donne les les coordonnées des enfants, cellule.backpointer[1:] donne dans l'ordre la cellule de chaque enfant.
+            cellules = cellule.backpointer[1:]
+
+            return chaine.format(cellule.lhs, " ".join([self.get_arbre(self.chart[child[0]][child[1]][cell], child) for cell in cellules for child in children]))
+
+    def load_grammaire(self, grammaire):
+        self.grammaire = grammaire
+
+    def load_phrase(self, phrase):
+        self.phrase = phrase
+        self.load_span(phrase)
+
+    def load_span(self, phrase):
+        self.span = (x for x, y in enumerate(range(len(phrase)),start=1))
+
+
+class CYKmel(object):
     def __init__(self, mot=None, grammaire=None):
         """
 
@@ -94,8 +176,23 @@ class CYKP(CYK):
             apllication d'un argmax sur les cellules du tableau
             application d'un k-possibilites sur les cellules du tableau
     """
-    def initialise(self, mot, grammaire):
-        pass
+    def initialise(self):
+        s = next(self.span)
+        for t, mot in enumerate(iterable=self.phrase):
+            x = t-1
+            for lexical in [x for x in self.grammaire if isinstance(x, ProductionHorsContexteLexicaleProbabilisee)]:
+                pass
 
     def fillin(self, mot, grammaire):
         pass
+
+
+
+
+
+
+def main():
+    print("En cours d'execution")
+
+if __name__ == '__main__':
+    main()
