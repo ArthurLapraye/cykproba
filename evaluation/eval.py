@@ -7,6 +7,8 @@ import sys
 from fileinput import input
 
 #Inspiré du lecteur de S-expressions de lis.py de P. Norvig
+#Prend une liste de tokens tirée d'un fichier parenthésé et renvoie la liste correspondante
+#
 def readtree(tokens):
 	
 	"Read an expression from a sequence of tokens."
@@ -24,7 +26,7 @@ def readtree(tokens):
 	else:
 		return token
 
-
+#Renvoie une liste correspondant aux feuilles d'un arbre obtenu avec la fonction readtree
 def getleaves(tree):
 	leaves=[]
 	# print tree
