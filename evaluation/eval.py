@@ -6,7 +6,7 @@ import sys
 
 from fileinput import input
 
-#Inspiré du lecteur de S-expressions de lis.py de P. Norvig
+#Inspiré du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
 #Prend une liste de tokens tirée d'un fichier parenthésé et renvoie la liste correspondante
 #
 def readtree(tokens):
@@ -27,6 +27,7 @@ def readtree(tokens):
 		return token
 
 #Renvoie une liste correspondant aux feuilles d'un arbre obtenu avec la fonction readtree
+#TODO : transformer en getspans pour obtenir les parties délimitées
 def getleaves(tree):
 	leaves=[]
 	# print tree
