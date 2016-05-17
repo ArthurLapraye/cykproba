@@ -25,9 +25,20 @@ def readtree(tokens):
 		return token
 
 
+def getleaves(tree):
+	leaves=[]
+	# print tree
+	for elem in tree[1:]:
+		if isinstance(elem,list):
+			leaves+=getleaves(elem)
+		else:
+			leaves.append(elem)
+	
+	return leaves
+		
 args=sys.argv[1:]
 
 for line in input(args):
 	line=line.decode("utf-8")
-	print readtree(line.replace('(',' ( ').replace(')',' ) ').split())
+	print getleaves(readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]  )
 
