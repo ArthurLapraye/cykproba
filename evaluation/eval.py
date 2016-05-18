@@ -43,14 +43,15 @@ def defoliate(tree):
 	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles"""
 	
 	newtree=list()
-	newtree.append(tree[0])
-	for elem in tree[1:]:
+	#newtree.append(tree[0])
+	for elem in tree:
 		if isinstance(elem, list):
 			if len(elem) > 2:
 				newtree.append(defoliate(elem))
 			else:
 				newtree.append(elem[0])
-		# else:
+		else:
+			newtree.append(elem)
 	
 	return newtree
 
