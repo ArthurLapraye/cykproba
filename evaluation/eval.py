@@ -42,21 +42,21 @@ def getleaves(tree):
 	
 def getspans(tree,offset=0):
 	
-	spans=dict()
+	spans=list()
 	beginoffset=offset
 	# print tree
 	for elem in tree[1:]:
 		
 		if isinstance(elem,list):
 			sp,of= getspans(elem,offset)
-			spans.update(sp)
+			spans += sp
 			offset = of
 		else:
-			spans[elem]=(offset,offset+1)
+			spans.append( (elem,offset,offset+1) )
 			offset += 1
 		
 	
-	spans[tree[0]]=(beginoffset,offset)
+	spans.append((tree[0],beginoffset,offset))
 	
 	return spans,offset
 
@@ -72,7 +72,6 @@ for line in input(args):
 	print
 	print leaves
 	
-	for const in spans:
-		i,j=spans[const]
+	for const,i,j in sorted(spans,key=lambda (x,y,z) : x):
 		print const.encode("utf-8"),leaves[i:j]
 
