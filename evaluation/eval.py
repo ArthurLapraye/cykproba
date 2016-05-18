@@ -37,7 +37,6 @@ def getleaves(tree):
 	
 def defoliate(tree):
 	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles"""
-	#TODO : bug à corriger pour (VN (V Semblent))
 	newtree=list()
 	newtree.append(tree[0])
 	
@@ -72,6 +71,11 @@ def getspans(tree,offset=0):
 	spans.append((tree[0],beginoffset,offset))
 	
 	return spans,offset
+
+def parseval(gold, pred):
+	for elem in zip(sorted(gold),sorted(pred)):
+		print elem
+
 
 if __name__ == "__main__":
 	
