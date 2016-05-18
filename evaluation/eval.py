@@ -39,23 +39,40 @@ def getleaves(tree):
 	
 	return leaves
 
+	
 def getspans(tree,offset=0):
+	
 	spans=dict()
+	beginoffset=offset
 	# print tree
 	for elem in tree[1:]:
-		if isinstance(elem,list):
-			leaves+=getleaves(elem)
-		else:
-			leaves.append(elem)
 		
-		spans[tree[0]]=(offset,offset+end)
+		if isinstance(elem,list):
+			sp,of= getspans(elem,offset)
+			spans.update(sp)
+			offset = of
+		else:
+			spans[elem]=(offset,offset+1)
+			offset += 1
+		
 	
-	return leaves
+	spans[tree[0]]=(beginoffset,offset)
+	
+	return spans,offset
 
 
 args=sys.argv[1:]
 
 for line in input(args):
 	line=line.decode("utf-8")
-	print getleaves(readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]  )
+	leaves=getleaves(readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]  )
+	spans=getspans(readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]  )[0]
+	
+	
+	print
+	print leaves
+	
+	for const in spans:
+		i,j=spans[const]
+		print const.encode("utf-8"),leaves[i:j]
 
