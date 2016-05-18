@@ -43,9 +43,10 @@ def defoliate(tree):
 	
 	for elem in tree[1:]:
 		if isinstance(elem, list):
+			if len(elem) > 2:
 				newtree.append(defoliate(elem))
-		else:
-			newtree.append(elem)
+			else:
+				newtree.append(elem[0])
 	
 	return newtree
 
