@@ -38,7 +38,21 @@ def getleaves(tree):
 			leaves.append(elem)
 	
 	return leaves
+
+def getspans(tree,offset=0):
+	spans=dict()
+	# print tree
+	for elem in tree[1:]:
+		if isinstance(elem,list):
+			leaves+=getleaves(elem)
+		else:
+			leaves.append(elem)
 		
+		spans[tree[0]]=(offset,offset+end)
+	
+	return leaves
+
+
 args=sys.argv[1:]
 
 for line in input(args):
