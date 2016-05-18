@@ -92,6 +92,7 @@ if __name__ == "__main__":
 
 		print
 		print leaves
+		print tree
 		print defoliate(tree)
 		for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
 			print const.encode("utf-8"),i,leaves[i:j],j
