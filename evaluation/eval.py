@@ -1,17 +1,16 @@
 #!/usr/bin/python
 #-*- encoding: utf-8 -*-
-
+#Arthur Lapraye - 2016
 
 import sys
 
 from fileinput import input
 
-#Inspiré du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
-#Prend une liste de tokens tirée d'un fichier parenthésé et renvoie la liste correspondante
-#
 def readtree(tokens):
-	
-	"Read an expression from a sequence of tokens."
+	"""
+	Inspiré du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
+	Prend une liste de tokens tirée d'un fichier parenthésé et renvoie la liste python correspondante
+	"""
 	if len(tokens) == 0:
 		raise SyntaxError('unexpected EOF while reading')
 	token = tokens.pop(0)
@@ -26,9 +25,10 @@ def readtree(tokens):
 	else:
 		return token
 
-#Renvoie une liste correspondant aux feuilles d'un arbre obtenu avec la fonction readtree
-#TODO : transformer en getspans pour obtenir les parties délimitées
 def getleaves(tree):
+	"""
+	Renvoie la liste des feuilles d'un arbre obtenu avec la fonction readtree
+	"""
 	leaves=[]
 	# print tree
 	for elem in tree[1:]:
@@ -39,9 +39,11 @@ def getleaves(tree):
 	
 	return leaves
 
-	
 def getspans(tree,offset=0):
-	
+	"""
+	Prend en entrée un arbre de constituants tel que produit par readtree et une position de départ dans la phrase, par défaut 0
+	Renvoie une liste de tuples contenant l'étiquette du constituant et son span dans la phrase
+	"""
 	spans=list()
 	beginoffset=offset
 	# print tree
