@@ -2,10 +2,6 @@
 #-*- encoding: utf-8 -*-
 #Arthur Lapraye - 2016
 
-import sys
-
-from fileinput import input
-
 def readtree(tokens):
 	"""
 	Inspiré du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
@@ -78,10 +74,13 @@ def getspans(tree,offset=0):
 	
 	return spans,offset
 
-
-args=sys.argv[1:]
-
 if __name__ == "__main__":
+	
+	import sys
+	from fileinput import input
+
+	args=sys.argv[1:]
+
 	"""
 	Usage : prend comme argument un fichier mrg.strict, en lit le contenu et imprime les résultats des fonctions defoliate et getleaves
 	Ainsi que le span de chaque noeud de l'arbre syntaxique, y compris les terminaux, triés dans l'ordre linéaire
