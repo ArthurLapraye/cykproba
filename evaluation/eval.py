@@ -80,15 +80,20 @@ def getspans(tree,offset=0):
 
 args=sys.argv[1:]
 
-for line in input(args):
-	line=line.decode("utf-8")
-	tree=readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0] 
-	leaves=getleaves(tree)
-	spans=getspans(tree)[0]
+if __name__ == "__main__":
+	"""
+	Usage : prend comme argument un fichier mrg.strict, en lit le contenu et imprime les résultats des fonctions defoliate et getleaves
+	Ainsi que le span de chaque noeud de l'arbre syntaxique, y compris les terminaux, triés dans l'ordre linéaire
+	"""
+	for line in input(args):
+		line=line.decode("utf-8")
+		tree=readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0] 
+		leaves=getleaves(tree)
+		spans=getspans(tree)[0]
 
-	print
-	print leaves
-	print defoliate(tree)
-	# for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
-		# print const.encode("utf-8"),leaves[i:j]
+		print
+		print leaves
+		print defoliate(tree)
+		for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
+			print const.encode("utf-8"),leaves[i:j]
 
