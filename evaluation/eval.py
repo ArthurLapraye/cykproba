@@ -38,6 +38,21 @@ def getleaves(tree):
 			leaves.append(elem)
 	
 	return leaves
+	
+def defoliate(tree):
+	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles"""
+	
+	newtree=list()
+	newtree.append(tree[0])
+	for elem in tree[1:]:
+		if isinstance(elem, list):
+			if len(elem) > 2:
+				newtree.append(defoliate(elem))
+			else:
+				newtree.append(elem[0])
+		# else:
+	
+	return newtree
 
 def getspans(tree,offset=0):
 	"""
@@ -73,7 +88,7 @@ for line in input(args):
 
 	print
 	print leaves
-	
-	for const,i,j in sorted(spans,key=lambda (x,y,z) : y):
-		print const.encode("utf-8"),leaves[i:j]
+	print defoliate(tree)
+	# for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
+		# print const.encode("utf-8"),leaves[i:j]
 
