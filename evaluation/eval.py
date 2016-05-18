@@ -37,7 +37,7 @@ def getleaves(tree):
 	
 def defoliate(tree):
 	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles"""
-	
+	#TODO : bug à corriger pour (VN (V Semblent))
 	newtree=list()
 	#newtree.append(tree[0])
 	for elem in tree:
@@ -95,5 +95,5 @@ if __name__ == "__main__":
 		print leaves
 		print defoliate(tree)
 		for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
-			print const.encode("utf-8"),leaves[i:j]
+			print const.encode("utf-8"),i,leaves[i:j],j
 
