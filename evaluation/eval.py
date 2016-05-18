@@ -65,13 +65,13 @@ args=sys.argv[1:]
 
 for line in input(args):
 	line=line.decode("utf-8")
-	leaves=getleaves(readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]  )
-	spans=getspans(readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]  )[0]
-	
-	
+	tree=readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0] 
+	leaves=getleaves(tree)
+	spans=getspans(tree)[0]
+
 	print
 	print leaves
 	
-	for const,i,j in sorted(spans,key=lambda (x,y,z) : x):
+	for const,i,j in sorted(spans,key=lambda (x,y,z) : y):
 		print const.encode("utf-8"),leaves[i:j]
 
