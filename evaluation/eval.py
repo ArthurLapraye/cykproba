@@ -74,34 +74,31 @@ def getspans(tree,offset=0):
 
 def parseval(gold, pred):
 	
-	for elem in zip(sorted(gold,key=lambda (x,y,z) : x):
+	for elem in zip(sorted(gold,key=lambda (x,y,z) : x)):
+		pass
 		
 
 
 if __name__ == "__main__":
-
-	p = "( (SENT (NP (NPP Gutenberg))))"
-
-
-	# import sys
-	# from fileinput import input
-    #
-	# args=sys.argv[1:]
-    #
-	# """
-	# Usage : prend comme argument un fichier mrg.strict, en lit le contenu et imprime les résultats des fonctions defoliate et getleaves
-	# Ainsi que le span de chaque noeud de l'arbre syntaxique, y compris les terminaux, triés dans l'ordre linéaire
-	# """
-	# for line in input(args):
-	# 	line=line.decode("utf-8")
-	# 	tree=readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]
-	# 	leaves=getleaves(tree)
-	# 	spans=getspans(defoliate(tree))[0]
-    #
-	# 	print
-	# 	print leaves
-	# 	print tree
-	# 	print getleaves(defoliate(tree))
-	# 	for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
-	# 		print const.encode("utf-8"),i,leaves[i:j],j
+	import sys
+	from fileinput import input
+	
+	args=sys.argv[1:]
+	"""Usage : prend comme argument un fichier mrg.strict, 
+	en lit le contenu et imprime les résultats des fonctions defoliate et getleaves
+	Ainsi que le span de chaque noeud de l'arbre syntaxique, y compris les terminaux, triés dans l'ordre linéaire
+	"""
+	for line in input(args):
+		line=line.decode("utf-8")
+		tree=readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]
+		leaves=getleaves(tree)
+		spans=getspans(defoliate(tree))[0]
+		
+		print
+		print leaves
+		print tree
+		print defoliate(tree)
+		print getleaves(defoliate(tree))
+		for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
+			print const.encode("utf-8"),i,leaves[i:j],j
 
