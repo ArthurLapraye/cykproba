@@ -1,70 +1,54 @@
-# coding: utf-8
+# coding: utf8
+import codecs
+import grammaires
+import ExtracteurLexSynt
+import nonterminal
+import terminal
+import productions
 
-# import yaml
-# import codecs
-# import sqlite3
-# from Extracteur import *
-from grammaire import *
-
-
-
-
-#with codecs.open("Ressources/../sequoia-corpus+fct.id_mrg") as id_mrg:
-#    id_mrg.readlines()
-#    cero = [1,2,3,4,5]
-#    for x in range(len(cero)):
-#        print('train {0}, test {1}'.format(cero[:x]))
-
-
-# prendre un ensemble de sequences
-#     extraire grammaire
-#     cky(e E sequences, grammaire extraite): ensemble de sequences
-# retourne corpus aligné (gold, prediction)
-
-def extraire(corpus, parseur, typesortie):
-    if issubclass(typesortie, Grammaire):
-        for p in corpus:
-            parseur.parse(p)
-        return typesortie(Nonterminal.nonterminals, Terminals.terminals, Production.productions)
 
 def main():
-    # lecture corpus
-    (train, test) = [0, 0] # ligne ou faudra ouvrir les phrases
-    # lecteur de phrases parenthésées
-    parseur = ""
-    grammaire = extraire(corpus=corpus, parseur, typesortie=Grammairehorscontexteprobabilisee)
+    with codecs.open("../corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
+        corpus = id_mrg.readlines()
 
-    grammaire.dump('grammairehorscontexteprobabilisee.pickle')
-    grammaire.dump('grammairehorscontexteprobabilisee.yaml')
-
-    # conversion vers une grammaire CNF
-    gcnf = grammaire.verscnf()
-
-    gcnf.dump('grammairehorscontextecnfprobabilisee.pickle')
-    gcnf.dump('grammairehorscontextecnfprobabilisee.yaml')
-
-    # instanciation du cky, chargement de la grammaire
-    cky = CKY()
-    cky.load(gcnf)
-
-    for gold in test:
-        pred = cky.predit(p)
-    # dumper la sortie (gold, pred) dans un fichier texte
+    for ligne in corpus[:10]:
+        (nomcorpus_numero, phrase) = ligne.split('\t')
+        (nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
+        ExtracteurLexSynt.parser.parse(phrase)
+    productions.Productionhorscontexteprobabilisee.setprobaproductions()
 
 
-def fonction(sequence):
-    for x in range(len(sequence)):
-        yield sequence[:x]+sequence[x+1:], sequence[x]
+    g = grammaires.Grammairehorscontexteprobabiliste(
+        terminals=nonterminal.Nonterminal.getnonterminals(key=None),
+        nonterminals=terminal.Terminal.getterminals(key=None),
+        productions=productions.Productionhorscontexteprobabilisee.productions()
+    )
+    print(g)
 
-train_test = lambda sequence: ((sequence[:x]+sequence[x+1:],sequence[x]) for x in range(len(sequence)))
 
-decoupe = lambda line, n: [line[i:i+n] for i in range(0, len(line), n)]
+    # entrainement
+    # for i in range(10):
+    #     x = parser.parse(input=corpus[i].gold)
+    #     corpus[i].extraction.extend(parser.parse(input=corpus[i].gold))
+    # productions.Productionhorscontexteprobabilisee.setprobaproductions()
+
+    # grammaire = grammaires.Grammairehorscontexteprobabiliste(
+    #     terminals=terminal.Terminal.getterminals(),
+    #     nonterminals=nonterminal.Nonterminal.getnonterminals(),
+    #     productions=productions.Production.productions()
+    # )
+    # print(grammaire)
+    # x = grammaire.ununarise(grammaire.productions)
+    # print(x)
 
 
-def n_fold(sequence):
-    pass
+#    cky = CKY()
+#    for p in corpus.splitlines():
+#        gold.append(p)
+#        cky.learn(p)
+#    cky.dump_grammar('grammaire_sequoia')
 
-# segmenter corpus train test
-#
-#
-#
+    # test
+
+if __name__ == '__main__':
+    main()

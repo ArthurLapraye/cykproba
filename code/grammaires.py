@@ -2,7 +2,7 @@
 from productions import *
 from nonterminal import *
 from terminal import *
-from ckys import *
+# from ckys import *
 import yaml
 import pickle
 
