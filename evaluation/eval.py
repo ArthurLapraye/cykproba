@@ -2,6 +2,9 @@
 #-*- encoding: utf-8 -*-
 #Arthur Lapraye - 2016
 
+def tokenize(string):
+	return string.replace('(',' ( ').replace(')',' ) ').split()
+
 def readtree(tokens):
 	"""
 	Inspiré du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
@@ -90,7 +93,7 @@ if __name__ == "__main__":
 	"""
 	for line in input(args):
 		line=line.decode("utf-8")
-		tree=readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0]
+		tree=readtree(tokenize(line))[0]
 		leaves=getleaves(tree)
 		spans=getspans(defoliate(tree))[0]
 		
