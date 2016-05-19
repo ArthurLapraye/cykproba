@@ -8,7 +8,7 @@ import ply.yacc as yacc
 import yaml
 from phrases import Phrase
 from Nonterminal import Nonterminal
-from terminal import Terminal
+from Terminal import Terminal
 from productions import *
 
 

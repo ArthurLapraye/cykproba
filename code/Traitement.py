@@ -1,3 +1,4 @@
+#!/usr/python
 # coding: utf8
 import codecs
 import grammaires
