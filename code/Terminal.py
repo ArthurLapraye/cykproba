@@ -1,18 +1,14 @@
 # coding: utf8
+from collections import defaultdict
 
 
 class Terminal(object):
+    __terminals = defaultdict(int)
 
-    __terminals = []
 
     def __init__(self, terminal):
         self.__terminal = terminal
-        if self not in type(self).__terminals:
-            Terminal.__terminals.append(terminal)
-
-    @staticmethod
-    def terminals():
-        return Terminal.__terminals
+        type(self).__terminals[self] += 1
 
     @property
     def terminal(self):
@@ -28,19 +24,21 @@ class Terminal(object):
         return 1
 
     def __eq__(self, other):
-        if self.__terminal == str(other):
+        if self.__dict__ == other.__dict__:
             return True
+        return False
+
+    def __hash__(self):
+        return 1
+
+    @staticmethod
+    def getterminals(key=None):
+        if key is not None:
+            return Terminal.__terminals[key]
         else:
-            return False
-
-    def __iter__(self):
-        yield self
-
+            return Terminal.__terminals
 
 if __name__ == '__main__':
     x = Terminal("X")
-    print(type(x).__name__)
-    print(x.terminal)
-    print(len(x))
-    print(iter(x))
-    print(Terminal.terminals())
+    y = Terminal("X")
+    print(Terminal.getterminals())
