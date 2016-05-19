@@ -73,8 +73,9 @@ def getspans(tree,offset=0):
 	return spans,offset
 
 def parseval(gold, pred):
-	for elem in zip(sorted(gold),sorted(pred)):
-		print elem
+	
+	for elem in zip(sorted(gold,key=lambda (x,y,z) : x):
+		
 
 
 if __name__ == "__main__":
@@ -92,12 +93,12 @@ if __name__ == "__main__":
 		line=line.decode("utf-8")
 		tree=readtree(line.replace('(',' ( ').replace(')',' ) ').split())[0] 
 		leaves=getleaves(tree)
-		spans=getspans(tree)[0]
+		spans=getspans(defoliate(tree))[0]
 
 		print
 		print leaves
 		print tree
-		print defoliate(tree)
+		print getleaves(defoliate(tree))
 		for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
 			print const.encode("utf-8"),i,leaves[i:j],j
 
