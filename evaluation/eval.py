@@ -79,7 +79,10 @@ def parseval(gold, pred):
 	
 	for elem in zip(sorted(gold,key=lambda (x,y,z) : x)):
 		pass
-		
+		"""
+			dictionnaire de sets de spans par nom de syntagme ?
+			sinon calcul inter, puis gold - inter et pred - inter
+		"""
 
 
 if __name__ == "__main__":
