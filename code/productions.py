@@ -130,7 +130,7 @@ class Productionhorscontexteprobabilisee(Productionhorscontexte):
 
     @proba.setter
     def proba(self, value):
-        pass
+        self.__proba = value
 
     def setproba(self):
         self.__proba = Fraction(self[str(self)], self.lhs[str(self.lhs)])
@@ -185,8 +185,8 @@ if __name__ == '__main__':
     # lhs = (Nonterminal("X"),Nonterminal('R'))
     # rhs = ((Nonterminal("X"),), (Nonterminal("X"),Nonterminal("Y")), (Terminal('r'),), (Nonterminal("X"), Nonterminal('R'), Terminal('ons'), Nonterminal("Z")))
 
-    a = Productionhorscontextebinaire((Nonterminal("X"),), (Nonterminal("R"), Nonterminal('ons')))
-    z = Productionhorscontexteprobabilisee((Nonterminal("X"),), (Nonterminal("R"), Terminal('ons')))
-    e = Productionhorscontexteprobabilisee((Nonterminal("X"),), (Nonterminal('T'), ))
-    f = Productionhorscontexte((Nonterminal("X"),), (Nonterminal('T'), ))
-    print(f.lhs)
+    # a = Productionhorscontextebinaire((Nonterminal("X"),), (Nonterminal("R"), Nonterminal('ons')))
+    # z = Productionhorscontexteprobabilisee((Nonterminal("X"),), (Nonterminal("R"), Terminal('ons')))
+    # e = Productionhorscontexteprobabilisee((Nonterminal("X"),), (Nonterminal('T'), ))
+    # f = Productionhorscontexte((Nonterminal("X"),), (Nonterminal('T'), ))
+    # print(f.lhs)

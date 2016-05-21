@@ -7,8 +7,8 @@ import ply.lex as lex
 import ply.yacc as yacc
 import yaml
 from phrases import Phrase
-from Nonterminal import Nonterminal
-from Terminal import Terminal
+from nonterminal import Nonterminal
+from terminal import Terminal
 from productions import *
 
 

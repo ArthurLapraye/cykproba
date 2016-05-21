@@ -44,10 +44,8 @@ class Righthandside(Handside):
 #        pass
 
     def replace(self, old, new):
-        print(self.rhs)
         x = self.rhs.index(old)
-        print(x)
-        #return Righthandside(self.__rhs[:x] + new + self.__rhs[x+1:])
+        return self.__rhs[:x] + [new] + self.__rhs[x+1:]
 
 
 class Righthandside0(Righthandside):
