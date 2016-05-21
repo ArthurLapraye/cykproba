@@ -100,6 +100,10 @@ def goodconst(tree1,tree2):
 	
 	return correct,err1,err2
 
+def parseval(gold, pred):
+	"""
+	"""
+	pass
 
 if __name__ == "__main__":
 	import sys
