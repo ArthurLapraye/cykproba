@@ -100,14 +100,39 @@ def goodconst(tree1,tree2):
 	
 	return correct,err1,err2
 
-def parseval(gold, pred):
+def goodspans(tree1,tree2):
 	"""
-	Utilise la fonction goodconst pour calculer précision, rappel et f-mesure étiquetés.
+	Compare les constituants de deux arbres en fonction de leurs constituants communs
+	Deux constituants sont identiques s'ils ont le même span.
+	Les constituants communs aux deux arbres sont comptabilisés dans la variable correct
+	Les constituants de tree1 absent de tree2 sont comptabilisés dans err1
+	Les constituants de tree2 absents de tree1 sont comptabilisés dans err2
+	"""
+	
+	correct,err1,err2=0.0,0.0,0.0
+	resultat=[ (x,y) for z,x,y in getspans(tree2)]
+	autre =  [ (x,y) for z,x,y in getspans(tree1) ]
+	
+	for elem in autre:
+		if elem in resultat:
+			correct += 1
+			resultat.pop(resultat.index(elem))
+		else:
+			err1 += 1
+	
+	err2+=len(resultat)
+	
+	return correct,err1,err2
+
+def parseval(gold, pred,labeled=True):
+	"""
+	Utilise la fonction goodconst pour calculer précision, rappel et f-mesure étiquetés ou non.
 	Renvoie une erreur si les deux arbres en entrée ont des feuilles différentes.
 	"""
 	if getleaves(gold) == getleaves(pred):
 		
-		corr,err1,err2=goodconst(gold,pred)
+		
+		corr,err1,err2=goodconst(gold,pred) if labeled else goodspans(gold,pred)
 		
 		#Il faut retirer des constituants corrects les feuilles qui sont forcément bien étiquetées et SENT
 		corr -= len(getleaves(gold))+1  
@@ -141,6 +166,8 @@ if __name__ == "__main__":
 		print getleaves(defoliate(tree))
 		#print goodconst(tree,defoliate(tree))
 		print parseval(tree,tree)
+		print parseval(tree,tree,labeled=False)
+		
 		#for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
 		#	print const.encode("utf-8"),i,leaves[i:j],j
 
