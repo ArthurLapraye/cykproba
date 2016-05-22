@@ -102,13 +102,15 @@ def goodconst(tree1,tree2):
 
 def parseval(gold, pred):
 	"""
+	Utilise la fonction goodconst pour calculer précision, rappel et f-mesure étiquetés.
+	Renvoie une erreur si les deux arbres en entrée ont des feuilles différentes.
 	"""
 	if getleaves(gold) == getleaves(pred):
 		
-		correct,err1,err2=goodconst(gold,pred)
+		corr,err1,err2=goodconst(gold,pred)
 		
 		#Il faut retirer des constituants corrects les feuilles qui sont forcément bien étiquetées et SENT
-		correct -= getleaves(gold)+1  
+		corr -= len(getleaves(gold))+1  
 	
 		precision=(corr / corr+err2)
 		rappel = (corr / corr+err1)
@@ -124,9 +126,8 @@ if __name__ == "__main__":
 	from fileinput import input
 	
 	args=sys.argv[1:]
-	"""Usage : prend comme argument un fichier mrg.strict, 
-	en lit le contenu et imprime les résultats des fonctions defoliate et getleaves
-	Ainsi que le span de chaque noeud de l'arbre syntaxique, y compris les terminaux, triés dans l'ordre linéaire
+	"""Usage : prend comme argument un fichier mrg.strict ou bien un pipe depuis stdin
+	./eval.py sequoia-corpus+fct.mrg_strict  est équivalent à cat sequoia-corpus+fct.mrg_strict | ./eval.py
 	"""
 	for line in input(args):
 		line=line.decode("utf-8")
@@ -135,10 +136,11 @@ if __name__ == "__main__":
 		spans=getspans(defoliate(tree))
 		print
 		print leaves
-		print tree
-		print defoliate(tree)
+		#print tree
+		#print defoliate(tree)
 		print getleaves(defoliate(tree))
-		print goodconst(tree,defoliate(tree))
-		for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
-			print const.encode("utf-8"),i,leaves[i:j],j
+		#print goodconst(tree,defoliate(tree))
+		print parseval(tree,tree)
+		#for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
+		#	print const.encode("utf-8"),i,leaves[i:j],j
 
