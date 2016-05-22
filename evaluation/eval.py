@@ -103,7 +103,21 @@ def goodconst(tree1,tree2):
 def parseval(gold, pred):
 	"""
 	"""
-	pass
+	if getleaves(gold) == getleaves(pred):
+		
+		correct,err1,err2=goodconst(gold,pred)
+		
+		#Il faut retirer des constituants corrects les feuilles qui sont forcément bien étiquetées et SENT
+		correct -= getleaves(gold)+1  
+	
+		precision=(corr / corr+err2)
+		rappel = (corr / corr+err1)
+		fmesure = (precision*rappel*2.0)/(precision+rappel)
+		
+		return precision,rappel,fmesure
+	else:
+		raise ValueError("Phrases différentes")
+	
 
 if __name__ == "__main__":
 	import sys
