@@ -126,7 +126,7 @@ def goodspans(tree1,tree2):
 
 def parseval(gold, pred,labeled=True):
 	"""
-	Utilise la fonction goodconst pour calculer précision, rappel et f-mesure étiquetés ou non.
+	Utilise la fonction goodconst pour calculer précision, rappel et f-mesure étiquetés ou non, pour une phrase donnée.
 	Renvoie une erreur si les deux arbres en entrée ont des feuilles différentes.
 	"""
 	if getleaves(gold) == getleaves(pred):
@@ -170,4 +170,7 @@ if __name__ == "__main__":
 		
 		#for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
 		#	print const.encode("utf-8"),i,leaves[i:j],j
+
+#TODO : faire un système de test qui prend d'un côté les arbres gold et de l'autre les arbres prédits pour calculer précision, rappel et f-mesure globaux
+#TODO : accomoder des forêts d'analyse partagée (?) (à voir en amont)
 
