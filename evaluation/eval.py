@@ -2,6 +2,9 @@
 #-*- encoding: utf-8 -*-
 #Arthur Lapraye - 2016
 
+
+import codecs
+
 def tokenize(string):
 	""" Tokenise une S-expression """
 	return string.replace('(',' ( ').replace(')',' ) ').split()
@@ -134,40 +137,64 @@ def parseval(gold, pred,labeled=True):
 		
 		corr,err1,err2=goodconst(gold,pred) if labeled else goodspans(gold,pred)
 		
+		print corr, err1,err2
 		#Il faut retirer des constituants corrects les feuilles qui sont forcément bien étiquetées et SENT
 		corr -= len(getleaves(gold))+1  
 	
-		precision=(corr / corr+err2)
-		rappel = (corr / corr+err1)
+		precision=(corr / (corr+err2))
+		rappel = (corr / (corr+err1))
 		fmesure = (precision*rappel*2.0)/(precision+rappel)
 		
 		return precision,rappel,fmesure
 	else:
-		raise ValueError("Phrases différentes")
-	
+		raise ValueError("Phrases différentes :\n"+str(gold).encode("utf-8")+"\n"+str(pred).encode("utf-8"))
+	 
 
 if __name__ == "__main__":
 	import sys
 	from fileinput import input
 	
-	args=sys.argv[1:]
-	"""Usage : prend comme argument un fichier mrg.strict ou bien un pipe depuis stdin
-	./eval.py sequoia-corpus+fct.mrg_strict  est équivalent à cat sequoia-corpus+fct.mrg_strict | ./eval.py
+	from optparse import OptionParser
+	
+	usage="""Usage : prend comme argument un fichier mrg.strict ou bien un pipe depuis stdin
+	./eval.py $fichier est équivalent à cat $fichier | ./eval.py
 	"""
-	for line in input(args):
-		line=line.decode("utf-8")
-		tree=readtree(tokenize(line))[0]
-		leaves=getleaves(tree)
-		spans=getspans(defoliate(tree))
-		print
-		print leaves
-		#print tree
-		#print defoliate(tree)
-		print getleaves(defoliate(tree))
-		#print goodconst(tree,defoliate(tree))
-		print parseval(tree,tree)
-		print parseval(tree,tree,labeled=False)
-		
+	
+	p = OptionParser(usage=usage)
+	
+	p.add_option("-g","--gold", 
+					action="store",
+					dest="gold", 
+					default=None,
+					help=u"Localisation du fichier contenant les phrases gold.")
+	
+	(op,args)=p.parse_args()
+	#args=sys.argv[1:]
+	if op.gold:
+		with codecs.open(op.gold, encoding="utf-8") as goldilocks:
+			for pred,gold in zip(input(args),goldilocks):
+				pred=pred.decode("utf-8")
+				golg=gold #.decode("utf-8")
+			
+				predtree=readtree(tokenize(pred))[0]
+				goldtree=readtree(tokenize(gold))[0]
+			
+				#tree=readtree(tokenize(line))[0]
+				#leaves=getleaves(tree)
+				#spans=getspans(defoliate(tree))
+				#print
+				#print leaves
+				#print tree
+				#print defoliate(tree)
+				#print getleaves(defoliate(tree))
+				#print goodconst(tree,defoliate(tree))
+				print getleaves(goldtree)
+				print getleaves(predtree)
+				print parseval(goldtree,predtree)
+				print parseval(goldtree,predtree,labeled=False)
+				print 
+	else:
+		raise RuntimeError(u"Vous avez oublié de spécifier un fichier gold !")
 		#for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
 		#	print const.encode("utf-8"),i,leaves[i:j],j
 
