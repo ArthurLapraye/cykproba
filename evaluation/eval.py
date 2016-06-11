@@ -143,11 +143,14 @@ def parseval(gold, pred,labeled=True):
 		
 		print corr, err1,err2
 		#Il faut retirer des constituants corrects les feuilles qui sont forcément bien étiquetées et SENT
-		corr -= len(getleaves(gold)) #+1  
+		#corr -= len(getleaves(gold)) #+1  
 	
 		precision=(corr / (corr+err2))
 		rappel = (corr / (corr+err1))
 		fmesure = (precision*rappel*2.0)/(precision+rappel)
+		
+		assert corr+err2 == len(getspans(pred))
+		assert corr+err1 == len(getspans(gold))
 		
 		return precision,rappel,fmesure
 	else:
@@ -214,8 +217,8 @@ if __name__ == "__main__":
 				
 				z += 1
 				
-		globprec=globcorr/(globcorr+globerr1)
-		globrapp=globcorr/(globcorr+globerr2)
+		globprec=globcorr/(globcorr+globerr2)
+		globrapp=globcorr/(globcorr+globerr1)
 		print u"précision globale :", globprec,u" précision moyenne :", sumprec/z
 		print u"rappel global :", globrapp, u"rappel moyen :", sumrapp/z
 		print u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/z
