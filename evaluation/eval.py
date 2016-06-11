@@ -91,6 +91,7 @@ def goodconst(tree1,tree2):
 	"""
 	correct,err1,err2=0.0,0.0,0.0
 	resultat=getspans(tree2)
+	badspans=list()
 	
 	for elem in getspans(tree1):
 		if elem in resultat:
@@ -98,7 +99,10 @@ def goodconst(tree1,tree2):
 			resultat.pop(resultat.index(elem))
 		else:
 			err1 += 1
+			badspans.append(elem)
 	
+	print resultat
+	print badspans
 	err2+=len(resultat)
 	
 	return correct,err1,err2
@@ -139,7 +143,7 @@ def parseval(gold, pred,labeled=True):
 		
 		print corr, err1,err2
 		#Il faut retirer des constituants corrects les feuilles qui sont forcément bien étiquetées et SENT
-		corr -= len(getleaves(gold))+1  
+		corr -= len(getleaves(gold)) #+1  
 	
 		precision=(corr / (corr+err2))
 		rappel = (corr / (corr+err1))
@@ -171,13 +175,16 @@ if __name__ == "__main__":
 	(op,args)=p.parse_args()
 	#args=sys.argv[1:]
 	if op.gold:
+		globcorr,globerr1,globerr2=float(),float(),float()
+		sumprec,sumrapp,sumfmes=float(),float(),float()
+		z=0
 		with codecs.open(op.gold, encoding="utf-8") as goldilocks:
-			for pred,gold in zip(input(args),goldilocks):
+			for (i,(pred,gold)) in enumerate(zip(input(args),goldilocks)):
 				pred=pred.decode("utf-8")
 				golg=gold #.decode("utf-8")
 			
-				predtree=readtree(tokenize(pred))[0]
-				goldtree=readtree(tokenize(gold))[0]
+				predtree=defoliate(readtree(tokenize(pred))[0])
+				goldtree=defoliate(readtree(tokenize(gold))[0])
 			
 				#tree=readtree(tokenize(line))[0]
 				#leaves=getleaves(tree)
@@ -188,11 +195,30 @@ if __name__ == "__main__":
 				#print defoliate(tree)
 				#print getleaves(defoliate(tree))
 				#print goodconst(tree,defoliate(tree))
-				print getleaves(goldtree)
-				print getleaves(predtree)
-				print parseval(goldtree,predtree)
+				print i+1," : "
+				print goldtree
+				print predtree
+				corr,err1,err2=goodconst(goldtree,predtree)
+				globcorr+=corr
+				globerr1+=err1
+				globerr2+=err2
+				
+				precision,rappel,fmesure=parseval(goldtree,predtree)
+				
+				sumprec+=precision
+				sumrapp+=rappel
+				sumfmes+=fmesure
+				
 				print parseval(goldtree,predtree,labeled=False)
 				print 
+				
+				z += 1
+				
+		globprec=globcorr/(globcorr+globerr1)
+		globrapp=globcorr/(globcorr+globerr2)
+		print u"précision globale :", globprec,u" précision moyenne :", sumprec/z
+		print u"rappel global :", globrapp, u"rappel moyen :", sumrapp/z
+		print u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/z
 	else:
 		raise RuntimeError(u"Vous avez oublié de spécifier un fichier gold !")
 		#for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
