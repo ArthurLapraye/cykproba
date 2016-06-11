@@ -15,6 +15,7 @@
 *.blg
 *.bbl
 *.xml
+*.iml
 
 *.pyc
 */lexique.py
