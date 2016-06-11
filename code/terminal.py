@@ -1,44 +1,39 @@
 # coding: utf8
-from collections import defaultdict
+import collections
 
 
-class Terminal(object):
-    __terminals = defaultdict(int)
+def terminal_representer(dumper, data):
+    return dumper.represent_scalar("!terminal", str(data))
 
 
-    def __init__(self, terminal):
-        self.__terminal = terminal
-        type(self).__terminals[self] += 1
+class Terminal(collections.Sequence):
+    __terminals = set()
+    def __init__(self, string):
+        self.__chaine = string
+        self.__terminals.add(self)
 
-    @property
-    def terminal(self):
-        return self.__terminal
-
-    def __repr__(self):
-        return self.__terminal
-
-    def __str__(self):
-        return repr(self)
-
-    def __len__(self):
-        return 1
+    def check_type(self):
+        if not isinstance(self.__chaine, str):
+            raise TypeError('Une {name} doit être une string'.format(name=self.__class__.__name__))
 
     def __eq__(self, other):
-        if self.__dict__ == other.__dict__:
-            return True
+        if self.__dict__ == other.__dict__: return True
         return False
 
-    def __hash__(self):
-        return 1
+    def __hash__(self): return 0
+
+    def __len__(self): return len(self.__chaine)
+
+    def __getitem__(self, i): return self.__chaine[i]
+
+    def __repr__(self): return str(self.__chaine)
+
+    def __str__(self): return repr(self)
 
     @staticmethod
-    def getterminals(key=None):
-        if key is not None:
-            return Terminal.__terminals[key]
-        else:
-            return Terminal.__terminals
+    def terminals():
+        return Terminal.__terminals
+
 
 if __name__ == '__main__':
-    x = Terminal("X")
-    y = Terminal("X")
-    print(Terminal.getterminals())
+    pass

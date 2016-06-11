@@ -1,21 +1,17 @@
 # coding: utf8
 
+
 class Phrase(object):
-    def __init__(self, gold, corpus, numero):
+    __phrases = []
+    def __init__(self, gold, pos, corpus=None, numero=None):
         self.__gold = gold
-        self.__predit = ""
-        self.__productions = {}
         self.__corpus = corpus
         self.__numero = numero
-        self.__extraction = []
+        self.__pos_gold = pos
+        self.__predit = ""
 
-    @property
-    def productions(self):
-        return self.__productions
-
-    @productions.setter
-    def productions(self, value):
-        pass
+        if self not in self.__phrases:
+            self.__phrases.append(self)
 
     @property
     def predit(self):
@@ -23,7 +19,7 @@ class Phrase(object):
 
     @predit.setter
     def predit(self, value):
-        pass
+        self.__predit = value
 
     @property
     def gold(self):
@@ -38,12 +34,23 @@ class Phrase(object):
         return self.__numero
 
     @property
-    def extraction(self):
-        return self.__extraction
+    def pos_gold(self):
+        return self.__pos_gold
 
-    @extraction.setter
-    def extraction(self, value):
+    def unbinarise(self):
         pass
+
+    @staticmethod
+    def phrases():
+        return Phrase.__phrases
+
+    def __eq__(self, other):
+        if self.gold == other.gold:
+            return True
+        return False
+
+    def __hash__(self):
+        return 1
 
     def __repr__(self):
         return self.__gold
@@ -51,5 +58,6 @@ class Phrase(object):
     def __str__(self):
         return repr(self)
 
+
 if __name__ == '__main__':
-    x = Phrase('bonjour', 'au revoir', 4)
+    pass

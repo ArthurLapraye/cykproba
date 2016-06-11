@@ -1,31 +1,25 @@
-#!/usr/bin/python
 # coding: utf8
 import codecs
 import grammaires
-import ExtracteurLexSynt
-import nonterminal
-import terminal
-import productions
+import ckys
+from extraire import parser
+import phrases
+import nonterminal, terminal, productions
 
 
 def main():
-    with codecs.open("../corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
-        corpus = id_mrg.readlines()
-
-    for ligne in corpus[:10]:
-        (nomcorpus_numero, phrase) = ligne.split('\t')
-        (nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
-        ExtracteurLexSynt.parser.parse(phrase)
-    productions.Productionhorscontexteprobabilisee.setprobaproductions()
-
-
-    g = grammaires.Grammairehorscontexteprobabiliste(
-        terminals=nonterminal.Nonterminal.getnonterminals(key=None),
-        nonterminals=terminal.Terminal.getterminals(key=None),
-        productions=productions.Productionhorscontexteprobabilisee.productions()
-    )
-    print(g)
-
+    with codecs.open("corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
+        corpus = []
+        for ligne in id_mrg:
+            (nomcorpus_numero, phrase) = ligne.split('\t')
+            (nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
+            corpus.append(
+                phrases.Phrase(
+                    gold=phrase,
+                    corpus=nomcorpus,
+                    numero=numero
+                )
+            )
 
     # entrainement
     # for i in range(10):

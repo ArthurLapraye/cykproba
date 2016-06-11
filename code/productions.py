@@ -1,128 +1,198 @@
 # coding: utf8
 
-from lefthandside import *
-from righthandside import *
-from nonterminal import Nonterminal
-from terminal import Terminal
-from fractions import Fraction
-from collections import defaultdict
+import lefthandside
+import righthandside
+import fractions
+import collections
+import errors
 
 
-class Production(object):
-    __productions = []
+def production_representer(dumper, data):
+    return dumper.represent_set("!production", str(data))
 
-    def __init__(self, lhs, rhs):
-        self.__lhs = Lefthandside(lhs)
-        self.__rhs = Righthandside(rhs)
 
-        if self not in type(self).__productions:
-            type(self).__productions.append(self)
+def productionhorscontexte_representer(dumper, data):
+    return dumper.represent_scalar("!production-hors-contexte", str(data))
 
-    def __repr__(self):
-        return str(self.__lhs) + " > " + str(self.__rhs)
 
-    def __str__(self):
-        return repr(self)
+def productionhorscontexteprobabilisee_representer(dumper, data):
+    return dumper.represent_scalar("!production-hors-contexte-probabilisee", str(data))
 
-    def __eq__(self, other):
-        if (self.__lhs == other.lhs) and (self.__rhs == other.rhs):
-            return True
+
+def productionhorscontexte1_representer(dumper, data):
+    return dumper.represent_scalar("!production-hors-contexte-1", str(data))
+
+
+def productionhorscontexte1probabilisee_representer(dumper, data):
+    return dumper.represent_scalar("!production-hors-contexte-1-probabilisee", str(data))
+
+
+def productionhorscontexte1unaire_representer(dumper, data):
+    return dumper.represent_scalar("!production-hors-contexte-1-unaire", str(data))
+
+
+def productionhorscontexte1unaireprobabilisee_representer(dumper, data):
+    return dumper.represent_scalar("!production-hors-contexte-1-unaire-probabilisee", str(data))
+
+
+def Productionhorscontexte1lexicale_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-1-lexicale", str(data))
+
+
+def Productionhorscontexte1lexicaleprobabilisee_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-1-lexicale-probabilisee", str(data))
+
+
+def Productionhorscontexte2_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-2", str(data))
+
+
+def Productionhorscontexte2probabilisee_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-2-probabilisee", str(data))
+
+
+def Productionhorscontexte2binaire_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-2-binaire", str(data))
+
+
+def Productionhorscontexte2binaireprobabilisee_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-2-binaire-probabilisee", str(data))
+
+
+def Productionhorscontextenaire_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-n-aire", str(data))
+
+
+def Productionhorscontextenaireprobabilisee_representer(dumper, data):
+    return dumper.represent_scalar("!Production-hors-contexte-n-aire-probabilisee", str(data))
+
+
+class Production(collections.Sequence):
+    __productions = collections.defaultdict(int)
+    __lefthandsides = collections.defaultdict(int)
+
+    def __init__(self, *args):
+        self.__list = list(args)
+        self.check_type(args, (lefthandside.Lefthandside, righthandside.Righthandside))
+        self.check_length(2, args, "==")
+
+        self.__productions[self] += 1
+        self.__lefthandsides[self[0]] += 1
+
+    @property
+    def list(self):
+        return self.__list
+
+    def check_type(self, iterable, *types):
+
+        if not all(isinstance(*x) for x in zip(iterable, types)):
+            raise TypeError(
+                'Une {name} doit être une séquence de: {types}'.format(
+                    name=self.__class__.__name__,
+                    types=" et/ou ".join([x.__name__ for x in types])
+                )
+            )
+
+    def check_length(self, i, iterable, equation="=="):
+        if equation == "==":
+            if not (len(iterable) == i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {equation} {i} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == "<=":
+            if not (len(iterable) <= i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {equation} {i} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == ">=":
+            if not (len(iterable) >= i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {equation} {i} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == "!=":
+            if not (len(iterable) != i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {i} {equation} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == ">":
+            if not (len(iterable) > i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {i} {equation} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == "<":
+            if not (len(iterable) < i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {i} {equation} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+
+    def replace(self, types, old, new):
+        copie = self.__list.copy()
+        if old in self.__list:
+            ind = copie.index(old)
+            copie.remove(old)
+            copie.insert(ind, new)
+            return type(self)(types, *copie)
         else:
-            return False
-
-    def __hash__(self):
-        return 1
-
-    @property
-    def rhs(self):
-        return self.__rhs
-
-    @property
-    def lhs(self):
-        return self.__lhs
-
-    @lhs.setter
-    def lhs(self, value):
-        pass
+            return type(self)(types, copie)
 
     @staticmethod
     def productions():
         return Production.__productions
 
     @staticmethod
-    def getproductions(productions, cls):
-        return [x for x in productions if issubclass(type(x), cls)]
+    def lefthandsides():
+        return Production.__lefthandsides
 
-
-class Productionhorscontexte(Production):
-    def __init__(self, lhs, rhs):
-        # super(Productionhorscontexte, self).__init__(lhs, rhs)
-        Production.__init__(self, lhs, rhs)
-        self.__lhs = Lefthandsidehorscontexte(lhs)
-        self.__rhs = Righthandside(rhs)
-
-    @property
-    def lhs(self):
-        return self.__lhs
-
-    @lhs.setter
-    def lhs(self, value):
-        pass
-
-    @property
-    def getrhs(self):
-        return self.__rhs
-
-
-class Productionhorscontextebinaire(Productionhorscontexte):
-    def __init__(self, lhs, rhs):
-        Productionhorscontexte.__init__(self, lhs, rhs)
-        # super(Productionhorscontextebinaire, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside2binaire(rhs)
-
-
-class Productionhorscontextenaire(Productionhorscontexte):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontextenaire, self).__init__(lhs, rhs)
-        self.__rhs = RighthandsideNaire(rhs)
-
-
-class Productionhorscontexteempty(Productionhorscontexte):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteempty, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside0(rhs)
-
-
-class Productionhorscontextelexicale(Productionhorscontexte):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontextelexicale, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside1lexicale(rhs)
-
-
-class Productionhorscontexteunaire(Productionhorscontexte):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteunaire, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside1unaire(rhs)
-
-    @property
-    def getrhs(self):
-        return self.__rhs
-
-
-class Productionhorscontexteprobabilisee(Productionhorscontexte):
-    __productionshorscontexteprobabilisees = defaultdict(int)
-
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteprobabilisee, self).__init__(lhs, rhs)
-
-        self.__proba = Fraction(1, 1)
-
-        type(self).__productionshorscontexteprobabilisees[str(self)] += 1
+    @staticmethod
+    def subset_productions(productions, cls, nt=None):
+        if nt is None:
+            return [x for x in productions if issubclass(type(x), cls)]
+        else:
+            return [x for x in productions if issubclass(type(x), cls) and (x.lhs.lhs[0] == nt)]
 
     @staticmethod
     def setprobaproductions():
-        for p in Production.getproductions(Production.productions(), Productionhorscontexteprobabilisee):
+        for p in Production.productions():
             p.setproba()
+
+    def __eq__(self, other):
+        if self.__dict__ == other.__dict__:
+            return True
+        return False
+
+    def __hash__(self): return 0
+
+    def __len__(self): return len(self.__list)
+
+    def __getitem__(self, i): return self.__list[i]
+
+    def __repr__(self): return " > ".join([str(x) for x in self.__list])
+
+    def __str__(self): return repr(self)
+
+
+class Productionhorscontexte(Production):
+    def __init__(self, *args):
+        super(Productionhorscontexte, self).__init__(*args)
+        self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside)
+
+
+class Productionhorscontexteprobabilisee(Productionhorscontexte):
+    def __init__(self, *args):
+        super(Productionhorscontexteprobabilisee, self).__init__(*args)
+        self.__proba = fractions.Fraction(1, 1)
 
     @property
     def proba(self):
@@ -133,60 +203,129 @@ class Productionhorscontexteprobabilisee(Productionhorscontexte):
         self.__proba = value
 
     def setproba(self):
-        self.__proba = Fraction(self[str(self)], self.lhs[str(self.lhs)])
-
-    def __repr__(self):
-        return "{self.lhs} > {self.rhs} : {self.proba}".format(self=self)
-
-    def __str__(self):
-        return repr(self)
-
-    def __getitem__(self, item):
-        return type(self).__productionshorscontexteprobabilisees[item]
+        self.proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
 
 
-class Productionhorscontexteprobabiliseebinaire(Productionhorscontexteprobabilisee):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteprobabiliseebinaire, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside2binaire(rhs)
+class Productionhorscontexte1(Productionhorscontexte):
+    def __init__(self, *args):
+        super(Productionhorscontexte1, self).__init__(*args)
+        self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside1)
 
 
-class Productionhorscontexteprobabiliseenaire(Productionhorscontexteprobabilisee):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteprobabiliseenaire, self).__init__(lhs, rhs)
-        self.__rhs = RighthandsideNaire(rhs)
+class Productionhorscontexte1probabilisee(Productionhorscontexte1):
+    def __init__(self, *args):
+        super(Productionhorscontexte1probabilisee, self).__init__(*args)
+        self.__proba = fractions.Fraction(1, 1)
+
+    @property
+    def proba(self):
+        return self.__proba
+
+    @proba.setter
+    def proba(self, value):
+        self.__proba = value
+
+    def setproba(self):
+        self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
 
 
-class Productionhorscontexteprobabiliseeempty(Productionhorscontexteprobabilisee):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteprobabiliseeempty, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside0(rhs)
+class Productionhorscontexte1unaire(Productionhorscontexte1):
+    def __init__(self, *args):
+        super(Productionhorscontexte1unaire, self).__init__(*args)
+        self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside1unaire)
 
 
-class Productionhorscontexteprobabilisee1(Productionhorscontexteprobabilisee):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteprobabilisee1, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside1(rhs)
+class Productionhorscontexte1unaireprobabilisee(Productionhorscontexte1unaire):
+    def __init__(self, *args):
+        super(Productionhorscontexte1unaireprobabilisee, self).__init__(*args)
+        self.__proba = fractions.Fraction(1, 1)
+
+    @property
+    def proba(self):
+        return self.__proba
+
+    @proba.setter
+    def proba(self, value):
+        self.__proba = value
+
+    def setproba(self):
+        self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
 
 
-class Productionhorscontexteprobabiliseelexicale(Productionhorscontexteprobabilisee1):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteprobabiliseelexicale, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside1lexicale(rhs)
+class Productionhorscontexte1lexicale(Productionhorscontexte1):
+    def __init__(self, *args):
+        super(Productionhorscontexte1lexicale, self).__init__(*args)
+        self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside1lexicale)
 
 
-class Productionhorscontexteprobabiliseeunaire(Productionhorscontexteprobabilisee1):
-    def __init__(self, lhs, rhs):
-        super(Productionhorscontexteprobabiliseeunaire, self).__init__(lhs, rhs)
-        self.__rhs = Righthandside1unaire(rhs)
+class Productionhorscontexte1lexicaleprobabilisee(Productionhorscontexte1lexicale):
+    def __init__(self, *args):
+        super(Productionhorscontexte1lexicaleprobabilisee, self).__init__(*args)
+        self.__proba = fractions.Fraction(1, 1)
+
+    @property
+    def proba(self):
+        return self.__proba
+
+    @proba.setter
+    def proba(self, value):
+        self.__proba = value
+
+    def setproba(self):
+        self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
+
+class Productionhorscontexte2(Productionhorscontexte):
+    def __init__(self, *args):
+        super(Productionhorscontexte2, self).__init__(*args)
+        self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside2)
+
+
+class Productionhorscontexte2binaire(Productionhorscontexte2):
+    def __init__(self, *args):
+        super(Productionhorscontexte2binaire, self).__init__(*args)
+        self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside2binaire)
+
+
+class Productionhorscontexte2binaireprobabilisee(Productionhorscontexte2binaire):
+    def __init__(self, *args):
+        super(Productionhorscontexte2binaireprobabilisee, self).__init__(*args)
+        self.__proba = fractions.Fraction(1, 1)
+
+    @property
+    def proba(self):
+        return self.__proba
+
+    @proba.setter
+    def proba(self, value):
+        self.__proba = value
+
+    def setproba(self):
+        self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
+
+class ProductionhorscontexteNaire(Productionhorscontexte):
+    def __init__(self, *args):
+        super(ProductionhorscontexteNaire, self).__init__(*args)
+        self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.RighthandsideNaire)
+
+
+class ProductionhorscontexteNaireprobabilisee(ProductionhorscontexteNaire):
+    def __init__(self, *args):
+        super(ProductionhorscontexteNaireprobabilisee, self).__init__(*args)
+        self.__proba = fractions.Fraction(1, 1)
+
+    @property
+    def proba(self):
+        return self.__proba
+
+    @proba.setter
+    def proba(self, value):
+        self.__proba = value
+
+    def setproba(self):
+        self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
 
 if __name__ == '__main__':
     pass
-    # lhs = (Nonterminal("X"),Nonterminal('R'))
-    # rhs = ((Nonterminal("X"),), (Nonterminal("X"),Nonterminal("Y")), (Terminal('r'),), (Nonterminal("X"), Nonterminal('R'), Terminal('ons'), Nonterminal("Z")))
-
-    # a = Productionhorscontextebinaire((Nonterminal("X"),), (Nonterminal("R"), Nonterminal('ons')))
-    # z = Productionhorscontexteprobabilisee((Nonterminal("X"),), (Nonterminal("R"), Terminal('ons')))
-    # e = Productionhorscontexteprobabilisee((Nonterminal("X"),), (Nonterminal('T'), ))
-    # f = Productionhorscontexte((Nonterminal("X"),), (Nonterminal('T'), ))
-    # print(f.lhs)

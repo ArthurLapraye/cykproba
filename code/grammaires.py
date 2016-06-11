@@ -1,45 +1,91 @@
 # coding: utf8
-import codecs
-from productions import *
-from nonterminal import *
-from terminal import *
-# from ckys import *
+import productions
+import terminal
+import nonterminal
 import yaml
 import pickle
-import ExtracteurLexSynt
-from nltk.util import ngrams
+import nltk
+import collections
+import lefthandside
+import righthandside
+import errors
 
 
-class Grammaire(object):
-    def __init__(self, terminals, nonterminals, productions):
-        self.__terminals = terminals
-        self.__nonterminals = nonterminals
-        self.__productions = productions
-        # self.__axiome = [ x for x in Nonterminal.getnonterminals().keys() if str(x) == "SENT"][0]
+class Grammaire(collections.Mapping):
 
-    @property
-    def nonterminals(self):
-        return self.__nonterminals
+    def __init__(self, **kwargs):
+        self.__dico = kwargs
+        self.__setaxiome()
+        self.check_length(4, kwargs, "==")
+        self.check_type(kwargs["productions"], productions.Production)
 
-    @property
-    def terminals(self):
-        return self.__terminals
+    def check_type(self, iterable, *types):
+        if not all(isinstance(x, types) for x in iterable):
+            raise TypeError(
+                "Toutes les prpductions d'une {name} doivent être des sous types de {types}".format(
+                    name=self.__class__.__name__,
+                    types=" et/ou ".join([x.__name__ for x in types])
+                )
+            )
 
-#     @property
-#     def axiome(self):
-#         return self.__axiome
+    def check_length(self, i, iterable, equation="=="):
+        if equation == "==":
+            if not (len(iterable) == i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {equation} {i} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == "<=":
+            if not (len(iterable) <= i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {equation} {i} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == ">=":
+            if not (len(iterable) >= i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {equation} {i} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == "!=":
+            if not (len(iterable) != i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {i} {equation} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == ">":
+            if not (len(iterable) > i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {i} {equation} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
+        elif equation == "<":
+            if not (len(iterable) < i):
+                raise errors.LengthError(
+                    'Une {name} doit faire {i} {equation} élément(s)'.format(
+                        name=self.__class__.__name__, i=i, equation=equation
+                    )
+                )
 
-    @property
-    def productions(self):
-        return self.__productions
+    def __setaxiome(self):
+        lhss = {x[0][0] for x in self['productions']}
+        rhss = set()
+        for x in self['productions']:
+            rhss |= set([f for f in x[1] if isinstance(f, nonterminal.Nonterminal)])
+        self.__dico["axiome"] = lhss - rhss
 
-    def dump(self, nomdufichier, format):
-        if format == "yaml":
+    def dump(self, nomdufichier, extention):
+        if extention == "yaml":
             yaml.dump(
                 data=self,
                 stream=open(nomdufichier, 'w')
             )
-        elif format == "pickle":
+        elif extention == "pickle":
             pickle.dump(
                 obj=self,
                 file=open(nomdufichier, 'wb')
@@ -47,17 +93,30 @@ class Grammaire(object):
         else:
             raise AttributeError("le paramètre format ne peut accepter 'yaml' ou 'pickle'.")
 
-    def __repr__(self):
-        return "NT = {self.nonterminals},\nT = {self.terminals},\nP = {self.productions}".format(self=self)
+    def __getitem__(self, item): return self.__dico[item]
 
-    def __str__(self):
-        return repr(self)
+    def __iter__(self): return iter(self.__dico)
+
+    def __len__(self): return len(self.__dico)
+
+    def __repr__(self):
+        return "NT = {nonterminals},\nT = {terminals},\nS = {axiome},\nP = {productions}".format(
+            nonterminals=self["nonterminals"],
+            terminals=self["terminals"],
+            axiome=self["axiome"],
+            productions=self["productions"]
+        )
+
+    def __str__(self): return repr(self)
 
 
 class Grammairehorscontexte(Grammaire):
-    def __init__(self):
-        super(Grammairehorscontexte, self).__init__()
-        self.__productions = Productionhorscontexte.getproductions()
+    def __init__(self, **kwargs):
+        super(Grammairehorscontexte, self).__init__(**kwargs)
+        self.check_type(
+            kwargs['productions'],
+            productions.Productionhorscontexte
+        )
 
     def ununarise(self, productions):
         pass
@@ -67,19 +126,29 @@ class Grammairehorscontexte(Grammaire):
 
 
 class Grammairehorscontextecnf(Grammairehorscontexte):
-    def __init__(self):
-        super(Grammairehorscontextecnf, self).__init__()
-        self.__productions = [x for x in Productionhorscontexte.getproductions() if isinstance(x, (Productionhorscontextelexicale, Productionhorscontextebinaire))]
+    def __init__(self, **kwargs):
+        super(Grammairehorscontextecnf, self).__init__(**kwargs)
+        self.check_type(
+            kwargs['productions'],
+            productions.Productionhorscontexte2binaire,
+            productions.Productionhorscontexte1lexicale
+        )
 
 
 class Grammairehorscontexteprobabiliste(Grammaire):
-    def __init__(self, terminals, nonterminals, productions):
-        if not all(issubclass(type(x), Productionhorscontexteprobabilisee) for x in productions):
-            raise TypeError('Attention, Les productions doivent être probabilisées')
-        else:
-            super(Grammairehorscontexteprobabiliste, self).__init__(terminals=terminals, nonterminals=nonterminals, productions=productions)
+    def __init__(self, **kwargs):
+        super(Grammairehorscontexteprobabiliste, self).__init__(**kwargs)
+        self.check_type(
+            kwargs['productions'],
+            productions.Productionhorscontexteprobabilisee,
+            productions.Productionhorscontexte1probabilisee,
+            productions.Productionhorscontexte2binaireprobabilisee,
+            productions.Productionhorscontexte1lexicaleprobabilisee,
+            productions.Productionhorscontexte1unaireprobabilisee,
+            productions.ProductionhorscontexteNaireprobabilisee
+        )
 
-    def ununuarise(self, productions):
+    def ununuarise(self, prods):
         """
             Application de l'algorithme page 195 de Roark & Sproat.
 
@@ -88,139 +157,120 @@ class Grammairehorscontexteprobabiliste(Grammaire):
         :return: liste de productions sans Productionhorscontexteprobabiliseeunaire et proba ajustées
         """
         symb = '{0}|{1}'
-        while any(isinstance(x, Productionhorscontexteprobabiliseeunaire) for x in productions):
-            for prod1 in Production.getproductions(productions, Productionhorscontexteprobabiliseeunaire):
-                n_s = Nonterminal(symb.format(prod1.lhs.lhs[0], prod1.rhs.rhs[0]))
-                productions.remove(prod1)
-                for prod2 in Production.getproductions(productions, Productionhorscontexteprobabiliseenaire):
-                    productions.remove(prod2)
-                    if prod1.lhs.lhs[0] in prod2.rhs.rhs:
-                        temporaire = prod2.rhs.replace(prod1.lhs.lhs[0], n_s)
-                        t = type(prod2)(prod2.lhs.lhs, temporaire)
+        while any(isinstance(x, productions.Productionhorscontexte1unaireprobabilisee) for x in prods):
+            for prod1 in productions.Production.subset_productions(prods, productions.Productionhorscontexte1unaireprobabilisee):
+                n_s = nonterminal.Nonterminal(symb.format(prod1[0][0], prod1[1][0]))
+                prods.remove(prod1)
+                for prod2 in productions.Production.subset_productions(prods, productions.ProductionhorscontexteNaireprobabilisee):
+                    prods.remove(prod2)
+                    if prod1[0][0] in prod2[1]:
+                        temporaire = prod2[1].replace(prod1[0][0], n_s)
+                        t = type(prod2)(prod2[0], temporaire)
                         t.proba = prod1.proba * prod2.proba
-                        productions.append(t)
+                        prods.append(t)
                         prod2.proba *= (1 - prod1.proba)
-                    productions.append(prod2)
-                for prod3 in Production.getproductions(productions, Productionhorscontexteprobabilisee1):
-                    productions.remove(prod3)
-                    if (prod3 != prod1) and (prod3.lhs.lhs[0] == prod1.lhs.lhs[0]):
+                    prods.append(prod2)
+                for prod3 in productions.Production.subset_productions(prods, productions.Productionhorscontexte1probabilisee):
+                    prods.remove(prod3)
+                    if (prod3 != prod1) and (prod3[0][0] == prod1[0][0]):
                         prod3.proba /= (1-prod1.proba)
-                        productions.append(prod3)
-                    elif prod3.lhs.lhs[0] == prod1.rhs.rhs[0]:
-                        t = type(prod3)([n_s], prod3.rhs.rhs)
+                        prods.append(prod3)
+                    elif prod3[0][0] == prod1[1][0]:
+                        t = type(prod3)(lefthandside.Lefthandsidehorscontexte(n_s), prod3[1])
                         t.proba = prod3.proba
-                        productions.append(t)
-                    productions.append(prod3)
-            return productions
+                        prods.append(t)
+                    prods.append(prod3)
+            return prods
 
-    def markovise(self, productions, markov=1):
+    def markovise(self, prods, markov=1):
         """
 
-        :param production: sous type de Production
+        :param prods: sous type de Production
         :param markov: integer
         :return: iterator
         """
-        while any(isinstance(x, Productionhorscontexteprobabiliseenaire) for x in productions):
-            for production in Production.getproductions(productions, Productionhorscontexteprobabiliseenaire):
-                productions.remove(production)
+        while any(isinstance(x, productions.ProductionhorscontexteNaireprobabilisee) for x in prods):
+            for production in productions.Production.subset_productions(
+                    prods, productions.ProductionhorscontexteNaireprobabilisee):
+                prods.remove(production)
                 agglutine = lambda x=(1, 2, None): "".join([str(y) for y in x if x is not None])
-                temp_n_s = str(production.lhs.lhs[0]) + ":"
+                temp_n_s = str(production[0][0]) + ":"
                 if markov == 0:
-                    n_s = [Nonterminal(temp_n_s)]
-                    binaire = Productionhorscontexteprobabiliseebinaire(
-                        production.lhs.lhs,
-                        [production.rhs.rhs[0], n_s]
+                    n_s = nonterminal.Nonterminal(temp_n_s)
+                    binaire = productions.Productionhorscontexte2binaireprobabilisee(
+                        production[0],
+                        righthandside.Righthandside2binaire(production[1][0], n_s)
                     )
                     binaire.proba = production.proba
-                    productions.append(binaire)
-                    for element in production.rhs.rhs[1:-2]:
-                        productions.append(Productionhorscontexteprobabiliseebinaire(n_s, [element, n_s[0]]))
-                    productions.append(Productionhorscontexteprobabiliseebinaire(n_s, production.rhs.rhs[-2:]))
+                    prods.append(binaire)
+                    for element in production[1][1:-2]:
+                        prods.append(
+                            productions.Productionhorscontexte2binaireprobabilisee(
+                                lefthandside.Lefthandsidehorscontexte(n_s),
+                                righthandside.Righthandside2binaire(element, n_s[0])
+                            )
+                        )
+                    prods.append(
+                        productions.Productionhorscontexte2binaireprobabilisee(
+                            lefthandside.Lefthandsidehorscontexte(n_s),
+                            righthandside.Righthandside2binaire(production[1][-2:])
+                        )
+                    )
                 else:
-                    temp = ngrams(production.rhs.rhs[:-1], markov, pad_left=True)
-                    rhs = production.rhs.rhs.copy()
-                    tp = Nonterminal(temp_n_s + agglutine(x=next(temp)))
-                    binaire = Productionhorscontexteprobabiliseebinaire(production.lhs.lhs, [rhs.pop(0), tp])
+                    temp = nltk.util.ngrams(production[1][:-1], markov, pad_left=True)
+                    rhs = production[1].copy()
+                    tp = nonterminal.Nonterminal(temp_n_s + agglutine(x=next(temp)))
+                    binaire = productions.Productionhorscontexte2binaireprobabilisee(
+                        production[0],
+                        righthandside.Righthandside2binaire(rhs.pop(0), tp)
+                    )
                     binaire.proba = production.proba
-                    productions.append(binaire)
+                    prods.append(binaire)
                     if len(rhs) > 2:
                         for element in temp:
-                            tp1 = Nonterminal(temp_n_s + agglutine(element))
-                            productions.append(Productionhorscontexteprobabiliseebinaire([tp], [rhs.pop(0), tp1]))
+                            tp1 = nonterminal.Nonterminal(temp_n_s + agglutine(element))
+                            prods.append(
+                                productions.Productionhorscontexte2binaireprobabilisee(
+                                    lefthandside.Lefthandsidehorscontexte(tp),
+                                    righthandside.Righthandside2binaire(rhs.pop(0), tp1)
+                                )
+                            )
                             tp = tp1
                     else:
-                        productions.append(Productionhorscontexteprobabiliseebinaire([tp], rhs))
-        return productions
+                        prods.append(
+                            productions.Productionhorscontexte2binaireprobabilisee(
+                                lefthandside.Lefthandsidehorscontexte(tp),
+                                righthandside.Righthandside2binaire(rhs)
+                            )
+                        )
+        return prods
 
-    def naire2cnf(self):
+    def naire2cnf(self, markov=100):
         productions = self.markovise(
             self.ununuarise(
-                self.productions
+                list(
+                    self['productions']
+                )
             ),
             markov=1
         )
-        # return productions
+
         return Grammairehorscontexteprobabilistecnf(
-            terminals=Nonterminal.getnonterminals(key=None),
-            nonterminals=Terminal.getterminals(key=None),
+            terminals=nonterminal.Nonterminal.nonterminals(),
+            nonterminals=terminal.Terminal.terminals(),
             productions=productions
         )
 
 
 class Grammairehorscontexteprobabilistecnf(Grammairehorscontexteprobabiliste):
-    def __init__(self, terminals, nonterminals, productions):
-        if all(
-                isinstance(
-                    x,
-                    (
-                            Productionhorscontexteprobabiliseelexicale,
-                            Productionhorscontexteprobabiliseebinaire
-                    )
-                ) for x in productions):
-            raise TypeError(''' Dans une Grammairehorscontexteprobabilistecnf,
-                                les productions doivent être lexicales ou binaires.
-                                '''
-                            )
-        else:
-            super(Grammairehorscontexteprobabilistecnf, self).__init__(
-                terminals=terminals,
-                nonterminals=nonterminals,
-                productions=productions
-            )
-
-
+    def __init__(self, **kwargs):
+        self.check_type(
+            kwargs['productions'],
+            productions.Productionhorscontexte1lexicaleprobabilisee,
+            productions.Productionhorscontexte2binaireprobabilisee
+        )
+        super(Grammairehorscontexteprobabilistecnf, self).__init__(**kwargs)
 
 
 if __name__ == '__main__':
     pass
-    # with codecs.open("../corpus/sequoia-corpus+fct.id_mrg") as id_mrg:
-    #     corpus = id_mrg.readlines()
-
-    # for ligne in corpus[:10]:
-    #     (nomcorpus_numero, phrase) = ligne.split('\t')
-    #     (nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
-    #     ExtracteurLexSynt.parser.parse(phrase)
-    # Productionhorscontexteprobabilisee.setprobaproductions()
-
-
-    # g = Grammairehorscontexteprobabiliste(
-    #     terminals=Nonterminal.getnonterminals(key=None),
-    #     nonterminals=Terminal.getterminals(key=None),
-    #     productions=Productionhorscontexteprobabilisee.productions()
-    # )
-    # print(g)
-
-    # g.dump('test1.pickle', 'pickle')
-    # grammaire = pickle.load(open('test1.yaml', 'rb'))
-    # cnf = grammaire.naire2cnf()
-    # cnf.dump('test2.pickle', 'pickle')
-    # glurps = pickle.load(open('test2.pickle', 'rb'))
-    # print(glurps)
-    # print()
-    # print()
-    # print()
-    # print()
-    # print(grammaire.productions)
-    # print(grammaire.productions)
-    # for x in grammaire.naire2cnf():
-    #     print(x)
