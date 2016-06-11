@@ -70,7 +70,7 @@ def p_syntagme(p):
     elif len(p[2]) == 2:
         productions.Productionhorscontexte2binaireprobabilisee([p[1]], rhs)
     else:
-        productions.Productionhorscontextenaireprobabilisee([p[1]], rhs)
+        productions.ProductionhorscontexteNaireprobabilisee([p[1]], rhs)
 
     p[0] = [[p[1], p[2]]]
 
