@@ -4,7 +4,6 @@
 
 
 import codecs
-from pprint import pprint
 
 def tokenize(string):
 	""" Tokenise une S-expression """
@@ -122,9 +121,9 @@ if __name__ == "__main__":
 	
 	from optparse import OptionParser
 	
-	usage="""Usage : prend comme argument un fichier mrg.strict ou bien un pipe depuis stdin
-	./eval.py $fichier est équivalent à cat $fichier | ./eval.py
-	"""
+	usage=u"""Usage : prend comme argument un fichier mrg.strict ou bien un pipe depuis stdin
+	{0} $fichier est équivalent à cat $fichier | {0}
+	""".format(sys.argv[0])
 	
 	p = OptionParser(usage=usage)
 	
@@ -134,8 +133,23 @@ if __name__ == "__main__":
 					default=None,
 					help=u"Localisation du fichier contenant les phrases gold.")
 	
+	p.add_option("-l","--labeled",
+					action="store_true",
+					dest="labeled",
+					default=False,
+					help=u"Si cette option est activée, les constituants seront comparés ")
+	
+	p.add_option("-v","--verbose",
+					action="store_true",
+					dest="verbose",
+					default=False,
+					help=u"Option pour imprimer des détails sur le fonctionnement du script.")
+	
+	
 	(op,args)=p.parse_args()
-	#args=sys.argv[1:]
+	LABELED=op.labeled
+	VERBOSE=op.verbose
+	
 	if op.gold:
 		with codecs.open(op.gold, encoding="utf-8") as goldilocks:
 		
@@ -151,18 +165,22 @@ if __name__ == "__main__":
 				
 				i += 1
 				
-				print i," : "
-				#pprint(goldtree)
-				#pprint(predtree)
-				print getleaves(goldtree)
-				print getleaves(predtree)
-				
 				goldspans=getspans(goldtree)
 				predspans=getspans(predtree)
-				if getleaves(goldtree) == getleaves(predtree):
+				
+				if not LABELED:
+					goldspans=unlabel(goldspans)
+					predspans=unlabel(predspans)
+				
+				goldleaves=getleaves(goldtree)
+				predleaves=getleaves(predtree)
+				
+				if goldleaves == predleaves:
 					
-					corr,err1,err2=goodconst( goldspans, predspans) #if labeled else goodspans(gold,pred)
-		
+					corr,err1,err2=goodconst( goldspans, predspans,verbose=VERBOSE)
+					
+					corr -= len(goldleaves)
+					
 					#print corr, err1,err2
 					
 					precision=(corr / (corr+err2))
@@ -177,14 +195,15 @@ if __name__ == "__main__":
 					sumrapp += rappel
 					sumfmes += fmesure
 					
-					print precision,rappel,fmesure
+					if VERBOSE:
+						print i," : ",goldleaves
+						print precision,rappel,fmesure
+						print
 					
 		
 				else:
 					raise ValueError("Phrases différentes :\n"+str(gold).encode("utf-8")+"\n"+str(pred).encode("utf-8"))
-				
-				
-				print
+					
 				
 		globprec=globcorr/(globcorr+globerr2)
 		globrapp=globcorr/(globcorr+globerr1)
