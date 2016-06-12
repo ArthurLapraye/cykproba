@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #-*- encoding: utf-8 -*-
 #Arthur Lapraye - 2016
 
@@ -69,7 +69,7 @@ def getspans(tree):
 	def getsp(tree,offset):
 		spans=list()
 		beginoffset=offset
-		# print tree
+		# print(tree)
 		for elem in tree[1:]:
 			if isinstance(elem,list):
 				sp,of= getsp(elem,offset)
@@ -106,8 +106,8 @@ def goodconst(spans1,spans2,verbose=False):
 			badspans.append(elem)
 		
 	if verbose:
-		print spans2
-		print badspans
+		print(spans2)
+		print(badspans)
 	
 	err2+=len(spans2)
 	
@@ -168,7 +168,7 @@ if __name__ == "__main__":
 			#On considère que chaque ligne du fichier gold comprend  
 			
 			for (pred,gold) in zip(input(args),goldilocks):
-				pred=pred.decode("utf-8")
+				pred=pred #.decode("utf-8")
 				golg=gold #.decode("utf-8")
 				
 				#On retire les feuilles des arbres
@@ -218,9 +218,9 @@ if __name__ == "__main__":
 					sumfmes += fmesure
 					
 					if VERBOSE:
-						print i," : ",goldleaves
-						print "p :",precision,"r :",rappel,"f :",fmesure
-						print
+						print(i," : ",goldleaves)
+						print("p :",precision,"r :",rappel,"f :",fmesure)
+						print()
 					
 		
 				else:
@@ -229,9 +229,9 @@ if __name__ == "__main__":
 		#Calcul de précision, rappel, et f-mesure globaux & moyens
 		globprec=globcorr/(globcorr+globerr2)
 		globrapp=globcorr/(globcorr+globerr1)
-		print u"précision globale :", globprec,u" précision moyenne :", sumprec/i
-		print u"rappel global :", globrapp, u"rappel moyen :", sumrapp/i
-		print u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/i
+		print(u"précision globale :", globprec,u" précision moyenne :", sumprec/i)
+		print(u"rappel global :", globrapp, u"rappel moyen :", sumrapp/i)
+		print(u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/i)
 	else:
 		raise RuntimeError(u"Vous avez oublié de spécifier un fichier gold !")
 
