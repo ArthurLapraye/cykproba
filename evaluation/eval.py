@@ -4,6 +4,7 @@
 
 
 import codecs
+from pprint import pprint
 
 def tokenize(string):
 	""" Tokenise une S-expression """
@@ -81,7 +82,7 @@ def getspans(tree):
 	
 	return getsp(tree,0)[0]
 
-def goodconst(tree1,tree2):
+def goodconst(spans1,spans2,verbose=False):
 	"""
 	Compare les constituants de deux arbres en fonction de leurs constituants communs
 	Deux constituants sont identiques s'ils ont le même nom et le même span.
@@ -90,71 +91,29 @@ def goodconst(tree1,tree2):
 	Les constituants de tree2 absents de tree1 sont comptabilisés dans err2
 	"""
 	correct,err1,err2=0.0,0.0,0.0
-	resultat=getspans(tree2)
 	badspans=list()
 	
-	for elem in getspans(tree1):
-		if elem in resultat:
+	for elem in spans1:
+		if elem in spans2:
 			correct += 1
-			resultat.pop(resultat.index(elem))
+			spans2.pop(spans2.index(elem))
 		else:
 			err1 += 1
 			badspans.append(elem)
+		
+	if verbose:
+		print spans2
+		print badspans
 	
-	print resultat
-	print badspans
-	err2+=len(resultat)
+	err2+=len(spans2)
 	
 	return correct,err1,err2
 
-def goodspans(tree1,tree2):
+def unlabel(spans):
+	"""Fonction qui retire les étiquettes des spans de constituants
+	   Utilisée pour mesurer précision, rappel et f-mesure non-étiquetés 
 	"""
-	Compare les constituants de deux arbres en fonction de leurs constituants communs
-	Deux constituants sont identiques s'ils ont le même span.
-	Les constituants communs aux deux arbres sont comptabilisés dans la variable correct
-	Les constituants de tree1 absent de tree2 sont comptabilisés dans err1
-	Les constituants de tree2 absents de tree1 sont comptabilisés dans err2
-	"""
-	
-	correct,err1,err2=0.0,0.0,0.0
-	resultat=[ (x,y) for z,x,y in getspans(tree2)]
-	autre =  [ (x,y) for z,x,y in getspans(tree1) ]
-	
-	for elem in autre:
-		if elem in resultat:
-			correct += 1
-			resultat.pop(resultat.index(elem))
-		else:
-			err1 += 1
-	
-	err2+=len(resultat)
-	
-	return correct,err1,err2
-
-def parseval(gold, pred,labeled=True):
-	"""
-	Utilise la fonction goodconst pour calculer précision, rappel et f-mesure étiquetés ou non, pour une phrase donnée.
-	Renvoie une erreur si les deux arbres en entrée ont des feuilles différentes.
-	"""
-	if getleaves(gold) == getleaves(pred):
-		
-		
-		corr,err1,err2=goodconst(gold,pred) if labeled else goodspans(gold,pred)
-		
-		print corr, err1,err2
-		#Il faut retirer des constituants corrects les feuilles qui sont forcément bien étiquetées et SENT
-		#corr -= len(getleaves(gold)) #+1  
-	
-		precision=(corr / (corr+err2))
-		rappel = (corr / (corr+err1))
-		fmesure = (precision*rappel*2.0)/(precision+rappel)
-		
-		assert corr+err2 == len(getspans(pred))
-		assert corr+err1 == len(getspans(gold))
-		
-		return precision,rappel,fmesure
-	else:
-		raise ValueError("Phrases différentes :\n"+str(gold).encode("utf-8")+"\n"+str(pred).encode("utf-8"))
+	return [(y,z) for x,y,z in spans]
 	 
 
 if __name__ == "__main__":
@@ -178,55 +137,62 @@ if __name__ == "__main__":
 	(op,args)=p.parse_args()
 	#args=sys.argv[1:]
 	if op.gold:
-		globcorr,globerr1,globerr2=float(),float(),float()
-		sumprec,sumrapp,sumfmes=float(),float(),float()
-		z=0
 		with codecs.open(op.gold, encoding="utf-8") as goldilocks:
-			for (i,(pred,gold)) in enumerate(zip(input(args),goldilocks)):
+		
+			globcorr,globerr1,globerr2=float(),float(),float()
+			sumprec,sumrapp,sumfmes=float(),float(),float()
+			i=0
+			
+			for (pred,gold) in zip(input(args),goldilocks):
 				pred=pred.decode("utf-8")
 				golg=gold #.decode("utf-8")
-			
 				predtree=defoliate(readtree(tokenize(pred))[0])
 				goldtree=defoliate(readtree(tokenize(gold))[0])
-			
-				#tree=readtree(tokenize(line))[0]
-				#leaves=getleaves(tree)
-				#spans=getspans(defoliate(tree))
-				#print
-				#print leaves
-				#print tree
-				#print defoliate(tree)
-				#print getleaves(defoliate(tree))
-				#print goodconst(tree,defoliate(tree))
-				print i+1," : "
-				print goldtree
-				print predtree
-				corr,err1,err2=goodconst(goldtree,predtree)
-				globcorr+=corr
-				globerr1+=err1
-				globerr2+=err2
 				
-				precision,rappel,fmesure=parseval(goldtree,predtree)
+				i += 1
 				
-				sumprec+=precision
-				sumrapp+=rappel
-				sumfmes+=fmesure
+				print i," : "
+				#pprint(goldtree)
+				#pprint(predtree)
+				print getleaves(goldtree)
+				print getleaves(predtree)
 				
-				print parseval(goldtree,predtree,labeled=False)
-				print 
+				goldspans=getspans(goldtree)
+				predspans=getspans(predtree)
+				if getleaves(goldtree) == getleaves(predtree):
+					
+					corr,err1,err2=goodconst( goldspans, predspans) #if labeled else goodspans(gold,pred)
+		
+					#print corr, err1,err2
+					
+					precision=(corr / (corr+err2))
+					rappel = (corr / (corr+err1))
+					fmesure = (precision*rappel*2.0)/(precision+rappel)
+					
+					globcorr += corr
+					globerr1 += err1
+					globerr2 += err2
+					
+					sumprec += precision
+					sumrapp += rappel
+					sumfmes += fmesure
+					
+					print precision,rappel,fmesure
+					
+		
+				else:
+					raise ValueError("Phrases différentes :\n"+str(gold).encode("utf-8")+"\n"+str(pred).encode("utf-8"))
 				
-				z += 1
+				
+				print
 				
 		globprec=globcorr/(globcorr+globerr2)
 		globrapp=globcorr/(globcorr+globerr1)
-		print u"précision globale :", globprec,u" précision moyenne :", sumprec/z
-		print u"rappel global :", globrapp, u"rappel moyen :", sumrapp/z
-		print u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/z
+		print u"précision globale :", globprec,u" précision moyenne :", sumprec/i
+		print u"rappel global :", globrapp, u"rappel moyen :", sumrapp/i
+		print u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/i
 	else:
 		raise RuntimeError(u"Vous avez oublié de spécifier un fichier gold !")
-		#for const,i,j in sorted(spans,key=lambda (x,y,z) : z):
-		#	print const.encode("utf-8"),i,leaves[i:j],j
 
-#TODO : faire un système de test qui prend d'un côté les arbres gold et de l'autre les arbres prédits pour calculer précision, rappel et f-mesure globaux
 #TODO : accomoder des forêts d'analyse partagée (?) (à voir en amont)
 
