@@ -106,8 +106,8 @@ def goodconst(spans1,spans2,verbose=False):
 			badspans.append(elem)
 		
 	if verbose:
-		print(spans2)
 		print(badspans)
+		print(spans2)
 	
 	err2+=len(spans2)
 	
@@ -125,8 +125,7 @@ if __name__ == "__main__":
 	from optparse import OptionParser
 	
 	#Options du script
-	usage=u"""Usage : prend comme argument un fichier mrg.strict ou bien un pipe depuis stdin
-	{0} $fichier est équivalent à cat $fichier | {0}
+	usage=u"""Usage : {0} --gold fichiergold fichier ou cat fichier | {0} --gold fichiergold
 	""".format(sys.argv[0])
 	
 	p = OptionParser(usage=usage)
@@ -141,7 +140,7 @@ if __name__ == "__main__":
 					action="store_true",
 					dest="labeled",
 					default=False,
-					help=u"Si cette option est activée, les constituants seront comparés ")
+					help=u"Si cette option est activée, la comparaison des constituants tiendra compte de leur étiquette.")
 	
 	p.add_option("-v","--verbose",
 					action="store_true",
@@ -197,6 +196,9 @@ if __name__ == "__main__":
 					#Corr contient le nombre de constituants communs aux deux arbres
 					#Err1 contient le nombre de constituants présents uniquement dans le gold
 					#Err2 contient le nombre de constituants présents uniquement dans l'arbre prédit
+					if VERBOSE:
+						print(i," : ",goldleaves)
+					
 					corr,err1,err2=goodconst( goldspans, predspans,verbose=VERBOSE)
 					
 					#Il faut soustraire du nombre de constituants communs le nombre de feuilles
@@ -218,13 +220,12 @@ if __name__ == "__main__":
 					sumfmes += fmesure
 					
 					if VERBOSE:
-						print(i," : ",goldleaves)
 						print("p :",precision,"r :",rappel,"f :",fmesure)
 						print()
 					
 		
 				else:
-					raise ValueError("Phrases différentes :\n"+str(gold).encode("utf-8")+"\n"+str(pred).encode("utf-8"))
+					raise ValueError("Phrases différentes :\n"+str(goldleaves)+"\n"+str(predleaves))
 					
 		#Calcul de précision, rappel, et f-mesure globaux & moyens
 		globprec=globcorr/(globcorr+globerr2)
