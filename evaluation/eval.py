@@ -121,7 +121,7 @@ def unlabel(spans):
 
 if __name__ == "__main__":
 	import sys
-	from fileinput import input
+	import fileinput as fi
 	from optparse import OptionParser
 	
 	#Options du script
@@ -167,7 +167,7 @@ if __name__ == "__main__":
 			
 			#On considère que chaque ligne du fichier gold comprend  
 			
-			for (pred,gold) in zip(input(args),goldilocks):
+			for (pred,gold) in zip(fi.input(args),goldilocks):
 				pred=pred #.decode("utf-8")
 				golg=gold #.decode("utf-8")
 				
