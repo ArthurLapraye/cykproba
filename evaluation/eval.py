@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #-*- encoding: utf-8 -*-
 #Arthur Lapraye - 2016
 
@@ -6,15 +6,16 @@
 import codecs
 
 def tokenize(string):
-	""" Tokenise une S-expression """
+	""" Tokenise une S-expression. """
 	return string.replace('(',' ( ').replace(')',' ) ').split()
 
 def readtree(tokens):
 	"""
-	Inspiré du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
-	Prend une liste de tokens tirée d'un fichier parenthésé et renvoie la liste python correspondante
+	Fonction inspirée du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
+	Prend une liste de tokens tirée d'un fichier parenthésé et renvoie la liste python correspondante.
+	(SENT (NP (V bla) (VP (V bli)))) => ['SENT', ['NP', ['V', 'bla'], ['VP', ['V', 'bli']]]]
 	"""
-	if len(tokens) == 0:
+	if tokens == []:
 		raise SyntaxError('unexpected EOF while reading')
 	token = tokens.pop(0)
 	if '(' == token:
@@ -30,7 +31,8 @@ def readtree(tokens):
 
 def getleaves(tree):
 	"""
-	Renvoie la liste des feuilles d'un arbre obtenu avec la fonction readtree
+	Renvoie la liste des feuilles d'un arbre obtenu avec la fonction readtree.
+	['SENT', ['NP', ['V', 'bla'], ['VP', ['V', 'bli']]]] => ['bla','bli']
 	"""
 	leaves=[]
 	# print tree
@@ -43,13 +45,14 @@ def getleaves(tree):
 	return leaves
 	
 def defoliate(tree):
-	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles"""
+	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles
+	"""
 	newtree=list()
 	newtree.append(tree[0])
 	
 	for elem in tree[1:]:
 		if isinstance(elem, list):
-			if elem[1] in getleaves(tree):
+			if not isinstance(elem[1],list): #elem[1] in getleaves(tree)
 				newtree.append(elem[0])
 			else:
 				newtree.append(defoliate(elem))
@@ -59,12 +62,14 @@ def defoliate(tree):
 def getspans(tree):
 	"""
 	Prend en entrée un arbre de constituants tel que produit par readtree et une position de départ dans la phrase, par défaut 0
-	Renvoie une liste de tuples contenant l'étiquette du constituant et son span dans la phrase
+	Renvoie une liste de tuples contenant l'étiquette du constituant et son span dans la phrase : (étiquette, début, fin)
+	 ['SENT', ['NP', ['V', 'bla'], ['VP', ['V', 'bli']]]] =>
+	 [('bla', 0, 1), ('V', 0, 1), ('bli', 1, 2), ('V', 1, 2), ('VP', 1, 2), ('NP', 0, 2), ('SENT', 0, 2)]
 	"""
 	def getsp(tree,offset):
 		spans=list()
 		beginoffset=offset
-		# print tree
+		# print(tree)
 		for elem in tree[1:]:
 			if isinstance(elem,list):
 				sp,of= getsp(elem,offset)
@@ -101,8 +106,8 @@ def goodconst(spans1,spans2,verbose=False):
 			badspans.append(elem)
 		
 	if verbose:
-		print spans2
-		print badspans
+		print(badspans)
+		print(spans2)
 	
 	err2+=len(spans2)
 	
@@ -113,16 +118,14 @@ def unlabel(spans):
 	   Utilisée pour mesurer précision, rappel et f-mesure non-étiquetés 
 	"""
 	return [(y,z) for x,y,z in spans]
-	 
 
 if __name__ == "__main__":
 	import sys
-	from fileinput import input
-	
+	import fileinput as fi
 	from optparse import OptionParser
 	
-	usage=u"""Usage : prend comme argument un fichier mrg.strict ou bien un pipe depuis stdin
-	{0} $fichier est équivalent à cat $fichier | {0}
+	#Options du script
+	usage=u"""Usage : {0} --gold fichiergold fichier ou cat fichier | {0} --gold fichiergold
 	""".format(sys.argv[0])
 	
 	p = OptionParser(usage=usage)
@@ -137,7 +140,7 @@ if __name__ == "__main__":
 					action="store_true",
 					dest="labeled",
 					default=False,
-					help=u"Si cette option est activée, les constituants seront comparés ")
+					help=u"Si cette option est activée, la comparaison des constituants tiendra compte de leur étiquette.")
 	
 	p.add_option("-v","--verbose",
 					action="store_true",
@@ -150,35 +153,56 @@ if __name__ == "__main__":
 	LABELED=op.labeled
 	VERBOSE=op.verbose
 	
+	#Le script a obligatoirement besoin d'un fichier de phrases gold en paramètre
+	#Sinon il ne marche pas
 	if op.gold:
 		with codecs.open(op.gold, encoding="utf-8") as goldilocks:
-		
+			
+			#Variables pour calculer précision, rappel et fmesure globaux			
 			globcorr,globerr1,globerr2=float(),float(),float()
+			#Variables pour calculer précision, rappel et fmesure moyens
 			sumprec,sumrapp,sumfmes=float(),float(),float()
 			i=0
 			
-			for (pred,gold) in zip(input(args),goldilocks):
-				pred=pred.decode("utf-8")
+			#On considère que chaque ligne du fichier gold comprend  
+			
+			for (pred,gold) in zip(fi.input(args),goldilocks):
+				pred=pred #.decode("utf-8")
 				golg=gold #.decode("utf-8")
-				predtree=defoliate(readtree(tokenize(pred))[0])
-				goldtree=defoliate(readtree(tokenize(gold))[0])
+				
+				#On retire les feuilles des arbres
+				predtree=readtree(tokenize(pred))[0]
+				goldtree=readtree(tokenize(gold))[0]
 				
 				i += 1
 				
+				#Liste de spans de constituants qui servent à établir le comptage
 				goldspans=getspans(goldtree)
 				predspans=getspans(predtree)
 				
+				#Si les calculs se font sur des spans non-étiquetés, il faut retirer les étiquettes
 				if not LABELED:
 					goldspans=unlabel(goldspans)
 					predspans=unlabel(predspans)
 				
+				
 				goldleaves=getleaves(goldtree)
 				predleaves=getleaves(predtree)
 				
+				#La comparaison entre les spans de constituants 
+				#Ne peut être pertinente que si elle se fait sur la même phrase
 				if goldleaves == predleaves:
+					
+					#Corr contient le nombre de constituants communs aux deux arbres
+					#Err1 contient le nombre de constituants présents uniquement dans le gold
+					#Err2 contient le nombre de constituants présents uniquement dans l'arbre prédit
+					if VERBOSE:
+						print(i," : ",goldleaves)
 					
 					corr,err1,err2=goodconst( goldspans, predspans,verbose=VERBOSE)
 					
+					#Il faut soustraire du nombre de constituants communs le nombre de feuilles
+					#Sinon on fait gonfler artificiellement le score
 					corr -= len(goldleaves)
 					
 					#print corr, err1,err2
@@ -196,22 +220,19 @@ if __name__ == "__main__":
 					sumfmes += fmesure
 					
 					if VERBOSE:
-						print i," : ",goldleaves
-						print precision,rappel,fmesure
-						print
+						print("p :",precision,"r :",rappel,"f :",fmesure)
+						print()
 					
 		
 				else:
-					raise ValueError("Phrases différentes :\n"+str(gold).encode("utf-8")+"\n"+str(pred).encode("utf-8"))
+					raise ValueError("Phrases différentes :\n"+str(goldleaves)+"\n"+str(predleaves))
 					
-				
+		#Calcul de précision, rappel, et f-mesure globaux & moyens
 		globprec=globcorr/(globcorr+globerr2)
 		globrapp=globcorr/(globcorr+globerr1)
-		print u"précision globale :", globprec,u" précision moyenne :", sumprec/i
-		print u"rappel global :", globrapp, u"rappel moyen :", sumrapp/i
-		print u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/i
+		print(u"précision globale :", globprec,u" précision moyenne :", sumprec/i)
+		print(u"rappel global :", globrapp, u"rappel moyen :", sumrapp/i)
+		print(u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/i)
 	else:
 		raise RuntimeError(u"Vous avez oublié de spécifier un fichier gold !")
-
-#TODO : accomoder des forêts d'analyse partagée (?) (à voir en amont)
 

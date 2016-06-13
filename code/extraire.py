@@ -122,11 +122,20 @@ def p_lexique(p):
     )
 
     # Dernière version sans le lexique ni les fonctions syntaxiques
+<<<<<<< HEAD
 
 #    temp = p[1][0].split('-')[0]
 #    head = nonterminal.Nonterminal(temp)
 #    leaf = terminal.Terminal(temp.lower())
     p[0] = [[p[1], leaf]]
+=======
+    
+    temp = p[1].nonterminal.split('-')[0]
+    head = nonterminal.Nonterminal(temp)
+    leaf = terminal.Terminal
+
+    p[0] = [[p[1], p[2]]]
+>>>>>>> origin/master
 
 
 def p_head(p):
