@@ -5,66 +5,69 @@ import righthandside
 import fractions
 import collections
 import errors
+import terminal
+import nonterminal
 
 
-def production_representer(dumper, data):
-    return dumper.represent_set("!production", str(data))
-
-
-def productionhorscontexte_representer(dumper, data):
-    return dumper.represent_scalar("!production-hors-contexte", str(data))
-
-
-def productionhorscontexteprobabilisee_representer(dumper, data):
-    return dumper.represent_scalar("!production-hors-contexte-probabilisee", str(data))
-
-
-def productionhorscontexte1_representer(dumper, data):
-    return dumper.represent_scalar("!production-hors-contexte-1", str(data))
-
-
-def productionhorscontexte1probabilisee_representer(dumper, data):
-    return dumper.represent_scalar("!production-hors-contexte-1-probabilisee", str(data))
-
-
-def productionhorscontexte1unaire_representer(dumper, data):
-    return dumper.represent_scalar("!production-hors-contexte-1-unaire", str(data))
-
-
-def productionhorscontexte1unaireprobabilisee_representer(dumper, data):
-    return dumper.represent_scalar("!production-hors-contexte-1-unaire-probabilisee", str(data))
-
-
-def Productionhorscontexte1lexicale_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-1-lexicale", str(data))
-
-
-def Productionhorscontexte1lexicaleprobabilisee_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-1-lexicale-probabilisee", str(data))
-
-
-def Productionhorscontexte2_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-2", str(data))
-
-
-def Productionhorscontexte2probabilisee_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-2-probabilisee", str(data))
-
-
-def Productionhorscontexte2binaire_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-2-binaire", str(data))
-
-
-def Productionhorscontexte2binaireprobabilisee_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-2-binaire-probabilisee", str(data))
-
-
-def Productionhorscontextenaire_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-n-aire", str(data))
-
-
-def Productionhorscontextenaireprobabilisee_representer(dumper, data):
-    return dumper.represent_scalar("!Production-hors-contexte-n-aire-probabilisee", str(data))
+# def production_representer(dumper, data):
+#     return dumper.represent_set("!production", str(data))
+#
+#
+# def productionhorscontexte_representer(dumper, data):
+#     return dumper.represent_scalar("!production-hors-contexte", str(data))
+#
+#
+# def productionhorscontexteprobabilisee_representer(dumper, data):
+#     return dumper.represent_scalar("!production-hors-contexte-probabilisee", str(data))
+#
+#
+# def productionhorscontexte1_representer(dumper, data):
+#     return dumper.represent_scalar("!production-hors-contexte-1", str(data))
+#
+#
+# def productionhorscontexte1probabilisee_representer(dumper, data):
+#     return dumper.represent_scalar("!production-hors-contexte-1-probabilisee", str(data))
+#
+#
+# def productionhorscontexte1unaire_representer(dumper, data):
+#     return dumper.represent_scalar("!production-hors-contexte-1-unaire", str(data))
+#
+#
+# def productionhorscontexte1unaireprobabilisee_representer(dumper, data):
+#     return dumper.represent_scalar("!production-hors-contexte-1-unaire-probabilisee", str(data))
+#
+#
+# def Productionhorscontexte1lexicale_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-1-lexicale", str(data))
+#
+#
+# def Productionhorscontexte1lexicaleprobabilisee_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-1-lexicale-probabilisee", str(data))
+#
+#
+# def Productionhorscontexte2_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-2", str(data))
+#
+#
+# def Productionhorscontexte2probabilisee_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-2-probabilisee", str(data))
+#
+#
+# def Productionhorscontexte2binaire_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-2-binaire", str(data))
+#
+#
+# def Productionhorscontexte2binaireprobabilisee_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-2-binaire-probabilisee", str(data))
+#
+#
+# def Productionhorscontextenaire_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-n-aire", str(data))
+#
+#
+# def Productionhorscontextenaireprobabilisee_representer(dumper, data):
+#     return dumper.represent_scalar("!Production-hors-contexte-n-aire-probabilisee", str(data))
+#
 
 
 class Production(collections.Sequence):
@@ -72,19 +75,33 @@ class Production(collections.Sequence):
     __lefthandsides = collections.defaultdict(int)
 
     def __init__(self, *args):
+        """
+
+        :param args:
+        :return:
+        """
         self.__list = list(args)
         self.check_type(args, (lefthandside.Lefthandside, righthandside.Righthandside))
         self.check_length(2, args, "==")
 
-        self.__productions[self] += 1
-        self.__lefthandsides[self[0]] += 1
+        type(self).__productions[self] += 1
+        type(self).__lefthandsides[self[0]] += 1
 
     @property
     def list(self):
+        """
+
+        :return:
+        """
         return self.__list
 
     def check_type(self, iterable, *types):
+        """
 
+        :param iterable:
+        :param types:
+        :return:
+        """
         if not all(isinstance(*x) for x in zip(iterable, types)):
             raise TypeError(
                 'Une {name} doit être une séquence de: {types}'.format(
@@ -94,6 +111,13 @@ class Production(collections.Sequence):
             )
 
     def check_length(self, i, iterable, equation="=="):
+        """
+
+        :param i:
+        :param iterable:
+        :param equation:
+        :return:
+        """
         if equation == "==":
             if not (len(iterable) == i):
                 raise errors.LengthError(
@@ -167,8 +191,11 @@ class Production(collections.Sequence):
         for p in Production.productions():
             p.setproba()
 
+    def mise_a_jour(self, cont, key, val):
+        cont[key] += val
+
     def __eq__(self, other):
-        if self.__dict__ == other.__dict__:
+        if self.__list == other.list:
             return True
         return False
 
@@ -186,12 +213,21 @@ class Production(collections.Sequence):
 class Productionhorscontexte(Production):
     def __init__(self, *args):
         super(Productionhorscontexte, self).__init__(*args)
+        self.__list = list(args)
         self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside)
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexteprobabilisee(Productionhorscontexte):
     def __init__(self, *args):
         super(Productionhorscontexteprobabilisee, self).__init__(*args)
+        self.__list = list(args)
         self.__proba = fractions.Fraction(1, 1)
 
     @property
@@ -205,16 +241,32 @@ class Productionhorscontexteprobabilisee(Productionhorscontexte):
     def setproba(self):
         self.proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
 
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
+
 
 class Productionhorscontexte1(Productionhorscontexte):
     def __init__(self, *args):
         super(Productionhorscontexte1, self).__init__(*args)
+        self.__list = list(args)
         self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside1)
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte1probabilisee(Productionhorscontexte1):
     def __init__(self, *args):
         super(Productionhorscontexte1probabilisee, self).__init__(*args)
+        self.__list = list(args)
         self.__proba = fractions.Fraction(1, 1)
 
     @property
@@ -227,17 +279,33 @@ class Productionhorscontexte1probabilisee(Productionhorscontexte1):
 
     def setproba(self):
         self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte1unaire(Productionhorscontexte1):
     def __init__(self, *args):
         super(Productionhorscontexte1unaire, self).__init__(*args)
+        self.__list = list(args)
         self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside1unaire)
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte1unaireprobabilisee(Productionhorscontexte1unaire):
     def __init__(self, *args):
         super(Productionhorscontexte1unaireprobabilisee, self).__init__(*args)
+        self.__list = list(args)
         self.__proba = fractions.Fraction(1, 1)
 
     @property
@@ -250,17 +318,33 @@ class Productionhorscontexte1unaireprobabilisee(Productionhorscontexte1unaire):
 
     def setproba(self):
         self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte1lexicale(Productionhorscontexte1):
     def __init__(self, *args):
         super(Productionhorscontexte1lexicale, self).__init__(*args)
+        self.__list = list(args)
         self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside1lexicale)
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte1lexicaleprobabilisee(Productionhorscontexte1lexicale):
     def __init__(self, *args):
         super(Productionhorscontexte1lexicaleprobabilisee, self).__init__(*args)
+        self.__list = list(args)
         self.__proba = fractions.Fraction(1, 1)
 
     @property
@@ -273,23 +357,47 @@ class Productionhorscontexte1lexicaleprobabilisee(Productionhorscontexte1lexical
 
     def setproba(self):
         self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte2(Productionhorscontexte):
     def __init__(self, *args):
         super(Productionhorscontexte2, self).__init__(*args)
+        self.__list = list(args)
         self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside2)
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte2binaire(Productionhorscontexte2):
     def __init__(self, *args):
         super(Productionhorscontexte2binaire, self).__init__(*args)
+        self.__list = list(args)
         self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.Righthandside2binaire)
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class Productionhorscontexte2binaireprobabilisee(Productionhorscontexte2binaire):
     def __init__(self, *args):
         super(Productionhorscontexte2binaireprobabilisee, self).__init__(*args)
+        self.__list = list(args)
         self.__proba = fractions.Fraction(1, 1)
 
     @property
@@ -302,17 +410,33 @@ class Productionhorscontexte2binaireprobabilisee(Productionhorscontexte2binaire)
 
     def setproba(self):
         self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class ProductionhorscontexteNaire(Productionhorscontexte):
     def __init__(self, *args):
         super(ProductionhorscontexteNaire, self).__init__(*args)
+        self.__list = list(args)
         self.check_type(args, lefthandside.Lefthandsidehorscontexte, righthandside.RighthandsideNaire)
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 class ProductionhorscontexteNaireprobabilisee(ProductionhorscontexteNaire):
     def __init__(self, *args):
         super(ProductionhorscontexteNaireprobabilisee, self).__init__(*args)
+        self.__list = list(args)
         self.__proba = fractions.Fraction(1, 1)
 
     @property
@@ -325,6 +449,13 @@ class ProductionhorscontexteNaireprobabilisee(ProductionhorscontexteNaire):
 
     def setproba(self):
         self.__proba = fractions.Fraction(self.productions()[self], self.lefthandsides()[self[0]])
+
+    def __eq__(self, other):
+        if self.__list == other.list:
+            return True
+        return False
+
+    def __hash__(self): return 0
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ import terminal
 import nonterminal
 import yaml
 import pickle
-import nltk
+from nltk.util import ngrams
 import collections
 import lefthandside
 import righthandside
@@ -127,6 +127,11 @@ class Grammairehorscontexte(Grammaire):
 
 class Grammairehorscontextecnf(Grammairehorscontexte):
     def __init__(self, **kwargs):
+        """
+
+        :param kwargs:
+        :return:
+        """
         super(Grammairehorscontextecnf, self).__init__(**kwargs)
         self.check_type(
             kwargs['productions'],
@@ -136,7 +141,16 @@ class Grammairehorscontextecnf(Grammairehorscontexte):
 
 
 class Grammairehorscontexteprobabiliste(Grammaire):
+    """
+
+    """
     def __init__(self, **kwargs):
+        """
+
+        :param kwargs:
+        :type kwargs:
+        :return:
+        """
         super(Grammairehorscontexteprobabiliste, self).__init__(**kwargs)
         self.check_type(
             kwargs['productions'],
@@ -157,21 +171,27 @@ class Grammairehorscontexteprobabiliste(Grammaire):
         :return: liste de productions sans Productionhorscontexteprobabiliseeunaire et proba ajustées
         """
         symb = '{0}|{1}'
+        te = []
+        print('Ununarise')
         while any(isinstance(x, productions.Productionhorscontexte1unaireprobabilisee) for x in prods):
+            print('Ununirasion en cours...')
             for prod1 in productions.Production.subset_productions(prods, productions.Productionhorscontexte1unaireprobabilisee):
+                x = productions.Production.subset_productions(prods, productions.ProductionhorscontexteNaireprobabilisee)
+                y = productions.Production.subset_productions(prods, productions.Productionhorscontexte1probabilisee)
+                print("Boucle 1")
                 n_s = nonterminal.Nonterminal(symb.format(prod1[0][0], prod1[1][0]))
                 prods.remove(prod1)
-                for prod2 in productions.Production.subset_productions(prods, productions.ProductionhorscontexteNaireprobabilisee):
-                    prods.remove(prod2)
+                for prod2 in x:
+                    print('boucle 2')
                     if prod1[0][0] in prod2[1]:
-                        temporaire = prod2[1].replace(prod1[0][0], n_s)
+                        temporaire = prod2[1].replace(types=righthandside.RighthandsideNaire, old=prod1[0][0], new=n_s)
                         t = type(prod2)(prod2[0], temporaire)
                         t.proba = prod1.proba * prod2.proba
                         prods.append(t)
                         prod2.proba *= (1 - prod1.proba)
                     prods.append(prod2)
-                for prod3 in productions.Production.subset_productions(prods, productions.Productionhorscontexte1probabilisee):
-                    prods.remove(prod3)
+                for prod3 in y:
+                    print('Boucle 3')
                     if (prod3 != prod1) and (prod3[0][0] == prod1[0][0]):
                         prod3.proba /= (1-prod1.proba)
                         prods.append(prod3)
@@ -180,7 +200,8 @@ class Grammairehorscontexteprobabiliste(Grammaire):
                         t.proba = prod3.proba
                         prods.append(t)
                     prods.append(prod3)
-            return prods
+            print('fin de boucle')
+        return prods
 
     def markovise(self, prods, markov=1):
         """
@@ -189,7 +210,9 @@ class Grammairehorscontexteprobabiliste(Grammaire):
         :param markov: integer
         :return: iterator
         """
+        print('markovise')
         while any(isinstance(x, productions.ProductionhorscontexteNaireprobabilisee) for x in prods):
+            print('Markovisation en cours...')
             for production in productions.Production.subset_productions(
                     prods, productions.ProductionhorscontexteNaireprobabilisee):
                 prods.remove(production)
@@ -217,12 +240,12 @@ class Grammairehorscontexteprobabiliste(Grammaire):
                         )
                     )
                 else:
-                    temp = nltk.util.ngrams(production[1][:-1], markov, pad_left=True)
-                    rhs = production[1].copy()
+                    temp = ngrams(production[1][:-1], markov, pad_left=True)
+                    rhs = production[1]
                     tp = nonterminal.Nonterminal(temp_n_s + agglutine(x=next(temp)))
                     binaire = productions.Productionhorscontexte2binaireprobabilisee(
                         production[0],
-                        righthandside.Righthandside2binaire(rhs.pop(0), tp)
+                        righthandside.Righthandside2binaire(rhs.list[0], tp)
                     )
                     binaire.proba = production.proba
                     prods.append(binaire)
@@ -232,7 +255,7 @@ class Grammairehorscontexteprobabiliste(Grammaire):
                             prods.append(
                                 productions.Productionhorscontexte2binaireprobabilisee(
                                     lefthandside.Lefthandsidehorscontexte(tp),
-                                    righthandside.Righthandside2binaire(rhs.pop(0), tp1)
+                                    righthandside.Righthandside2binaire(rhs.list[0], tp1)
                                 )
                             )
                             tp = tp1
@@ -246,24 +269,29 @@ class Grammairehorscontexteprobabiliste(Grammaire):
         return prods
 
     def naire2cnf(self, markov=100):
-        productions = self.markovise(
-            self.ununuarise(
-                list(
-                    self['productions']
-                )
-            ),
-            markov=1
-        )
+        """
 
+        :param markov:
+        :return:
+        """
+        print("Binarisation")
         return Grammairehorscontexteprobabilistecnf(
             terminals=nonterminal.Nonterminal.nonterminals(),
             nonterminals=terminal.Terminal.terminals(),
-            productions=productions
+            productions=self.markovise(self.ununuarise(list(self['productions'])),markov=markov)
         )
 
 
 class Grammairehorscontexteprobabilistecnf(Grammairehorscontexteprobabiliste):
+    """
+
+    """
     def __init__(self, **kwargs):
+        """
+
+        :param kwargs:
+        :return:
+        """
         self.check_type(
             kwargs['productions'],
             productions.Productionhorscontexte1lexicaleprobabilisee,

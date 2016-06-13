@@ -14,11 +14,10 @@ def extraire_grammaire():
     import productions
     import grammaires
     import codecs
-    from yaml import dump as ydump
     from pickle import dump as pdump
     from random import shuffle
     from sys import stdin
-    from extraire import parser
+    from extraire import parser, sentence
     import phrases
 
     global sentence
@@ -49,13 +48,13 @@ def extraire_grammaire():
             qui représentera le nom du fichier de sortie.
         """
     )
-    argumenteur.add_argument(
-        "-y",
-        "--yaml",
-        action='store_true',
-        default=False,
-        help="Cette option permet de mettre la sortie au format YAML"
-    )
+#    argumenteur.add_argument(
+#        "-y",
+#        "--yaml",
+#        action='store_true',
+#        default=False,
+#        help="Cette option permet de mettre la sortie au format YAML"
+#    )
     argumenteur.add_argument(
         "-p",
         "--pickle",
@@ -117,9 +116,7 @@ def extraire_grammaire():
     argumenteur.add_argument(
         "-Y",
         "--sentences",
-        default=False,
-        action='store_true',
-        help="sort dans un fichier yaml les objets Phrase composant le corpus."
+        help="Nom du fichier de phrases au format Phrase de sortie au format pickle."
     )
 
     argumenteur.add_argument(
@@ -132,32 +129,38 @@ def extraire_grammaire():
     args = argumenteur.parse_args()
 
     with codecs.open(args.input, 'r', 'utf-8') as entree:
+        print('Ouverture/fermeture du fichier mrg.')
         corpus = entree.read().splitlines()
 
     if args.shuffle:
+        print('Mélange des données')
         shuffle(corpus)
-
+    print('Traitement du corpus, consitution des règles de production.')
     for (i, ligne) in enumerate(corpus[:args.nb], 1):
+        print(i)
         if not corpus[0].startswith('('):
             (nomcorpus_numero, phrase) = ligne.split('\t')
             (nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
-            parser.parse(phrase)
+            pos_phrase = parser.parse(phrase)
+            print(pos_phrase)
             phrases.Phrase(
                 gold=phrase,
                 corpus=nomcorpus,
                 numero=int(numero),
-                pos=sentence
+                pos=pos_phrase
             )
+            sentence = []
         else:
             parser.parse(ligne)
             phrases.Phrase(
                 gold=ligne,
                 pos=sentence
             )
-        sentence = []
+            sentence = []
 
-    if args.sentences:
-        pdump(phrases.Phrase.phrases(), open("sortie3.pickle", 'wb'))
+    if args.sentences is not None:
+        print('Sortie du fichier phrases avec les phrases au format pickle')
+        pdump(phrases.Phrase.phrases(), open(args.sentences, 'wb'))
 
     productions.Production.setprobaproductions()
 
@@ -176,32 +179,18 @@ def extraire_grammaire():
             # soit passage de Productionhorscontexteprobabilisee à Productionhorscontexte
             with open(args.output+"_"+"cfg"+".pickle", 'wb') as f:
                 pdump(tmp, f)
-        cnf = tmp.naire2cnf(markov=args.markov)
+
         if args.pcnf:
+            cnf = tmp.naire2cnf(markov=args.markov)
             with open(args.output+"_"+"pcnf"+".pickle", "wb") as f:
                 pdump(cnf, f)
         if args.cnf:
+            cnf = tmp.naire2cnf(markov=args.markov)
             # Grammairehorscontextecnf(cnf)
             with open(args.output+"_"+"cnf"+".pickle", "wb") as f:
                 pdump(cnf, f)
-    # remettre à zéro tous les compteurs
-    if args.yaml:
-        if args.pcfg:
-            with codecs.open(args.output+"_"+"pcfg"+".yaml", "w", "utf8") as f:
-                ydump(tmp, f)
-        if args.cfg:
-            # ajouter Grammairehorscontexte(tmp) cast de tmp
-            # soit passage de Productionhorscontexteprobabilisee à Productionhorscontexte
-            with codecs.open(args.output+"_"+"cfg"+".yaml", 'w', 'utf8') as f:
-                ydump(tmp, f)
-        cnf = tmp.naire2cnf(markov=args.markov)
-        if args.pcnf:
-            with codecs.open(args.output+"_"+"pcnf"+".yaml", "w", 'utf8') as f:
-                ydump(cnf, f)
-        if args.cnf:
-            # Grammairehorscontextecnf(cnf)
-            with codecs.open(args.output+"_"+"cnf"+".yaml", "w", "utf8") as f:
-                ydump(cnf, f)
+    print('Fin')
+
 
 
 if __name__ == '__main__':

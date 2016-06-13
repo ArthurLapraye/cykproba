@@ -4,6 +4,8 @@ import ply.yacc as yacc
 import nonterminal
 import terminal
 import productions
+import lefthandside
+import righthandside
 
 
 sentence = []
@@ -44,7 +46,7 @@ lex.lex(
 def p_axiome(p):
     """Sprim : '(' S ')'"""
     # p[0] = p[2][0]
-    p[0] = 1
+    p[0] = sentence
 
 
 # Cette grammaire comprte deux S, soit une règle lexicale, soit un syntagme complexe.
@@ -66,11 +68,20 @@ def p_syntagme(p):
     rhs = [x[0] for x in p[2]]
 
     if len(rhs) == 1:
-        productions.Productionhorscontexte1unaireprobabilisee([p[1]], rhs)
+        productions.Productionhorscontexte1unaireprobabilisee(
+            lefthandside.Lefthandsidehorscontexte(p[1]),
+            righthandside.Righthandside1unaire(*rhs)
+        )
     elif len(p[2]) == 2:
-        productions.Productionhorscontexte2binaireprobabilisee([p[1]], rhs)
+        productions.Productionhorscontexte2binaireprobabilisee(
+            lefthandside.Lefthandsidehorscontexte(p[1]),
+            righthandside.Righthandside2binaire(*rhs)
+        )
     else:
-        productions.ProductionhorscontexteNaireprobabilisee([p[1]], rhs)
+        productions.ProductionhorscontexteNaireprobabilisee(
+            lefthandside.Lefthandsidehorscontexte(p[1]),
+            righthandside.RighthandsideNaire(*rhs)
+        )
 
     p[0] = [[p[1], p[2]]]
 
@@ -103,30 +114,28 @@ def p_lexique(p):
 
     # Deuxième version avec le lexique sans les fonctions syntaxiques
 
-    # temp = p[1].nonterminal.split('-')[0]
-    # head = nonterminal.Nonterminal(temp)
-    # leaf = terminal.Terminal(temp.lower())
-    # sentence.append(leaf)
-    # productions.Productionhorscontexte1lexicaleprobabilisee([head], [leaf])
+    leaf = terminal.Terminal(p[1].list.lower())
+    sentence.append(leaf)
+    productions.Productionhorscontexte1lexicaleprobabilisee(
+        lefthandside.Lefthandsidehorscontexte(p[1]),
+        righthandside.Righthandside1lexicale(leaf)
+    )
 
     # Dernière version sans le lexique ni les fonctions syntaxiques
 
-    temp = p[1].nonterminal.split('-')[0]
-    head = nonterminal.Nonterminal(temp)
-    leaf = terminal.Terminal
-
-    p[0] = [[p[1], p[2]]]
+#    temp = p[1][0].split('-')[0]
+#    head = nonterminal.Nonterminal(temp)
+#    leaf = terminal.Terminal(temp.lower())
+    p[0] = [[p[1], leaf]]
 
 
 def p_head(p):
     """ head : MOT """
-
     p[0] = nonterminal.Nonterminal(p[1].split('-')[0])
 
 
 def p_leaf(p):
     """ leaf : MOT """
-
     p[0] = terminal.Terminal(p[1])
 
 
@@ -135,7 +144,6 @@ def p_error(p):
         print("Syntax error at '%s'" % p.value)
     else:
         print("Syntax error at EOF")
-
 
 parser = yacc.yacc()
 

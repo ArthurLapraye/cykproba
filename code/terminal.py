@@ -9,24 +9,29 @@ def terminal_representer(dumper, data):
 class Terminal(collections.Sequence):
     __terminals = set()
     def __init__(self, string):
-        self.__chaine = string
+        self.__list = string
         self.__terminals.add(self)
+
+    @property
+    def list(self):
+        return self.__list
 
     def check_type(self):
         if not isinstance(self.__chaine, str):
             raise TypeError('Une {name} doit être une string'.format(name=self.__class__.__name__))
 
     def __eq__(self, other):
-        if self.__dict__ == other.__dict__: return True
+        if self.__dict__ == other.__dict__:
+            return True
         return False
 
     def __hash__(self): return 0
 
-    def __len__(self): return len(self.__chaine)
+    def __len__(self): return len(self.__list)
 
-    def __getitem__(self, i): return self.__chaine[i]
+    def __getitem__(self, i): return self.__list[i]
 
-    def __repr__(self): return str(self.__chaine)
+    def __repr__(self): return str(self.__list)
 
     def __str__(self): return repr(self)
 

@@ -83,9 +83,9 @@ class Handside(collections.Sequence):
             ind = copie.index(old)
             copie.remove(old)
             copie.insert(ind, new)
-            return type(self)(types, *copie)
+            return type(self)(*copie)
         else:
-            return type(self)(types, copie)
+            return type(self)(*copie)
 
     def __eq__(self, other):
         if self.__dict__ == other.__dict__:
