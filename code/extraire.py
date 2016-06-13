@@ -110,7 +110,7 @@ def p_lexique(p):
     # productions.Productionhorscontexte1lexicaleprobabilisee([head], [leaf])
 
     # Dernière version sans le lexique ni les fonctions syntaxiques
-
+    
     temp = p[1].nonterminal.split('-')[0]
     head = nonterminal.Nonterminal(temp)
     leaf = terminal.Terminal

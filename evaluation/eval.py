@@ -171,8 +171,8 @@ if __name__ == "__main__":
 				golg=gold #.decode("utf-8")
 				
 				#On retire les feuilles des arbres
-				predtree=defoliate(readtree(tokenize(pred))[0])
-				goldtree=defoliate(readtree(tokenize(gold))[0])
+				predtree=readtree(tokenize(pred))[0]
+				goldtree=readtree(tokenize(gold))[0]
 				
 				i += 1
 				
