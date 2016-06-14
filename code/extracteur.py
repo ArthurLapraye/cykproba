@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # coding: utf8
 
-import evaluation.evaluation as evaluation
+import evaluation
 from collections import defaultdict
 import fractions
 
@@ -183,7 +183,7 @@ def extraire_grammaire():
         sumproba=0
         for prod in rightside[nt]:
             prodproba=fractions.Fraction(rightside[nt][prod],leftside[nt])
-            #print("probabilité que",nt,"=>",prod,":",prodproba)
+            print(nt,"=>",prod,":",prodproba)
             sumproba += prodproba
         
         #print(sumproba)

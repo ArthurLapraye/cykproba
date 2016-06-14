@@ -62,6 +62,8 @@ def getchildren(tree):
 			if isinstance(elem,list):
 				children.append(elem[0])
 				findchildren(elem)
+			else:
+				children.append(elem)
 		
 		childdict[tree[0]].append(tuple(children))
 	
