@@ -145,7 +145,7 @@ def extraire_grammaire():
     leftside =defaultdict(int)
     
     for (i, ligne) in enumerate(corpus[:args.nb], 1):
-        print(i)
+        #print(i)
         phrase=""
         numero=None
         if not corpus[0].startswith('('):
@@ -183,11 +183,11 @@ def extraire_grammaire():
         sumproba=0
         for prod in rightside[nt]:
             prodproba=fractions.Fraction(rightside[nt][prod],leftside[nt])
-            print("probabilité que",nt,"=>",prod,":",prodproba)
+            #print("probabilité que",nt,"=>",prod,":",prodproba)
             sumproba += prodproba
         
         #print(sumproba)
-        assert(sumproba==1.0)
+        assert(sumproba==1)
         #input()
     
     tmp = grammaires.Grammairehorscontexteprobabiliste(
