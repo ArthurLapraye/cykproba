@@ -51,6 +51,23 @@ def getleaves(tree):
 
 def getnodes(tree):
 	nodesandleaves(tree)[0]
+
+def getchildren(tree):
+	childdict =defaultdict(list)
+	
+	def findchildren(tree):
+		children=list()
+		for elem in tree[1:]:
+			if isinstance(elem,list):
+				children.append(elem[0])
+				findchildren(elem)
+		
+		childdict[tree[0]].append(tuple(children))
+	
+	findchildren(tree)
+	
+	return childdict
+		
 	
 def defoliate(tree):
 	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles
