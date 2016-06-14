@@ -189,9 +189,7 @@ def extraire_grammaire():
         #print(sumproba)
         assert(sumproba==1.0)
         #input()
-    #productions.Production.setprobaproductions()
     
-    print(productions.Production.productions())
     tmp = grammaires.Grammairehorscontexteprobabiliste(
         terminals=set(terminaux), #terminal.Terminal.terminals(),
         nonterminals=set(nonterminaux), #nonterminal.Nonterminal.nonterminals(),
