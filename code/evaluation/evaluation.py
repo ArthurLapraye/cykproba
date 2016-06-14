@@ -29,20 +29,28 @@ def readtree(tokens):
 	else:
 		return token
 
-def getleaves(tree):
+def nodesandleaves(tree):
 	"""
-	Renvoie la liste des feuilles d'un arbre obtenu avec la fonction readtree.
-	['SENT', ['NP', ['V', 'bla'], ['VP', ['V', 'bli']]]] => ['bla','bli']
+	Renvoie les listes des noeuds et des feuilles d'un arbre obtenu avec la fonction readtree.
 	"""
 	leaves=[]
-	# print tree
+	nodes=[tree[0]]
+	
 	for elem in tree[1:]:
 		if isinstance(elem,list):
-			leaves+=getleaves(elem)
+			n,l=getleaves(elem)
+			nodes += n
+			leaves += l
 		else:
 			leaves.append(elem)
 	
-	return leaves
+	return nodes,leaves
+
+def getleaves(tree):
+	nodesandleaves(tree)[0]
+
+def getnodes(tree):
+	nodesandleaves(tree)[0]
 	
 def defoliate(tree):
 	"""Supprime les feuilles d'un arbre et remplace les dernières branches par des feuilles
