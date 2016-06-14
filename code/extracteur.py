@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 # coding: utf8
 
+import evaluation.evaluation as evaluation
+from collections import defaultdict
+import fractions
 
 def extraire_grammaire():
     """
@@ -137,38 +140,62 @@ def extraire_grammaire():
         print('Mélange des données')
         shuffle(corpus)
     print('Traitement du corpus, consitution des règles de production.')
+    
+    rightside=defaultdict(lambda : defaultdict(int))
+    leftside =defaultdict(int)
+    
     for (i, ligne) in enumerate(corpus[:args.nb], 1):
         print(i)
+        phrase=""
+        numero=None
         if not corpus[0].startswith('('):
             (nomcorpus_numero, phrase) = ligne.split('\t')
             (nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
-            pos_phrase = parser.parse(phrase)
-            print(pos_phrase)
-            phrases.Phrase(
-                gold=phrase,
-                corpus=nomcorpus,
-                numero=int(numero),
-                pos=pos_phrase
-            )
-            sentence = []
+            
         else:
-            parser.parse(ligne)
-            phrases.Phrase(
-                gold=ligne,
-                pos=sentence
-            )
-            sentence = []
+            phrase=ligne
+        
+        
+        arbre=evaluation.readtree(evaluation.tokenize(phrase))[0]
+        nonterminaux,terminaux = evaluation.nodesandleaves(arbre)
+        productions=evaluation.getchildren(arbre)
+        
+        for elem in productions:
+        	leftside[elem] += len(productions[elem])
+        	for prod in productions[elem]:
+        		rightside[elem][prod] += 1
+        
+        #print(leftside)
+        #print(rightside)
+        
+        #input()
+        
+        phrases.Phrase(gold=phrase,
+                numero= int(numero) if numero else i,
+                pos=terminaux)
+        sentence = []
 
     if args.sentences is not None:
         print('Sortie du fichier phrases avec les phrases au format pickle')
         pdump(phrases.Phrase.phrases(), open(args.sentences, 'wb'))
-
-    productions.Production.setprobaproductions()
-
+    
+    for nt in rightside:
+        sumproba=0
+        for prod in rightside[nt]:
+            prodproba=fractions.Fraction(rightside[nt][prod],leftside[nt])
+            print("probabilité que",nt,"=>",prod,":",prodproba)
+            sumproba += prodproba
+        
+        #print(sumproba)
+        assert(sumproba==1.0)
+        #input()
+    #productions.Production.setprobaproductions()
+    
+    print(productions.Production.productions())
     tmp = grammaires.Grammairehorscontexteprobabiliste(
-        terminals=terminal.Terminal.terminals(),
-        nonterminals=nonterminal.Nonterminal.nonterminals(),
-        productions=productions.Production.productions()
+        terminals=set(terminaux), #terminal.Terminal.terminals(),
+        nonterminals=set(nonterminaux), #nonterminal.Nonterminal.nonterminals(),
+        productions=[]#productions.Production.productions()
     )
 
     if args.pickle:

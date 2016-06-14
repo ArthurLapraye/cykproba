@@ -4,6 +4,7 @@
 
 
 import codecs
+from collections import defaultdict
 
 def tokenize(string):
 	""" Tokenise une S-expression. """
@@ -38,16 +39,16 @@ def nodesandleaves(tree):
 	
 	for elem in tree[1:]:
 		if isinstance(elem,list):
-			n,l=getleaves(elem)
+			n,l=nodesandleaves(elem)
 			nodes += n
 			leaves += l
 		else:
 			leaves.append(elem)
 	
-	return nodes,leaves
+	return (nodes,leaves)
 
 def getleaves(tree):
-	nodesandleaves(tree)[0]
+	nodesandleaves(tree)[1]
 
 def getnodes(tree):
 	nodesandleaves(tree)[0]
