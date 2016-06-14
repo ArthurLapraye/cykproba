@@ -32,7 +32,7 @@ def readtree(tokens):
 
 def nodesandleaves(tree):
 	"""
-	Renvoie les listes des noeuds et des feuilles d'un arbre obtenu avec la fonction readtree.
+	Renvoie un tuple des listes des noeuds et des feuilles d'un arbre obtenu avec la fonction readtree.
 	"""
 	leaves=[]
 	nodes=[tree[0]]
@@ -48,12 +48,21 @@ def nodesandleaves(tree):
 	return (nodes,leaves)
 
 def getleaves(tree):
+	"""Renvoie la liste des feuilles d'un arbre. 
+	Utilise nodesandleaves, inclus pour rester compatible avec les fonctions déjà écrites
+	"""
 	nodesandleaves(tree)[1]
 
 def getnodes(tree):
+	"""Renvoie la liste des noeuds d'un arbre (i.e tout sauf les feuilles)
+	Utilise nodesandleaves, inclus par esprit de complémentarité avec getleaves.
+	"""
 	nodesandleaves(tree)[0]
 
 def getchildren(tree):
+	"""Fonction pour obtenir un dictionnaire à partir des productions d'un arbre. 
+	Renvoie un dictionnaire de non-terminaux associés à une liste de leurs réécritures dans l'arbre.
+	"""
 	childdict =defaultdict(list)
 	
 	def findchildren(tree):
