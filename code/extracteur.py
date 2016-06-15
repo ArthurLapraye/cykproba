@@ -4,6 +4,122 @@
 import evaluation
 from collections import defaultdict
 import fractions
+from copy import deepcopy
+from collections import defaultdict
+from itertools import chain,combinations
+
+	
+"""
+For every unary rule
+A → B, with A, B ∈ V and probability p 1  :
+	1. Add a non-terminal A↓B to V .
+	2. Remove A → B from P.
+	3. For every production C → · A „ in P with probability p 2 , where
+	·, „ ∈ V ∗
+	(a) add a production to P of the form C → · A↓B „ with
+	probability p 1 p 2 ;
+	(b) set P(C → · A „) = (1 − p 1 ) p 2 .
+	4. For every rule production in P of the form A → · with probability
+	p 3 , set P(A → ·) = p 3 /(1 − p 1 ).
+	5. For every rule production in P of the form B → ·,
+	add productions to P of the form A↓B → · such that
+	P(A↓B → ·) = P(B → ·).
+"""
+
+
+def CNF(terminaux,nonterminaux,regles,markov=None):
+    cnf=deepcopy(regles)
+    
+    def binariser(nterm,prod,proba=1):
+    	if prod[2:]:
+    		nuNT="↓".join(prod)
+    		nonterminaux.add(nuNT)
+    		cnf[nterm][prod[0],nuNT]=proba
+    		binariser(nuNT,prod[1:])
+    	else:
+    		cnf[nterm][prod]=proba
+    
+    for nterm in regles:
+        for production in regles[nterm]:
+            if production[2:]:
+                binariser(nterm,production,proba=regles[nterm][production])
+                del cnf[nterm][production]
+    
+    #Unit test : vérifier l'intégrité de la grammaire
+    #Que toutes les règles sont au plus binaires
+    #Que toutes les probabilités somment toujours à 1
+    for nt in cnf:
+    	sumproba=0
+    	#print(nt)
+    	for prod in cnf[nt]:
+    		#print(prod)
+    		if len(prod) > 2:
+    			raise ValueError("Fail"+str(prod))
+    		else:
+    			sumproba += cnf[nt][prod]
+    		
+    	#print(sumproba)
+    	assert(sumproba==1)
+    
+    regles=cnf
+    cnf=deepcopy(cnf)
+    
+    for nterm in regles:
+    	for production in regles[nterm]:
+    		if not production[1:]:
+    			if not production[0] in terminaux:
+    				print(nterm,"=>",production)
+    				singulier=production[0]
+    				nouveauNT=nterm+"↑"+singulier
+    				proba1=cnf[nterm][production]
+    				for p in regles[singulier]:
+    					cnf[nouveauNT][p]=cnf[singulier][p]
+    				
+    				del cnf[nterm][production]
+    				for p in cnf[nterm]:
+    					cnf[nterm][p]=fractions.Fraction(cnf[nterm][p],proba1)
+    				
+    				#del regles[nterm]
+    				
+    				#print("titi")
+    				for nt in regles:
+    					#print("tata")
+    					for prod in regles[nt]:
+    						#print("blo")
+    						if nterm in prod and (len(prod) > 1):
+    							#print("tutu")
+    							proba2=cnf[nt][prod]
+    							g,d=prod
+    							#print("tøtø")
+    							if g == d:
+    								#print("bla")
+    								cnf[nt][prod]=proba2*( (1-proba1)**2)
+    								cnf[nt][nouveauNT,d]=proba2 * proba1 * (1-proba1)
+    								cnf[nt][g,nouveauNT]=proba2 * (1-proba1) * proba1
+    								cnf[nt][nouveauNT,nouveauNT]=proba2 * (proba1 ** 2)
+    							elif g == nterm:
+    								cnf[nt][g,d] = proba2 * (1-proba1)
+    								cnf[nt][nouveauNT,d]= proba2 * proba1
+    							elif d == nterm:
+    								cnf[nt][g,d] = proba2 * (1-proba1)
+    								cnf[nt][g,nouveauNT]= proba2 * proba1
+    							else:
+    								raise ValueError("nterm dans prod mais dans aucune de ses deux positions...")
+    						
+    	
+    	#print(nterm)
+    
+    for nt in cnf:
+    	print(nt)
+    	somme=sum([cnf[nt][prod] for prod in cnf[nt] ])
+    	print(somme)
+    	assert(somme==1)
+    
+    	
+    		#else:
+    		#	print(prod
+    
+    return nonterminaux, terminaux, cnf
 
 def extraire_grammaire():
     """
@@ -156,7 +272,7 @@ def extraire_grammaire():
             phrase=ligne
         
         
-        arbre=evaluation.readtree(evaluation.tokenize(phrase))[0]
+        arbre=evaluation.defoliate(evaluation.readtree(evaluation.tokenize(phrase))[0])
         nonterminaux,terminaux = evaluation.nodesandleaves(arbre)
         productions=evaluation.getchildren(arbre)
         
@@ -183,38 +299,13 @@ def extraire_grammaire():
         sumproba=0
         for prod in rightside[nt]:
             prodproba=fractions.Fraction(rightside[nt][prod],leftside[nt])
-            print(nt,"=>",prod,":",prodproba)
+            rightside[nt][prod]=prodproba
             sumproba += prodproba
-        
-        #print(sumproba)
         assert(sumproba==1)
-        #input()
+        
     
-    tmp = grammaires.Grammairehorscontexteprobabiliste(
-        terminals=set(terminaux), #terminal.Terminal.terminals(),
-        nonterminals=set(nonterminaux), #nonterminal.Nonterminal.nonterminals(),
-        productions=[]#productions.Production.productions()
-    )
-
-    if args.pickle:
-        if args.pcfg:
-            with open(args.output+"_"+"pcfg"+".pickle", "wb") as f:
-                pdump(tmp, f)
-        if args.cfg:
-            # ajouter Grammairehorscontexte(tmp) cast de tmp
-            # soit passage de Productionhorscontexteprobabilisee à Productionhorscontexte
-            with open(args.output+"_"+"cfg"+".pickle", 'wb') as f:
-                pdump(tmp, f)
-
-        if args.pcnf:
-            cnf = tmp.naire2cnf(markov=args.markov)
-            with open(args.output+"_"+"pcnf"+".pickle", "wb") as f:
-                pdump(cnf, f)
-        if args.cnf:
-            cnf = tmp.naire2cnf(markov=args.markov)
-            # Grammairehorscontextecnf(cnf)
-            with open(args.output+"_"+"cnf"+".pickle", "wb") as f:
-                pdump(cnf, f)
+    grammaire=CNF(set(terminaux),set(nonterminaux),rightside)
+    
     print('Fin')
 
 
