@@ -79,6 +79,34 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
     				for p in cnf[nterm]:
     					cnf[nterm][p]=fractions.Fraction(cnf[nterm][p],proba1)
     				
+    				#del regles[nterm]
+    				
+    				#print("titi")
+    				for nt in regles:
+    					#print("tata")
+    					for prod in regles[nt]:
+    						#print("blo")
+    						if nterm in prod and (len(prod) > 1):
+    							#print("tutu")
+    							proba2=cnf[nt][prod]
+    							g,d=prod
+    							#print("tøtø")
+    							if g == d:
+    								#print("bla")
+    								cnf[nt][prod]=proba2*( (1-proba1)**2)
+    								cnf[nt][nouveauNT,d]=proba2 * proba1 * (1-proba1)
+    								cnf[nt][g,nouveauNT]=proba2 * (1-proba1) * proba1
+    								cnf[nt][nouveauNT,nouveauNT]=proba2 * (proba1 ** 2)
+    							elif g == nterm:
+    								cnf[nt][g,d] = proba2 * (1-proba1)
+    								cnf[nt][nouveauNT,d]= proba2 * proba1
+    							elif d == nterm:
+    								cnf[nt][g,d] = proba2 * (1-proba1)
+    								cnf[nt][g,nouveauNT]= proba2 * proba1
+    							else:
+    								raise ValueError("nterm dans prod mais dans aucune de ses deux positions...")
+    						
+    	
     	#print(nterm)
     
     for nt in cnf:
