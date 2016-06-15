@@ -32,7 +32,7 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
     
     def binariser(nterm,prod,proba=1):
     	if prod[2:]:
-    		nuNT="↓".join(prod)
+    		nuNT="↓".join(prod[1:])
     		nonterminaux.add(nuNT)
     		cnf[nterm][prod[0],nuNT]=proba
     		binariser(nuNT,prod[1:])
@@ -50,78 +50,17 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
     #Que toutes les probabilités somment toujours à 1
     for nt in cnf:
     	sumproba=0
-    	#print(nt)
     	for prod in cnf[nt]:
-    		#print(prod)
     		if len(prod) > 2:
     			raise ValueError("Fail"+str(prod))
     		else:
     			sumproba += cnf[nt][prod]
-    		
-    	#print(sumproba)
     	assert(sumproba==1)
     
-    regles=cnf
-    cnf=deepcopy(cnf)
-    
-    for nterm in regles:
-    	for production in regles[nterm]:
-    		if not production[1:]:
-    			if not production[0] in terminaux:
-    				print(nterm,"=>",production)
-    				singulier=production[0]
-    				nouveauNT=nterm+"↑"+singulier
-    				proba1=cnf[nterm][production]
-    				for p in regles[singulier]:
-    					cnf[nouveauNT][p]=cnf[singulier][p]
-    				
-    				del cnf[nterm][production]
-    				for p in cnf[nterm]:
-    					cnf[nterm][p]=fractions.Fraction(cnf[nterm][p],proba1)
-    				
-    				#del regles[nterm]
-    				
-    				#print("titi")
-    				for nt in regles:
-    					#print("tata")
-    					for prod in regles[nt]:
-    						#print("blo")
-    						if nterm in prod and (len(prod) > 1):
-    							#print("tutu")
-    							proba2=cnf[nt][prod]
-    							g,d=prod
-    							#print("tøtø")
-    							if g == d:
-    								#print("bla")
-    								cnf[nt][prod]=proba2*( (1-proba1)**2)
-    								cnf[nt][nouveauNT,d]=proba2 * proba1 * (1-proba1)
-    								cnf[nt][g,nouveauNT]=proba2 * (1-proba1) * proba1
-    								cnf[nt][nouveauNT,nouveauNT]=proba2 * (proba1 ** 2)
-    							elif g == nterm:
-    								cnf[nt][g,d] = proba2 * (1-proba1)
-    								cnf[nt][nouveauNT,d]= proba2 * proba1
-    							elif d == nterm:
-    								cnf[nt][g,d] = proba2 * (1-proba1)
-    								cnf[nt][g,nouveauNT]= proba2 * proba1
-    							else:
-    								raise ValueError("nterm dans prod mais dans aucune de ses deux positions...")
-    						
-    	
-    	#print(nterm)
-    
-    for nt in cnf:
-    	print(nt)
-    	somme=sum([cnf[nt][prod] for prod in cnf[nt] ])
-    	print(somme)
-    	assert(somme==1)
-    
-    	
-    		#else:
-    		#	print(prod
     
     return nonterminaux, terminaux, cnf
 
-def extraire_grammaire():
+if __name__ == '__main__':
     """
         Cette fonction met en place un système d'arguments/options.
         On peut soit extraire une grammaire à partir d'un fichier d'entrée ou bien
@@ -309,6 +248,3 @@ def extraire_grammaire():
     print('Fin')
 
 
-
-if __name__ == '__main__':
-    extraire_grammaire()
