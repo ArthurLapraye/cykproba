@@ -6,22 +6,27 @@ from collections import defaultdict
 import fractions
 from copy import deepcopy
 from collections import defaultdict
-from itertools import chain,combinations
 
-def zum():
+def defaultdictmaker():
 	return defaultdict(int)
 
 def CNF(terminaux,nonterminaux,regles,markov=None):
+	"""
+		Fonction pour mettre une PCFG sous forme normale de Chomsky.
+		Binarise, puis supprime les productions singulières pour les non-terminaux.
+	"""
 	cnf=deepcopy(regles)
 	
-	#Unit test pour vérifier qu'aucun symbole ne se récrit lui-même
+	#Unit test pour vérifier qu'aucun symbole ne se récrit en epsilon
 	for nt in regles:
 		for prod in regles[nt]:
-			if not prod[1:]:
-				if nt == prod[0]:
-					raise ValueError("Autorécriture",nt)
+			if not prod:
+				#if nt == prod[0]:
+				raise ValueError("Production vide pour",nt)
 			
 	def binariser(nterm,prod,proba=1):
+		"""Fonction interne, qui binarise récursivement une production donnée
+		"""
 		if prod[2:]:
 			nuNT="↓".join(prod[1:])
 			nonterminaux.add(nuNT)
@@ -32,7 +37,7 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 	
 	for nterm in regles:
 		for production in regles[nterm]:
-			if production[2:]:
+			if len(production) > 2:
 				binariser(nterm,production,proba=regles[nterm][production])
 				del cnf[nterm][production]
 	
@@ -43,22 +48,27 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 		sumproba=0
 		for prod in cnf[nt]:
 			if len(prod) > 2:
-				raise ValueError("Fail : "+prod)
+				raise ValueError("Production trop longue : "+prod)
 			else:
 				sumproba += cnf[nt][prod]
-		assert(sumproba==1)
+		if not (sumproba==1):
+			raise RuntimeWarning("Erreur : somme incorrecte"+str(sumproba)+"pour "+nt+" après binarisation.")
 	
-	regles=cnf
-	cnf=deepcopy(cnf)
+	#regles=cnf
+	#cnf=deepcopy(cnf)
 	modified=True
 	
+	#Boucle pour supprimer les productions singulières de non-terminaux.
 	while modified:
 		modified=False
+		#La liste des clefs d'un dictionnaire doit être maintenue 
+		#dans une variable à part
+		#le dictionnaire
 		clefs=list(cnf.keys())
 		for nt in clefs:
 			pz=list(cnf[nt].keys())
 			for prod in pz:
-				if not prod[1:]:
+				if len(prod) == 1:
 					if prod[0] in nonterminaux:
 						modified=True
 						singulier=prod[0]
@@ -69,14 +79,10 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 						
 						del cnf[nt][prod]
 						
-						
-						
-		
-		#regles=cnf
-		#cnf=deepcopy(cnf)
 	
 	#unit test pour vérifier que tout s'est bien passé
-	
+	#Vérifie qu'il n'y a plus de productions singulières
+	#Et que les probabilités somment toujours à un, comme il se doit.
 	for nt in cnf:	
 		sumproba=0
 		for prod in cnf[nt]:
@@ -87,17 +93,12 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 		
 		#print(sumproba)
 		if not (sumproba == 1 ):
-			raise RuntimeWarning("Somme incorrecte "+str(sumproba)+" pour "+nt)
+			raise RuntimeWarning("Somme incorrecte "+str(sumproba)+" pour "+nt+" après suppression des productions singulières.")
 	
 	return terminaux,nonterminaux, cnf
 
 if __name__ == '__main__':
-	"""
-		Cette fonction met en place un système d'arguments/options.
-		On peut soit extraire une grammaire à partir d'un fichier d'entrée ou bien
-		transformer des phrases au format parenthésé en liste de postag.
-	:return: None
-	"""
+	
 	import argparse
 	import codecs
 	from pickle import dump as pdump
@@ -136,7 +137,7 @@ if __name__ == '__main__':
 	
 	args = argumenteur.parse_args()
 	
-	rightside=defaultdict(zum)
+	rightside=defaultdict(defaultdictmaker)
 	leftside =defaultdict(int)
 	nonterminaux=set()
 	terminaux=set()
