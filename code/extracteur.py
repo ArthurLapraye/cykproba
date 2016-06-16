@@ -8,28 +8,13 @@ from copy import deepcopy
 from collections import defaultdict
 from itertools import chain,combinations
 
-	
-"""
-For every unary rule
-A → B, with A, B ∈ V and probability p 1  :
-	1. Add a non-terminal A↓B to V .
-	2. Remove A → B from P.
-	3. For every production C → · A „ in P with probability p 2 , where
-	·, „ ∈ V ∗
-	(a) add a production to P of the form C → · A↓B „ with
-	probability p 1 p 2 ;
-	(b) set P(C → · A „) = (1 − p 1 ) p 2 .
-	4. For every rule production in P of the form A → · with probability
-	p 3 , set P(A → ·) = p 3 /(1 − p 1 ).
-	5. For every rule production in P of the form B → ·,
-	add productions to P of the form A↓B → · such that
-	P(A↓B → ·) = P(B → ·).
-"""
-
+def zum():
+	return defaultdict(int)
 
 def CNF(terminaux,nonterminaux,regles,markov=None):
 	cnf=deepcopy(regles)
 	
+	#Unit test pour vérifier qu'aucun symbole ne se récrit lui-même
 	for nt in regles:
 		for prod in regles[nt]:
 			if not prod[1:]:
@@ -66,41 +51,43 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 	regles=cnf
 	cnf=deepcopy(cnf)
 	modified=True
-	i=0
 	
 	while modified:
-		i+=1
 		modified=False
-		print(i)
-		for nt in regles:
-			for prod in regles[nt]:
+		clefs=list(cnf.keys())
+		for nt in clefs:
+			pz=list(cnf[nt].keys())
+			for prod in pz:
 				if not prod[1:]:
 					if prod[0] in nonterminaux:
 						modified=True
 						singulier=prod[0]
-						proba1=regles[nt][prod]
-						for p in regles[singulier]:
-							cnf[nt][p] += regles[singulier][p]*proba1
+						proba1=cnf[nt][prod]
+						prds=list(cnf[singulier].keys())
+						for p in prds:
+							cnf[nt][p] += cnf[singulier][p]*proba1
 						
 						del cnf[nt][prod]
 						
 						
 						
 		
-		regles=cnf
-		cnf=deepcopy(cnf)
+		#regles=cnf
+		#cnf=deepcopy(cnf)
+	
+	#unit test pour vérifier que tout s'est bien passé
 	
 	for nt in cnf:	
 		sumproba=0
 		for prod in cnf[nt]:
 			if len(prod) < 2 and prod[0] in nonterminaux:
-				raise ValueError("No cigar :",nt,prod)
+				raise ValueError("Production singulière :",nt,prod)
 			else:
 				sumproba += cnf[nt][prod]
 		
 		#print(sumproba)
-		if not (sumproba==1.0):
-			raise ValueError(sumproba)
+		if not (sumproba == 1 ):
+			raise RuntimeWarning("Somme incorrecte "+str(sumproba)+" pour "+nt)
 	
 	return terminaux,nonterminaux, cnf
 
@@ -112,31 +99,19 @@ if __name__ == '__main__':
 	:return: None
 	"""
 	import argparse
-	import nonterminal
-	import terminal
-	import productions
-	import grammaires
 	import codecs
 	from pickle import dump as pdump
-	from random import shuffle
-	from sys import stdin
-	from extraire import parser, sentence
-	import phrases
-
-	global sentence
 
 	argumenteur = argparse.ArgumentParser(
 		prog="extracteur.py",
 		description="""
 			Ce programme sert à prendre un fichier au format parenthésé,
-			puis d'en extraire une grammaire au format que vous voulez,
-			dans la limite des choix proposés en options.
+			puis d'en extraire une grammaire binarisée sans productions singulières.
 		"""
 	)
 
 	argumenteur.add_argument(
 		"input",
-		default=stdin,
 		metavar="MRG",
 		help="""
 			input doit être une chaine de caractères
@@ -158,79 +133,10 @@ if __name__ == '__main__':
 #		default=False,
 #		help="Cette option permet de mettre la sortie au format YAML"
 #	)
-	argumenteur.add_argument(
-		"-p",
-		"--pickle",
-		action='store_true',
-		default=False,
-		help="Cette option permet de mettre a sortie au format PICKLE"
-	)
-	argumenteur.add_argument(
-		"-F",
-		"--cfg",
-		default=False,
-		action="store_true",
-		help="La grammaire extraite sera hors contexte"
-	)
-	argumenteur.add_argument(
-		"-C",
-		"--cnf",
-		default=False,
-		action="store_true",
-		help="La grammaire extraite sera en forme normale de Chomsky"
-	)
-	argumenteur.add_argument(
-		"-P",
-		"--pcfg",
-		default=False,
-		action="store_true",
-		help="La grammaire extraite sera probabilisée"
-	)
-	argumenteur.add_argument(
-		"-N",
-		"--pcnf",
-		default=False,
-		action="store_true",
-		help="""
-			La grammaire extraite sera sous forme
-			normale de Chomsky et probabilisée
-		"""
-	)
-	argumenteur.add_argument(
-		"-M",
-		"--markov",
-		default=100,
-		const=1,
-		nargs="?",
-		type=int,
-		help="""Option permettant de modifier la binarisation
-			 en rajoutant du contexte, par défaut, la markovisation
-			 sera d'ordre infini, en mettant juste -M ou --markov
-			 elle sera d'ordre 1, sinon elle sera de l'ordre que vous souhaitez."""
-	)
-	argumenteur.add_argument(
-		"-S",
-		"--shuffle",
-		default=False,
-		action="store_true",
-		help="Option qui permet de mélanger l'input"
-	)
-
-	argumenteur.add_argument(
-		"-Y",
-		"--sentences",
-		help="Nom du fichier de phrases au format Phrase de sortie au format pickle."
-	)
-
-	argumenteur.add_argument(
-		"-n",
-		"--nb",
-		type=int,
-		help="chiffre servant à limiter le nombre d'éléments à prendre dans le corpus"
-	)
-
+	
 	args = argumenteur.parse_args()
-	rightside=defaultdict(lambda : defaultdict(int))
+	
+	rightside=defaultdict(zum)
 	leftside =defaultdict(int)
 	nonterminaux=set()
 	terminaux=set()
@@ -247,7 +153,7 @@ if __name__ == '__main__':
 				phrase=ligne
 		
 		
-			arbre=evaluation.defoliate(evaluation.readtree(evaluation.tokenize(phrase))[0])
+			arbre=evaluation.readtree(evaluation.tokenize(phrase))[0]
 			n,t = evaluation.nodesandleaves(arbre)
 			nonterminaux.update(n)
 			terminaux.update(t)
@@ -259,9 +165,6 @@ if __name__ == '__main__':
 				for prod in productions[elem]:
 					rightside[elem][prod] += 1
 		
-	if args.sentences is not None:
-		print('Sortie du fichier phrases avec les phrases au format pickle')
-		pdump(phrases.Phrase.phrases(), open(args.sentences, 'wb'))
 	
 	for nt in rightside:
 		sumproba=0
@@ -275,6 +178,10 @@ if __name__ == '__main__':
 	#print(set(terminaux) & set(nonterminaux))
 	grammaire=CNF(terminaux, nonterminaux,rightside)
 	
+	with open(args.output,"wb") as f:
+		pdump(grammaire,f)
+	
 	#print(grammaire)
+	#print("fin")
 
 
