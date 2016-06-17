@@ -9,8 +9,24 @@ from collections import defaultdict
 def tokenize(string):
 	""" Tokenise une S-expression. """
 	return string.replace('(',' ( ').replace(')',' ) ').split()
+	
+def cleantree(tree):
+	"""En raison de la présence de certains tokens à la fois parmi les terminaux et les nonterminaux,
+	il convient de distinguer les deuxième en leur collant une paire de guillemets simples"""
+	
+	branch=list()
+	
+	for elem in tree:
+		if isinstance(elem,list):
+			branch.append(cleantree(elem))
+		elif elem == tree[0]:
+			branch.append(elem)
+		else:
+			branch.append("'"+elem+"'")
+	
+	return branch
 
-def readtree(tokens):
+def readtree1(tokens):
 	"""
 	Fonction inspirée du lecteur de S-expressions de lis.py de P. Norvig http://norvig.com/python-lisp.html
 	Prend une liste de tokens tirée d'un fichier parenthésé et renvoie la liste python correspondante.
@@ -22,13 +38,16 @@ def readtree(tokens):
 	if '(' == token:
 		L = []
 		while tokens[0] != ')':
-			L.append(readtree(tokens))
+			L.append(readtree1(tokens))
 		tokens.pop(0) # pop off ')'
 		return L
 	elif ')' == token:
 		raise SyntaxError('unexpected )')
 	else:
 		return token
+
+def readtree(tokens):
+	return cleantree(readtree1(tokens))
 
 def nodesandleaves(tree):
 	"""
@@ -51,13 +70,13 @@ def getleaves(tree):
 	"""Renvoie la liste des feuilles d'un arbre. 
 	Utilise nodesandleaves, inclus pour rester compatible avec les fonctions déjà écrites
 	"""
-	nodesandleaves(tree)[1]
+	return nodesandleaves(tree)[1]
 
 def getnodes(tree):
 	"""Renvoie la liste des noeuds d'un arbre (i.e tout sauf les feuilles)
 	Utilise nodesandleaves, inclus par esprit de complémentarité avec getleaves.
 	"""
-	nodesandleaves(tree)[0]
+	return nodesandleaves(tree)[0]
 
 def getchildren(tree):
 	"""Fonction pour obtenir un dictionnaire à partir des productions d'un arbre. 

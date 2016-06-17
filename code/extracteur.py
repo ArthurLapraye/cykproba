@@ -8,7 +8,7 @@ from copy import deepcopy
 from collections import defaultdict
 
 def defaultdictmaker():
-	return defaultdict(int)
+	return defaultdict(fractions.Fraction)
 
 def CNF(terminaux,nonterminaux,regles,markov=None):
 	"""
@@ -73,11 +73,49 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 						modified=True
 						singulier=prod[0]
 						proba1=cnf[nt][prod]
+						comproba1=1-proba1
+						nuNT=nt+"↑"+singulier
+						nonterminaux.add(nuNT)
+						
 						prds=list(cnf[singulier].keys())
 						for p in prds:
-							cnf[nt][p] += cnf[singulier][p]*proba1
+							cnf[nuNT][p] = cnf[singulier][p]
 						
 						del cnf[nt][prod]
+						
+						prds2=list(cnf[nt].keys())
+						
+						if len(prds2) > 0:
+							for p in prds2:
+								cnf[nt][p]=fractions.Fraction(cnf[nt][p],comproba1)
+						else:
+							del cnf[nt]
+						
+						klefs=list(cnf.keys())
+						for k in klefs:
+							pdz=list(cnf[k].keys())
+							for p in pdz:
+								proba2=cnf[k][p]
+								#if proba2 == 0:
+									#print(nt,pz,proba2)
+								if len(p) == 2:
+									g,d=p
+									if g == nt and d == nt:
+										cnf[k][g,d] = proba2*comproba1*comproba1
+										cnf[k][nuNT,d] = proba1*proba2*comproba1
+										cnf[k][g,nuNT] = comproba1*proba2*proba1
+										cnf[k][nuNT,nuNT]= proba2*proba1*proba1
+									elif g == nt:
+										cnf[k][g,d]=proba2*comproba1
+										cnf[k][nuNT,d]=proba2*proba1
+									elif d == nt:
+										cnf[k][g,d]=proba2*comproba1
+										cnf[k][g,nuNT]=proba2*proba1
+								
+								#elif p[0]==nt:
+								#	cnf[k][p]=proba2*comproba1
+								#	cnf[k][tuple(nuNT)]=proba2*proba1
+									
 						
 	
 	#unit test pour vérifier que tout s'est bien passé
@@ -165,7 +203,8 @@ if __name__ == '__main__':
 				leftside[elem] += len(productions[elem])
 				for prod in productions[elem]:
 					rightside[elem][prod] += 1
-		
+	
+	#print(nonterminaux & terminaux)	
 	
 	for nt in rightside:
 		sumproba=0
