@@ -22,7 +22,10 @@ def cleantree(tree):
 		elif elem == tree[0]:
 			branch.append(elem)
 		else:
-			branch.append("'"+elem+"'")
+			if elem[0] == "'" and elem[-1] == "'":
+				branch.append(elem)
+			else:
+				branch.append("'"+elem+"'")
 	
 	return branch
 

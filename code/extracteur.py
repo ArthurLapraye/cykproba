@@ -25,9 +25,13 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 				raise ValueError("Production vide pour",nt)
 			
 	def binariser(nterm,prod,proba=1):
-		"""Fonction interne, qui binarise récursivement une production donnée
+		"""Fonction interne, qui binarise récursivement une production donnée.
+		   Si la production est plus longue que 2, elle crée un nouveau nonterminal 
+		   (en concaténant les nonterminaux après le premier, séparés par une flèche descendante)
+		   puis transforme la production existante en production binaire
+		   Et s'appelle récursivement sur la nouvelle production.
 		"""
-		if prod[2:]:
+		if len(prod) > 2:
 			nuNT="↓".join(prod[1:])
 			nonterminaux.add(nuNT)
 			cnf[nterm][prod[0],nuNT]=proba
@@ -41,7 +45,8 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 				binariser(nterm,production,proba=regles[nterm][production])
 				del cnf[nterm][production]
 	
-	#Unit test : vérifier l'intégrité de la grammaire
+	
+	#Test : vérifier l'intégrité de la grammaire
 	#Que toutes les règles sont au plus binaires
 	#Que toutes les probabilités somment toujours à 1
 	for nt in cnf:
@@ -62,7 +67,7 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 	while modified:
 		modified=False
 		#La liste des clefs d'un dictionnaire doit être maintenue 
-		#dans une variable à part
+		#dans une variable à part si on veut modifier
 		#le dictionnaire
 		clefs=list(cnf.keys())
 		for nt in clefs:
@@ -118,7 +123,7 @@ def CNF(terminaux,nonterminaux,regles,markov=None):
 									
 						
 	
-	#unit test pour vérifier que tout s'est bien passé
+	#Test pour vérifier que tout s'est bien passé
 	#Vérifie qu'il n'y a plus de productions singulières
 	#Et que les probabilités somment toujours à un, comme il se doit.
 	for nt in cnf:	
@@ -165,13 +170,6 @@ if __name__ == '__main__':
 			qui représentera le nom du fichier de sortie.
 		"""
 	)
-#	argumenteur.add_argument(
-#		"-y",
-#		"--yaml",
-#		action='store_true',
-#		default=False,
-#		help="Cette option permet de mettre la sortie au format YAML"
-#	)
 	
 	args = argumenteur.parse_args()
 	
@@ -203,9 +201,7 @@ if __name__ == '__main__':
 				leftside[elem] += len(productions[elem])
 				for prod in productions[elem]:
 					rightside[elem][prod] += 1
-	
-	#print(nonterminaux & terminaux)	
-	
+					
 	for nt in rightside:
 		sumproba=0
 		for prod in rightside[nt]:
@@ -213,15 +209,9 @@ if __name__ == '__main__':
 			rightside[nt][prod]=prodproba
 			sumproba += prodproba
 		assert(sumproba==1)
-		
-	
-	#print(set(terminaux) & set(nonterminaux))
+
 	grammaire=CNF(terminaux, nonterminaux,rightside)
 	
 	with open(args.output,"wb") as f:
 		pdump(grammaire,f)
 	
-	#print(grammaire)
-	#print("fin")
-
-
