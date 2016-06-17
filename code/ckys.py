@@ -68,7 +68,7 @@ def remplit(phrase, cnf, chart):
             print(min, max)
             for nonterminal in nonterminaux:
                 best = 0
-                for rhs in list(regles[nonterminal]):
+                for rhs in regles[nonterminal]:
                     if len(rhs) == 2:
                         for mid in range(min + 1, max - 1):
                             t1 = chart[(min, mid)][rhs[0]]
