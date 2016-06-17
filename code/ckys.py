@@ -59,7 +59,7 @@ def initialise(phrase, cnf):
 def remplit(phrase, cnf, chart):
     print('Remplissage de la charte: ')
 
-    span = (x for (x, y) in enumerate(phrase[1:], 2))
+    span = range(2,len(phrase)) #(x for (x, y) in enumerate(phrase[1:], 2))
 
     (terminaux, nonterminaux, regles) = cnf
 
