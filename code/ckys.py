@@ -4,9 +4,6 @@
 import collections
 import fractions
 
-
-
-
 def get_sent_sommet(phrase):
     for x in self.grammaire['axiome']:
         try:
@@ -94,9 +91,9 @@ def main():
     import evaluation
     import sys, codecs
 
-    cnf = pickle.load(open('grammaire.pickle', 'rb'))
+    cnf = pickle.load(open(sys.argv[1], 'rb'))
 
-    with codecs.open(sys.argv[1], "r") as corpus:
+    with codecs.open(sys.argv[2], "r") as corpus:
         for phrase in corpus:
             if not phrase.startswith('('):
                 (nomcorpus_numero, phrase) = phrase.split('\t')
