@@ -1,108 +1,179 @@
 #!/usr/bin/python3
 # coding: utf8
 
-import collections
-import fractions
+# Representations de deux grammaires
 
-def get_sent_sommet(phrase):
-    for x in self.grammaire['axiome']:
-        try:
-            sent_sommet = self.chart[(0, len(phrase))][x]
-        except KeyError:
-            print("La phrase n'est pas reconnue par la grammaire")
-        return (sent_sommet, (0, len(phrase)))
+g1 = [('S', 'AB'), ('S', 'a'), ('A', 'SB'), ('A', "b"), ('B', 'b')]
+g2 = [('S', 'AS'), ('S', 'b'), ('A', 'a')]
 
-def predit(phrase, cnf):
-    print('Prédiction: ')
+def getAxiom(gr) :
+	return gr[0][0]
 
-    chart = collections.defaultdict(lambda : collections.defaultdict(int))
-
-    return get_sommet(remplit(phrase, cnf, initialise(phrase, cnf)), phrase)
-    # return get_arbre(get_sommet(remplit(phrase, cnf, initialise(phrase, cnf, chart))))
-
-def get_sommet(chart, phrase):
-    for x in list(chart[(len(phrase), 0)]):
-        if (x == "SENT") or "SENT" in x:
-            print(chart[(len(phrase), 0)][x])
-
-def get_arbre(sent_sommet):
-    pattern = '({tete} {enfants})'
-    tete = list(self.chart[sent_sommet[1]].keys())[0]
-    if (len(sent_sommet) == 1) and (isinstance(sent_sommet, (tuple, (int, int)))):
-        return pattern.format(tete=tete, enfants=tete.lower())
-    else:
-        if (len(sent_sommet) == 2) and (isinstance(sent_sommet, (tuple, (tuple, tuple)))):
-            return pattern.format(
-                tete=tete,
-                enfants=" ".join([self.get_arbre(child) for child in sent_sommet[1]])
-            )
-
-def initialise(phrase, cnf):
-    print('Initialisation de la charte: ')
-
-    chart = collections.defaultdict(lambda: collections.defaultdict(int))
-
-    (terminaux, nonterminaux, regles) = cnf
-
-    s = 1
-
-    for (t, _) in enumerate(phrase):
-        for lhs in list(regles):
-            for rhs in list(regles.get(lhs)):
-                if len(rhs) == 1:
-                    chart[(s, t)][lhs] = regles[lhs][rhs[0]]
-                    # chart[(s, t)][lhs] = (regles[lhs][rhs[0]], ((t, s),))
-    print('Chart initialisée')
-    return chart
+# --------------------------#
+# Base de l'algorithme CYK  #
+# --------------------------#
 
 
-def remplit(phrase, cnf, chart):
-    print('Remplissage de la charte: ')
 
-    span = range(2,len(phrase)) #(x for (x, y) in enumerate(phrase[1:], 2))
+#Initialisation de la table T pour le mot u et la grammaire gr
 
-    (terminaux, nonterminaux, regles) = cnf
-
-    for max in span:
-        for min in range(max-2, 0, -1):
-            print(min, max)
-            for nonterminal in nonterminaux:
-                best = 0
-                for rhs in regles[nonterminal]:
-                    if len(rhs) == 2:
-                        for mid in range(min + 1, max - 1):
-                            t1 = chart[(min, mid)][rhs[0]]
-                            t2 = chart[(mid, max)][rhs[1]]
-                            candidate = t1 * t2 * regles[nonterminal][rhs]
-                            if candidate > best:
-                                best = candidate
-                                # best = (candidate, ((min, mid, rhs[0]), (mid, max, rhs[1])))
-                        chart[(min, max)][nonterminal] = best
-    print('Chart remplie')
-    return chart
+def init(T, u, gr) :
+	for i in range(1,len(u)+1) :													
+	#On parcourt le mot à reconnaitre
+		for l in gr :	
+			for r in gr[l]:														   
+			#On parcourt la grammaire
+				if (u[i-1] == r[0] ):														  
+				#Si la lettre en cours est identique à une partie droite de règle
+					if (i,i+1) not in T :
+						T[(i,i+1)]=dict()
+						T[(i,i+1)][l,r[0]] = float(gr[l][r])										
+						 #On remplit la case
+					else : 
+						T[(i,i+1)][l,r[0] ]= T[(i,i+1)].get( (l,r[0] ) ,0) + float( gr[l][r] )										   
+						#On rajoute une autre règle s'il y en a + qu'une
+		if (i,i+1) not in T :
+			T[(i,i+1)]=[]															  
+			#Si une case est vide, on ajoute un tableau vide dedans pour qu'elle apparaisse dans le dico
+	return T
 
 
-def defaultdictmaker():
-    return collections.defaultdict(fractions.Fraction)
+"Remplissage de la table T (initialisation deja  effectuee) pour le mot u et la grammaire gr"
 
+def boucle(T,u,gr) :
+
+	debuts=dict()
+	for n in gr:
+		for p in gr[n]:
+			if len(p) == 2:
+				if not p[0] in debuts:
+					debuts[p[0]]=dict()
+				if p[1] not in debuts[p[0]]:
+					debuts[p[0]][p[1]]= dict()
+					debuts[p[0]][p[1]][n]= float(gr[n][p])
+				else:
+					#print(n,p)
+					if n in debuts[p[0]][p[1]]:
+						print("Warning :",n,"=>",p, gr[n][p] )
+					
+					debuts[p[0]][p[1]][n] = float( gr[n][p] )
+			
+			else:
+				if p[0][0] != "'":
+					print(p)
+					input()
+			
+	for i in range(2,len(u)+1):
+	#On utilise y et i pour parcourir la chart
+		for y in range(1,(len(u)-i+2)) :
+			span=(y,i+y)
+			for j in range(y+1,i+y) :
+				cds=T[(j,i+y)]												  
+			#La variable j est utilisée pour trouver la moitié du protomot
+				for (a,b) in T[(y,j)]:	
+					pa=T[y,j][a,b]											
+				#On regarde dans les paires de cases nécéssaire pour remplir la prochaine
+					if a in debuts:
+						suite=debuts[a]
+						for (c,d) in cds:
+							pz=pa*cds[c,d]
+							if c in suite: #debuts[a]:
+								r=((a,b),(c,d))
+								#print(r)
+								recrits=suite[c]
+								for l in recrits:
+									
+									pb=recrits[l]
+									
+									newpb= pz*pb
+									
+									if span not in T:
+										T[span]=dict()
+										T[span][l,r]=newpb 
+									else:
+										if (l,r) not in T[span]:
+											T[span][l,r] = newpb
+										else:
+											#print(l,r)
+											T[span][l,r] += newpb
+											#input()		  
+				
+				
+				#print(j)
+				
+			if span not in T :
+				#print("*")
+				T[span]=dict()
+				
+			#print(y)
+		
+		print(i)	
+		
+	return T
+
+
+"Analyse du mot u pour la grammaire gr"
+
+def parsing(gr,u) :
+	T = dict()#{}
+	init(T, u, gr)
+	boucle(T, u, gr)
+	return T
+
+def affiche_arbre(T, u) :
+	if True :
+		chaine = ""
+		for i in range(1,len(u)+2) :
+			chaine = ""
+			for j in range(1,i) :
+				x = j
+				y = len(u)+2-i+j
+				chaine = chaine + "\t".join([z[0] for z in T[x,y]]) + " "
+			print (chaine)
+	print
+
+def treemaker(T,u):
+	longueur=len(u)
+	for elem in sorted(T[1,1+longueur],key=lambda x: T[1,1+longueur][x] ) :
+		if elem[0].startswith("SENT"):
+			print(elem)
+
+from extracteur import defaultdictmaker
 
 def main():
-    import pickle
-    import evaluation
-    import sys, codecs
+	
+	from collections import defaultdict
+	import fractions
+	
+	import pickle
+	import evaluation
+	import sys, codecs
 
-    cnf = pickle.load(open(sys.argv[1], 'rb'))
+	with open(sys.argv[1], 'rb') as fichiergrammaire:
+		cnf = pickle.load(fichiergrammaire)
 
-    with codecs.open(sys.argv[2], "r") as corpus:
-        for phrase in corpus:
-            if not phrase.startswith('('):
-                (nomcorpus_numero, phrase) = phrase.split('\t')
-                (nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
-            arbre=evaluation.readtree(evaluation.tokenize(phrase))[0]
-            phrase = evaluation.getleaves(arbre)
-            print("phrase_gold : ", phrase)
-            print(predit(phrase, cnf))
+	with codecs.open(sys.argv[2], "r") as corpus:
+		for phrase in corpus:
+			if not phrase.startswith('('):
+				(nomcorpus_numero, phrase) = phrase.split('\t')
+				(nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
+			arbre=evaluation.readtree(evaluation.tokenize(phrase))[0]
+			phrase = evaluation.getleaves(arbre)
+			print("phrase : ", phrase)
+			print(len(phrase))
+			
+			goon=input()
+			if goon == "":
+				continue
+			if goon == "quit":
+				break
+			
+			
+			z=parsing(cnf[2],phrase)
+			#affiche_arbre(z,phrase)
+			print(treemaker(z,phrase))
 
 
 if __name__ == '__main__':
-    main()
+	import cProfile
+	cProfile.run("main()")
