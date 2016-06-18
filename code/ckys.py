@@ -67,11 +67,13 @@ def boucle(T,u,gr) :
 	#On utilise y et i pour parcourir la chart
 		for y in range(1,(len(u)-i+2)) :
 			span=(y,i+y)
+			print(span)
 			for j in range(y+1,i+y) :
 				cds=T[(j,i+y)]												  
 			#La variable j est utilisée pour trouver la moitié du protomot
-				for (a,b) in T[(y,j)]:	
-					pa=T[y,j][a,b]											
+				for (a,b) in T[(y,j)]:
+					z=(a,b)
+					pa=T[y,j][z]											
 				#On regarde dans les paires de cases nécéssaire pour remplir la prochaine
 					if a in debuts:
 						suite=debuts[a]
