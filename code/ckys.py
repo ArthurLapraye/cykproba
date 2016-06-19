@@ -86,7 +86,8 @@ def CYKmaker(cnf):
 					sp2=(j,i+y)
 					cds=T[sp2]
 					
-					#						  
+					
+											  
 					for a in T[(y,j)]:
 						if a in debuts:
 								suite=debuts[a]
@@ -99,18 +100,22 @@ def CYKmaker(cnf):
 											pa=T[y,j][a][z]
 											for d in cds[c]:
 												pz=pa*cds[c][d]
+												maximum=0
 												for l in recrits:
 													pb=recrits[l]
 													newpb= pz*pb
+													
+													if newpb >= maximum:
+														maximum=newpb
 									
-													if span not in T:
-														T[span]=dict()
-													if l not in T[span]:
-														T[span][l]=dict()
-													if r not in T[span][l]:
+														if span not in T:
+															T[span]=dict()
+														if l not in T[span]:
+															T[span][l]=dict()
+														#if r not in T[span][l]:
 														T[span][l][r] = newpb
-													else:
-														T[span][l][r] += newpb
+														#else:
+														#	T[span][l][r] += newpb
 				
 				
 				if span not in T :
@@ -203,8 +208,8 @@ if __name__ == '__main__':
 	
 	argu.add_argument('-i','--inter', 
 						dest='interactif', 
-						action='store_true',
-						default=False,
+						action='store_false',
+						#default=False,
 						help="""Si cette option est active le script fonctionne en mode interactif.""")
 	
 	args=argu.parse_args()
