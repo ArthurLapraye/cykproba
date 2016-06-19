@@ -10,6 +10,16 @@ def tokenize(string):
 	""" Tokenise une S-expression. """
 	return string.replace('(',' ( ').replace(')',' ) ').split()
 	
+def writetree(tree):
+	string=""
+	for elem in tree:
+		if isinstance(elem,list):
+			string += writetree(elem)
+		else:
+			string += " "+elem+" "
+	
+	return "("+string+")"
+	
 def cleantree(tree):
 	"""En raison de la présence de certains tokens à la fois parmi les terminaux et les nonterminaux,
 	il convient de distinguer les deuxième en leur collant une paire de guillemets simples"""
