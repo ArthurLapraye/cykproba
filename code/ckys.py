@@ -3,8 +3,22 @@
 
 
 def CYKmaker(cnf):
+	"""
+		Fonction qui construit le dictionnaire inverse des productions
+			Pour une règle
+				a -> b,c
+		Le dictionnaire a une entrée
+			b -> c -> a -> prob
+		Ce qui accélère le traitement.
+		
+		La fonction CYK proprement dite est incluse dans cette fonction, afin de ne pas devoir reconstruire
+		le dictionnaire inverse à chaque fois : ce dernier est inclus dans la clôture lexicale de CYKmaker.
+	"""
 	terminaux,nonterminaux,gr=cnf
 	debuts=dict()
+	
+	#Construction du dictionnaire inverse des productions
+	#à partir de la grammaire
 	for n in gr:
 		for p in gr[n]:
 			if len(p) == 2:
@@ -21,12 +35,20 @@ def CYKmaker(cnf):
 					debuts[p[0]][p[1]][n] = float( gr[n][p] )
 			
 			else:
-				if p[0] not in terminaux:
+				#Si la grammaire n'est pas en CNF
+				if len(p) >  1 or p[0] not in terminaux:
 					raise ValueError("Production invalide :",p)
-		
-	def cyk(u) :
-		T=dict()
 	
+	#Fonction CYK proprement dite	
+	def cyk(u) :
+		"""
+			Fonction de parsing ascendant CYK probabiliste.
+			Prend en entrée une phrase et renvoie un tableau rempli avec les réécritures possibles.
+		"""
+		T=dict()
+		
+		#Remplissage du premier rang du tableau
+		#Utilisation des règles unaires.	
 		for i in range(1,len(u)+1) :
 		#On parcourt le mot à reconnaitre
 			for l in gr :	
@@ -51,7 +73,7 @@ def CYKmaker(cnf):
 				#Si une case est vide, on ajoute un tableau vide dedans pour qu'elle apparaisse dans le dico
 		
 		
-		
+		#Remplissage des rangs supérieurs du tableau
 		for i in range(2,len(u)+1):
 			
 			for y in range(1,(len(u)-i+2)) :
@@ -63,7 +85,8 @@ def CYKmaker(cnf):
 					sp1=(y,j)
 					sp2=(j,i+y)
 					cds=T[sp2]
-													  
+					
+					#						  
 					for a in T[(y,j)]:
 						if a in debuts:
 								suite=debuts[a]
@@ -101,47 +124,18 @@ def CYKmaker(cnf):
 	
 	return cyk
 
-
-def printchart(T,u) :
-		chaine = ""
-		SYMB=["SENT"]
-		NEXT=list()
-		for i in range(1,len(u)+3) :
-			chaine = ""
-			for j in range(1,i) :
-				x = j
-				y = len(u)+2-i+j
-				cont = None
-				if (x,y) in T:
-					cont = " "#(x,y)
-					for e in SYMB:
-						if e in T[x,y]:
-							cont = e
-							#SYMB=[elt for elt in T[x,y][e].keys() ]
-							next =max(T[x,y][e],key=lambda z : T[x,y][e][z]) 
-							print(next)
-							#NEXT += list(next)
-					
-					SYMB=NEXT
-					NEXT=list()
-					
-				chaine = chaine + str( cont )  + "\t"
-			
-			print (chaine)
-		print
-
 def treemaker(T,u):
+	"""
+		Fonction de backtracking pour extraire le meilleur arbre de la charte CYK.
+	"""
 	longueur=len(u)
 	
 	def maketree(Z):
 		retour=[]
 		for tup in Z:
-			#print(offset,tup[0])
-			
 			if len(tup) > 1:
 				Z= max(T[tup[1]][tup[0]],key= lambda x : (T[tup[1]][tup[0]][x]))
 				if len(Z) == 1:
-					#print(Z)
 					retour.append([tup[0],Z[0][0]])
 				else:
 					next=[tup[0] ]
@@ -150,16 +144,14 @@ def treemaker(T,u):
 					retour.append(next)
 			else:
 				retour.append(tup[0])
-			#	retour += [tup[0]]
-				
+		
 		return retour
 
 	maxprob=0
 	maxZ=[]
 	maxelem=None
-	for elem in T[1,1+longueur]: #sorted(T[1,1+longueur],key=lambda x: T[1,1+longueur][x] ) :
+	for elem in T[1,1+longueur]:
 		if elem.startswith("SENT"):
-			#print(elem)
 			Z=max(T[1,1+longueur][elem],key=lambda x : (T[1,1+longueur][elem][x] ))
 			
 			newprob=T[1,1+longueur][elem][Z]
@@ -173,7 +165,7 @@ def treemaker(T,u):
 					maxelem=elem
 					maxZ=Z
 			
-	print([maxelem]+maketree(maxZ))
+	return [maxelem]+maketree(maxZ)
 
 
 if __name__ == '__main__':
@@ -196,20 +188,20 @@ if __name__ == '__main__':
 				(nomcorpus_numero, phrase) = phrase.split('\t')
 				(nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
 			arbre=evaluation.readtree(evaluation.tokenize(phrase))[0]
-			#skeul=evaluation.getleaves(evaluation.defoliate(arbre))
+			
 			phrase = evaluation.getleaves(arbre)
 			print("phrase : ", phrase)
-			#print("tags : ",skeul)
+			
 			print(len(phrase))
 			
 			goon=input()
-			if goon == "":
-				continue
 			if goon == "quit":
 				break
-			
-			z=parsing(phrase)
-			print(treemaker(z,phrase))
+			elif goon == "y":
+				z=parsing(phrase)
+				print(treemaker(z,phrase))
+			else:
+				continue
 
 
 
