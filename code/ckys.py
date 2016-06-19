@@ -208,9 +208,15 @@ if __name__ == '__main__':
 	
 	argu.add_argument('-i','--inter', 
 						dest='interactif', 
-						action='store_false',
+						action='store_true',
 						#default=False,
 						help="""Si cette option est active le script fonctionne en mode interactif.""")
+	
+	argu.add_argument("-p",
+						"--position",
+						dest='position',
+						default="0")
+	
 	
 	args=argu.parse_args()
 	
@@ -221,9 +227,14 @@ if __name__ == '__main__':
 	
 	i=0
 	
+	position=int(args.position)
+	
 	with codecs.open(args.corpus, "r") as corpus:
 		for phrase in corpus:
 			i+=1
+			if i < position:
+				continue
+			
 			if not phrase.startswith('('):
 				(nomcorpus_numero, phrase) = phrase.split('\t')
 				(nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
