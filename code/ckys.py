@@ -252,6 +252,13 @@ if __name__ == '__main__':
 					break
 				if goon == "quit" or goon == "exit":
 					break
+				elif goon.startswith("goto"):
+					go=goon[4:]
+					try:
+						position=int(go.strip())
+						continue
+					except ValueError as e:
+						print("Nombre invalide :",go)
 				elif goon == "y":
 					z=parse(phrase,verbose=True)
 					print(evaluation.writetree(flatten(treemaker(z,phrase))))
