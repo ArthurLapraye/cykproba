@@ -95,16 +95,16 @@ def CYKmaker(cnf):
 									if c in suite:
 										r=((a,sp1),(c,sp2))
 										recrits=suite[c]
-										
-										for z in T[y,j][a]:
-											pa=T[y,j][a][z]
-											for d in cds[c]:
-												pz=pa*cds[c][d]
-												maximum=0
-												for l in recrits:
-													pb=recrits[l]
+										for l in recrits:
+											pb=recrits[l]
+											maximum=0
+											for z in T[y,j][a]:
+												pa=T[y,j][a][z]
+												
+												for d in cds[c]:
+													pz=pa*cds[c][d]
 													newpb= pz*pb
-													
+												
 													if newpb >= maximum:
 														maximum=newpb
 									
@@ -254,7 +254,7 @@ if __name__ == '__main__':
 					break
 				elif goon == "y":
 					z=parse(phrase,verbose=True)
-					print(evaluation.writetree(flatten(treemaker(z,phrase))))
+					print(treemaker(z,phrase) )
 					print()
 				else:
 					continue

@@ -4,22 +4,9 @@
 import re
 
 def flatten2(tree):
-	if len(tree)==3:
-		head,leftchild,rightchild=tree
-		l=[head,flatten2(leftchild)]
-		if "↓" in rightchild[0]:
-			for elem in flatten2(rightchild)[1:]:
-				l.append(elem)
-			
-			return l
-		else:
-			l.append(flatten2(rightchild))
-			return l
 	
-	elif len(tree) == 2:
-		return tree
-			
 
+	
 def flatten1(tree):
 	if len(tree) == 3:
 
@@ -43,8 +30,14 @@ def flatten1(tree):
 		raise ValueError("Nombre de branches incorrect pour :",tree)
 	
 def flatten(tree):
-	return flatten2(flatten1(tree))
+	pass
+	#return flatten2(flatten1(tree))
+
+
 
 if __name__=="__main__":
-	pass
+	
+	print(flatten2( ['SENT', ['PP-MOD', ['P', "'Pour'"], ['NP', ['DET', "'ce'"], ['ADJ↓NC', ['ADJ', "'premier'"], ['NC', "'rendez-vous'"]]]], ['PONCT↓NP-SUJ↓VN↓VPinf-OBJ↓COORD↓PONCT', ['PONCT', "','"], ['NP-SUJ↓VN↓VPinf-OBJ↓COORD↓PONCT', ['NP-SUJ', ['DET', "'l''"], ['NC', "'animateur'"]], ['VN↓VPinf-OBJ↓COORD↓PONCT', ['VN', ['V', "'a'"], ['VPP↓VINF', ['VPP', "'pu'"], ['VINF', "'faire'"]]], ['VPinf-OBJ↓COORD↓PONCT', ['VPinf-OBJ', ['VN↑VINF', "'partager'"], ['NP-OBJ', ['DET', "'sa'"], ['NC', "'passion'"]]], ['COORD↓PONCT', ['COORD', ['CC', "'et'"], ['VN↓NP-OBJ↓PP-DE_OBJ', ['VN↑VINF', "'présenter'"], ['NP-OBJ↓PP-DE_OBJ', ['NP-OBJ', ['DET', "'quelques'"], ['PONCT↓NC↓PONCT', ['PONCT', '\'"\''], ['NC↓PONCT', ['NC', "'oeuvres'"], ['PONCT', '\'"\'']]]], ['PP-DE_OBJ', ['P', "'pour'"], ['VPinf', ['VN↑VINF', "'mettre'"], ['PP-P_OBJ↓NP-OBJ', ['PP-P_OBJ', ['P', "'en'"], ['NP↑NC', "'bouche'"]], ['NP-OBJ', ['DET', "'les'"], ['NC', "'participants'"]]]]]]]], ['PONCT', "'.'"]]]]]]] ))
+	
+	['SENT', ['PP-MOD', ['P', "'Pour'"], ['NP', ['DET', "'ce'"], ['ADJ↓NC', ['ADJ', "'premier'"], ['NC', "'rendez-vous'"]]]], ['PONCT', "','"], 'NP-SUJ↓VN↓VPinf-OBJ↓COORD↓PONCT', ['NP-SUJ', ['DET', "'l''"], ['NC', "'animateur'"]], ['VN', ['V', "'a'"], ['VPP', "'pu'"], 'VINF', "'faire'"], 'VPinf-OBJ↓COORD↓PONCT', ['VPinf-OBJ', ['VN↑VINF', "'partager'"], ['NP-OBJ', ['DET', "'sa'"], ['NC', "'passion'"]]], ['COORD', ['CC', "'et'"], ['VN↑VINF', "'présenter'"], 'NP-OBJ↓PP-DE_OBJ', ['NP-OBJ', ['DET', "'quelques'"], ['PONCT↓NC↓PONCT', ['PONCT', '\'"\''], ['NC↓PONCT', ['NC', "'oeuvres'"], ['PONCT', '\'"\'']]]], ['PP-DE_OBJ', ['P', "'pour'"], ['VPinf', ['VN↑VINF', "'mettre'"], ['PP-P_OBJ↓NP-OBJ', ['PP-P_OBJ', ['P', "'en'"], ['NP↑NC', "'bouche'"]], ['NP-OBJ', ['DET', "'les'"], ['NC', "'participants'"]]]]]], 'PONCT', "'.'"]
 
