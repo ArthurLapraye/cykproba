@@ -244,7 +244,7 @@ if __name__ == '__main__':
 					continue
 			
 			else:
-				logging.info("phrase numéro"+str(i)+"traitée")
+				logging.info("phrase numéro "+str(i)+" en cours de traitement. Longueur : "+str(len(phrase)))
 				print("("+evaluation.writetree(flatten(treemaker(parse(phrase),phrase)))+")")
 
 
