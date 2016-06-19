@@ -4,8 +4,17 @@
 import re
 
 def flatten2(tree):
+	l=list()
+	for elem in tree:
+		if isinstance(elem, list):
+			if "↓" in elem[0]:	
+				l+=flatten2(elem[1:])
+			else:
+				l.append(flatten2(elem))
+		else:
+			l.append(elem)
 	
-
+	return l
 	
 def flatten1(tree):
 	if len(tree) == 3:
@@ -30,14 +39,11 @@ def flatten1(tree):
 		raise ValueError("Nombre de branches incorrect pour :",tree)
 	
 def flatten(tree):
-	pass
-	#return flatten2(flatten1(tree))
+	return flatten2(flatten1(tree))
 
 
 
 if __name__=="__main__":
-	
-	print(flatten2( ['SENT', ['PP-MOD', ['P', "'Pour'"], ['NP', ['DET', "'ce'"], ['ADJ↓NC', ['ADJ', "'premier'"], ['NC', "'rendez-vous'"]]]], ['PONCT↓NP-SUJ↓VN↓VPinf-OBJ↓COORD↓PONCT', ['PONCT', "','"], ['NP-SUJ↓VN↓VPinf-OBJ↓COORD↓PONCT', ['NP-SUJ', ['DET', "'l''"], ['NC', "'animateur'"]], ['VN↓VPinf-OBJ↓COORD↓PONCT', ['VN', ['V', "'a'"], ['VPP↓VINF', ['VPP', "'pu'"], ['VINF', "'faire'"]]], ['VPinf-OBJ↓COORD↓PONCT', ['VPinf-OBJ', ['VN↑VINF', "'partager'"], ['NP-OBJ', ['DET', "'sa'"], ['NC', "'passion'"]]], ['COORD↓PONCT', ['COORD', ['CC', "'et'"], ['VN↓NP-OBJ↓PP-DE_OBJ', ['VN↑VINF', "'présenter'"], ['NP-OBJ↓PP-DE_OBJ', ['NP-OBJ', ['DET', "'quelques'"], ['PONCT↓NC↓PONCT', ['PONCT', '\'"\''], ['NC↓PONCT', ['NC', "'oeuvres'"], ['PONCT', '\'"\'']]]], ['PP-DE_OBJ', ['P', "'pour'"], ['VPinf', ['VN↑VINF', "'mettre'"], ['PP-P_OBJ↓NP-OBJ', ['PP-P_OBJ', ['P', "'en'"], ['NP↑NC', "'bouche'"]], ['NP-OBJ', ['DET', "'les'"], ['NC', "'participants'"]]]]]]]], ['PONCT', "'.'"]]]]]]] ))
-	
-	['SENT', ['PP-MOD', ['P', "'Pour'"], ['NP', ['DET', "'ce'"], ['ADJ↓NC', ['ADJ', "'premier'"], ['NC', "'rendez-vous'"]]]], ['PONCT', "','"], 'NP-SUJ↓VN↓VPinf-OBJ↓COORD↓PONCT', ['NP-SUJ', ['DET', "'l''"], ['NC', "'animateur'"]], ['VN', ['V', "'a'"], ['VPP', "'pu'"], 'VINF', "'faire'"], 'VPinf-OBJ↓COORD↓PONCT', ['VPinf-OBJ', ['VN↑VINF', "'partager'"], ['NP-OBJ', ['DET', "'sa'"], ['NC', "'passion'"]]], ['COORD', ['CC', "'et'"], ['VN↑VINF', "'présenter'"], 'NP-OBJ↓PP-DE_OBJ', ['NP-OBJ', ['DET', "'quelques'"], ['PONCT↓NC↓PONCT', ['PONCT', '\'"\''], ['NC↓PONCT', ['NC', "'oeuvres'"], ['PONCT', '\'"\'']]]], ['PP-DE_OBJ', ['P', "'pour'"], ['VPinf', ['VN↑VINF', "'mettre'"], ['PP-P_OBJ↓NP-OBJ', ['PP-P_OBJ', ['P', "'en'"], ['NP↑NC', "'bouche'"]], ['NP-OBJ', ['DET', "'les'"], ['NC', "'participants'"]]]]]], 'PONCT', "'.'"]
+	print(flatten(['SENT', ['NP-SUJ', ['DET', "'Cette'"], ['NC', "'exposition'"]], ['PONCT↓Ssub-MOD↓PONCT↓PONCT↓VN↓NP-OBJ↓PONCT', ['PONCT', "','"], ['Ssub-MOD↓PONCT↓PONCT↓VN↓NP-OBJ↓PONCT', ['Ssub-MOD', ['CS', "'comme'"], ['Sint', ['VN↑V', "'devait'"], ['VPinf-OBJ', ['VN↑VINF', "'conclure'"], ['NP-OBJ', ['NPP', "'Roger'"], ['NPP', "'Thiriot'"]]]]], ['PONCT↓PONCT↓VN↓NP-OBJ↓PONCT', ['PONCT', "','"], ['PONCT↓VN↓NP-OBJ↓PONCT', ['PONCT', '\'"\''], ['VN↓NP-OBJ↓PONCT', ['VN', ['ADV', "'n''"], ['V', "'a'"]], ['NP-OBJ↓PONCT', ['NP-OBJ', ['DET', "'d''"], ['ADJ↓NC↓Ssub', ['ADJ', "'autre'"], ['NC↓Ssub', ['NC', "'ambition'"], ['Ssub', ['CS', "'que'"], ['PP', ['P', "'d''"], ['VPinf', ['VN↑VINF', "'apporter'"], ['NP-OBJ', ['DET', "'un'"], ['ADJ↓NC↓PP', ['ADJ', "'modeste'"], ['NC↓PP', ['NC', "'témoignage'"], ['PP', ['P', "'sur'"], ['NP', ['DET', "'le'"], ['NC↓PP', ['NC', "'passé'"], ['PP', ['P+D', "'du'"], ['NP', ['NC', "'tissu'"], ['AP↓PP', ['AP↑ADJ', "'économique'"], ['PP', ['P', "'de'"], ['NP', ['DET', "'la'"], ['NC', "'région'"]]]]]]]]]]]]]]]]]], ['PONCT', "'.'"]]]]]]]]
+)	)
 

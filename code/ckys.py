@@ -254,7 +254,7 @@ if __name__ == '__main__':
 					break
 				elif goon == "y":
 					z=parse(phrase,verbose=True)
-					print(treemaker(z,phrase) )
+					print(evaluation.writetree(flatten(treemaker(z,phrase))))
 					print()
 				else:
 					continue
