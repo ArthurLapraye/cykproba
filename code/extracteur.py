@@ -190,7 +190,7 @@ if __name__ == '__main__':
 				phrase=ligne
 		
 		
-			arbre=evaluation.defoliate( evaluation.readtree(evaluation.tokenize(phrase))[0] )
+			arbre= evaluation.readtree(evaluation.tokenize(phrase))[0]
 			n,t = evaluation.nodesandleaves(arbre)
 			nonterminaux.update(n)
 			terminaux.update(t)
