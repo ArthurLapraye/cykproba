@@ -40,7 +40,7 @@ def CYKmaker(cnf):
 					raise ValueError("Production invalide :",p)
 	
 	#Fonction CYK proprement dite	
-	def cyk(u) :
+	def cyk(u,verbose=False) :
 		"""
 			Fonction de parsing ascendant CYK probabiliste.
 			Prend en entrée une phrase et renvoie un tableau rempli avec les réécritures possibles.
@@ -115,8 +115,9 @@ def CYKmaker(cnf):
 				
 				if span not in T :
 					T[span]=dict()
-				
-			print(i)	
+			
+			if verbose:
+				print(i)	
 		
 		return T
 	
@@ -184,6 +185,10 @@ if __name__ == '__main__':
 	from argparse import ArgumentParser
 	from flatten import flatten
 	
+	import re
+	import logging
+	logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+	
 	argu=ArgumentParser(prog="ckys.py",
 						description="""Implémentation d'un parser CYK probabiliste 
 						prenant en entrée une PCFG et un corpus de phrases MRG"""
@@ -196,6 +201,12 @@ if __name__ == '__main__':
 	
 	argu.add_argument("corpus",metavar="corpus",help="""Le deuxième argument contient le corpus au format MRG.""")
 	
+	argu.add_argument('-i','--inter', 
+						dest='interactif', 
+						action='store_true',
+						default=False,
+						help="""Si cette option est active le script fonctionne en mode interactif.""")
+	
 	args=argu.parse_args()
 	
 	with open(args.fichiergrammaire, 'rb') as fichiergrammaire:
@@ -203,26 +214,38 @@ if __name__ == '__main__':
 
 	parse=CYKmaker(cnf)
 	
+	i=0
+	
 	with codecs.open(args.corpus, "r") as corpus:
 		for phrase in corpus:
+			i+=1
 			if not phrase.startswith('('):
 				(nomcorpus_numero, phrase) = phrase.split('\t')
 				(nomcorpus, numero) = nomcorpus_numero.rpartition('_')[::2]
 			arbre=evaluation.readtree(evaluation.tokenize(phrase))[0]
 			
 			phrase = evaluation.getleaves(arbre)
-			print("phrase : ", phrase)
 			
-			print(len(phrase))
+			if args.interactif:
+				print("n°",i)
+				print("Longueur de la phrase :",len(phrase))
+				print("phrase : ", re.sub(r"'([^']+)'",r"\1"," ".join(phrase)) )
+				try:
+					goon=input()
+				except EOFError:
+					break
+				if goon == "quit" or goon == "exit":
+					break
+				elif goon == "y":
+					z=parse(phrase,verbose=True)
+					print(evaluation.writetree(flatten(treemaker(z,phrase))))
+					print()
+				else:
+					continue
 			
-			goon=input()
-			if goon == "quit":
-				break
-			elif goon == "y":
-				z=parse(phrase)
-				print(flatten(treemaker(z,phrase)))
 			else:
-				continue
+				logging.info("phrase numéro"+str(i)+"traitée")
+				print("("+evaluation.writetree(flatten(treemaker(parse(phrase),phrase)))+")")
 
 
 
