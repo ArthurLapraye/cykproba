@@ -92,7 +92,6 @@ def CYKmaker(cnf):
 								suite=debuts[a]
 								for c in cds:
 									if c in suite:
-										#r=(a,c) #(z,(c,d))
 										r=((a,sp1),(c,sp2))
 										recrits=suite[c]
 										
@@ -115,7 +114,6 @@ def CYKmaker(cnf):
 				
 				
 				if span not in T :
-					#print("*")
 					T[span]=dict()
 				
 			print(i)	
@@ -134,7 +132,12 @@ def treemaker(T,u):
 		retour=[]
 		for tup in Z:
 			if len(tup) > 1:
-				Z= max(T[tup[1]][tup[0]],key= lambda x : (T[tup[1]][tup[0]][x]))
+				Y=sorted(T[tup[1]][tup[0]],key= lambda x : (T[tup[1]][tup[0]][x]) ,reverse=True )
+				Z=Y[0]
+				if len(Y) > 1:
+					if T[tup[1]][tup[0]][Z] == T[tup[1]][tup[0]][Y[1]]:
+						print(Y,Z)
+				
 				if len(Z) == 1:
 					retour.append([tup[0],Z[0][0]])
 				else:
@@ -168,6 +171,7 @@ def treemaker(T,u):
 	return [maxelem]+maketree(maxZ)
 
 
+
 if __name__ == '__main__':
 	from extracteur import defaultdictmaker
 	from collections import defaultdict
@@ -176,13 +180,30 @@ if __name__ == '__main__':
 	import pickle
 	import evaluation
 	import sys, codecs
-
-	with open(sys.argv[1], 'rb') as fichiergrammaire:
+	
+	from argparse import ArgumentParser
+	from flatten import flatten
+	
+	argu=ArgumentParser(prog="ckys.py",
+						description="""Implémentation d'un parser CYK probabiliste 
+						prenant en entrée une PCFG et un corpus de phrases MRG"""
+						
+						)
+	argu.add_argument("fichiergrammaire",
+						metavar="grammaire",
+						help="""Le fichier de grammaire est un pickle produit par extracteur.py
+							""")
+	
+	argu.add_argument("corpus",metavar="corpus",help="""Le deuxième argument contient le corpus au format MRG.""")
+	
+	args=argu.parse_args()
+	
+	with open(args.fichiergrammaire, 'rb') as fichiergrammaire:
 		cnf = pickle.load(fichiergrammaire)
 
-	parsing=CYKmaker(cnf)
+	parse=CYKmaker(cnf)
 	
-	with codecs.open(sys.argv[2], "r") as corpus:
+	with codecs.open(args.corpus, "r") as corpus:
 		for phrase in corpus:
 			if not phrase.startswith('('):
 				(nomcorpus_numero, phrase) = phrase.split('\t')
@@ -198,8 +219,8 @@ if __name__ == '__main__':
 			if goon == "quit":
 				break
 			elif goon == "y":
-				z=parsing(phrase)
-				print(treemaker(z,phrase))
+				z=parse(phrase)
+				print(flatten(treemaker(z,phrase)))
 			else:
 				continue
 
