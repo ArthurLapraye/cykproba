@@ -80,7 +80,7 @@ def CYKmaker(cnf):
 				span=(y,i+y)
 				if span not in T:
 					T[span]=dict()
-				
+								
 				for j in range(y+1,i+y) :
 					
 					#print("\t",(y,j),(j,i+y))	
