@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # coding: utf8
 
+import fractions
+import logging
 
 def CYKmaker(cnf):
 	"""
@@ -83,7 +85,6 @@ def CYKmaker(cnf):
 								
 				for j in range(y+1,i+y) :
 					
-					#print("\t",(y,j),(j,i+y))	
 					sp1=(y,j)
 					sp2=(j,i+y)
 					cds=T[sp2]
@@ -141,7 +142,7 @@ def treemaker(T,u):
 				Z=Y[0]
 				if len(Y) > 1:
 					if T[tup[1]][tup[0]][Z] == T[tup[1]][tup[0]][Y[1]]:
-						print(Y,Z)
+						logging.warn("probabilités identiques : "+str(Y[1])+" "+str(Z))
 				
 				if len(Z) == 1:
 					retour.append([tup[0],Z[0][0]])
@@ -180,7 +181,7 @@ def treemaker(T,u):
 if __name__ == '__main__':
 	from extracteur import defaultdictmaker
 	from collections import defaultdict
-	import fractions
+	
 	
 	import pickle
 	import evaluation
@@ -190,7 +191,7 @@ if __name__ == '__main__':
 	from flatten import flatten
 	
 	import re
-	import logging
+	
 	logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 	
 	argu=ArgumentParser(prog="ckys.py",
