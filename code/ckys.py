@@ -264,7 +264,11 @@ if __name__ == '__main__':
 						print("Nombre invalide :",go)
 				elif goon == "y":
 					z=parse(phrase,verbose=True)
-					print(evaluation.writetree(flatten(treemaker(z,phrase))))
+					arbre=treemaker(z,phrase)
+					if arbre[0]:
+						print(evaluation.writetree(flatten(arbre)))
+					else:
+						print("Échec du parsing")
 					del z
 					print()
 				else:
@@ -273,7 +277,12 @@ if __name__ == '__main__':
 			else:
 				logging.info("phrase numéro "+str(i)+" en cours de traitement. Longueur : "+str(len(phrase)))
 				z=parse(phrase)
-				print("("+evaluation.writetree(flatten(treemaker(z,phrase)))+")")
+				arbre=treemaker(z,phrase)
+				if arbre[0]:
+					print("("+evaluation.writetree(flatten(arbre))+")")
+				else:
+					print("( (SENT "+ " ".join(phrase)+") )")
+					logging.error("Échec du parsing pour la phrase n°"+str(i))
 				del z
 
 
