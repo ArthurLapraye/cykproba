@@ -9,36 +9,7 @@
 \usepackage[T1]{fontenc}
 
 
-
 \begin{document}
-
-\begin{algorithm}
-\caption{CKY probabiliste (Max Product)}
-\label{cky}
-	\small{\begin{algorithmic}
-		\Function{CKY}{$w[1..n]$, $G: < NT, T, P, \rho>$, R[1..n, 1..n]} \Comment w : mot; G: Grammaire; C: charte
-			\ForAll{$max \gets 2, |n|$} \Comment Boucle \text{gérant} l'empan
-				\ForAll{$min \gets max-2, 0$}
-					\ForAll{$nt \in NT$}
-						\State $best = 0;$
-						\ForAll{${nt \rightarrow nt^1 nt^2 \subset P}$}
-							\ForAll{$mid \gets min+1, max-1$}
-								\State $t1 = R[min][mid][nt^1];$ 
-								\State $t2 = R[mid][max][nt^2];$
-								\State $candidate = t1 * t2 * \rho(binary);$
-								\If{$candidate > best$}
-									\State $best = candidate;$
-								\EndIf
-							\EndFor
-						\EndFor
-						\State $R[min][max][nt] = best;$
-					\EndFor
-				\EndFor
-			\EndFor
-		\EndFunction
-	\end{algorithmic}}
-\end{algorithm}
- 
 
 \begin{algorithm}
 \caption{CNF}
