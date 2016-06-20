@@ -1,35 +1,40 @@
 \documentclass{article}
-\usepackage{figure}
+\usepackage{tikz}
 
-\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+
 
 
 \begin{document}
 
-\frametitle{Forme Normale de Chomsky}
 \begin{algorithm}
-\caption{CKY}
+\caption{CKY probabiliste (Max Product)}
 \label{cky}
 	\small{\begin{algorithmic}
-		\Function{CKY}{$w[1..n]$, $G: < Q, X, P, \rho>$} \Comment w est un mot à parser
-			\State $M \gets tab[1..m];$ \Comment m est la longueur du mot
-			\For{$i \gets 1, |m|$} \Comment boucle qui remplit la diagonale
-				\State $M[i, i] \gets \{ N / N \rightarrow m[i]\};$
-				\For{$d \gets 1, |m|-1$}
-					\For{$i \gets 1, |m|-d$}
-						\State $j \gets i+d$
-						\State $M[i, j] \gets \{\}$
-						\ForAll{$k \gets i, j-1$}
-							\ForAll{$B \in M[i, k] and C \in M[k+1, j]$}
-								\ForAll{$N \in \{ N / N \rightarrow BC \in P \}$}
-									\State $M[i, j] \gets M[i, j] \cup N;$
-								\EndFor
+		\Function{CKY}{$w[1..n]$, $G: < NT, T, P, \rho>$, R[1..n, 1..n]} \Comment w : mot; G: Grammaire; C: charte
+			\ForAll{$max \gets 2, |n|$} \Comment Boucle \text{gérant} l'empan
+				\ForAll{$min \gets max-2, 0$}
+					\ForAll{$nt \in NT$}
+						\State $best = 0;$
+						\ForAll{${nt \rightarrow nt^1 nt^2 \subset P}$}
+							\ForAll{$mid \gets min+1, max-1$}
+								\State $t1 = R[min][mid][nt^1];$ 
+								\State $t2 = R[mid][max][nt^2];$
+								\State $candidate = t1 * t2 * \rho(binary);$
+								\If{$candidate > best$}
+									\State $best = candidate;$
+								\EndIf
 							\EndFor
 						\EndFor
+						\State $R[min][max][nt] = best;$
 					\EndFor
 				\EndFor
 			\EndFor
-			\State \Return $M$
 		\EndFunction
 	\end{algorithmic}}
 \end{algorithm}
@@ -38,27 +43,44 @@
 \begin{algorithm}
 \caption{CNF}
 \label{cnf}
-	\small{\begin{algorithmic}
-		\Function{ChomskyNormalForm}{$G: < Q, X, S, P>$} \Comment Q: terminaux, X: non-terminaux, S: axiome, P: productions
-			\State $P' \gets \{\};$
-			\State $X' \gets X;$
-			\If{$S \in r.h.s\ de\ p \in P$}
-				\State $S' \gets S;$
-				\State $P' \gets P' \cup S' \rightarrow S;$
-			\EndIf
-			\State $P' \gets \Call{RemoveNullProductions}{$P'$}$
-			\State $P' \gets \Call{RemoveUnitProductions}{$P'$}$
-			\For{$p \in \{ A \rightarrow B_1..B_n/ n > 2\}$}
-				\State $C \gets B_2..B_n;$
-				\State $P' \gets P' \cup A \rightarrow B_1C;$
+	\begin{algorithmic}
+		\Function{ChomskyNormalForm}{$G: < NT, T, \rho >$} \Comment $G: \text{Grammaire}, \rho: \text{productions probabilisées}$
+			\State $P' = \rho.copy();$ \Comment $\rho$ est un dictionnaire de dictionnaire de fractions
+			\Function{binariser}{$nt, p, proba$}
+				\If{|p| > 2}
+					\State $ nt^\alpha \gets join(\downarrow, p[1:]);$
+					\State $NT = NT | nt^\alpha;$
+					\State $ P'[nt][(p[0],nt^\alpha)] \gets proba;$
+					\State $ \Call{binariser}{nt^\alpha, p[1:]};$
+				\Else
+					\State $P'[nt][p] \gets proba;$
+				\EndIf
+			\EndFunction
+		\For{$nt \in \rho$}
+			\For{$p \in \rho[nt]$}
+				\If{$|p| > 2$}
+					\State $ \Call{binariser}{nt, p, \rho[nt][p]} ;$
+					\State $cnf = cnf - cnf[nt][p];$
+				\EndIf
 			\EndFor
-			\For{$p \in \{ A \rightarrow aB, a \in Q \}$}
-				\State $A_a \gets a;$
-				\State $P' \gets P' \cup \{ A \rightarrow A_aB, A_a \rightarrow a \}$
+		\EndFor
+		\ForAll{$nt^A \rightarrow nt^B; \rho^1 \in P$}
+			\State $nt^\alpha = \Call{join}{\uparrow, nt^A, nt^B};$
+			\State $NT \uplus nt^\alpha;$
+			\ForAll{$nt^C \rightarrow \alpha, nt^A, \gamma; \rho^2 \in P$}
+				\State $ cnf \uplus cnf[nt^C][(\alpha, nt^\alpha, \gamma)] = \rho^1 * \rho^2;$
+				\State $cnf[nt^C][(\alpha, nt^A,\gamma)] = (1 - \rho1) * \rho^2;$
 			\EndFor
-			\State \Return $G': < Q, X', S', P' >$
+			\ForAll{$nt^A \rightarrow \alpha; \rho^3 \in P$}
+				\State $\rho^3 = \rho^3 / (1 - \rho^1);$
+			\EndFor
+			\ForAll{$nt^B \rightarrow \alpha; \rho^4 \in P$}
+				\State $cnf \uplus cnf[nt^\alpha][(\alpha)] = \rho^4;$
+			\EndFor
+		\EndFor
+		\State \Return $G': < NT, T, P'  >$
 		\EndFunction
-	\end{algorithmic}}
+	\end{algorithmic}
 \end{algorithm}
 
 \end{document}
