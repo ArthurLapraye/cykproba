@@ -256,7 +256,10 @@ if __name__ == '__main__':
 					go=goon[4:]
 					try:
 						position=int(go.strip())
-						continue
+						if position < i:
+							continue
+						else:
+							print("Impossible de retourner en arrière !")
 					except ValueError as e:
 						print("Nombre invalide :",go)
 				elif goon == "y":
