@@ -61,5 +61,43 @@ I - Exemple
 		Calcule précision, rappel et f-mesure non-étiquetés sur sortie_test.mrg en prenant pour référence les parses originaux
 		dans test.mrg.
 
+II - Le script ckys.py
+	
+	I.1
+		Le script ckys.py se lance avec deux arguments. 
+		Le premier est un pickle contenant une PCFG sous forme normale de Chomsky produite par le script extracteur.py.
+		Le deuxième argument est un corpus, un fichier mrg contenant les phrases que le script devra analyser.
+			
+		ckys.py grammaire_train.pickle test.mrg 
+	
+		Par défaut, le script est lancé de façon non-interactive : 
+		il traite toutes les phrases du corpus en commençant par la première et imprime l'analyse sur 
+		stdin et des messages d'informations ou d'erreur sur stderr.
+	
+	I.2 Options
+		
+		I.2.1 L'option -i
+			
+			L'option -i permet de lancer le script en mode interactif
+			Le mode interactif affiche chaque phrase une par une avec leur longueur et leur numéro, 
+			ainsi que des commandes de l'utilisateur 
+				Les commandes acceptées par le script sont les suivantes :
+				
+					exit,
+					quit ,
+					Ctrl+D : quitte le script
+					
+					y : lance l'analyse de la phrase courante
+					
+					goto NOMBRE : va à la phrase numéro NOMBRE si NOMBRE est plus grand que le numéro de la phrase actuelle
+					
+		I.2.2 L'option -p
+			
+			L'option p donne la position de départ dans le corpus du script. 
+			Par défaut le script commence au début du fichier. 
+			Spécifier un numéro avec l'option -p permet de le faire commencer à la phrase correspondant à ce numéro.
+		
+	
+	
 
 	
