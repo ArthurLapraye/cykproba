@@ -78,48 +78,47 @@ def CYKmaker(cnf):
 			
 			for y in range(1,(len(u)-i+2)) :
 				span=(y,i+y)
-				#print(span)
+				if span not in T:
+					T[span]=dict()
+				
 				for j in range(y+1,i+y) :
 					
 					#print("\t",(y,j),(j,i+y))	
 					sp1=(y,j)
 					sp2=(j,i+y)
 					cds=T[sp2]
-					
-					
 											  
 					for a in T[(y,j)]:
+						probA=T[y,j][a]
 						if a in debuts:
 								suite=debuts[a]
+								g=(a,sp1)
 								for c in cds:
 									if c in suite:
-										r=((a,sp1),(c,sp2))
+										#backpointer
+										r=(g,(c,sp2))
 										recrits=suite[c]
 										for l in recrits:
 											pb=recrits[l]
 											maximum=0
-											for z in T[y,j][a]:
-												pa=T[y,j][a][z]
-												
+											
+											for z in probA:
+												pa=probA[z]
+												pz=pb*pa
 												for d in cds[c]:
-													pz=pa*cds[c][d]
-													newpb= pz*pb
+													newpb= pz*cds[c][d]
 												
-													if newpb >= maximum:
+													if newpb > maximum:
 														maximum=newpb
 									
-														if span not in T:
-															T[span]=dict()
-														if l not in T[span]:
-															T[span][l]=dict()
+											
+											if l not in T[span]:
+												T[span][l]=dict()
 														#if r not in T[span][l]:
-														T[span][l][r] = newpb
+											T[span][l][r] = maximum
 														#else:
 														#	T[span][l][r] += newpb
 				
-				
-				if span not in T :
-					T[span]=dict()
 			
 			if verbose:
 				print(i)	
@@ -265,13 +264,16 @@ if __name__ == '__main__':
 				elif goon == "y":
 					z=parse(phrase,verbose=True)
 					print(evaluation.writetree(flatten(treemaker(z,phrase))))
+					del z
 					print()
 				else:
 					continue
 			
 			else:
 				logging.info("phrase numéro "+str(i)+" en cours de traitement. Longueur : "+str(len(phrase)))
-				print("("+evaluation.writetree(flatten(treemaker(parse(phrase),phrase)))+")")
+				z=parse(phrase)
+				print("("+evaluation.writetree(flatten(treemaker(z,phrase)))+")")
+				del z
 
 
 
