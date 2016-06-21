@@ -50,7 +50,7 @@ def CYKmaker(cnf):
 		T=dict()
 		
 		#Remplissage du premier rang du tableau
-		#Utilisation des règles unaires.	
+		#Utilisation des règles unaires de production lexicales	
 		for i in range(1,len(u)+1) :
 		#On parcourt le mot à reconnaitre
 			for l in gr :
@@ -267,6 +267,7 @@ if __name__ == '__main__':
 	with codecs.open(args.corpus, "r") as corpus:
 		for phrase in corpus:
 			i+=1
+			
 			if i < position:
 				continue
 			
@@ -291,7 +292,7 @@ if __name__ == '__main__':
 					go=goon[4:]
 					try:
 						position=int(go.strip())
-						if position < i:
+						if position  > i:
 							continue
 						else:
 							print("Impossible de retourner en arrière !")
@@ -312,6 +313,9 @@ if __name__ == '__main__':
 					del z
 					print()
 				else:
+					if goon:
+						print("Commande inconnue :",goon)
+					
 					continue
 			
 			else:
@@ -324,6 +328,8 @@ if __name__ == '__main__':
 					print("( (SENT "+ " ".join(phrase)+") )")
 					logging.error("Échec du parsing pour la phrase n°"+str(i))
 				del z
+
+
 
 
 
