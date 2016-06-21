@@ -94,31 +94,41 @@ def CYKmaker(cnf):
 						if a in debuts:
 								suite=debuts[a]
 								g=(a,sp1)
+								mpa=0
+										
+								for z in probA:
+									pa=probA[z]
+									if pa > mpa:
+										mpa=pa
+								
 								for c in cds:
 									if c in suite:
 										#backpointer
 										r=(g,(c,sp2))
 										recrits=suite[c]
+										
+										mpc=0
+										for d in cds[c]:
+											pc=cds[c][d]
+											if pc > mpc:
+												mpc = pc
+										
+										pz=mpa*mpc
+										
 										for l in recrits:
 											pb=recrits[l]
 											maximum=0
 											
-											for z in probA:
-												pa=probA[z]
-												pz=pb*pa
-												for d in cds[c]:
-													newpb= pz*cds[c][d]
-												
-													if newpb > maximum:
-														maximum=newpb
+											newpb=pz*pb
+											
+											if newpb > maximum:
+												maximum=newpb
 									
 											
 											if l not in T[span]:
 												T[span][l]=dict()
-														#if r not in T[span][l]:
+											
 											T[span][l][r] = maximum
-														#else:
-														#	T[span][l][r] += newpb
 				
 			
 			if verbose:
@@ -165,14 +175,19 @@ def treemaker(T,u):
 			
 			newprob=T[1,1+longueur][elem][Z]
 			
-			if newprob > maxprob:
-				maxprob=newprob
-				maxZ=Z
-				maxelem=elem
-			elif newprob == maxprob:
-				if len(elem) < len(maxelem):
-					maxelem=elem
+			if maxelem:
+				if newprob > maxprob:
+					maxprob=newprob
 					maxZ=Z
+					maxelem=elem
+				elif newprob == maxprob:
+					if len(elem) < len(maxelem):
+						maxelem=elem
+						maxZ=Z
+			else:
+				maxelem = elem
+				maxprob = newprob
+				maxZ = Z
 			
 	return [maxelem]+maketree(maxZ)
 
