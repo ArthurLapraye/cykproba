@@ -188,13 +188,29 @@ def unlabel(spans):
 	"""
 	return [(y,z) for x,y,z in spans]
 
+def untab(phrase):
+	phrase=phrase.strip()
+	if not phrase.startswith('('):
+		(nomcorpus_numero, phrase) = phrase.split('\t')
+	
+	return phrase
+
 if __name__ == "__main__":
 	import sys
+	import re
 	import fileinput as fi
 	from optparse import OptionParser
 	
 	#Options du script
-	usage=u"""Usage : {0} --gold fichiergold fichier ou cat fichier | {0} --gold fichiergold
+	usage=u"""Usage : {0} --gold fichiergold fichier
+		cat fichier | {0} --gold fichiergold
+		
+		Programme pour calculer précision, rappel et f-mesure d'arbres syntaxiques au format mrg.
+		Prend en option obligatoire un fichier d'analyses gold
+		et en entrée, comme argument ou sur stdin, une suite d'analyse candidates
+		pour des phrases qui doivent être exactement les mêmes que dans le fichier
+		gold.
+		
 	""".format(sys.argv[0])
 	
 	p = OptionParser(usage=usage)
@@ -236,8 +252,8 @@ if __name__ == "__main__":
 			#On considère que chaque ligne du fichier gold comprend  
 			
 			for (pred,gold) in zip(fi.input(args),goldilocks):
-				pred=pred #.decode("utf-8")
-				golg=gold #.decode("utf-8")
+				pred=untab(pred)
+				gold=untab(gold)
 				
 				#On retire les feuilles des arbres
 				predtree=readtree(tokenize(pred))[0]
@@ -266,7 +282,7 @@ if __name__ == "__main__":
 					#Err1 contient le nombre de constituants présents uniquement dans le gold
 					#Err2 contient le nombre de constituants présents uniquement dans l'arbre prédit
 					if VERBOSE:
-						print(i," : ",goldleaves)
+						print(i," : ",re.sub(r"'([^']+)'",r"\1", " ".join(goldleaves)))
 					
 					corr,err1,err2=goodconst( goldspans, predspans,verbose=VERBOSE)
 					
@@ -299,9 +315,17 @@ if __name__ == "__main__":
 		#Calcul de précision, rappel, et f-mesure globaux & moyens
 		globprec=globcorr/(globcorr+globerr2)
 		globrapp=globcorr/(globcorr+globerr1)
-		print(u"précision globale :", globprec,u" précision moyenne :", sumprec/i)
-		print(u"rappel global :", globrapp, u"rappel moyen :", sumrapp/i)
-		print(u"fmesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/i)
+		
+		TITRE="Statistiques pour l'ensemble des spans "
+		if LABELED:
+			TITRE += "étiquetés"
+		else:
+			TITRE += "non-étiquetés"
+		
+		print(TITRE)
+		print(u"Précision globale :", globprec,u" précision moyenne :", sumprec/i)
+		print(u"Rappel global :", globrapp, u"rappel moyen :", sumrapp/i)
+		print(u"F-mesure globale :",(2*globrapp*globprec)/(globrapp+globprec), u"f-mesure moyenne :", sumfmes/i)
 	else:
 		raise RuntimeError(u"Vous avez oublié de spécifier un fichier gold !")
 
