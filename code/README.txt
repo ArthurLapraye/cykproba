@@ -67,7 +67,8 @@ II - Le script ckys.py
 	
 	I.1
 		Le script ckys.py se lance avec deux arguments. 
-		Le premier est un pickle contenant une PCFG sous forme normale de Chomsky produite par le script extracteur.py.
+		Le premier est un pickle (objet python sérialisé) contenant une PCFG 
+		sous forme normale de Chomsky produite par le script extracteur.py.
 		Le deuxième argument est un corpus, un fichier mrg contenant les phrases que le script devra analyser.
 			
 		ckys.py grammaire_train.pickle test.mrg 
