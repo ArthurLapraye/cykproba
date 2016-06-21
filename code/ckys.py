@@ -53,25 +53,24 @@ def CYKmaker(cnf):
 		#Utilisation des règles unaires.	
 		for i in range(1,len(u)+1) :
 		#On parcourt le mot à reconnaitre
-			for l in gr :	
-				for r in gr[l]:														   
-				#On parcourt la grammaire
-					if (u[i-1] == r[0] ):														  
-					#Si la lettre en cours est identique à une partie droite de règle
-						if (i,i+1) not in T :
-							T[(i,i+1)]=dict()
-						if l not in T[i,i+1]:
-							T[i,i+1][l]=dict()
+			for l in gr :
+				if (u[i-1],) in gr[l]:
+					r=(u[i-1],)
+					
+					if (i,i+1) not in T :
+						T[(i,i+1)]=dict()
+					if l not in T[i,i+1]:
+						T[i,i+1][l]=dict()
 							
-						if r not in T[(i,i+1)][l]:
-							T[(i,i+1)][l][(r,)] = float(gr[l][r])										
+					if r not in T[(i,i+1)][l]:
+						T[(i,i+1)][l][(r,)] = float(gr[l][r])										
 							 #On remplit la case
-						else : 
-							T[(i,i+1)][l][(r,)] += float( gr[l][r] )										   
+					else :
+						T[(i,i+1)][l][(r,)] += float( gr[l][r] )										   
 							#On rajoute une autre règle s'il y en a + qu'une
 			
 			if (i,i+1) not in T :
-				T[(i,i+1)]=[]															  
+				T[(i,i+1)]=dict()														  
 				#Si une case est vide, on ajoute un tableau vide dedans pour qu'elle apparaisse dans le dico
 		
 		
