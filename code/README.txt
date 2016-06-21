@@ -93,6 +93,9 @@ II - Le script ckys.py
 					y : lance l'analyse de la phrase courante et l'affiche
 					
 					goto NOMBRE : va à la phrase numéro NOMBRE si NOMBRE est plus grand que le numéro de la phrase actuelle
+				
+				Le parsing d'une phrase peut être interrompu à tout moment avec 
+				le raccourci Ctrl-C (ou équivalent)
 					
 		I.2.2 L'option -p
 			
