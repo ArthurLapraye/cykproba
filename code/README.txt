@@ -155,7 +155,33 @@ IV - Le script evaluation.py
 		I.2.2 L'option -v
 			
 			L'option -v ou --verbose affiche précision, rappel et f-mesure pour chaque analyse
-			Ainsi que les spans manquant du gold ou les spans supplémentaires.
+			Ainsi que les spans manquant du gold ou les spans supplémentaires de l'analyse candidate.
+			
+
+V - Scripts supplémentaires :
+
+	V.1 dispatch.py
+		
+		Dispatch.py répartit au hasard dans deux fichiers de sortie les lignes d'un fichier d'entrée. 
+		90% des lignes vont dans le premier fichier passé en argument
+		10% vont dans le deuxième. 
+		
+		Il sert à créer rapidement un corpus de test et un corpus d'entraînement.
+		
+		Il se lance ainsi :
+		
+			dispatch.py corpus training test
+		
+	V.2 updategrammar.py
+		
+		updategrammar.py sert à enrichir le lexique d'une grammaire créée par extracteur.py
+		à partir d'une autre de ces grammaires. Il permet ainsi d'utiliser une grammaire extraite
+		d'un corpus d'entraînement sur un corpus de test sans avoir d'erreur due à des mots inconnus.
+		
+		Il se lance ainsi :
+				updategrammar.py grammaire_source grammaire_cible
+				
+		Attention : le grammaire_cible original est écrasé par cette opération.
 	
 	
 			
