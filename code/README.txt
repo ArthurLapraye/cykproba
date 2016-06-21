@@ -7,6 +7,8 @@ I - Exemple
 	En lançant les commandes présentées dans l'ordre, on obtient successivement 
 	un corpus d'entraînement et de test, une grammaire tirée du corpus d'entraînement
 	un ensemble de parse candidats et enfin leur évaluation vis-à-vis du corpus de test.
+	
+	NB : Tout les scripts sont écrits en python3 - Ils ne marcheront sans doute pas avec python2
 
 	Étant donné un fichier mrg fi.mrg :
 	
@@ -41,7 +43,7 @@ I - Exemple
 			updategrammar.py grammaire.pickle grammaire_train.pickle 
 		
 		modifie le fichier grammaire_train.pickle : elle sert à transférer dans la grammaire d'entraînement l'ensemble des 
-		règles lexicales du corpus afin d'éviter d'avoir des erreurs dues à des mots inconnus 
+		règles lexicales du corpus afin d'éviter d'avoir des erreurs dues à des mots inconnus.
 		
 	I.4
 		
@@ -73,6 +75,7 @@ II - Le script ckys.py
 		Par défaut, le script est lancé de façon non-interactive : 
 		il traite toutes les phrases du corpus en commençant par la première et imprime l'analyse sur 
 		stdin et des messages d'informations ou d'erreur sur stderr.
+		
 	
 	I.2 Options
 		
@@ -80,14 +83,14 @@ II - Le script ckys.py
 			
 			L'option -i permet de lancer le script en mode interactif
 			Le mode interactif affiche chaque phrase une par une avec leur longueur et leur numéro, 
-			ainsi que des commandes de l'utilisateur 
+			et attend des commandes de l'utilisateur 
 				Les commandes acceptées par le script sont les suivantes :
 				
 					exit,
 					quit ,
 					Ctrl+D : quitte le script
 					
-					y : lance l'analyse de la phrase courante
+					y : lance l'analyse de la phrase courante et l'affiche
 					
 					goto NOMBRE : va à la phrase numéro NOMBRE si NOMBRE est plus grand que le numéro de la phrase actuelle
 					
@@ -98,6 +101,63 @@ II - Le script ckys.py
 			Spécifier un numéro avec l'option -p permet de le faire commencer à la phrase correspondant à ce numéro.
 		
 	
+III - Le script extracteur.py
+	I.1	Fonctions de base :
+		
+		extracteur.py est un script qui permet d'extraire une grammaire probabilisée sous forme normale de Chomsky
+		à partir d'un fichier au format mrg (mrg_strict ou id_mrg)
+		
+		Le script extracteur.py se lance avec deux arguments : 
+			le nom d'un fichier mrg à partir du quel construire la grammaire
+			le nom du fichier où sauvegarder la grammaire.
+			
+		
+		La grammaire ainsi créée est un fichier pickle (objet python sérialisé)
+		contenant un tuple de trois éléments:
+			L'ensemble (set) des terminaux de la grammaire
+			L'ensemble des nonterminaux
+			Un dictionnaire contenant les règles de productions et leur probabilités.
+
+IV - Le script evaluation.py
 	
+	I.1 Fonctions de base : 
+		
+		evaluation.py est un script qui calcule précision, rappel et f-mesure étiquetés ou non pour 
+		les constituants d'un ensemble d'analyses lues soit depuis un fichier, 
+		soit depuis stdin, ce qui permet de l'utiliser avec un pipe unix.
+		
+		Les analyses gold doivent être obligatoirement lues depuis un fichier
+		spécifié avec l'option -g ou --gold.
+		
+		Pour l'utiliser avec un fichier, il faut le lui passer comme argument :
+			evaluation.py -g fichiergold.mrg candidats.mrg
+		
+		ou 
+			evaluation.py candidats.mrg -g fichiergold.mrg
+		
+		ou
+			cat candidats.mrg | evaluation.py -g fichiergold.mrg
+			
+		ou même
+			
+			ckys.py grammaire.pickle fichiergold.mrg | evaluation.py -g fichiergold.mrg
+			
+	
+	I.2 Options
+		
+		I.2.1 L'option -l
+			
+			Si l'option -l ou --labeled est activée, les constituants seront 
+			considérés comme correct uniquement s'ils ont le même span ET la même étiquette
+			
+			Sinon, seul le span sera considéré.
+			
+		I.2.2 L'option -v
+			
+			L'option -v ou --verbose affiche précision, rappel et f-mesure pour chaque analyse
+			Ainsi que les spans manquant du gold ou les spans supplémentaires.
+	
+	
+			
 
 	

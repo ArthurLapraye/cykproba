@@ -174,13 +174,13 @@ def goodconst(spans1,spans2,verbose=False):
 			err1 += 1
 			badspans.append(elem)
 		
-	if verbose:
-		print(badspans)
-		print(spans2)
+	#if verbose:
+	#	print("Spans absents de l'arbre1 :",badspans)
+	#	print("Spans uniquement dans l'arbre 2 :",spans2)
 	
 	err2+=len(spans2)
 	
-	return correct,err1,err2
+	return correct,err1,err2,badspans,spans2
 
 def unlabel(spans):
 	"""Fonction qui retire les étiquettes des spans de constituants
@@ -284,7 +284,7 @@ if __name__ == "__main__":
 					if VERBOSE:
 						print(i," : ",re.sub(r"'([^']+)'",r"\1", " ".join(goldleaves)))
 					
-					corr,err1,err2=goodconst( goldspans, predspans,verbose=VERBOSE)
+					corr,err1,err2,badspans,spans2=goodconst( goldspans, predspans,verbose=VERBOSE)
 					
 					#Il faut soustraire du nombre de constituants communs le nombre de feuilles
 					#Sinon on fait gonfler artificiellement le score
@@ -305,6 +305,8 @@ if __name__ == "__main__":
 					sumfmes += fmesure
 					
 					if VERBOSE:
+						print("Spans gold non trouvés :",spans2)
+						print("Spans supplémentaires :",badspans)
 						print("p :",precision,"r :",rappel,"f :",fmesure)
 						print()
 					
