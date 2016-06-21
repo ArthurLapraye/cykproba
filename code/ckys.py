@@ -95,19 +95,24 @@ def CYKmaker(cnf):
 					sp1=(y,j)
 					sp2=(j,i+y)
 					cds=T[sp2]
-											  
+					
+					#A représente les non-terminaux de la case de gauche			  
 					for a in T[(y,j)]:
 						probA=T[y,j][a]
 						if a in debuts:
+								#Suite est un dictionnaire contenant toutes les récritures
+								#Dont a est le premier élément
 								suite=debuts[a]
 								g=(a,sp1)
 								mpa=0
-										
+								
+								#mpa est la meilleure probabilité pour A
 								for z in probA:
 									pa=probA[z]
 									if pa > mpa:
 										mpa=pa
 								
+								#C représente les non-terminaux de la case de droite.
 								for c in cds:
 									if c in suite:
 										r=(g,(c,sp2))
@@ -121,6 +126,8 @@ def CYKmaker(cnf):
 										
 										pz=mpa*mpc
 										
+										#L est un non-terminal qui possède une récriture 
+										#L => A C
 										for l in recrits:
 											pb=recrits[l]
 											maximum=0
