@@ -52,7 +52,10 @@ I - Exemple
 			ckys.py grammaire_train.pickle test.mrg > sortie_test.mrg 
 			
 		Lance l'analyse des phrases de test.mrg par CYK probabiliste et les rassemble dans sortie_test.mrg
-		ATTENTION : cette étape peut durer extrêmement longtemps (plusieurs heures). 
+		
+		ATTENTION : cette étape peut durer extrêmement longtemps (plusieurs heures), 
+		en particulier si l'une des phrases fait plus de cent mots.
+		 
 		Pour voir rapidement le fonctionnement de cky, utiliser le "mode interactif" (cf ci-dessous).
 	
 	I.5
