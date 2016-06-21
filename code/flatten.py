@@ -4,6 +4,10 @@
 import re
 
 def flatten2(tree):
+	"""Fonction pour transformer les réécritures binarisées par extracteur.py en réécritures plates. 
+	   Prend en entrée des arbres syntaxiques binaires et renvoie la version plate de ces arbres en 
+	   supprimant les non-terminaux contenant une flèche descendante ↓
+	"""
 	l=list()
 	for elem in tree:
 		if isinstance(elem, list):
@@ -17,6 +21,9 @@ def flatten2(tree):
 	return l
 	
 def flatten1(tree):
+	"""Fonction pour rajouter les productions singulières éliminées par extracteur.py en coupant en deux les nonterminaux
+	   contenant une flèche ascendante.
+	"""
 	if len(tree) == 3:
 
 		head,leftchild,rightchild=tree
@@ -39,6 +46,10 @@ def flatten1(tree):
 		raise ValueError("Nombre de branches incorrect pour :",tree)
 	
 def flatten(tree):
+	"""Fonction pour composer les deux fonctions flatten2 et flatten1. 
+		Prend un arbre généré avec le CYK et une PCFG binarisée en forme normale de Chomsky
+		Renvoie l'arbre correspondant dans la grammaire originale 
+		(non binarisée, avec ses productions singulières)"""
 	return flatten2(flatten1(tree))
 
 
