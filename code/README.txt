@@ -141,7 +141,9 @@ IV - Le script evaluation.py
 		ou même
 			
 			ckys.py grammaire.pickle fichiergold.mrg | evaluation.py -g fichiergold.mrg
-			
+		
+		Le script affiche, outre précision, rappel et f-mesure normaux
+		les précisions, rappels et f-mesure moyens pour l'ensemble du corpus.
 	
 	I.2 Options
 		

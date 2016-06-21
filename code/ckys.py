@@ -292,8 +292,13 @@ if __name__ == '__main__':
 					except ValueError as e:
 						print("Nombre invalide :",go)
 				elif goon == "y":
-					z=parse(phrase,verbose=True)
-					arbre=treemaker(z,phrase)
+					try:
+						z=parse(phrase,verbose=True)
+						arbre=treemaker(z,phrase)
+					except KeyboardInterrupt as e:
+						print("Parsing interrompu...\n")
+						continue
+					
 					if arbre[0]:
 						print(evaluation.writetree(flatten(arbre)))
 					else:
