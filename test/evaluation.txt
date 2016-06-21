@@ -1,0 +1,1479 @@
+1  :  En 1953 , les hauts fourneaux et fonderies de Cousances virent le jour , puis Jean Baudesson , maire échevin de Saint-Dizier , autorisé par lettres patentes d Henri IV , installa à Marnaval - qui signifiait val ou vallée de la Marne ou_bien en aval de la Marne - , une forge qui connut son apogée au XIXe siècle .'
+Spans gold non trouvés : [('VPpart', 10, 13), ('NP', 7, 13), ('COORD', 6, 13), ('NP-MOD', 3, 13), ('PP-P_OBJ', 24, 30), ('NP', 19, 30), ('NP-MOD', 18, 30), ('NP-SUJ', 15, 31), ('NP', 33, 34), ('PP-MOD', 32, 34), ('Sint', 15, 34), ('COORD', 14, 34), ('NP', 1, 34), ('PP-MOD', 0, 34), ('NP', 39, 43), ('COORD', 38, 43), ('NP-ATS', 37, 49), ('PP', 53, 54), ('NP-SUJ', 51, 54), ('PP', 57, 60), ('NP-ATS', 55, 60), ('Sint-MOD', 50, 60)]
+Spans supplémentaires : [('NP', 1, 2), ('PP-MOD', 0, 2), ('NP', 7, 10), ('COORD', 6, 10), ('NP-SUJ', 3, 10), ('NP-MOD', 18, 22), ('PP-MOD', 24, 30), ('NP-SUJ', 15, 30), ('NP', 39, 40), ('COORD', 38, 40), ('NP-OBJ', 37, 49), ('Srel', 35, 49), ('NP', 33, 50), ('PP-P_OBJ', 32, 50), ('NP-SUJ', 53, 54), ('NP-OBJ', 55, 57), ('PP-MOD', 57, 60), ('Srel', 53, 60), ('NP-OBJ', 51, 60), ('Sint', 15, 60), ('COORD', 14, 60)]
+p : 0.7962962962962963 r : 0.8037383177570093 f : 0.8
+
+2  :  L agenda sportif'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+3  :  Cet entraînement sera renouvelé demain , aux mêmes horaires .
+Spans gold non trouvés : [('VPpart', 2, 5), ('PP', 6, 9), ('NP', 0, 10)]
+Spans supplémentaires : [('NP-SUJ', 0, 2), ('PP-MOD', 6, 9)]
+p : 0.8125 r : 0.8666666666666667 f : 0.8387096774193549
+
+4  :  Décès de Guy Hosneld
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+5  :  Nous apprenons avec beaucoup de tristesse , le décès de Guy Hosneld , suite_à une longue et douloureuse maladie , à l âge de 44 ans .'
+Spans gold non trouvés : [('NP-OBJ', 7, 20), ('PP-MOD', 20, 26)]
+Spans supplémentaires : [('PP', 20, 26), ('NP-OBJ', 7, 26)]
+p : 0.9534883720930233 r : 0.9534883720930233 f : 0.9534883720930233
+
+6  :  Sapeur-pompier volontaire , il avait pris la responsabilité de la formation des premiers cadets sapeurs-pompiers de Meuse .
+Spans gold non trouvés : [('NP', 12, 15), ('PP', 11, 15), ('NP', 9, 15), ('PP', 8, 15), ('NP-OBJ', 6, 15), ('PP-MOD', 15, 17), ('VPinf', 3, 17), ('NP', 0, 18)]
+Spans supplémentaires : [('NP-MOD', 0, 2), ('PP', 15, 17), ('NP', 12, 17), ('PP', 11, 17), ('NP', 9, 17), ('PP', 8, 17), ('NP-OBJ', 6, 17)]
+p : 0.7333333333333333 r : 0.7586206896551724 f : 0.7457627118644068
+
+7  :  Il faut aller écouter et voir tout ça .
+Spans gold non trouvés : [('VN', 2, 4), ('VPinf-OBJ', 2, 4), ('ADV', 6, 7), ('NP-OBJ', 7, 8), ('COORD', 4, 8)]
+Spans supplémentaires : [('VN', 2, 3), ('VN', 3, 4), ('VPinf', 5, 6), ('COORD', 4, 6), ('ADJ', 6, 7), ('NP-OBJ', 6, 8), ('VPinf-OBJ', 3, 8), ('VPinf-OBJ', 2, 8)]
+p : 0.6875 r : 0.5789473684210527 f : 0.6285714285714286
+
+8  :  Une heure et vingt minutes , c est le temps qu' il aura fallu à Thierry Guerry , chauffeur-routier chez Caillaud , l' entreprise en charpente chargée de la pose de la toiture des cours de tennis couverts , pour pénétrer dans l' enceinte du complexe sportif de la commune , avec son semi-remorque , sur lequel étaient chargées quatorze tonnes d' éléments en bois de trente mètres de long , destinés à la couverture du bâtiment en construction sur le stade .'
+Spans gold non trouvés : [('NP-SUJ', 0, 5), ('NP-SUJ', 10, 11), ('NP', 20, 21), ('PP', 19, 21), ('NP-MOD', 18, 21), ('NP', 45, 47), ('PP', 44, 47), ('NP', 42, 47), ('PP-MOD', 41, 47), ('PP-MOD', 47, 50), ('NP', 52, 54), ('PP-MOD', 51, 54), ('VPinf', 39, 54), ('NP', 36, 55), ('PP', 35, 55), ('NP', 34, 55), ('PP', 33, 55), ('NP', 31, 55), ('PP', 30, 55), ('NP', 28, 55), ('PP-MOD', 27, 55), ('VPpart', 26, 57), ('NP', 25, 57), ('PP', 24, 57), ('NP-SUJ', 22, 57), ('AP', 69, 70), ('NP', 64, 70), ('PP', 63, 70), ('NP', 62, 70), ('PP', 61, 70), ('NP-OBJ', 59, 70), ('Srel', 22, 70), ('NP', 15, 70), ('PP-P_OBJ', 14, 70), ('Srel', 10, 70), ('NP-OBJ', 8, 70), ('PP-P_OBJ', 72, 82), ('VPpart-MOD', 71, 82)]
+Spans supplémentaires : [('NP-DIS', 0, 5), ('NP-OBJ', 10, 11), ('NP', 25, 26), ('PP', 24, 26), ('NP', 36, 37), ('PP', 35, 37), ('NP', 34, 38), ('PP', 33, 38), ('NP', 31, 38), ('PP', 30, 38), ('NP', 28, 38), ('PP-DE_OBJ', 27, 38), ('VPpart', 26, 38), ('NP-MOD', 22, 38), ('NP', 20, 38), ('PP', 19, 38), ('NP-MOD', 18, 38), ('NP', 15, 38), ('PP-A_OBJ', 14, 38), ('PP', 47, 50), ('NP', 45, 50), ('PP', 44, 50), ('NP', 42, 50), ('PP-P_OBJ', 41, 50), ('NP', 64, 65), ('PP', 63, 65), ('NP', 69, 70), ('PP-A_OBJ', 72, 82), ('VPpart', 71, 82), ('NP', 62, 82), ('PP', 61, 82), ('NP-SUJ', 59, 82), ('Srel', 55, 82), ('NP', 52, 82), ('PP-MOD', 51, 82), ('VPinf-P_OBJ', 39, 82), ('Srel', 10, 82), ('NP-ATS', 8, 82)]
+p : 0.7342657342657343 r : 0.7342657342657343 f : 0.7342657342657343
+
+9  :  Il est à noter que le couple a eu la chance que son accident soit vu par des témoins qui ont alerté les secours .
+Spans gold non trouvés : [('NP-OBJ', 9, 11), ('Ssub-OBJ', 4, 11), ('VPinf-ATS', 2, 11), ('PP-MOD', 16, 24), ('Ssub-OBJ', 11, 24)]
+Spans supplémentaires : [('VPinf-ATS', 2, 4), ('PP-P_OBJ', 16, 24), ('Ssub', 11, 24), ('NP-OBJ', 9, 24), ('Ssub-OBJ', 4, 24)]
+p : 0.8809523809523809 r : 0.8809523809523809 f : 0.8809523809523809
+
+10  :  Une éclipse de soleil se produira le mercredi 11 août à la mi-journée et sera visible partout en France .
+Spans gold non trouvés : [('AP', 8, 9), ('NP-OBJ', 6, 10)]
+Spans supplémentaires : [('NP-MOD', 6, 10)]
+p : 0.9411764705882353 r : 0.9696969696969697 f : 0.955223880597015
+
+11  :  à_travers cette balade interplanétaire , le visiteur enrichit ses connaissances et apprend que le premier astronome français répondait au nom de Messier surnommé " Le furet des comètes " par Louis XV .
+Spans gold non trouvés : [('NP', 21, 22), ('PP', 20, 22), ('NP-ATS', 24, 28), ('VPpart', 22, 29), ('NP', 19, 29), ('PP-A_OBJ', 18, 29), ('NP', 30, 31), ('PP-MOD', 29, 31), ('Ssub-OBJ', 12, 31), ('COORD', 10, 31), ('NP-OBJ', 8, 32)]
+Spans supplémentaires : [('NP-OBJ', 8, 10), ('NP-ATS', 23, 29), ('NP', 30, 32), ('PP-P_OBJ', 29, 32), ('VPpart', 22, 32), ('NP', 21, 32), ('PP', 20, 32), ('NP', 19, 32), ('PP-A_OBJ', 18, 32), ('Ssub-OBJ', 12, 32), ('COORD', 10, 32)]
+p : 0.8070175438596491 r : 0.8070175438596491 f : 0.8070175438596491
+
+12  :  Une représentation théâtrale remarquable .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+13  :  Elle lui donna sept enfants avant_que le cercle familial ne s agrandisse de quinze petits-enfants et de quatorze arrière- petits-enfants .'
+Spans gold non trouvés : [('AP', 8, 10), ('NP-SUJ', 6, 10), ('VN', 10, 12), ('PP-MOD', 12, 15)]
+Spans supplémentaires : [('AP', 8, 9), ('NP-SUJ', 6, 9), ('VN', 9, 12), ('PP-DE_OBJ', 12, 20)]
+p : 0.8787878787878788 r : 0.8787878787878788 f : 0.8787878787878788
+
+14  :  Ses obsèques seront célébrées , ce matin , à 10 h 30 , en l église Saint-Etienne de Bar-le-Duc .'
+Spans gold non trouvés : [('NP', 14, 17), ('PP', 13, 17), ('COORD', 12, 17), ('AP', 11, 17), ('NP', 9, 19), ('PP-MOD', 8, 19)]
+Spans supplémentaires : [('AP', 11, 12), ('NP', 9, 12), ('PP-MOD', 8, 12), ('NP', 14, 19), ('PP-MOD', 13, 19)]
+p : 0.8125 r : 0.8387096774193549 f : 0.8253968253968254
+
+15  :  Nos condoléances .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+16  :  Pour soutenir " le chef " , comme l explique un des démissionnaires .'
+Spans gold non trouvés : [('NP', 3, 6), ('COORD', 2, 6), ('VPinf', 0, 6), ('P', 7, 8), ('NP-OBJ', 10, 13), ('VPinf', 7, 13)]
+Spans supplémentaires : [('NP-OBJ', 2, 6), ('CS', 7, 8), ('NP-SUJ', 10, 13), ('Ssub', 7, 13), ('VPinf', 0, 13)]
+p : 0.75 r : 0.782608695652174 f : 0.7659574468085107
+
+17  :  Le fond du problème : l opposition avec le président de l' Harmonie , accusé de " prendre seul les décisions " .'
+Spans gold non trouvés : [('NP-OBJ', 18, 21), ('VPinf-A_OBJ', 15, 22)]
+Spans supplémentaires : [('AP-MOD', 18, 19), ('NP-OBJ', 19, 21), ('VPinf-DE_OBJ', 15, 22)]
+p : 0.9444444444444444 r : 0.918918918918919 f : 0.9315068493150684
+
+18  :  Rixe à Montbéliard : un Belfortain ivre interpellé .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+19  :  Lorsque les représentants de l ordre se présentent sur les lieux , il n' y a plus trace de la moindre bagarre .'
+Spans gold non trouvés : [('PP-MOD', 8, 11), ('PP', 18, 22), ('NP-OBJ', 17, 22)]
+Spans supplémentaires : [('PP-P_OBJ', 8, 11), ('NP-OBJ', 17, 18), ('PP-DE_OBJ', 18, 22)]
+p : 0.9142857142857143 r : 0.9142857142857143 f : 0.9142857142857143
+
+20  :  La réévaluation de cette participation était à l ordre du jour .'
+Spans gold non trouvés : [('PP-MOD', 6, 11)]
+Spans supplémentaires : [('PP-ATS', 6, 11)]
+p : 0.9523809523809523 r : 0.9523809523809523 f : 0.9523809523809523
+
+21  :  La commission de sécurité venant inspecter les locaux , il faudra tenir compte d éventuelles mises en conformité décidées par ladite commission .'
+Spans gold non trouvés : [('PP-MOD', 13, 22), ('Sint-MOD', 9, 22)]
+Spans supplémentaires : [('VPpart-MOD', 0, 8), ('PP-DE_OBJ', 13, 22)]
+p : 0.9534883720930233 r : 0.9534883720930233 f : 0.9534883720930233
+
+22  :  Pour finir , le mot du président , Luc Stéfann , qui rappelle la vocation des bénévoles de l association : être un soutien pour la paroisse , apporter une petite contribution financière aux travaux grâce_aux manifestations et aux dons , accomplir de multiples tâches et démarches touchant aux bâtiment paroissiaux , contribuer à la convivialité entre les paroissiens .'
+Spans gold non trouvés : [('VPinf-MOD', 0, 2), ('NP', 6, 7), ('PP', 5, 7), ('DET', 15, 16), ('NP-OBJ', 22, 27), ('VPpart', 21, 27), ('NP-SUJ', 15, 28), ('PP', 35, 37), ('NP', 34, 37), ('PP', 33, 37), ('NP-ATS', 29, 37), ('Srel', 15, 37), ('NP-OBJ', 13, 37), ('Srel', 11, 37), ('PP-MOD', 38, 40), ('P', 42, 43), ('NP', 43, 45), ('PP-A_OBJ', 42, 45), ('Sint', 38, 45), ('COORD', 37, 45), ('PP-DE_OBJ', 48, 51), ('NP', 46, 51), ('COORD', 45, 51), ('NP-MOD', 8, 51), ('NP-SUJ', 3, 52), ('PP-P_OBJ', 53, 59)]
+Spans supplémentaires : [('VPinf', 0, 2), ('NP-MOD', 8, 10), ('P+D', 15, 16), ('NP', 16, 20), ('PP', 15, 20), ('NP-ATS', 22, 27), ('VPinf', 21, 27), ('NP', 34, 35), ('PP', 33, 35), ('NP-OBJ', 29, 35), ('PP', 38, 40), ('COORD', 37, 40), ('PP-MOD', 35, 40), ('VPinf', 28, 40), ('DET', 42, 43), ('NP', 46, 47), ('COORD', 45, 47), ('PP-A_OBJ', 48, 51), ('NP-OBJ', 42, 51), ('VPinf', 41, 51), ('PP-A_OBJ', 53, 59), ('VPinf', 52, 59), ('NP-OBJ', 13, 59), ('Srel', 11, 59), ('NP', 6, 59), ('PP', 5, 59), ('NP', 3, 59)]
+p : 0.7547169811320755 r : 0.7476635514018691 f : 0.7511737089201879
+
+23  :  Lionel Jospin répond - il faut le souligner - sur son papier à en-tête de candidat à la présidentielle , et ne signe pas " le premier ministre " .
+Spans gold non trouvés : [('VPinf-ATO', 6, 8), ('COORD', 3, 8), ('NP', 13, 19), ('PP', 12, 19), ('NP-ATS', 24, 29), ('Sint', 21, 29), ('PP-MOD', 9, 29)]
+Spans supplémentaires : [('VPinf-OBJ', 6, 8), ('Sint-MOD', 4, 8), ('NP', 13, 14), ('PP', 12, 14), ('PP-MOD', 9, 19), ('NP-OBJ', 24, 29)]
+p : 0.8571428571428571 r : 0.875 f : 0.8659793814432989
+
+24  :  l Union nationale des déportés , internés et victimes de guerre ;'
+Spans gold non trouvés : [('NP', 4, 5), ('PP', 3, 5), ('NP-MOD', 6, 11), ('NP', 0, 12)]
+Spans supplémentaires : [('NP', 6, 7), ('COORD', 5, 7), ('NP', 4, 11), ('PP', 3, 11), ('NP', 0, 11)]
+p : 0.8181818181818182 r : 0.782608695652174 f : 0.8
+
+25  :  Le public pourra découvrir , à_travers l exposition de près_de 30 clichés , le travail de ce correspondant de Météo France .'
+Spans gold non trouvés : [('NP-OBJ', 13, 15), ('NP', 16, 18), ('PP-MOD', 15, 18), ('PP-A_OBJ', 18, 21)]
+Spans supplémentaires : [('PP', 18, 21), ('NP', 16, 21), ('PP', 15, 21), ('NP-OBJ', 13, 21)]
+p : 0.8888888888888888 r : 0.8888888888888888 f : 0.8888888888888888
+
+26  :  Et l acte malveillant figure parmi les hypothèses .'
+Spans gold non trouvés : [('PP-MOD', 5, 8)]
+Spans supplémentaires : [('PP-P_OBJ', 5, 8)]
+p : 0.9411764705882353 r : 0.9411764705882353 f : 0.9411764705882353
+
+27  :  Le premier magistrat de la commune n écartait d_ailleurs pas cette thèse expliquant qu un incendie comme celui-ci à une heure plus tardive aurait pu avoir des conséquences beaucoup plus graves .'
+Spans gold non trouvés : [('AdP-MOD', 8, 10), ('VPpart', 6, 12), ('NP-SUJ', 0, 12), ('PP', 18, 23), ('NP', 17, 23), ('PP', 16, 23), ('NP-SUJ', 14, 23)]
+Spans supplémentaires : [('NP-SUJ', 0, 6), ('NP', 17, 18), ('PP', 16, 18), ('NP-SUJ', 14, 18), ('PP-MOD', 18, 23), ('VPpart-MOD', 12, 31)]
+p : 0.8703703703703703 r : 0.8867924528301887 f : 0.8785046728971964
+
+28  :  Si les réformes envisagées par le gouvernement pour les européennes et les régionales sont adoptées telles qu envisagées , la parité hommes - femmes en politique risque de régresser .'
+Spans gold non trouvés : [('NP', 8, 10), ('PP', 7, 10), ('NP', 5, 10), ('PP-P_OBJ', 4, 10), ('AP-ATS', 15, 18)]
+Spans supplémentaires : [('NP', 5, 7), ('PP-P_OBJ', 4, 7), ('NP', 8, 13), ('PP-MOD', 7, 13), ('AP-MOD', 15, 18)]
+p : 0.9019607843137255 r : 0.9019607843137255 f : 0.9019607843137255
+
+29  :  En_charge du dossier de la parité , au groupe RPR puis à celui de l UMP , depuis son élection à l' Assemblée en 1998 , elle a alerté le gouvernement et Alain Juppé dès_qu' il a été question de revoir les modes de scrutin , en juillet dernier .'
+Spans gold non trouvés : [('PP', 7, 10), ('COORD', 6, 10), ('NC', 22, 23), ('NP', 21, 25), ('PP', 20, 25), ('PP', 17, 25), ('COORD', 10, 25), ('PP-MOD', 0, 25), ('PRO', 26, 27), ('NP-SUJ', 26, 27), ('VN', 27, 29), ('NP-MOD', 29, 34), ('NP-OBJ', 38, 39), ('NP-OBJ', 41, 43), ('PP-MOD', 43, 45), ('VPinf-MOD', 39, 49), ('Ssub-OBJ', 34, 49)]
+Spans supplémentaires : [('PP-DE_OBJ', 1, 6), ('COORD', 10, 16), ('PP-MOD', 7, 16), ('AdP-MOD', 0, 16), ('NPP', 22, 23), ('NP', 21, 23), ('PP', 20, 23), ('PP-MOD', 17, 25), ('CLS-SUJ', 26, 27), ('VN', 26, 29), ('NP-OBJ', 29, 34), ('PP', 43, 45), ('NP-OBJ', 41, 45), ('VPinf', 39, 45), ('NP-ATS', 38, 45), ('Ssub-MOD', 34, 49)]
+p : 0.8 r : 0.8095238095238095 f : 0.8047337278106509
+
+30  :  Dans ce cas , les élus seraient essentiellement les têtes de liste et donc rarement des femmes .
+Spans gold non trouvés : [('AdP', 13, 15), ('NP', 15, 17), ('NP-OBJ', 8, 17)]
+Spans supplémentaires : [('NP', 14, 17), ('NP-ATS', 8, 17)]
+p : 0.896551724137931 r : 0.9285714285714286 f : 0.912280701754386
+
+31  :  En 1968 , Denise reprend un emploi à la fonderie de Colombier-Fontaine où elle restera jusqu_à sa retraite , en 1983 .'
+Spans gold non trouvés : [('NP', 8, 12), ('PP', 7, 12), ('NP-OBJ', 5, 12), ('NP-SUJ', 12, 13), ('PP-A_OBJ', 15, 18), ('VPpart-MOD', 12, 18), ('PP-MOD', 19, 21)]
+Spans supplémentaires : [('NP-OBJ', 5, 7), ('NP-P_OBJ', 12, 13), ('PP', 19, 21), ('PP-MOD', 15, 21), ('Srel', 12, 21), ('NP', 8, 21), ('PP-MOD', 7, 21)]
+p : 0.8205128205128205 r : 0.8205128205128205 f : 0.8205128205128205
+
+32  :  à son époux , à ses enfants , ainsi_qu à toute sa famille , nous présentons nos sincères condoléances .'
+Spans gold non trouvés : [('NP-MOD', 4, 7), ('NP', 1, 13), ('PP-MOD', 0, 13)]
+Spans supplémentaires : [('NP', 1, 3), ('NP', 5, 7), ('PP', 4, 7), ('COORD', 3, 7), ('PP-A_OBJ', 0, 13)]
+p : 0.896551724137931 r : 0.8387096774193549 f : 0.8666666666666666
+
+33  :  Jardiniers de France : entre bilan et perspectives
+Spans gold non trouvés : [('NP', 5, 6), ('PP', 4, 6), ('COORD', 3, 6), ('PP', 1, 8), ('NP', 0, 8)]
+Spans supplémentaires : [('PP', 1, 3), ('NP', 0, 3), ('NP', 5, 8), ('PP', 4, 8)]
+p : 0.7058823529411765 r : 0.75 f : 0.7272727272727272
+
+34  :  Du point de vue financier , l association fonctionne essentiellement grâce_à l' aide d' une subvention attribuée par le siège basé à Valenciennes ainsi_qu' une cotisation de 17 euros par an et par adhérents .'
+Spans gold non trouvés : [('NP', 3, 5), ('PP', 2, 5), ('NP', 24, 26), ('COORD', 23, 26), ('VPpart', 20, 26), ('NP', 18, 26), ('PP-P_OBJ', 17, 26), ('VPpart', 16, 26), ('NP', 14, 26), ('PP', 13, 26), ('NP', 11, 26), ('PP-DE_OBJ', 10, 26), ('PP', 29, 31), ('NP', 27, 31), ('PP-MOD', 26, 31)]
+Spans supplémentaires : [('NP', 3, 4), ('PP', 2, 4), ('VPpart', 20, 23), ('NP', 18, 23), ('PP-P_OBJ', 17, 23), ('VPpart', 16, 23), ('NP', 14, 23), ('PP', 13, 23), ('NP', 27, 29), ('PP', 26, 29), ('PP', 29, 34), ('NP', 24, 34), ('COORD', 23, 34), ('NP', 11, 34), ('PP-MOD', 10, 34)]
+p : 0.7580645161290323 r : 0.7580645161290323 f : 0.7580645161290323
+
+35  :  Le voyage d Arturo le corbeau'
+Spans gold non trouvés : [('NP', 3, 4), ('PP', 2, 4)]
+Spans supplémentaires : [('NP', 3, 6), ('PP', 2, 6)]
+p : 0.8181818181818182 r : 0.8181818181818182 f : 0.8181818181818182
+
+36  :  D_abord , il arrive dans un pays où tout est blanc .'
+Spans gold non trouvés : [('NP-SUJ', 7, 8), ('ADV', 8, 9), ('VN', 8, 10), ('PP-A_OBJ', 4, 11)]
+Spans supplémentaires : [('NP-MOD', 7, 8), ('PRO', 8, 9), ('NP-SUJ', 8, 9), ('VN', 9, 10), ('PP-P_OBJ', 4, 11)]
+p : 0.8 r : 0.7619047619047619 f : 0.7804878048780488
+
+37  :  Le comédien a fait participer les enfants au spectacle .
+Spans gold non trouvés : [('VN', 2, 4), ('VN', 4, 5), ('PP', 7, 9), ('NP-OBJ', 5, 9), ('VPinf-OBJ', 4, 9)]
+Spans supplémentaires : [('VN', 2, 5), ('NP-OBJ', 5, 7), ('PP-A_OBJ', 7, 9)]
+p : 0.7222222222222222 r : 0.8125 f : 0.7647058823529411
+
+38  :  Salle polyvalente .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+39  :  Il appartiendra ensuite au conseil de prendre une décision définitive sur la faisabilité du projet , sachant que le lot gros oeuvre devra probablement être déclaré infructueux .
+Spans gold non trouvés : [('PP-P_OBJ', 3, 5), ('AP', 20, 21), ('NP-OBJ', 21, 22), ('Srel', 21, 24), ('NP-SUJ', 18, 24), ('VPpart', 16, 27), ('NP', 11, 27), ('PP', 10, 27), ('NP-OBJ', 7, 27), ('VPinf-MOD', 5, 27)]
+Spans supplémentaires : [('PP-A_OBJ', 3, 5), ('NP', 11, 15), ('PP', 10, 15), ('NP-OBJ', 7, 15), ('VPinf-OBJ', 5, 15), ('NP', 20, 22), ('NP-SUJ', 18, 22), ('VPinf-OBJ', 24, 27), ('VPpart-MOD', 16, 27)]
+p : 0.8 r : 0.8163265306122449 f : 0.8080808080808082
+
+40  :  La commune compte 50 de ces avaloirs et ils seront nettoyés deux fois par an .
+Spans gold non trouvés : [('ADJ', 3, 4), ('AP-ATS', 3, 7), ('NP-OBJ', 11, 15)]
+Spans supplémentaires : [('PRO', 3, 4), ('NP-OBJ', 3, 7), ('NP-MOD', 11, 15), ('Sint', 8, 15)]
+p : 0.8888888888888888 r : 0.8571428571428571 f : 0.8727272727272727
+
+41  :  La construction de deux parcelles en-dessous_de la place du bas du village nécessite l implantation des réseaux nécessaires pour l' eau , l' assainissement , l' électricité et le téléphone .'
+Spans gold non trouvés : [('NP', 3, 12), ('PP', 2, 12), ('AP', 17, 18), ('NP', 19, 21), ('PP', 18, 21), ('NP', 16, 21), ('PP', 15, 21), ('NP-OBJ', 13, 21)]
+Spans supplémentaires : [('NP', 3, 5), ('PP', 2, 5), ('NP', 19, 30), ('PP', 18, 30), ('AP', 17, 30), ('NP', 16, 30), ('PP', 15, 30), ('NP-OBJ', 13, 30)]
+p : 0.8518518518518519 r : 0.8518518518518519 f : 0.8518518518518519
+
+42  :  Hier en fin d après-midi , il a signé un nouveau contrat de deux ans , acceptant finalement les propositions de Jacques Rousselot .'
+Spans gold non trouvés : [('PP-MOD', 0, 5), ('NP-ATS', 9, 15)]
+Spans supplémentaires : [('PP-MOD', 1, 5), ('NP-OBJ', 9, 15)]
+p : 0.9473684210526315 r : 0.9473684210526315 f : 0.9473684210526315
+
+43  :  Tonneaux à Montreux-Vieux : trois blessés graves
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+44  :  Les pensionnaires de la maison Belot nés en avril fêtaient mardi leur anniversaire .
+Spans gold non trouvés : [('PP-P_OBJ', 7, 9), ('NP', 11, 13), ('NP-MOD', 10, 13)]
+Spans supplémentaires : [('PP-MOD', 7, 9), ('NP-MOD', 10, 11), ('NP-OBJ', 11, 13)]
+p : 0.875 r : 0.875 f : 0.875
+
+45  :  Resté célibataire , il poursuit : " J ai travaillé à l' usine des hameçons à Morvillars , jusqu_au service militaire " , se souvient -il , visiblement marqué favorablement par cette période au 8e Chasseurs d Afrique à Roanne .'
+Spans gold non trouvés : []
+Spans supplémentaires : [('VPP', 0, 1), ('ADJ', 1, 2), ('AP-ATS', 1, 2), ('VPpart-MOD', 0, 2), ('PONCT', 2, 3), ('CLS-SUJ', 3, 4), ('V', 4, 5), ('VN', 3, 5), ('PONCT', 5, 6), ('PONCT', 6, 7), ('CLS-SUJ', 7, 8), ('V', 8, 9), ('VPP', 9, 10), ('VN', 7, 10), ('P', 10, 11), ('DET', 11, 12), ('NC', 12, 13), ('P+D', 13, 14), ('NC', 14, 15), ('NP', 14, 15), ('PP', 13, 15), ('NP', 11, 15), ('PP-MOD', 10, 15), ('P', 15, 16), ('NPP', 16, 17), ('NP', 16, 17), ('PP-MOD', 15, 17), ('PONCT', 17, 18), ('P+D', 18, 19), ('NC', 19, 20), ('ADJ', 20, 21), ('AP', 20, 21), ('NP', 19, 21), ('PP-MOD', 18, 21), ('Sint-OBJ', 7, 21), ('PONCT', 21, 22), ('PONCT', 22, 23), ('CLR', 23, 24), ('V', 24, 25), ('CLS-SUJ', 25, 26), ('VN', 23, 26), ('PONCT', 26, 27), ('ADV', 27, 28), ('VPP', 28, 29), ('ADV', 29, 30), ('P', 30, 31), ('DET', 31, 32), ('NC', 32, 33), ('P+D', 33, 34), ('ADJ', 34, 35), ('NPP', 35, 36), ('P', 36, 37), ('NPP', 37, 38), ('NP', 37, 38), ('PP', 36, 38), ('NP', 34, 38), ('PP', 33, 38), ('P', 38, 39), ('NPP', 39, 40), ('NP', 39, 40), ('PP', 38, 40), ('NP', 31, 40), ('PP-P_OBJ', 30, 40), ('VPpart-MOD', 27, 40), ('Sint-MOD', 22, 40), ('PONCT', 40, 41)]
+p : 1.0 r : 0.014925373134328358 f : 0.029411764705882353
+
+46  :  Si vous souhaitez davantage d informations sur la base des recommandations du CHMP , veuillez lire la discussion scientifique -LRB- également comprise dans l' EPAR -RRB- .'
+Spans gold non trouvés : [('NP', 10, 11), ('PP', 9, 11), ('NP', 7, 11), ('PP', 6, 11), ('NP', 5, 11), ('PP-P_OBJ', 4, 11), ('PP-A_OBJ', 11, 13), ('NP-OBJ', 16, 25), ('VPinf-OBJ', 15, 25)]
+Spans supplémentaires : [('PP', 11, 13), ('NP', 10, 13), ('PP', 9, 13), ('NP', 7, 13), ('PP', 6, 13), ('NP-OBJ', 3, 13), ('NP-OBJ', 16, 26), ('VPinf-OBJ', 15, 26)]
+p : 0.8043478260869565 r : 0.8222222222222222 f : 0.8131868131868132
+
+47  :  Il est utilisé en conjonction avec de_l aspirine et du clopidogel -LRB- médicaments contribuant à prévenir les caillots sanguins -RRB- chez les patients sur_le_point_de subir un traitement pour leur SCA , comme un traitement médicamenteux , subissant une angioplastie ou un pontage coronarien .'
+Spans gold non trouvés : [('NP', 6, 8), ('PP', 5, 8), ('P+D', 9, 10), ('NP', 10, 11), ('PP', 9, 11), ('NP-OBJ', 25, 30), ('VPinf', 23, 30), ('NP', 21, 30), ('PP-MOD', 20, 30), ('VPinf-A_OBJ', 14, 30), ('VPpart', 13, 30), ('NP', 12, 30), ('NP', 4, 30), ('PP-A_OBJ', 3, 30), ('PP-MOD', 31, 35), ('VPinf-OBJ', 36, 43)]
+Spans supplémentaires : [('DET', 9, 10), ('NP', 9, 11), ('VPinf-A_OBJ', 14, 19), ('VPpart', 13, 19), ('NP-MOD', 12, 19), ('NP', 6, 20), ('PP', 5, 20), ('NP', 4, 20), ('PP-MOD', 3, 20), ('PP', 31, 35), ('NP-OBJ', 25, 35), ('VPinf', 23, 35), ('VPpart', 36, 43), ('NP', 21, 43), ('PP-MOD', 20, 43)]
+p : 0.7894736842105263 r : 0.8 f : 0.794701986754967
+
+48  :  Lorsqu il a été utilisé pour le traitement de SCA , Angiox , administré avec ou sans inhibiteur de GP , a été aussi efficace que le traitement standard pour prévenir l' apparition globale de nouveaux événements -LRB- décès , crises cardiaques ou revascularisations -RRB- après 30 jours et après un an .'
+Spans gold non trouvés : [('NP', 11, 12), ('NP', 17, 18), ('PP', 16, 18), ('COORD', 15, 18), ('DET', 18, 19), ('NP', 18, 20), ('NP', 9, 20), ('PP', 8, 20), ('NP', 35, 37), ('PP', 34, 37), ('NP-OBJ', 31, 37), ('NP-OBJ', 38, 39), ('AP', 41, 44), ('NP-OBJ', 40, 44), ('PP-MOD', 45, 48), ('VPinf', 29, 48), ('AP', 28, 48), ('NP', 26, 48), ('Ssub', 25, 48), ('AP-ATS', 23, 48), ('COORD', 20, 48), ('NP-OBJ', 5, 52), ('Ssub', 0, 52)]
+Spans supplémentaires : [('NP', 9, 10), ('PP', 8, 10), ('NP', 6, 10), ('PP-MOD', 5, 10), ('Ssub-MOD', 0, 10), ('PP', 16, 17), ('COORD', 15, 17), ('P', 18, 19), ('NP', 19, 20), ('PP', 18, 20), ('NP', 17, 20), ('NP-SUJ', 11, 20), ('AP', 28, 29), ('NP', 26, 29), ('Ssub', 25, 29), ('AP', 41, 42), ('NP', 40, 42), ('COORD', 39, 42), ('NP-MOD', 38, 44), ('NP', 35, 45), ('PP', 34, 45), ('PP', 45, 52), ('NP-OBJ', 31, 52), ('VPinf', 29, 52), ('AP-ATS', 23, 52)]
+p : 0.7386363636363636 r : 0.7222222222222222 f : 0.7303370786516853
+
+49  :  Voie d administration'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+50  :  Angiox
+Spans gold non trouvés : []
+Spans supplémentaires : [('NP', 0, 1)]
+p : 1.0 r : 0.6666666666666666 f : 0.8
+
+51  :  Poudre pour solution à diluer pour solution injectable ou pour perfusion
+Spans gold non trouvés : [('PP-P_OBJ', 5, 8), ('VPinf', 3, 11), ('NP', 2, 11), ('PP', 1, 11)]
+Spans supplémentaires : [('VPinf', 3, 5), ('NP', 2, 5), ('PP', 1, 5), ('PP', 5, 11)]
+p : 0.8260869565217391 r : 0.8260869565217391 f : 0.8260869565217391
+
+52  :  DENOMINATION DU MEDICAMENT
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+53  :  Posologie et mode d administration'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+54  :  Une adaptation de la dose n est pas nécessaire si la fonction rénale est normale .'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+55  :  L ACT doit être contrôlé 5 minutes après le bolus .'
+Spans gold non trouvés : [('PP', 7, 10), ('NP-OBJ', 5, 10), ('VPinf-OBJ', 3, 10)]
+Spans supplémentaires : [('VPinf-OBJ', 3, 5), ('NP', 5, 7), ('PP-MOD', 5, 10)]
+p : 0.8421052631578947 r : 0.8421052631578947 f : 0.8421052631578947
+
+56  :  Utilisation avec des inhibiteurs de la GP IIb/IIIa
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+57  :  Le traitement doit être arrêté si on observe ou si on soupçonne un saignement .
+Spans gold non trouvés : [('VPinf-OBJ', 3, 14)]
+Spans supplémentaires : [('VPinf-OBJ', 3, 5)]
+p : 0.9615384615384616 r : 0.9615384615384616 f : 0.9615384615384616
+
+58  :  Il n existe pas de données suffisamment pertinentes concernant l' utilisation de la bivalirudine chez la femme enceinte .'
+Spans gold non trouvés : [('P', 4, 5), ('NP', 5, 8), ('PP-P_OBJ', 4, 8), ('NP', 12, 18), ('PP', 11, 18), ('VPinf-MOD', 8, 18)]
+Spans supplémentaires : [('DET', 4, 5), ('NP', 12, 14), ('PP', 11, 14), ('VPpart', 8, 18), ('NP-OBJ', 4, 18)]
+p : 0.8125 r : 0.8387096774193549 f : 0.8253968253968254
+
+59  :  Effets sur l aptitude à conduire des véhicules et à utiliser des machines'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+60  :  Effets indésirables survenus au_cours_de l étude ACUITY'
+Spans gold non trouvés : [('PP-P_OBJ', 3, 7)]
+Spans supplémentaires : [('PP-MOD', 3, 7)]
+p : 0.9230769230769231 r : 0.9230769230769231 f : 0.9230769230769231
+
+61  :  Classes de systèmes d organes'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+62  :  Saignements mineurs
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+63  :  Hémorragie , pseudoanévrisme vasculaire
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+64  :  Nausées , vomissements
+Spans gold non trouvés : [('NP', 0, 3)]
+Spans supplémentaires : [('NP', 0, 1), ('NP', 2, 3)]
+p : 0.8 r : 0.6666666666666666 f : 0.7272727272727272
+
+65  :  Les événements indésirables ont été plus fréquents chez les femmes et chez les patients âgés de plus de 65 ans que chez les sujets de sexe masculin ou les patients plus jeunes dans les deux groupes bivalirudine et héparine .
+Spans gold non trouvés : [('AP', 14, 15), ('NP', 8, 20), ('NP', 22, 27), ('PP', 21, 27), ('Ssub', 20, 27), ('AP-ATS', 5, 27), ('PP', 32, 39), ('NP', 28, 39), ('COORD', 27, 39)]
+Spans supplémentaires : [('NP', 8, 10), ('AP', 14, 20), ('NP', 28, 32), ('COORD', 27, 32), ('NP', 22, 32), ('PP', 21, 32), ('Ssub', 20, 32), ('AP-ATS', 5, 32), ('NP', 36, 39), ('PP-MOD', 32, 39)]
+p : 0.8636363636363636 r : 0.8507462686567164 f : 0.8571428571428571
+
+66  :  Douleur dorsale
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+67  :  Un saignement mineur a été défini comme étant tout événement hémorragique observé qui ne répondait pas aux critères de saignement majeur .
+Spans gold non trouvés : [('CS', 6, 7), ('NP-ATS', 8, 12), ('NP', 17, 18), ('PP-MOD', 15, 18), ('PP-DE_OBJ', 18, 21), ('Srel-MOD', 12, 21), ('Ssub-OBJ', 6, 21)]
+Spans supplémentaires : [('P', 6, 7), ('PP', 18, 21), ('NP', 17, 21), ('PP-A_OBJ', 16, 21), ('Srel', 12, 21), ('NP-ATS', 8, 21), ('VPpart', 7, 21), ('PP-ATS', 6, 21)]
+p : 0.8205128205128205 r : 0.8 f : 0.810126582278481
+
+68  :  Autre
+Spans gold non trouvés : [('NP', 0, 1)]
+Spans supplémentaires : [('AP', 0, 1)]
+p : 0.6666666666666666 r : 0.6666666666666666 f : 0.6666666666666666
+
+69  :  Classes des systèmes d organes'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+70  :  Classe pharmacothérapeutique : inhibiteur direct de la thrombine , code ATC : B01AE06 .
+Spans gold non trouvés : [('NP', 12, 13), ('NP', 0, 14)]
+Spans supplémentaires : [('NP', 0, 2), ('NP-MOD', 12, 13)]
+p : 0.9130434782608695 r : 0.9130434782608695 f : 0.9130434782608695
+
+71  :  La bivalirudine inhibe chacun des effets de la thrombine .
+Spans gold non trouvés : [('NP-ATS', 3, 9)]
+Spans supplémentaires : [('NP-OBJ', 3, 9)]
+p : 0.9444444444444444 r : 0.9444444444444444 f : 0.9444444444444444
+
+72  :  L administration intraveineuse de bivalirudine induit une anticoagulation mesurable en l' espace de quelques minutes .'
+Spans gold non trouvés : [('AP', 8, 9)]
+Spans supplémentaires : [('AP', 8, 15)]
+p : 0.9642857142857143 r : 0.9642857142857143 f : 0.9642857142857143
+
+73  :  La dose recommandée de bivalirudine dans l étude ACUITY -LRB- bras B et C -RRB- est un bolus initial , postérieur à la randomisation , de 0.1 mg / kg suivi d' une perfusion de 0.25 mg / kg / h durant l' angiographie ou si cela se justifie d' un point de vue clinique .'
+Spans gold non trouvés : [('NP', 6, 9), ('PP', 5, 9), ('NP', 4, 15), ('PP-P_OBJ', 3, 15), ('VPpart', 2, 15), ('AP', 20, 21), ('NP-OBJ', 16, 21), ('PP-MOD', 21, 24), ('PP', 41, 44), ('NP', 40, 44), ('PP', 39, 44), ('NP', 38, 44), ('PP', 37, 44), ('NP', 35, 44), ('PP', 34, 44), ('NP', 32, 44), ('PP-P_OBJ', 31, 44), ('CLR', 47, 48), ('NP', 53, 55), ('PP', 52, 55), ('NP', 29, 55), ('PP', 28, 55), ('NP', 26, 55), ('PP-MOD', 25, 55)]
+Spans supplémentaires : [('VPpart', 2, 3), ('NP', 4, 5), ('PP', 3, 5), ('NP', 6, 15), ('PP', 5, 15), ('PP', 21, 24), ('AP', 20, 24), ('NP', 29, 30), ('PP', 28, 30), ('NP', 26, 30), ('PP', 25, 30), ('NP', 38, 39), ('PP', 37, 39), ('NP', 40, 41), ('PP', 39, 41), ('NP', 35, 41), ('PP', 34, 41), ('CLR-AFF.DEMSUJ', 47, 48), ('NP', 53, 54), ('PP', 52, 54), ('PP', 41, 55), ('NP', 32, 55), ('PP-P_OBJ', 31, 55), ('NP-ATS', 16, 55)]
+p : 0.7525773195876289 r : 0.7525773195876289 f : 0.752577319587629
+
+74  :  Les patients des bras A et B étaient aussi randomisés pour recevoir un inhibiteur de la GPIIb/IIIa soit avant l angiographie soit durant l' angioplastie .'
+Spans gold non trouvés : [('NP', 3, 5), ('PP', 2, 5), ('VPinf-OBJ', 10, 17)]
+Spans supplémentaires : [('NP', 4, 7), ('NP', 3, 7), ('PP', 2, 7), ('VPinf-MOD', 10, 25)]
+p : 0.9318181818181818 r : 0.9111111111111111 f : 0.9213483146067416
+
+75  :  Après angiographie , les patients sont soit pris en_charge médicalement -LRB- 33 % -RRB- soit bénéficient d une angioplastie -LRB- 56 % -RRB- ou d' un pontage aorto- coronaire -LRB- 11 % -RRB- .'
+Spans gold non trouvés : [('VS', 6, 7), ('VN', 6, 8), ('ADV', 8, 9), ('AdP-MOD', 8, 10), ('VPinf-OBJ', 6, 10), ('Srel', 3, 10), ('NP', 1, 10), ('PP-MOD', 0, 10), ('NP-SUJ', 11, 13), ('VS', 14, 15), ('VN', 14, 15), ('PP-MOD', 16, 23), ('VPinf-OBJ', 15, 23), ('ADJ', 30, 31), ('NP-MOD', 30, 32)]
+Spans supplémentaires : [('NP', 1, 2), ('PP-MOD', 0, 2), ('CC', 6, 7), ('ADV-P_OBJ', 8, 9), ('NP-MOD', 11, 13), ('VPpart', 7, 14), ('CC', 14, 15), ('DET', 30, 31), ('NP', 30, 32), ('PP-DE_OBJ', 16, 33), ('COORD', 14, 33), ('COORD-ATS', 6, 33)]
+p : 0.7272727272727273 r : 0.7692307692307693 f : 0.7476635514018691
+
+76  :  Les résultats sur les saignements à 30 jours selon les critères ACUITY et TIMI pour la population totale -LRB- ITT -RRB- et les patients ayant reçus de_l aspirine et du clopidogrel per protocol sont présentés dans la table 9 .'
+Spans gold non trouvés : [('NP', 9, 12), ('NP', 15, 18), ('PP', 14, 18), ('NP', 19, 20), ('COORD', 12, 21), ('NP-SUJ', 22, 24), ('NP-OBJ', 26, 28), ('Sint', 22, 28), ('COORD', 21, 28), ('P+D', 29, 30), ('NP', 30, 33), ('PP', 29, 33), ('COORD', 28, 33), ('PP', 8, 33), ('NP', 6, 33), ('PP', 5, 33), ('NP', 3, 33), ('PP', 2, 33), ('AP', 38, 39), ('PP-MOD', 35, 39)]
+Spans supplémentaires : [('NP', 6, 8), ('PP', 5, 8), ('COORD', 12, 14), ('NP', 11, 14), ('NP', 9, 14), ('PP', 8, 14), ('NP', 3, 14), ('PP', 2, 14), ('NP-MOD', 19, 20), ('DET', 29, 30), ('NP', 29, 31), ('COORD', 28, 31), ('NP-OBJ', 26, 31), ('VPpart', 24, 31), ('NP', 22, 33), ('COORD', 21, 33), ('NP', 15, 33), ('PP', 14, 33), ('PP-P_OBJ', 35, 39)]
+p : 0.7058823529411765 r : 0.7164179104477612 f : 0.7111111111111111
+
+77  :  Les résultats à 30 jours , basés sur les critères d évaluation quadruple et triple d' une étude randomisée en double aveugle portant sur plus de 6_000 patients subissant une ICP -LRB- REPLACE-2 -RRB- , sont présentés dans le tableau 8 .'
+Spans gold non trouvés : [('PP-P_OBJ', 19, 22), ('VPpart', 18, 22), ('NP', 16, 22), ('PP', 15, 22), ('NP', 11, 22), ('PP', 10, 22), ('NP', 8, 22), ('PP-P_OBJ', 7, 22), ('VPpart', 6, 22), ('NP-SUJ', 0, 22), ('NP-OBJ', 29, 34), ('VPpart', 28, 34), ('NP', 24, 34), ('PP-ATS', 23, 34), ('PP-DE_OBJ', 37, 41), ('VPpart-MOD', 35, 41)]
+Spans supplémentaires : [('NP', 11, 15), ('PP', 10, 15), ('VPpart', 18, 19), ('PP', 19, 22), ('NP-OBJ', 29, 31), ('VPpart', 28, 31), ('NP', 24, 31), ('PP-P_OBJ', 23, 31), ('VPpart', 22, 31), ('NP', 16, 34), ('PP', 15, 34), ('NP', 8, 34), ('PP-P_OBJ', 7, 34), ('VPpart', 6, 34), ('NP-SUJ', 0, 34), ('PP-P_OBJ', 37, 41)]
+p : 0.7746478873239436 r : 0.7746478873239436 f : 0.7746478873239436
+
+78  :  Environ 20 % de la bivalirudine sont excrétés sous forme inchangée dans les urines .
+Spans gold non trouvés : [('PP-MOD', 11, 14)]
+Spans supplémentaires : [('PP-P_OBJ', 11, 14)]
+p : 0.96 r : 0.96 f : 0.96
+
+79  :  La clairance de la bivalirudine est similaire chez les patients à fonction rénale normale et chez les patients présentant une légère insuffisance rénale .
+Spans gold non trouvés : [('PP', 7, 14), ('AP-ATS', 6, 14)]
+Spans supplémentaires : [('AP-ATS', 6, 7), ('PP-MOD', 7, 23)]
+p : 0.9534883720930233 r : 0.9534883720930233 f : 0.9534883720930233
+
+80  :  Sexe :
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+81  :  Une comparaison des études à dose unique et à doses répétées a révélé que la toxicité était principalement liée à la durée d exposition .'
+Spans gold non trouvés : [('NP', 9, 10), ('PP', 8, 10), ('COORD', 7, 10), ('AP', 6, 10), ('NP', 5, 11), ('PP-MOD', 19, 24)]
+Spans supplémentaires : [('AP', 6, 7), ('NP', 5, 7), ('NP', 9, 11), ('PP', 8, 11), ('COORD', 7, 11), ('PP-A_OBJ', 19, 24)]
+p : 0.8636363636363636 r : 0.8636363636363636 f : 0.8636363636363636
+
+82  :  La solution reconstituée / diluée doit être vérifiée qu elle ne contient pas de particules et qu' elle ne présente pas de décoloration .'
+Spans gold non trouvés : [('P', 3, 4), ('PP-MOD', 3, 5), ('P', 13, 14), ('NP-OBJ', 12, 15), ('P', 21, 22), ('NP', 22, 23), ('PP-ATS', 21, 23)]
+Spans supplémentaires : [('CC', 3, 4), ('COORD', 3, 5), ('DET', 13, 14), ('NP-OBJ', 13, 15), ('DET', 21, 22), ('NP-OBJ', 21, 23)]
+p : 0.825 r : 0.8461538461538461 f : 0.8354430379746836
+
+83  :  AUTRES CONDITIONS
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+84  :  2 flacons .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+85  :  CONDITIONS DE PRESCRIPTION ET DE DELIVRANCE
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+86  :  La justification pour ne_pas inclure du braille a été acceptée .
+Spans gold non trouvés : [('PP', 2, 4), ('NP-SUJ', 0, 4), ('VN', 4, 5), ('P+D', 5, 6), ('NP', 6, 7), ('PP-A_OBJ', 5, 7), ('VPinf-OBJ', 7, 10)]
+Spans supplémentaires : [('VN', 3, 5), ('DET', 5, 6), ('NP-OBJ', 5, 7), ('VPinf', 2, 7), ('NP-SUJ', 0, 7)]
+p : 0.631578947368421 r : 0.7058823529411765 f : 0.6666666666666667
+
+87  :  10 flacons .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+88  :  Angiox 250 mg poudre pour solution à diluer pour solution injectable ou pour perfusion Voie intraveineuse Bivalirudine
+Spans gold non trouvés : [('PP-P_OBJ', 8, 11), ('NP', 13, 15), ('PP', 12, 15), ('COORD', 11, 15), ('VPinf', 6, 15), ('NP', 5, 15), ('PP', 4, 15), ('NP', 1, 15), ('NP', 15, 17)]
+Spans supplémentaires : [('NP', 1, 3), ('VPinf', 6, 8), ('NP', 5, 8), ('PP', 4, 8), ('AP', 15, 16), ('NP', 14, 17), ('NP', 13, 17), ('PP', 12, 17), ('COORD', 11, 17), ('PP', 8, 17), ('NP', 3, 17)]
+p : 0.7096774193548387 r : 0.6666666666666666 f : 0.6875
+
+89  :  INFORMATIONS DE L UTILISATEUR Angiox 250 mg Poudre pour solution à diluer pour solution injectable ou pour perfusion -LRB- Bivalirudine -RRB-'
+Spans gold non trouvés : [('NP', 2, 5), ('PP', 1, 5), ('NP', 0, 5), ('PP-P_OBJ', 12, 15), ('VPinf', 10, 15), ('NP', 9, 15), ('PP', 8, 15), ('NP', 17, 18), ('PP', 16, 18), ('COORD', 15, 18), ('NP', 5, 19), ('NP', 19, 20)]
+Spans supplémentaires : [('NP', 5, 7), ('VPinf', 10, 12), ('NP', 9, 12), ('PP', 8, 12), ('NP-MOD', 19, 20), ('NP', 17, 21), ('PP', 16, 21), ('COORD', 15, 21), ('PP', 12, 21), ('NP', 7, 21), ('NP', 4, 21), ('NP', 2, 21), ('PP', 1, 21), ('NP', 0, 21)]
+p : 0.6756756756756757 r : 0.6410256410256411 f : 0.6578947368421052
+
+90  :  Veuillez lire attentivement l intégralité de cette notice avant_d' utiliser ce médicament .'
+Spans gold non trouvés : [('VPinf', 8, 12), ('NP', 6, 12), ('PP', 5, 12), ('NP-OBJ', 3, 12)]
+Spans supplémentaires : [('NP', 6, 8), ('PP', 5, 8), ('NP-OBJ', 3, 8), ('VPinf-MOD', 8, 12)]
+p : 0.8260869565217391 r : 0.8260869565217391 f : 0.8260869565217391
+
+91  :  Comment conserver Angiox 6 .
+Spans gold non trouvés : [('ADJ', 3, 4), ('AP', 3, 4), ('NP-OBJ', 2, 4)]
+Spans supplémentaires : [('NP-OBJ', 2, 3), ('NC', 3, 4), ('NP', 3, 4)]
+p : 0.7 r : 0.7 f : 0.7
+
+92  :  - Chez les patients qui bénéficient d une intervention chirurgicale destinée à traiter des obstructions'
+Spans gold non trouvés : [('VPpart', 10, 11), ('NP', 7, 11), ('PP-P_OBJ', 6, 11), ('VPinf-MOD', 11, 15), ('COORD', 0, 15)]
+Spans supplémentaires : [('VPinf-A_OBJ', 11, 15), ('VPpart', 10, 15), ('NP', 7, 15), ('PP-DE_OBJ', 6, 15)]
+p : 0.8275862068965517 r : 0.8571428571428571 f : 0.8421052631578947
+
+93  :  N utilisez jamais Angiox :'
+Spans gold non trouvés : [('VN', 1, 2), ('NP-ATS', 3, 4), ('Sint', 1, 4)]
+Spans supplémentaires : [('VN', 0, 2), ('NP-OBJ', 3, 4)]
+p : 0.6666666666666666 r : 0.75 f : 0.7058823529411765
+
+94  :  - si vous avez présenté des troubles de la coagulation sanguine ou un faible nombre de plaquettes
+Spans gold non trouvés : [('NP-OBJ', 5, 11)]
+Spans supplémentaires : [('NP-OBJ', 5, 17)]
+p : 0.9642857142857143 r : 0.9642857142857143 f : 0.9642857142857143
+
+95  :  Si vous allaitez , votre médecin déterminera si Angiox peut être utilisé .
+Spans gold non trouvés : [('Ssub-OBJ', 7, 10), ('VPpart', 6, 10), ('NP-SUJ', 4, 10)]
+Spans supplémentaires : [('NP-SUJ', 4, 6), ('VPinf-OBJ', 10, 12), ('Ssub-OBJ', 7, 12)]
+p : 0.8695652173913043 r : 0.8695652173913043 f : 0.8695652173913043
+
+96  :  COMMENT UTILISER ANGIOX
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+97  :  Ces réactions se produisent rarement -LRB- environ 1 pour 1000 patients traités -RRB- .
+Spans gold non trouvés : [('AdP', 4, 7), ('ADJ', 7, 8), ('AP-ATS', 4, 8), ('PP-MOD', 8, 13)]
+Spans supplémentaires : [('PRO', 7, 8), ('PP', 8, 12), ('NP-MOD', 6, 12)]
+p : 0.8181818181818182 r : 0.8571428571428571 f : 0.8372093023255814
+
+98  :  Les doses étant minutieusement vérifiées par le médecin , un surdosage est très peu probable .
+Spans gold non trouvés : [('PP-MOD', 5, 8), ('Sint-MOD', 9, 15)]
+Spans supplémentaires : [('PP-P_OBJ', 5, 8), ('VPpart-MOD', 0, 8)]
+p : 0.9230769230769231 r : 0.9230769230769231 f : 0.9230769230769231
+
+99  :  QUELS SONT LES EFFETS INDESIRABLES EVENTUELS
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+100  :  Dans de très rares cas , ils peuvent entraîner la mort -LRB- moins de 1 patient sur 10_000 -RRB- .
+Spans gold non trouvés : [('NP', 17, 18), ('NP-OBJ', 9, 19), ('VPinf-OBJ', 8, 19)]
+Spans supplémentaires : [('NP-OBJ', 9, 11), ('VPinf-OBJ', 8, 11)]
+p : 0.9032258064516129 r : 0.9333333333333333 f : 0.9180327868852459
+
+101  :  Ce sont des effets indésirables peu fréquents -LRB- moins de 1 pour 100 patients traités -RRB- .
+Spans gold non trouvés : [('NP-OBJ', 2, 16)]
+Spans supplémentaires : [('NP-ATS', 2, 16)]
+p : 0.9615384615384616 r : 0.9615384615384616 f : 0.9615384615384616
+
+102  :  - Douleur dorsale
+Spans gold non trouvés : [('COORD', 0, 3)]
+Spans supplémentaires : []
+p : 0.8571428571428571 r : 1.0 f : 0.923076923076923
+
+103  :  - Douleur thoracique
+Spans gold non trouvés : [('COORD', 0, 3)]
+Spans supplémentaires : []
+p : 0.8571428571428571 r : 1.0 f : 0.923076923076923
+
+104  :  INFORMATIONS SUPPLEMENTAIRES
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+105  :  Angiox est une poudre blanche à blanc cassé conservée dans un flacon en verre .
+Spans gold non trouvés : [('AP', 4, 5), ('AP', 6, 7), ('PP', 5, 7), ('NP-OBJ', 2, 8), ('VPpart-ATO', 8, 14)]
+Spans supplémentaires : [('AP', 6, 8), ('PP', 5, 8), ('AP', 4, 8), ('VPpart', 8, 14), ('NP-ATS', 2, 14)]
+p : 0.8214285714285714 r : 0.8214285714285714 f : 0.8214285714285714
+
+106  :  Qu est -ce qu' Aclasta ?'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+107  :  Aclasta est une solution pour perfusion -LRB- goutte-à-goutte dans une veine -RRB- .
+Spans gold non trouvés : [('NP', 5, 6), ('PP', 4, 6), ('NP-OBJ', 2, 6)]
+Spans supplémentaires : [('NP', 5, 12), ('PP', 4, 12), ('NP-ATS', 2, 12)]
+p : 0.8636363636363636 r : 0.8636363636363636 f : 0.8636363636363636
+
+108  :  Pour la maladie de Paget , Aclasta est administré en une seule perfusion .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+109  :  Aclasta ne doit être utilisé , chez les patients souffrant de la maladie osseuse de Paget , que par un médecin expérimenté dans le traitement de cette maladie .
+Spans gold non trouvés : [('PP-P_OBJ', 10, 16), ('PROREL', 17, 18), ('NP-OBJ', 17, 18), ('AP', 21, 22), ('NP', 19, 22), ('PP-MOD', 18, 22), ('PP-A_OBJ', 22, 28)]
+Spans supplémentaires : [('PP-DE_OBJ', 10, 16), ('ADV', 17, 18), ('PP', 22, 28), ('AP', 21, 28), ('NP', 19, 28), ('PP-P_OBJ', 18, 28)]
+p : 0.8627450980392157 r : 0.88 f : 0.8712871287128714
+
+110  :  La première étude a porté sur près_de 8_000 femmes âgées souffrant d ostéoporose et a tenu compte du nombre de fractures de la colonne vertébrale et de la hanche intervenues sur une période de trois ans .'
+Spans gold non trouvés : [('NP', 7, 10), ('PP', 6, 10), ('PP-P_OBJ', 11, 13), ('VPinf', 10, 13), ('PP-MOD', 5, 13), ('PP', 21, 25), ('NP', 20, 25), ('PP', 19, 25), ('NP', 18, 25), ('PP', 17, 25), ('NP-ATS', 16, 25), ('Sint', 14, 25), ('COORD', 13, 25), ('PP-P_OBJ', 30, 36), ('NP', 27, 36), ('PP', 26, 36), ('COORD', 25, 36)]
+Spans supplémentaires : [('PP-DE_OBJ', 11, 13), ('VPpart', 10, 13), ('NP', 6, 13), ('PP-P_OBJ', 5, 13), ('NP-OBJ', 16, 17), ('NP', 27, 29), ('PP', 26, 29), ('COORD', 25, 29), ('PP', 21, 29), ('PP-MOD', 30, 36), ('NP', 20, 36), ('PP', 19, 36), ('NP', 18, 36), ('PP-DE_OBJ', 17, 36), ('COORD', 13, 36)]
+p : 0.746268656716418 r : 0.7692307692307693 f : 0.7575757575757576
+
+111  :  Les patients ont reçu soit une perfusion d Aclasta , soit du risédronate administré une fois par jour pendant deux mois .'
+Spans gold non trouvés : [('P+D', 11, 12), ('VPpart', 13, 14), ('NP', 12, 14), ('PP', 11, 14), ('COORD', 10, 14), ('NP', 5, 14), ('COORD', 4, 14), ('PP', 18, 21), ('NP', 17, 21), ('PP', 16, 21), ('NP-OBJ', 14, 21)]
+Spans supplémentaires : [('NP', 5, 9), ('DET', 11, 12), ('NP', 17, 18), ('PP', 16, 18), ('NP-MOD', 14, 18), ('PP-MOD', 18, 21), ('VPpart', 13, 21), ('NP', 11, 21), ('COORD', 10, 21), ('COORD-OBJ', 4, 21)]
+p : 0.7105263157894737 r : 0.7297297297297297 f : 0.7200000000000001
+
+112  :  Après six mois , le pourcentage des patients ayant répondu au traitement a été de 95 % dans une étude et de 97 % dans l autre , contre 75 % et 73 % des patients sous risédronate .'
+Spans gold non trouvés : [('NP', 7, 8), ('PP', 6, 8), ('NP-SUJ', 4, 8), ('PP', 17, 20), ('NP', 15, 20), ('PP-P_OBJ', 14, 20), ('VPpart', 12, 20), ('NP', 11, 20), ('PP-A_OBJ', 10, 20), ('ADJ', 26, 27), ('PP', 24, 27), ('NP', 29, 31), ('PP', 28, 31), ('NP', 22, 31), ('PP', 21, 31), ('COORD', 20, 31), ('NP', 32, 38), ('COORD', 31, 38)]
+Spans supplémentaires : [('NP', 11, 12), ('PP-A_OBJ', 10, 12), ('VPpart', 8, 12), ('NP', 7, 12), ('PP', 6, 12), ('NP-SUJ', 4, 12), ('NP', 15, 17), ('PP-ATS', 14, 17), ('PP-MOD', 17, 20), ('NP', 22, 24), ('PP-ATS', 21, 24), ('PRO', 26, 27), ('PP-MOD', 24, 27), ('COORD', 20, 27), ('NP', 32, 34), ('COORD', 31, 34), ('NP', 29, 38), ('PP-MOD', 28, 38)]
+p : 0.7313432835820896 r : 0.7313432835820896 f : 0.7313432835820896
+
+113  :  Patients âgés -LRB- 65 ans -RRB-
+Spans gold non trouvés : [('NP', 0, 2)]
+Spans supplémentaires : [('NP', 0, 6)]
+p : 0.9 r : 0.9 f : 0.9
+
+114  :  Aclasta ne doit pas être utilisé chez l enfant et l' adolescent en-dessous_de 18 ans compte_tenu_de l' absence de données concernant la sécurité et l' efficacité .'
+Spans gold non trouvés : [('NP', 19, 20), ('PP', 18, 20), ('NP', 16, 20), ('PP', 15, 20), ('NP', 13, 20), ('PP', 12, 20), ('NP-SUJ', 10, 20), ('NP-OBJ', 21, 23), ('Sint', 10, 23), ('COORD', 9, 23), ('NP', 7, 26), ('PP-MOD', 6, 26), ('VPinf-OBJ', 4, 26)]
+Spans supplémentaires : [('NP', 13, 15), ('PP', 12, 15), ('NP', 10, 15), ('COORD', 9, 15), ('NP', 7, 15), ('PP-MOD', 6, 15), ('VPinf-OBJ', 4, 15), ('NP-OBJ', 21, 26), ('VPpart', 20, 26), ('NP', 19, 26), ('PP', 18, 26), ('NP', 16, 26), ('PP-MOD', 15, 26)]
+p : 0.723404255319149 r : 0.723404255319149 f : 0.723404255319149
+
+115  :  Aclasta est contre-indiqué chez la femme enceinte ou qui allaite -LRB- voir rubrique 4.6 -RRB- .
+Spans gold non trouvés : [('AP', 6, 7), ('NP', 4, 7), ('PP-MOD', 3, 7), ('Sint', 8, 10)]
+Spans supplémentaires : [('Srel', 8, 10), ('AP', 6, 10), ('NP', 4, 10), ('PP-MOD', 3, 10)]
+p : 0.8620689655172413 r : 0.8620689655172413 f : 0.8620689655172413
+
+116  :  Cela est particulièrement important pour les patients âgés et pour les patients recevant un traitement diurétique .
+Spans gold non trouvés : [('AP-ATS', 3, 4), ('PP-MOD', 4, 8)]
+Spans supplémentaires : [('PP', 4, 16), ('AP-ATS', 2, 16)]
+p : 0.9354838709677419 r : 0.9354838709677419 f : 0.9354838709677419
+
+117  :  La majorité des cas rapportés ont été associés à des interventions dentaires telles qu une extraction dentaire .'
+Spans gold non trouvés : [('PP-MOD', 8, 17)]
+Spans supplémentaires : [('PP-A_OBJ', 8, 17)]
+p : 0.967741935483871 r : 0.967741935483871 f : 0.967741935483871
+
+118  :  Un examen dentaire avec des soins dentaires préventifs appropriés devra être pris en considération avant l instauration d' un traitement par bisphosphonates chez des patients présentant des facteurs de risque associés -LRB- par_exemple : cancer , chimiothérapie , corticoïdes ou mauvaise hygiène buccale -RRB- .'
+Spans gold non trouvés : [('NP', 4, 8), ('PP', 3, 8), ('AP', 2, 8), ('NP', 29, 44), ('PP', 28, 44), ('NP', 21, 44), ('PP', 20, 44), ('NP', 18, 44), ('PP', 17, 44), ('PP', 14, 44), ('NP', 13, 44), ('PP-MOD', 12, 44)]
+Spans supplémentaires : [('AP', 2, 3), ('NP', 4, 9), ('PP', 3, 9), ('NP', 13, 14), ('PP-P_OBJ', 12, 14), ('NP', 21, 22), ('PP', 20, 22), ('NP', 18, 22), ('PP', 17, 22), ('NP', 29, 30), ('PP', 28, 30), ('PP-MOD', 14, 44)]
+p : 0.85 r : 0.85 f : 0.85
+
+119  :  L appréciation clinique du médecin traitant devrait orienter la prise en_charge de chaque patient en se basant sur l' évaluation individuelle du rapport bénéfice / risque .'
+Spans gold non trouvés : [('NP-OBJ', 8, 10), ('PP-MOD', 10, 14), ('NP', 22, 24), ('PP', 21, 24), ('NP', 18, 24), ('PP-P_OBJ', 17, 24), ('P', 24, 25), ('NP', 25, 26), ('PP-MOD', 24, 26), ('VPinf-MOD', 14, 26)]
+Spans supplémentaires : [('PP', 11, 14), ('NP-OBJ', 8, 14), ('PONCT', 24, 25), ('NP', 23, 26), ('NP', 22, 26), ('PP', 21, 26), ('NP', 18, 26), ('PP-P_OBJ', 17, 26), ('VPpart', 15, 26), ('PP-MOD', 14, 26)]
+p : 0.7916666666666666 r : 0.7916666666666666 f : 0.7916666666666666
+
+120  :  Le pourcentage global de patients qui ont présenté des symptômes survenant après l administration était de respectivement 44,7 % , 16,7 % et 10,2 % après la première , deuxième et troisième perfusion respectivement .'
+Spans gold non trouvés : [('P+D', 8, 9), ('NP', 9, 10), ('PP-A_OBJ', 8, 10), ('VPinf-OBJ', 10, 14), ('NP', 16, 19), ('NC', 27, 28), ('NP', 26, 28), ('PP', 25, 28), ('NP', 23, 28), ('COORD', 22, 28), ('AP', 29, 30), ('NP', 31, 33), ('COORD', 30, 33), ('NP', 20, 33), ('COORD', 19, 33), ('PP-ATS', 15, 33)]
+Spans supplémentaires : [('DET', 8, 9), ('VPpart', 10, 14), ('NP-OBJ', 8, 14), ('NP', 20, 22), ('COORD', 19, 22), ('NP', 23, 25), ('COORD', 22, 25), ('NP', 17, 25), ('PP-ATS', 15, 25), ('ADJ', 27, 28), ('COORD', 30, 32), ('AP', 27, 32), ('NP', 26, 34), ('PP-MOD', 25, 34)]
+p : 0.7419354838709677 r : 0.7666666666666667 f : 0.7540983606557377
+
+121  :  L incidence globale des fibrillations auriculaires rapportées comme événement indésirable grave était de 1,3 % pour le groupe Aclasta et de 0,8 % pour le groupe placebo .'
+Spans gold non trouvés : [('PP-P_OBJ', 7, 11), ('PP-MOD', 12, 19), ('NP', 24, 26), ('PP', 23, 26), ('NP', 21, 26), ('PP', 20, 26), ('COORD', 19, 26), ('NP-MOD', 26, 27)]
+Spans supplémentaires : [('PP-MOD', 7, 11), ('NP', 24, 27), ('PP', 23, 27), ('NP', 21, 27), ('PP', 20, 27), ('COORD', 19, 27), ('PP-ATS', 12, 27)]
+p : 0.84 r : 0.8571428571428571 f : 0.8484848484848485
+
+122  :  Les effets indésirables très fréquents -LRB- 1/10 -RRB- , fréquents -LRB- 1/100 , < 1/10 -RRB- , peu fréquents -LRB- 1/1000 , < 1/100 -RRB- et rares -LRB- 1/10_000 , < 1/1_000 -RRB- sont présentés dans le Tableau 1 .
+Spans gold non trouvés : [('NC', 6, 7), ('NC', 11, 12), ('NC', 14, 15), ('PP', 12, 16), ('NP-MOD', 8, 16), ('NP', 6, 16), ('AP', 3, 17), ('AP', 17, 19), ('NC', 20, 21), ('NC', 23, 24), ('COORD', 21, 24), ('NP-MOD', 20, 24), ('AP', 26, 27), ('COORD', 25, 27), ('NP', 28, 29), ('COORD', 27, 29), ('NP-SUJ', 0, 29), ('V', 30, 31), ('VN', 30, 31), ('NP-OBJ', 31, 32), ('PP-DE_OBJ', 35, 39), ('VPpart-MOD', 33, 39)]
+Spans supplémentaires : [('PRO', 6, 7), ('NP', 6, 7), ('PRO', 11, 12), ('PRO', 14, 15), ('PP', 13, 15), ('NP', 11, 16), ('AP', 9, 16), ('COORD', 8, 16), ('PRO', 20, 21), ('PRO', 23, 24), ('NP', 20, 24), ('AP', 17, 25), ('COORD', 16, 25), ('P', 30, 31), ('NP', 31, 32), ('PP', 30, 32), ('NP', 28, 32), ('AP', 26, 33), ('COORD', 25, 33), ('AP', 3, 33), ('NP-SUJ', 0, 33), ('PP-MOD', 35, 39)]
+p : 0.65625 r : 0.65625 f : 0.65625
+
+123  :  L acide zolédronique a été associé à une anomalie de la fonction rénale se manifestant sous_forme_d' une détérioration de la fonction rénale -LRB- c-à-d. augmentation de la créatininémie -RRB- et dans de rares cas insuffisance rénale aiguë .'
+Spans gold non trouvés : [('NP', 7, 13), ('PP-P_OBJ', 6, 13), ('VPpart', 3, 13), ('NP-SUJ', 0, 13), ('CLR', 13, 14), ('NP', 16, 22), ('PP-P_OBJ', 15, 22), ('NP', 24, 25), ('COORD', 23, 25), ('PP-MOD', 25, 28), ('NP', 31, 37), ('PP', 30, 37)]
+Spans supplémentaires : [('NP-SUJ', 0, 3), ('CLR-AFF.DEMSUJ', 13, 14), ('PP', 25, 28), ('NP', 24, 28), ('COORD', 23, 28), ('NP', 31, 34), ('PP', 30, 34), ('NP', 16, 37), ('PP-P_OBJ', 15, 37), ('VPpart', 13, 37), ('NP', 7, 37), ('PP-A_OBJ', 6, 37)]
+p : 0.8125 r : 0.8125 f : 0.8125
+
+124  :  Une insuffisance rénale a été observée après l administration d' acide zolédronique , en_particulier chez les patients présentant une altération rénale préexistante ou des facteurs de risque supplémentaires -LRB- par_exemple , chimiothérapie anticancéreuse , médicaments néphrotoxiques concomitants , déshydratation sévère , etc. -RRB- .'
+Spans gold non trouvés : [('NP', 34, 41), ('COORD', 33, 41), ('AP', 32, 41), ('AP', 41, 42), ('NP-MOD', 31, 42), ('NP', 26, 43), ('PP', 25, 43), ('AP', 21, 43)]
+Spans supplémentaires : [('AP', 21, 22), ('NP', 26, 28), ('PP', 25, 28), ('AP', 32, 33), ('NP-MOD', 31, 33), ('NP-MOD', 34, 37)]
+p : 0.8918918918918919 r : 0.9166666666666666 f : 0.9041095890410958
+
+125  :  Au_cours_des études cliniques dans l ostéoporose , les modifications de la clairance de la créatinine -LRB- mesurée chaque année avant l' injection -RRB- et l' incidence de l' insuffisance rénale étaient comparables dans les deux groupes de traitement -LRB- Aclasta et placebo -RRB- sur une période de trois ans .'
+Spans gold non trouvés : [('PP-MOD', 12, 15), ('PP', 19, 22), ('NP', 24, 26), ('COORD', 23, 26), ('NP-OBJ', 17, 26), ('PP-MOD', 26, 30), ('VPpart', 12, 30), ('NP', 10, 30), ('PP', 9, 30), ('NP', 39, 40), ('COORD', 38, 40), ('NP', 33, 42), ('PP-MOD', 32, 42)]
+Spans supplémentaires : [('PP', 12, 15), ('NP-MOD', 17, 19), ('PP-MOD', 19, 22), ('VPpart', 16, 22), ('NP', 10, 23), ('PP', 9, 23), ('PP', 26, 30), ('NP', 24, 30), ('COORD', 23, 30), ('NP-MOD', 39, 42), ('NP', 33, 43), ('PP-MOD', 32, 43)]
+p : 0.8452380952380952 r : 0.8554216867469879 f : 0.8502994011976047
+
+126  :  Dans l étude RFT , la majorité des patients a reçu une dose de charge en vitamine D avant l' administration d' Aclasta bien_que le taux de vitamine D n' ait pas été mesuré de façon systématique -LRB- voir rubrique 4.2 -RRB- .'
+Spans gold non trouvés : [('VN', 29, 33), ('Ssub', 23, 33), ('NP', 19, 33), ('PP', 18, 33), ('PP-P_OBJ', 34, 37), ('VPpart', 33, 37), ('NP-OBJ', 11, 37), ('Sint-MOD', 38, 41)]
+Spans supplémentaires : [('NP-OBJ', 11, 18), ('NP', 19, 23), ('PP-MOD', 18, 23), ('VN', 29, 34), ('PP-MOD', 34, 37), ('Ssub-MOD', 23, 37), ('VPinf-MOD', 38, 41)]
+p : 0.8873239436619719 r : 0.9 f : 0.8936170212765958
+
+127  :  Réactions locales
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+128  :  Bien_que la causalité ne puisse être établie , il est prudent d éviter une chirurgie dentaire dont la guérison pourrait être retardée -LRB- voir rubrique 4.4 -RRB- .'
+Spans gold non trouvés : [('NP-OBJ', 16, 17), ('VPinf', 11, 22), ('AP-ATS', 10, 22), ('COORD', 7, 22), ('Ssub-MOD', 0, 22), ('AP', 25, 27), ('NP-OBJ', 24, 27)]
+Spans supplémentaires : [('Ssub-MOD', 0, 7), ('AP-ATS', 10, 11), ('PP-MOD', 16, 17), ('VPinf-OBJ', 11, 22), ('NP-OBJ', 24, 26), ('VPinf-MOD', 23, 26)]
+p : 0.86 r : 0.8775510204081632 f : 0.8686868686868686
+
+129  :  C est un inhibiteur de la résorption osseuse médiée par les ostéoclastes .'
+Spans gold non trouvés : [('NP-OBJ', 2, 12)]
+Spans supplémentaires : [('NP-ATS', 2, 12)]
+p : 0.9545454545454546 r : 0.9545454545454546 f : 0.9545454545454546
+
+130  :  Le traitement par Aclasta réduit rapidement la vitesse de renouvellement osseux , à_partir_de taux post-ménopausiques élevés .
+Spans gold non trouvés : [('PP', 12, 16), ('NP-OBJ', 6, 16)]
+Spans supplémentaires : [('NP-OBJ', 6, 11), ('PP-MOD', 12, 16)]
+p : 0.9333333333333333 r : 0.9333333333333333 f : 0.9333333333333333
+
+131  :  Ensuite , les marqueurs osseux se stabilisent dans la gamme des valeurs pré-ménopausiques .
+Spans gold non trouvés : [('CLR', 5, 6), ('PP-DE_OBJ', 7, 13)]
+Spans supplémentaires : [('CLR-AFF.DEMSUJ', 5, 6), ('PP-MOD', 7, 13)]
+p : 0.9130434782608695 r : 0.9130434782608695 f : 0.9130434782608695
+
+132  :  Les femmes qui ont fait l objet d' une évaluation pour l' incidence des fractures vertébrales n' ont reçu aucun traitement anti- ostéoporotique concomitant , alors_que ces traitements était autorisés chez les femmes ayant participé aux évaluations des fractures de hanche et de toutes les fractures cliniques .'
+Spans gold non trouvés : [('PP', 7, 16), ('NP-OBJ', 5, 16), ('PP', 39, 41), ('NP', 38, 41), ('PP', 37, 41), ('NP', 36, 41), ('PP-DE_OBJ', 35, 41), ('VPpart', 33, 41), ('NP', 31, 41), ('PP-MOD', 30, 41)]
+Spans supplémentaires : [('NP-OBJ', 5, 7), ('PP-DE_OBJ', 7, 16), ('PP', 39, 47), ('NP', 38, 47), ('PP', 37, 47), ('NP', 36, 47), ('PP-A_OBJ', 35, 47), ('VPpart', 33, 47), ('NP', 31, 47), ('PP-MOD', 30, 47)]
+p : 0.8780487804878049 r : 0.8780487804878049 f : 0.8780487804878049
+
+133  :  -LRB- 1 -RRB- A l exclusion des fractures des doigts , des orteils et des os de la face'
+Spans gold non trouvés : [('PP', 8, 10), ('NP', 7, 10), ('PP', 6, 10), ('NP', 4, 13), ('PP', 3, 13), ('DET', 14, 15), ('NP', 14, 19), ('NP', 0, 19)]
+Spans supplémentaires : [('NP', 1, 2), ('COORD', 10, 13), ('P+D', 14, 15), ('NP', 15, 19), ('PP', 14, 19), ('PP', 8, 19), ('NP', 7, 19), ('PP', 6, 19), ('NP', 4, 19), ('PP', 3, 19)]
+p : 0.7575757575757576 r : 0.7142857142857143 f : 0.7352941176470589
+
+134  :  Le groupe Aclasta a montré une perte de taille moindre de 2,5 mm environ par_rapport_au placebo -LRB- -LRB- IC à 95 % : 1,6 mm , 3,5 mm -RRB- [ p < 0,0001 ] .
+Spans gold non trouvés : [('AP', 9, 10), ('NP', 8, 10), ('PP', 7, 10), ('NP', 11, 16), ('PP', 10, 16), ('NP', 18, 19), ('COORD', 17, 19), ('NP-ATS', 5, 19), ('NC', 20, 21), ('NP', 23, 25), ('NP', 26, 28), ('P', 31, 32), ('NP', 32, 33), ('PP', 31, 33), ('NP', 29, 34), ('NP', 20, 34), ('PP-MOD', 19, 34)]
+Spans supplémentaires : [('NP', 11, 14), ('PP', 10, 14), ('AP', 9, 16), ('NP', 8, 16), ('PP', 7, 16), ('NP-OBJ', 5, 16), ('DET', 20, 21), ('NP', 20, 22), ('PP', 19, 22), ('NP-MOD', 18, 22), ('NP-MOD', 23, 25), ('NP-MOD', 26, 28), ('NP-SUJ', 30, 31), ('V', 31, 32), ('VN', 31, 32), ('NP-OBJ', 32, 33), ('Sint-MOD', 30, 33)]
+p : 0.6909090909090909 r : 0.6909090909090909 f : 0.6909090909090909
+
+135  :  La mortalité toutes causes confondues a été de 10 % dans le groupe traité par Aclasta -LRB- 101 patients -RRB- et de 13 % dans le groupe traité par placebo -LRB- 141 patients -RRB- .
+Spans gold non trouvés : [('ADJ', 2, 3), ('AP', 2, 3), ('VPpart', 4, 5), ('NP', 3, 5), ('PP-P_OBJ', 14, 16), ('PP-DE_OBJ', 7, 20), ('NP', 29, 30), ('PP-P_OBJ', 28, 30), ('VPpart', 27, 30), ('NP', 25, 30), ('PP', 24, 30), ('NP', 22, 30), ('PP', 21, 30), ('COORD', 20, 30)]
+Spans supplémentaires : [('DET', 2, 3), ('NP-SUJ', 2, 4), ('VPpart', 2, 5), ('PP-MOD', 14, 16), ('NP', 29, 34), ('PP-MOD', 28, 34), ('VPpart', 27, 34), ('NP', 25, 34), ('PP', 24, 34), ('NP', 22, 34), ('PP', 21, 34), ('COORD', 20, 34), ('PP-ATS', 7, 34)]
+p : 0.7586206896551724 r : 0.7719298245614035 f : 0.7652173913043477
+
+136  :  Les phases de distribution précoce -LRB- et , avec les demi-vies t½ précisées ci-dessus -RRB- reflètent vraisemblablement une absorption rapide dans l os et une excrétion par voie rénale .'
+Spans gold non trouvés : [('AP', 4, 5), ('NP', 3, 5), ('PP', 2, 5), ('PP-MOD', 8, 14), ('Sint', 7, 29), ('COORD', 6, 29), ('NP', 0, 30)]
+Spans supplémentaires : [('PP', 8, 14), ('COORD', 6, 14), ('AP', 4, 15), ('NP', 3, 15), ('PP', 2, 15), ('NP-SUJ', 0, 15)]
+p : 0.86 r : 0.8775510204081632 f : 0.8686868686868686
+
+137  :  Au_cours_des 24 premières heures , 39 ± 16 % de la dose administrée sont récupérés dans les urines , le reste de la dose se liant principalement au tissu osseux .
+Spans gold non trouvés : [('PP-MOD', 15, 18), ('VPinf-OBJ', 13, 18), ('VPpart', 12, 18), ('NP', 10, 18), ('PP', 9, 18), ('NP-MOD', 5, 18), ('NP', 1, 18), ('PP-MOD', 0, 18), ('CLR', 24, 25)]
+Spans supplémentaires : [('NP', 1, 4), ('PP-MOD', 0, 4), ('PP', 6, 8), ('VPpart', 12, 13), ('NP', 10, 13), ('PP', 9, 13), ('NP-SUJ', 5, 13), ('PP-P_OBJ', 15, 18), ('CLR-OBJ', 24, 25), ('VPpart-MOD', 19, 30)]
+p : 0.8163265306122449 r : 0.8 f : 0.8080808080808082
+
+138  :  - si vous avez une hypocalcémie -LRB- cela signifie un taux de calcium sanguin trop faible -RRB- .
+Spans gold non trouvés : [('NP', 12, 16), ('PP', 11, 16), ('VPinf', 8, 16), ('NP-MOD', 7, 16), ('NP-ATS', 4, 17)]
+Spans supplémentaires : [('NP-SUJ', 7, 8), ('NP', 12, 14), ('PP', 11, 14), ('Sint', 7, 16), ('NP-OBJ', 4, 17)]
+p : 0.8333333333333334 r : 0.8333333333333334 f : 0.8333333333333334
+
+139  :  - si vous avez déjà subi une ablation d une partie de votre intestin .'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+140  :  Si vous êtes sous traitement dentaire ou si vous allez subir une intervention dentaire , informez votre dentiste que vous allez être traité par Aclasta .
+Spans gold non trouvés : [('PP-MOD', 3, 6), ('VPinf-OBJ', 21, 23), ('Ssub', 18, 23), ('NP-OBJ', 16, 23), ('PP-A_OBJ', 23, 25)]
+Spans supplémentaires : [('PP-ATS', 3, 6), ('NP-OBJ', 16, 18), ('PP-MOD', 23, 25), ('VPinf-OBJ', 21, 25), ('Ssub-DE_OBJ', 18, 25)]
+p : 0.8936170212765957 r : 0.8936170212765957 f : 0.8936170212765957
+
+141  :  Aclasta peut être administré aux patients âgés .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+142  :  Les effets d Aclasta sur la conduite de véhicules ou l' utilisation de machines ne sont pas connus .'
+Spans gold non trouvés : [('NP', 5, 9), ('PP', 4, 9)]
+Spans supplémentaires : [('NP', 5, 14), ('PP', 4, 14)]
+p : 0.9375 r : 0.9375 f : 0.9375
+
+143  :  Effets indésirables fréquents -LRB- affectant moins de 10 patients sur 100 -RRB- :
+Spans gold non trouvés : [('NP', 7, 11), ('PP-DE_OBJ', 6, 11), ('Sint', 4, 11)]
+Spans supplémentaires : [('NP-OBJ', 5, 11), ('VPpart', 4, 11)]
+p : 0.8695652173913043 r : 0.9090909090909091 f : 0.888888888888889
+
+144  :  Prévenez votre médecin ou votre dentiste si vous présentez de tels symptômes .
+Spans gold non trouvés : [('P', 9, 10), ('NP', 10, 12), ('PP-P_OBJ', 9, 12)]
+Spans supplémentaires : [('DET', 9, 10), ('NP-OBJ', 9, 12)]
+p : 0.8636363636363636 r : 0.9047619047619048 f : 0.8837209302325582
+
+145  :  Ces effets sont des cas isolés de réactions allergiques très sévères .
+Spans gold non trouvés : [('NP-OBJ', 3, 11)]
+Spans supplémentaires : [('NP-ATS', 3, 11)]
+p : 0.9523809523809523 r : 0.9523809523809523 f : 0.9523809523809523
+
+146  :  La durée de perfusion ne doit pas être inférieure à 15 minutes .
+Spans gold non trouvés : [('AP-ATS', 8, 9), ('PP-MOD', 9, 12)]
+Spans supplémentaires : [('PP', 9, 12), ('AP-ATS', 8, 12)]
+p : 0.9130434782608695 r : 0.9130434782608695 f : 0.9130434782608695
+
+147  :  Si la solution a été réfrigérée , il faut attendre qu elle revienne à une température ambiante avant_de l' administrer .'
+Spans gold non trouvés : [('PP-MOD', 13, 17), ('VPinf-OBJ', 17, 20), ('Ssub-OBJ', 10, 20)]
+Spans supplémentaires : [('PP-A_OBJ', 13, 17), ('Ssub-OBJ', 10, 17), ('VPinf-MOD', 17, 20)]
+p : 0.9142857142857143 r : 0.9142857142857143 f : 0.9142857142857143
+
+148  :  M. Turmes a abordé ce point et je me rappelle que les milieux industriels savent , en_tout_cas depuis 1992 , que les ballasts magnétiques seront plus_ou_moins interdits vers 2009 .
+Spans gold non trouvés : [('Ssub-OBJ', 10, 15), ('COORD', 6, 15), ('NP', 16, 19), ('NP-OBJ', 4, 19), ('Ssub-MOD', 20, 29)]
+Spans supplémentaires : [('NP-OBJ', 4, 6), ('NP', 18, 19), ('PP-MOD', 17, 19), ('Ssub-OBJ', 20, 29), ('Ssub-OBJ', 10, 29), ('Sint', 7, 29), ('COORD', 6, 29)]
+p : 0.8936170212765957 r : 0.8571428571428571 f : 0.875
+
+149  :  M. Wurtz devrait peut-être se rappeler qu il n' y a pas si longtemps , des collègues de son parti , des maires communistes français , envoyaient des bulldozers contre des foyers d' immigrés en France .'
+Spans gold non trouvés : [('NC', 11, 12), ('NP-MOD', 11, 12), ('Ssub-MOD', 6, 14), ('VPinf-OBJ', 4, 14), ('VPpart-MOD', 0, 14), ('NP', 21, 25), ('NP-SUJ', 15, 26), ('P+D', 27, 28), ('NP', 28, 29), ('PP-MOD', 27, 29), ('PP-MOD', 29, 34)]
+Spans supplémentaires : [('ADV', 11, 12), ('AdP-MOD', 12, 14), ('Sint-MOD', 7, 14), ('NP-MOD', 21, 25), ('NP-SUJ', 15, 25), ('DET', 27, 28), ('NP-OBJ', 27, 29), ('PP-P_OBJ', 29, 34), ('Ssub-OBJ', 6, 36), ('VPinf-OBJ', 4, 36)]
+p : 0.819672131147541 r : 0.8333333333333334 f : 0.8264462809917356
+
+150  :  Les recommandations proposées n amélioreront pas la position de la culture en Europe , bien au_contraire .'
+Spans gold non trouvés : [('VN', 3, 6), ('NP-OBJ', 6, 11), ('PP-MOD', 11, 13), ('AdP', 14, 16), ('PP-MOD', 14, 16)]
+Spans supplémentaires : [('VN', 3, 5), ('PP', 11, 13), ('NP-OBJ', 6, 13), ('AdP-MOD', 14, 16)]
+p : 0.8214285714285714 r : 0.8518518518518519 f : 0.8363636363636364
+
+151  :  Il faut qu il produise des résultats .'
+Spans gold non trouvés : [('P+D', 5, 6), ('NP', 6, 7), ('PP-DE_OBJ', 5, 7)]
+Spans supplémentaires : [('DET', 5, 6), ('NP-OBJ', 5, 7)]
+p : 0.7857142857142857 r : 0.8461538461538461 f : 0.8148148148148148
+
+152  :  Au_cours_de la dernière période de programmation , 9 % des fonds structurels ont été alloués à des initiatives communautaires .
+Spans gold non trouvés : [('PP-MOD', 15, 19)]
+Spans supplémentaires : [('PP-A_OBJ', 15, 19)]
+p : 0.9696969696969697 r : 0.9696969696969697 f : 0.9696969696969697
+
+153  :  L expérience positive d' actions innovatrices de_la_part_de petits promoteurs a été affaiblie par la distance qui les sépare du processus décisionnel .'
+Spans gold non trouvés : [('PP-A_OBJ', 18, 21), ('PP-MOD', 12, 21)]
+Spans supplémentaires : [('PP-DE_OBJ', 18, 21), ('PP-P_OBJ', 12, 21)]
+p : 0.9487179487179487 r : 0.9487179487179487 f : 0.9487179487179487
+
+154  :  Si vous signez quelque_chose avec M. Modrow , vous pouvez très bien le faire avec M. Dupuis ou d_autres .'
+Spans gold non trouvés : [('PP', 4, 7), ('NP-OBJ', 3, 7), ('VN', 8, 11)]
+Spans supplémentaires : [('NP-OBJ', 3, 4), ('PP-MOD', 4, 7), ('VN', 8, 10), ('AdP-MOD', 10, 12)]
+p : 0.9090909090909091 r : 0.8823529411764706 f : 0.8955223880597014
+
+155  :  Je sais où ils sont : dans une prison serbe , sans aucune raison !
+Spans gold non trouvés : [('PROREL', 2, 3), ('NP-SUJ', 2, 3), ('PP', 11, 14), ('NP', 7, 15), ('PP-A_OBJ', 6, 15), ('VPpart', 0, 15), ('COORD', 0, 15)]
+Spans supplémentaires : [('ADVWH-P_OBJ', 2, 3), ('NP', 7, 10), ('PP-MOD', 6, 10), ('PP-MOD', 11, 14)]
+p : 0.7407407407407407 r : 0.8333333333333334 f : 0.7843137254901961
+
+156  :  Je crois que nous devrions nous pencher sur ce problème .
+Spans gold non trouvés : [('CLO-A_OBJ', 5, 6), ('PP-MOD', 7, 10)]
+Spans supplémentaires : [('CLR', 5, 6), ('PP-P_OBJ', 7, 10)]
+p : 0.8947368421052632 r : 0.8947368421052632 f : 0.8947368421052632
+
+157  :  Ce n est ni une terroriste , ni même une activiste de l' UCK !'
+Spans gold non trouvés : [('PRO', 0, 1), ('NP-SUJ', 0, 1), ('VN', 1, 3), ('ADJ', 8, 9), ('AP', 8, 9), ('COORD', 6, 9), ('NP', 4, 9), ('COORD', 3, 9), ('NP-OBJ', 9, 14)]
+Spans supplémentaires : [('CLS-SUJ', 0, 1), ('VN', 0, 3), ('NP', 4, 6), ('ADV', 8, 9), ('NP', 9, 14), ('COORD', 7, 14), ('COORD-ATS', 3, 14)]
+p : 0.64 r : 0.6956521739130435 f : 0.6666666666666666
+
+158  :  Personne n aide cette femme à sortir de prison .'
+Spans gold non trouvés : [('PP-MOD', 7, 9), ('VPinf-P_OBJ', 5, 9)]
+Spans supplémentaires : [('PP-DE_OBJ', 7, 9), ('VPinf-A_OBJ', 5, 9)]
+p : 0.8888888888888888 r : 0.8888888888888888 f : 0.8888888888888888
+
+159  :  Je trouve cela dramatique .
+Spans gold non trouvés : [('AP', 3, 4), ('NP-ATS', 2, 4)]
+Spans supplémentaires : [('NP-OBJ', 2, 3), ('AP-ATO', 3, 4)]
+p : 0.7777777777777778 r : 0.7777777777777778 f : 0.7777777777777778
+
+160  :  D_où l' importance des propositions que nous présentons dans cet objectif .'
+Spans gold non trouvés : [('CS', 5, 6), ('PP-P_OBJ', 8, 11), ('Ssub', 5, 11)]
+Spans supplémentaires : [('PROREL', 5, 6), ('NP-OBJ', 5, 6), ('PP-MOD', 8, 11), ('Srel', 5, 11)]
+p : 0.8571428571428571 r : 0.8181818181818182 f : 0.8372093023255814
+
+161  :  Y a -t-il des circonstances dans lesquelles la Commission chercherait à utiliser le vote à la majorité qualifiée pour l un de ces sujets ?'
+Spans gold non trouvés : [('P+D', 3, 4), ('NP', 4, 5), ('PP-ATS', 3, 5), ('PP-P_OBJ', 18, 24), ('VPpart', 17, 24), ('NP', 15, 24), ('PP', 14, 24), ('NP-OBJ', 12, 24), ('Srel-MOD', 7, 24)]
+Spans supplémentaires : [('DET', 3, 4), ('VPpart', 17, 18), ('NP', 15, 18), ('PP', 14, 18), ('NP-OBJ', 12, 18), ('PP-MOD', 18, 24), ('Srel', 5, 24), ('NP-OBJ', 3, 24)]
+p : 0.7954545454545454 r : 0.813953488372093 f : 0.8045977011494252
+
+162  :  L Union européenne sera lieu de droits ou ne sera pas .'
+Spans gold non trouvés : [('NP-OBJ', 4, 5), ('PP-MOD', 5, 7), ('VPinf', 8, 11)]
+Spans supplémentaires : [('PP', 5, 7), ('NP-ATS', 4, 7)]
+p : 0.8636363636363636 r : 0.9047619047619048 f : 0.8837209302325582
+
+163  :  C_est_pourquoi nous pensons qu' il est utile d' insérer dans cette résolution la demande à l' adresse des États membres de favoriser l' annulation de la dette des pays du tiers-monde .'
+Spans gold non trouvés : [('PP-MOD', 9, 12), ('ADJ', 19, 20), ('AP', 19, 20), ('NP-OBJ', 12, 20), ('VPinf', 7, 20), ('AP-ATS', 6, 20), ('VPinf-OBJ', 20, 31)]
+Spans supplémentaires : [('AP-ATS', 6, 7), ('PP-P_OBJ', 9, 12), ('NC', 19, 20), ('VPinf', 20, 31), ('NP-OBJ', 12, 31), ('VPinf-OBJ', 7, 31)]
+p : 0.875 r : 0.8909090909090909 f : 0.8828828828828829
+
+164  :  Je puis aussi confirmer que le Conseil n a pas demandé à la Commission de revoir sa proposition .'
+Spans gold non trouvés : [('PP-MOD', 11, 14), ('Ssub-OBJ', 4, 14), ('VPinf-MOD', 14, 18)]
+Spans supplémentaires : [('PP-A_OBJ', 11, 14), ('VPinf-OBJ', 14, 18), ('Ssub-OBJ', 4, 18)]
+p : 0.9032258064516129 r : 0.9032258064516129 f : 0.9032258064516129
+
+165  :  Néanmoins , ce sujet est très sensible , comme l a déjà montré le débat , et représente l' un des quelques exemples où les trois institutions n' ont pas la même position , comme je l' ai très clairement déclaré au Parlement .'
+Spans gold non trouvés : [('VPpart', 4, 7), ('DET', 21, 22), ('PP', 23, 24), ('NP', 21, 24), ('PP', 20, 24), ('NP-ATS', 18, 24), ('P', 34, 35), ('PP', 34, 35), ('NP-OBJ', 30, 35), ('Srel-MOD', 24, 35), ('Sint', 17, 35), ('COORD', 16, 35), ('NP-SUJ', 13, 35), ('Ssub-MOD', 8, 35), ('NP-SUJ', 2, 35), ('VN', 35, 38), ('PP-P_OBJ', 41, 43), ('VPpart', 39, 43), ('COORD', 39, 43)]
+Spans supplémentaires : [('NP-SUJ', 2, 4), ('NP-SUJ', 13, 15), ('Ssub-MOD', 8, 15), ('ADJ', 21, 22), ('NP-MOD', 23, 24), ('NP-OBJ', 30, 33), ('Srel', 23, 33), ('NP', 21, 33), ('PP', 20, 33), ('NP-OBJ', 18, 33), ('COORD', 16, 33), ('CS', 34, 35), ('AdP', 38, 40), ('VN', 35, 41), ('PP-A_OBJ', 41, 43), ('Ssub-MOD', 34, 43)]
+p : 0.7246376811594203 r : 0.7575757575757576 f : 0.7407407407407408
+
+166  :  Nous avons dès_lors décidé , même_si on ne nous avait pas demandé d élaborer de nouvelle proposition , de fournir un travail supplémentaire pour clarifier les options politiques qui sont sur la table et de présenter une nouvelle proposition au Conseil .'
+Spans gold non trouvés : [('P', 14, 15), ('NP', 15, 17), ('PP-P_OBJ', 14, 17), ('VPinf-MOD', 12, 17), ('Ssub', 5, 17), ('VPpart', 19, 20), ('PP', 18, 20), ('NP', 18, 20), ('NP-OBJ', 25, 27), ('VPinf', 23, 27), ('AP', 22, 27), ('PP', 28, 29), ('NP', 18, 29), ('NP-SUJ', 18, 29), ('PP', 39, 41), ('NP-OBJ', 36, 41), ('NP', 31, 41), ('PP-P_OBJ', 30, 41), ('Sint', 5, 41), ('VPinf', 0, 42)]
+Spans supplémentaires : [('DET', 14, 15), ('NP-OBJ', 14, 17), ('VPinf-OBJ', 12, 17), ('Ssub-MOD', 5, 17), ('AP', 22, 23), ('NP-OBJ', 20, 23), ('NP-SUJ', 28, 29), ('NP', 31, 33), ('PP-P_OBJ', 30, 33), ('Srel', 28, 33), ('NP-OBJ', 25, 33), ('VPinf-MOD', 23, 33), ('NP-OBJ', 36, 39), ('PP-A_OBJ', 39, 41), ('VPinf-OBJ', 18, 41)]
+p : 0.726027397260274 r : 0.7794117647058824 f : 0.75177304964539
+
+167  :  Nous présenterons des propositions au Parlement et au Conseil dans les prochains mois .
+Spans gold non trouvés : [('PP', 4, 6), ('NP-OBJ', 2, 6), ('PP', 9, 13), ('NP', 8, 13), ('PP', 7, 13), ('COORD', 6, 13)]
+Spans supplémentaires : [('NP-OBJ', 2, 4), ('NP', 8, 9), ('PP', 7, 9), ('COORD', 6, 9), ('PP-A_OBJ', 4, 9), ('PP-MOD', 9, 13)]
+p : 0.75 r : 0.75 f : 0.75
+
+168  :  Le Conseil a bien_sûr fait preuve de générosité en_ce_sens_qu il a confié la gestion et le fonctionnement technique à la Commission .'
+Spans gold non trouvés : [('PP', 6, 8), ('NP-MOD', 5, 8), ('NP-ATS', 12, 14), ('PP', 18, 21), ('NP', 15, 21), ('COORD', 14, 21), ('Ssub-OBJ', 8, 21)]
+Spans supplémentaires : [('NP-OBJ', 5, 6), ('PP-DE_OBJ', 6, 8), ('NP', 15, 18), ('COORD', 14, 18), ('NP-OBJ', 12, 18), ('PP-A_OBJ', 18, 21), ('Ssub-MOD', 8, 21)]
+p : 0.8055555555555556 r : 0.8055555555555556 f : 0.8055555555555556
+
+169  :  Imposé au peuple irakien , devrais -je dire .
+Spans gold non trouvés : [('VPinf-ATO', 7, 8), ('COORD', 4, 8), ('AP', 3, 8), ('NP', 2, 8), ('PP-ATS', 1, 8), ('VPpart', 0, 9), ('COORD', 0, 9)]
+Spans supplémentaires : [('AP', 3, 4), ('NP', 2, 4), ('PP-A_OBJ', 1, 4), ('VPinf-OBJ', 7, 8), ('Sint-MOD', 5, 8), ('VPpart-MOD', 0, 8)]
+p : 0.631578947368421 r : 0.6666666666666666 f : 0.6486486486486486
+
+170  :  Malgré tout , le gouvernement des États-Unis refuse de lever définitivement l embargo , sous prétexte que l' Irak n' a pas respecté ses obligations .'
+Spans gold non trouvés : [('NP', 15, 16), ('PP', 14, 16), ('NP-OBJ', 10, 16), ('VPinf-OBJ', 8, 16), ('Ssub-MOD', 16, 25)]
+Spans supplémentaires : [('NP-OBJ', 11, 13), ('VPinf-OBJ', 8, 13), ('Ssub', 16, 25), ('NP', 15, 25), ('PP-MOD', 14, 25)]
+p : 0.8809523809523809 r : 0.8809523809523809 f : 0.8809523809523809
+
+171  :  Madame la Présidente , le 13 avril prochain débutera en Iran un procès à charge de treize citoyens iraniens de confession israélite .
+Spans gold non trouvés : [('NP-SUJ', 4, 8), ('PP-A_OBJ', 9, 11), ('NP', 16, 19), ('PP', 15, 19), ('NP', 14, 19), ('PP', 13, 19), ('NP-OBJ', 11, 19), ('PP-MOD', 19, 22)]
+Spans supplémentaires : [('NP-MOD', 4, 8), ('PP-MOD', 9, 11), ('NP', 14, 15), ('PP', 13, 15), ('PP', 19, 22), ('NP', 16, 22), ('PP', 15, 22), ('NP-SUJ', 11, 22)]
+p : 0.8 r : 0.8 f : 0.8000000000000002
+
+172  :  Je pense que ce serait très bienvenu si vous-même , en_tant_que Présidente du Parlement européen , vous adressiez , dans les formes qui vous conviendraient , aux autorités turques pour demander la libération de cet homme d honneur .'
+Spans gold non trouvés : [('PRO', 3, 4), ('NP-SUJ', 3, 4), ('VN', 4, 5), ('PP-MOD', 9, 16), ('CLS-SUJ', 16, 17), ('CLS-SUJ', 23, 24), ('Srel', 9, 29), ('NP', 8, 29), ('Ssub', 7, 29), ('AP-ATS', 5, 29)]
+Spans supplémentaires : [('CLS-SUJ', 3, 4), ('VN', 3, 5), ('AP-ATS', 5, 7), ('NP-SUJ', 8, 9), ('PP-MOD', 10, 15), ('CLR', 16, 17), ('CLO-A_OBJ', 23, 24), ('Ssub-DIS', 7, 38)]
+p : 0.855072463768116 r : 0.8805970149253731 f : 0.8676470588235295
+
+173  :  Madame la Présidente , je voudrais préciser clairement que si nous avons convenu que le Zimbabwe serait le cinquième point , alors il n y a pas lieu de voter sur d_autres points parce_que nous avons déjà cinq points à l ordre du jour .'
+Spans gold non trouvés : [('PROREL', 8, 9), ('NP-OBJ', 8, 9), ('VPinf-OBJ', 6, 9), ('NP-OBJ', 17, 20), ('Ssub-MOD', 9, 20), ('Sint', 4, 20), ('NP', 1, 21), ('NP', 0, 21), ('NP-OBJ', 26, 28), ('PP-A_OBJ', 30, 33), ('PP', 39, 44), ('NP-OBJ', 37, 44), ('Ssub-OBJ', 33, 44), ('VPinf-MOD', 28, 44), ('VPinf', 22, 44)]
+Spans supplémentaires : [('NP', 1, 3), ('NP-MOD', 0, 3), ('CS', 8, 9), ('NP-ATS', 17, 20), ('Ssub', 9, 20), ('NP-OBJ', 27, 28), ('PP-MOD', 30, 33), ('VPinf-DE_OBJ', 28, 33), ('NP-OBJ', 37, 39), ('PP-MOD', 39, 44), ('Ssub-MOD', 33, 44), ('Ssub-OBJ', 8, 44), ('VPinf-OBJ', 6, 44)]
+p : 0.7945205479452054 r : 0.8169014084507042 f : 0.8055555555555557
+
+174  :  Le troisième principe fondamental consacré dans le rapport est précisément la proposition d une révision générale - j' insiste sur " générale " - de l' ensemble des institutions qui composent l' Union européenne .'
+Spans gold non trouvés : [('AP', 21, 22), ('PP-ATS', 19, 23), ('COORD', 16, 23), ('AP', 15, 23), ('NP', 13, 23), ('PP', 12, 23), ('NP-OBJ', 10, 23), ('VPpart', 8, 23), ('NP', 28, 29), ('PP', 27, 29), ('NP', 25, 29), ('PP-MOD', 24, 29), ('Srel', 24, 34), ('NP', 6, 35), ('PP-P_OBJ', 5, 35), ('VPpart', 4, 35), ('NP', 0, 35)]
+Spans supplémentaires : [('NP', 6, 8), ('PP-MOD', 5, 8), ('VPpart', 4, 8), ('NP-SUJ', 0, 8), ('AP', 15, 16), ('AP', 20, 23), ('PP-P_OBJ', 19, 23), ('Sint-MOD', 17, 23), ('Srel', 29, 34), ('NP', 28, 34), ('PP', 27, 34), ('NP', 25, 34), ('PP', 24, 34), ('NP', 13, 34), ('PP', 12, 34), ('NP-ATS', 10, 34)]
+p : 0.7166666666666667 r : 0.7288135593220338 f : 0.7226890756302521
+
+175  :  Mais je me dois de souligner qu elle est nécessaire , indispensable , notamment parce_qu' avant_tout , nous en convenons tous , le réexamen actuel du mode de fonctionnement de l' Union européenne est directement lié au grand défi que constitue l' élargissement .'
+Spans gold non trouvés : [('CLR', 2, 3), ('AP', 13, 14), ('COORD', 12, 14), ('AP', 11, 14), ('COORD', 10, 14), ('NP-MOD', 9, 14), ('PRO', 17, 18), ('NP-SUJ', 17, 18), ('CLO-OBJ', 18, 19), ('VN', 18, 20), ('NP-OBJ', 20, 21), ('Ssub-OBJ', 14, 21), ('Ssub', 6, 21), ('AP', 37, 38), ('PP-P_OBJ', 36, 38), ('Sint', 6, 38), ('NP-OBJ', 6, 39), ('VPinf-OBJ', 4, 39), ('CS', 39, 40), ('NP-OBJ', 41, 43), ('Ssub-MOD', 39, 43)]
+Spans supplémentaires : [('CLR-A_OBJ', 2, 3), ('AP-ATS', 9, 10), ('AP-ATS', 11, 12), ('Ssub-OBJ', 6, 12), ('VPinf-OBJ', 4, 12), ('CLS-SUJ', 17, 18), ('CLO-DE_OBJ', 18, 19), ('VN', 17, 20), ('NP-MOD', 20, 21), ('Sint-MOD', 17, 21), ('PROREL', 39, 40), ('NP-OBJ', 39, 40), ('NP-SUJ', 41, 43), ('Srel', 39, 43), ('NP', 37, 43), ('PP-A_OBJ', 36, 43), ('Ssub-MOD', 14, 43)]
+p : 0.7307692307692307 r : 0.7702702702702703 f : 0.75
+
+176  :  Je terminerai en exprimant mes remerciements à la présidence portugaise , et en_particulier à M. Da Costa pour la collaboration que nous avons eue , au commissaire , M. Barnier , à vous et à tous les collègues et , bien_sûr , au corapporteur , M. Leinen , pour le rude mais très bon travail que nous avons accompli de concert , ainsi_qu aux membres du secrétariat du Parlement qui nous ont assistés et aux interprètes qui ont bien souvent dépassé l' horaire pour nous permettre de mener les négociations difficiles que vous concevez .'
+Spans gold non trouvés : [('PP', 6, 10), ('PP', 13, 17), ('COORD', 11, 17), ('NP-OBJ', 4, 17), ('VPinf-DE_OBJ', 2, 17), ('CS', 20, 21), ('Ssub', 20, 24), ('PP-MOD', 17, 24), ('NP', 26, 27), ('PP-MOD', 25, 27), ('PP', 31, 33), ('COORD', 30, 33), ('NP', 49, 51), ('PP', 48, 51), ('COORD', 47, 51), ('CS', 55, 56), ('PP-P_OBJ', 59, 61), ('Ssub', 55, 61), ('NP', 53, 61), ('COORD', 51, 61), ('NP-MOD', 45, 61), ('NP', 64, 69), ('PP', 63, 69), ('COORD', 62, 69), ('NP', 43, 69), ('PP-MOD', 42, 69), ('CLS-SUJ', 70, 71), ('VN', 70, 72), ('Srel', 42, 72), ('AdP-MOD', 40, 72), ('NP-OBJ', 88, 91), ('VPinf-MOD', 86, 91), ('VPinf', 83, 91), ('NP-OBJ', 81, 91), ('CS', 91, 92), ('Ssub-MOD', 91, 94), ('VPpart', 40, 94), ('Sint', 40, 94), ('COORD', 38, 94), ('PP', 34, 94), ('COORD', 33, 94), ('NP-MOD', 28, 94)]
+Spans supplémentaires : [('NP-OBJ', 4, 6), ('PP', 12, 17), ('PROREL', 20, 21), ('NP-OBJ', 20, 21), ('Srel', 20, 24), ('PP', 17, 24), ('COORD', 11, 24), ('NP-MOD', 28, 30), ('NP', 26, 30), ('PP', 25, 30), ('COORD', 24, 30), ('PP', 34, 38), ('COORD', 33, 38), ('PP', 31, 38), ('COORD', 30, 38), ('NP-MOD', 45, 47), ('NP', 43, 47), ('PP', 42, 47), ('AP', 52, 54), ('COORD', 51, 54), ('AP', 50, 54), ('PROREL', 55, 56), ('NP-OBJ', 55, 56), ('PP-MOD', 59, 61), ('Srel', 55, 61), ('NP', 49, 61), ('PP', 48, 61), ('COORD', 38, 61), ('CLO-OBJ', 70, 71), ('VN', 70, 73), ('Srel', 69, 73), ('NP', 64, 73), ('AdP', 78, 80), ('NP-OBJ', 81, 83), ('PROREL', 91, 92), ('NP-OBJ', 91, 92), ('Srel', 91, 94), ('NP-OBJ', 88, 94), ('VPinf-OBJ', 86, 94), ('VPinf-MOD', 83, 94), ('PP', 63, 94), ('COORD', 62, 94), ('PP-A_OBJ', 6, 94), ('VPpart', 3, 94), ('PP-MOD', 2, 94)]
+p : 0.7375 r : 0.7239263803680982 f : 0.7306501547987617
+
+177  :  Ceci doit maintenant également s opérer au sens pénal sur le plan européen dans_le_cadre_d' une coopération très ouverte et très claire avec les pays membres ;'
+Spans gold non trouvés : [('CLR', 4, 5), ('VPP', 17, 18), ('VPpart', 16, 18), ('NP', 14, 18), ('PP', 13, 18), ('NP', 10, 18), ('PP', 9, 18), ('NP', 7, 18), ('PP-A_OBJ', 6, 18), ('ADJ', 24, 25), ('AP', 24, 25), ('AP', 19, 25), ('COORD', 18, 25)]
+Spans supplémentaires : [('CLR-AFF.DEMSUJ', 4, 5), ('NP', 7, 9), ('PP-MOD', 6, 9), ('NP', 10, 13), ('PP-MOD', 9, 13), ('ADJ', 17, 18), ('AP', 19, 21), ('COORD', 18, 21), ('AP', 16, 21), ('NC', 24, 25), ('NP', 14, 25), ('PP-MOD', 13, 25)]
+p : 0.7111111111111111 r : 0.7272727272727273 f : 0.7191011235955056
+
+178  :  Je suis très reconnaissante aux États membres - et en_particulier à la Commission - d accueillir cette idée très favorablement .'
+Spans gold non trouvés : [('ADJ', 6, 7), ('AP', 6, 7), ('PP', 4, 7), ('AP-ATS', 3, 7), ('AdP', 18, 20), ('NP-OBJ', 16, 20), ('COORD', 13, 20), ('NP', 11, 20), ('PP', 10, 20), ('COORD', 8, 20)]
+Spans supplémentaires : [('NC', 6, 7), ('NP', 11, 13), ('PP', 10, 13), ('COORD', 8, 13), ('PP', 4, 14), ('NP-OBJ', 16, 18), ('AdP-MOD', 18, 20), ('AP-ATS', 2, 20)]
+p : 0.7142857142857143 r : 0.7575757575757576 f : 0.7352941176470589
+
+179  :  Je pense que l_on peut dire que cette conférence a été une réussite , pas seulement du point de vue financier , mais également en_raison_du fait que lors_de cette conférence on a particulièrement mis l' accent sur des projets qui relient réciproquement les régions entre elles , et c' est l' un des points principaux du rapport et l' essence même du pacte de stabilité .'
+Spans gold non trouvés : [('NP-OBJ', 11, 13), ('NP', 17, 18), ('PP', 16, 18), ('AdP', 14, 18), ('NP', 25, 26), ('PP', 24, 26), ('COORD', 22, 26), ('AP', 20, 26), ('NP', 19, 26), ('PP', 27, 30), ('Ssub', 26, 30), ('PP-MOD', 14, 30), ('VPpart', 9, 30), ('NP-SUJ', 7, 30), ('NP', 37, 39), ('PP', 36, 39), ('Srel', 39, 44), ('PP', 44, 46), ('NP-ATS', 50, 57), ('Sint', 48, 57), ('COORD', 47, 57), ('NP-OBJ', 34, 57)]
+Spans supplémentaires : [('NP-SUJ', 7, 9), ('NP-ATS', 11, 13), ('AdP', 14, 16), ('NP', 19, 20), ('PP', 18, 20), ('AP', 20, 21), ('NP', 17, 21), ('PP-MOD', 27, 30), ('NP-OBJ', 34, 36), ('PP-MOD', 44, 46), ('Srel', 39, 46), ('NP', 37, 46), ('PP-P_OBJ', 36, 46), ('NP-ATS', 50, 65), ('Sint', 48, 65), ('COORD', 47, 65), ('Ssub', 26, 65), ('NP', 25, 65), ('PP', 24, 65), ('COORD', 22, 65), ('PP-MOD', 14, 65)]
+p : 0.808695652173913 r : 0.8157894736842105 f : 0.812227074235808
+
+180  :  C était également une réussite , et je ne le dis pas seulement pour complimenter le commissaire , parce_qu' il était évident que l' Union européenne , la Commission européenne , a enfin pris une initiative , tandis_qu' elle est restée à mon avis trop longtemps à l' arrière-plan .'
+Spans gold non trouvés : [('NP', 23, 26), ('Ssub', 22, 26), ('AP-ATS', 21, 26), ('NP', 27, 30), ('COORD', 26, 30), ('Ssub', 18, 30), ('Sint', 18, 36), ('NP', 15, 37), ('PP-MOD', 15, 37), ('PRO', 38, 39), ('NP-SUJ', 38, 39), ('VN', 39, 41), ('PP-P_OBJ', 41, 44), ('Ssub-OBJ', 37, 46), ('VPinf-OBJ', 13, 46), ('COORD', 6, 46), ('PP', 46, 49), ('NP-ATS', 2, 49)]
+Spans supplémentaires : [('NP-ATS', 3, 5), ('NP-OBJ', 15, 17), ('VPinf-MOD', 13, 17), ('Sint', 7, 17), ('COORD', 6, 17), ('AP-ATS', 21, 22), ('NP-SUJ', 23, 26), ('NP-SUJ', 27, 30), ('Ssub-OBJ', 22, 36), ('CLS-SUJ', 38, 39), ('VN', 38, 41), ('PP-MOD', 41, 44), ('PP-ATS', 46, 49), ('Ssub-MOD', 37, 49), ('Ssub-MOD', 18, 49)]
+p : 0.7721518987341772 r : 0.8026315789473685 f : 0.7870967741935484
+
+181  :  Je suis seulement très curieux de savoir comment la Commission pense rassembler cet argent .
+Spans gold non trouvés : [('AP-ATS', 3, 5), ('ADVWH', 7, 8), ('Ssub-OBJ', 7, 14), ('VPinf-OBJ', 5, 14)]
+Spans supplémentaires : [('ADVWH-MOD', 7, 8), ('Ssub-MOD', 7, 14), ('VPinf', 5, 14), ('AP-ATS', 3, 14)]
+p : 0.8461538461538461 r : 0.8461538461538461 f : 0.8461538461538461
+
+182  :  Un programme de déminage fait partie de la sécurité , est très important et ne devrait pas être laissé de côté .
+Spans gold non trouvés : [('VPP', 5, 6), ('VN', 4, 6), ('PP-MOD', 6, 9), ('Sint-MOD', 10, 21)]
+Spans supplémentaires : [('VN', 4, 5), ('NC', 5, 6), ('NP-OBJ', 5, 6), ('PP-DE_OBJ', 6, 9), ('COORD', 9, 13)]
+p : 0.8947368421052632 r : 0.8717948717948718 f : 0.8831168831168831
+
+183  :  Il me semble bien plus logique que la Commission européenne , que M. Patten , remplisse ce rôle de dirigeant afin_d exécuter rapidement et efficacement le pacte de stabilité .'
+Spans gold non trouvés : [('CLR', 1, 2), ('NP', 12, 14), ('Ssub', 11, 14), ('Sint', 11, 20), ('COORD', 10, 20), ('NP', 7, 20), ('Ssub', 6, 20), ('AP-ATS', 4, 20), ('NP-OBJ', 25, 27), ('PP-MOD', 27, 29), ('VPinf-OBJ', 20, 29)]
+Spans supplémentaires : [('CLO-A_OBJ', 1, 2), ('AdP', 3, 5), ('AP-ATS', 3, 6), ('NP', 7, 10), ('Ssub-OBJ', 6, 10), ('NP-SUJ', 12, 14), ('PP', 27, 29), ('NP-OBJ', 25, 29), ('VPinf-MOD', 20, 29), ('Ssub-OBJ', 11, 29)]
+p : 0.7843137254901961 r : 0.8 f : 0.792079207920792
+
+184  :  J ai constaté la cohérence , et j' ai dit très clairement que le ton du présent exposé des motifs était dur .'
+Spans gold non trouvés : [('NP-MOD', 3, 5), ('VN', 7, 9), ('V', 9, 10), ('VN', 9, 10), ('VPinf-OBJ', 9, 12), ('Ssub-MOD', 12, 22)]
+Spans supplémentaires : [('NP-OBJ', 3, 5), ('VPP', 9, 10), ('VN', 7, 10), ('Ssub-OBJ', 12, 22)]
+p : 0.85 r : 0.8947368421052632 f : 0.8717948717948718
+
+185  :  Cette solution n est cependant pas suffisante , étant_donné_que les avions sont produits sur un marché mondial .'
+Spans gold non trouvés : [('NP-OBJ', 13, 17), ('Ssub', 7, 17), ('AP-ATS', 5, 17)]
+Spans supplémentaires : [('AP-ATS', 5, 7), ('NP', 14, 17), ('PP-MOD', 13, 17), ('Ssub-MOD', 8, 17)]
+p : 0.8888888888888888 r : 0.8571428571428571 f : 0.8727272727272727
+
+186  :  Étant_donné_que la durée de vie des avions est approximativement de trente ans , l effet de ces améliorations techniques se fait attendre longtemps .'
+Spans gold non trouvés : [('NP', 4, 7), ('PP', 3, 7), ('PP-DE_OBJ', 9, 12), ('VN', 19, 21), ('VN', 21, 22), ('VPinf-OBJ', 21, 23)]
+Spans supplémentaires : [('NP', 4, 5), ('PP', 3, 5), ('PP-ATS', 9, 12), ('VN', 19, 22)]
+p : 0.8536585365853658 r : 0.8974358974358975 f : 0.875
+
+187  :  Il me reste maintenant à souhaiter que , votes ou non , nous soyons très nombreux vendredi prochain .
+Spans gold non trouvés : [('CLR', 1, 2), ('PROREL', 6, 7), ('NP-OBJ', 6, 7), ('COORD', 11, 16), ('NP', 16, 18), ('COORD', 16, 18), ('NP', 8, 18), ('COORD', 7, 18)]
+Spans supplémentaires : [('CLO-A_OBJ', 1, 2), ('CS', 6, 7), ('NP-MOD', 8, 11), ('NP-MOD', 16, 18), ('Ssub-OBJ', 6, 18)]
+p : 0.7575757575757576 r : 0.8333333333333334 f : 0.7936507936507938
+
+188  :  Je pense dès_lors que , si les élections au Zimbabwe ne se déroulaient pas correctement , pour l une ou l' autre raison , la Commission devrait continuer à suivre la ligne de conduite qu' elle vient de définir .'
+Spans gold non trouvés : [('PROREL', 3, 4), ('NP-OBJ', 3, 4), ('VPpart-MOD', 0, 4), ('ADV', 5, 6), ('NP-SUJ', 5, 10), ('AdP', 13, 15), ('PP-MOD', 13, 15), ('NP', 17, 19), ('NP-MOD', 24, 26), ('NP-SUJ', 20, 26), ('NP-OBJ', 30, 34), ('VPinf-MOD', 28, 34), ('VPinf-OBJ', 27, 34), ('CS', 34, 35), ('VPinf-OBJ', 37, 39), ('Ssub-MOD', 34, 39), ('Sint', 20, 39), ('COORD', 19, 39), ('PP-MOD', 16, 39)]
+Spans supplémentaires : [('CS', 3, 4), ('CS', 5, 6), ('NP-SUJ', 6, 10), ('NP', 20, 23), ('COORD', 19, 23), ('NP', 17, 23), ('PP-MOD', 16, 23), ('Ssub-MOD', 5, 23), ('NP-SUJ', 24, 26), ('PROREL', 34, 35), ('NP-OBJ', 34, 35), ('VPinf-DE_OBJ', 37, 39), ('Srel', 34, 39), ('NP-OBJ', 30, 39), ('VPinf-OBJ', 28, 39), ('VPinf-OBJ', 27, 39), ('Ssub-OBJ', 3, 39)]
+p : 0.7205882352941176 r : 0.7424242424242424 f : 0.7313432835820897
+
+189  :  Comment ?
+Spans gold non trouvés : []
+Spans supplémentaires : [('ADVWH', 0, 1), ('PONCT', 1, 2)]
+p : 1.0 r : 0.3333333333333333 f : 0.5
+
+190  :  Au_cours_de cette visite , j ai été très honorée que vous m' ayez donné l' occasion de m' exprimer dans l' hémicycle du Parlement slovène et je dois dire que , avec M. Podestá , vice-président chargé de l' élargissement , avec M. Brok , président de la commission des affaires étrangères et M. Ebner , président de la délégation , nous avons été très impressionnés par les progrès considérables que votre pays avait accomplis dans la voie de l' appartenance à l' Europe .'
+Spans gold non trouvés : [('VPpart', 7, 9), ('COORD', 7, 9), ('CLR', 10, 11), ('CLO-A_OBJ', 17, 18), ('PROREL', 29, 30), ('NP-MOD', 29, 30), ('NP', 32, 34), ('PP-MOD', 31, 34), ('PP-P_OBJ', 37, 40), ('NP', 42, 43), ('PP-MOD', 41, 43), ('VPinf-OBJ', 28, 43), ('COORD', 25, 43), ('PP-MOD', 22, 43), ('NP', 53, 55), ('COORD', 52, 55), ('AP', 51, 55), ('NP', 50, 55), ('PP', 49, 55), ('NP', 47, 55), ('PP', 46, 55), ('NP', 45, 55), ('NP-SUJ', 43, 61), ('VN', 61, 64), ('NP', 67, 70), ('PP-P_OBJ', 66, 70), ('VPpart-ATS', 64, 70), ('Srel', 22, 70), ('NP', 20, 70), ('PP-A_OBJ', 19, 70), ('CS', 70, 71), ('Ssub-OBJ', 70, 84), ('VPinf-MOD', 16, 84), ('Ssub-OBJ', 9, 84)]
+Spans supplémentaires : [('CLS-SUJ', 10, 11), ('CLR', 17, 18), ('PP', 22, 25), ('NP', 20, 25), ('PP-MOD', 19, 25), ('VPinf-DE_OBJ', 16, 25), ('Ssub-OBJ', 9, 25), ('CS', 29, 30), ('PP-DE_OBJ', 37, 40), ('NP', 32, 40), ('PP-MOD', 31, 40), ('AP', 51, 52), ('NP', 50, 52), ('PP', 49, 52), ('NP', 47, 52), ('PP', 46, 52), ('NP-MOD', 45, 52), ('NP', 53, 60), ('COORD', 52, 60), ('NP', 42, 60), ('PP-MOD', 41, 60), ('VN', 61, 66), ('PROREL', 70, 71), ('NP-OBJ', 70, 71), ('Srel', 70, 84), ('NP', 67, 84), ('PP-P_OBJ', 66, 84), ('Ssub-OBJ', 29, 84), ('VPinf-OBJ', 28, 84), ('Sint', 26, 84), ('COORD', 25, 84)]
+p : 0.7588652482269503 r : 0.7753623188405797 f : 0.7670250896057348
+
+191  :  Vous avez aussi évoqué le souhait de ne_pas perdre de vue la solidarité sociale , dans le contexte de la globalisation .
+Spans gold non trouvés : [('NP-OBJ', 4, 6), ('VN', 8, 9), ('VPP', 10, 11), ('PP', 15, 21), ('NP-ATS', 11, 22), ('VPpart', 10, 22), ('PP-MOD', 9, 22), ('VPinf-MOD', 6, 22), ('VPinf', 0, 22)]
+Spans supplémentaires : [('VN', 7, 9), ('NC', 10, 11), ('NP', 10, 11), ('PP-P_OBJ', 9, 11), ('NP-OBJ', 11, 14), ('PP-MOD', 15, 21), ('VPinf', 6, 21), ('NP-OBJ', 4, 21)]
+p : 0.75 r : 0.7714285714285715 f : 0.7605633802816902
+
+192  :  Les événements de la nuit dernière à Copenhague soulignent à quel point il est important que le Parlement européen tienne ce débat , comme il a décidé de le faire plus tôt dans la semaine .
+Spans gold non trouvés : [('NP', 3, 8), ('PP', 2, 8), ('DET', 10, 11), ('Ssub', 15, 22), ('AP-ATS', 14, 22), ('VPpart', 12, 22), ('NP', 10, 22), ('PP-P_OBJ', 9, 22), ('AdP-P_OBJ', 30, 32), ('PP-MOD', 32, 35), ('VPinf-OBJ', 27, 35)]
+Spans supplémentaires : [('NP', 3, 6), ('PP', 2, 6), ('ADJWH', 10, 11), ('NP', 10, 12), ('PP-MOD', 9, 12), ('AP-ATS', 14, 15), ('VPinf-OBJ', 27, 30), ('PP', 32, 35), ('AdP-MOD', 30, 35), ('Ssub-OBJ', 15, 35), ('Ssub-OBJ', 9, 35)]
+p : 0.819672131147541 r : 0.819672131147541 f : 0.819672131147541
+
+193  :  Par_ailleurs , la délégation britannique , composée actuellement de 36 députés , a présenté à_nouveau la résolution dans sa forme originale .
+Spans gold non trouvés : [('PP-MOD', 7, 11), ('PP', 17, 21), ('NP-OBJ', 14, 21)]
+Spans supplémentaires : [('PP-P_OBJ', 8, 11), ('NP-OBJ', 15, 17), ('PP-MOD', 17, 21)]
+p : 0.9090909090909091 r : 0.9090909090909091 f : 0.9090909090909091
+
+194  :  Je suis souvent sceptique vis-à-vis_des exigences très sévères , par_exemple en_matière_d environnement , qui sont imposées aux pays candidats .'
+Spans gold non trouvés : [('NP', 5, 12), ('PP', 4, 12), ('AP-ATS', 3, 12), ('VPpart-MOD', 13, 19)]
+Spans supplémentaires : [('Srel', 13, 19), ('NP', 5, 19), ('PP', 4, 19), ('AP-ATS', 3, 19)]
+p : 0.8787878787878788 r : 0.8787878787878788 f : 0.8787878787878788
+
+195  :  En_effet , une telle mesure ne nécessiterait pas de ressources financières importantes , et il serait tout_à_fait possible de la mettre en application .
+Spans gold non trouvés : [('P', 8, 9), ('NP', 9, 12), ('VPinf', 18, 21), ('AP-ATS', 17, 21), ('COORD', 13, 21), ('PP-MOD', 7, 21), ('PP-MOD', 21, 23)]
+Spans supplémentaires : [('DET', 8, 9), ('NP-OBJ', 8, 12), ('AP-ATS', 16, 18), ('PP-P_OBJ', 21, 23), ('VPinf-OBJ', 18, 23), ('Sint', 14, 23), ('COORD', 13, 23)]
+p : 0.8157894736842105 r : 0.8157894736842105 f : 0.8157894736842104
+
+196  :  Nous avons pu écouter Nelson Mandela au Parlement européen ;
+Spans gold non trouvés : [('PP-A_OBJ', 6, 9)]
+Spans supplémentaires : [('PP-MOD', 6, 9)]
+p : 0.9444444444444444 r : 0.9444444444444444 f : 0.9444444444444444
+
+197  :  Madame la Présidente , ceci est une requête émanant du procureur général du tribunal de grande instance de Berlin de lever l immunité de M. André Brie , un membre de cette Assemblée .'
+Spans gold non trouvés : [('DET', 9, 10), ('NP', 15, 19), ('PP', 14, 19), ('NP-OBJ', 9, 19), ('NP', 24, 27), ('PP', 23, 27), ('NP-OBJ', 21, 27), ('NP-OBJ', 28, 33), ('VPinf-MOD', 19, 33), ('VPinf', 8, 33), ('NP-OBJ', 6, 33)]
+Spans supplémentaires : [('P+D', 9, 10), ('NP', 15, 17), ('PP', 14, 17), ('NP', 10, 19), ('PP-DE_OBJ', 9, 19), ('VPpart', 8, 19), ('NP-MOD', 28, 33), ('NP', 24, 33), ('PP', 23, 33), ('NP-OBJ', 21, 33), ('VPinf', 19, 33), ('NP-ATS', 6, 33)]
+p : 0.8103448275862069 r : 0.7966101694915254 f : 0.8034188034188032
+
+198  :  Notre recommandation préconise de ne_pas lever son immunité .
+Spans gold non trouvés : [('VN', 5, 6), ('VPinf-DE_OBJ', 3, 8)]
+Spans supplémentaires : [('VN', 4, 6), ('VPinf-OBJ', 3, 8)]
+p : 0.8666666666666667 r : 0.8666666666666667 f : 0.8666666666666667
+
+199  :  Les décisions du Parlement dans ces circonstances ont toujours été de ne_pas lever l immunité .'
+Spans gold non trouvés : [('PP', 4, 7), ('NP-SUJ', 0, 7), ('VN', 7, 8), ('VN', 12, 13), ('VPinf-DE_OBJ', 10, 15), ('VPpart-ATS', 9, 15)]
+Spans supplémentaires : [('NP-SUJ', 0, 4), ('PP-MOD', 4, 7), ('VN', 7, 10), ('VN', 11, 13), ('VPinf-ATS', 10, 15)]
+p : 0.7777777777777778 r : 0.8076923076923077 f : 0.7924528301886792
+
+200  :  Ce n est pas le cas ici et cette affaire s' inscrit dans la ligne des affaires précédentes pour lesquelles le Parlement a estimé que l' activité politique devait être protégée .'
+Spans gold non trouvés : [('AP', 6, 7), ('CLR', 10, 11), ('PP', 18, 20), ('NP', 16, 20), ('PP', 15, 20), ('Srel', 20, 31), ('PP-MOD', 12, 31), ('NP-OBJ', 4, 31)]
+Spans supplémentaires : [('NP-ATS', 4, 6), ('CLR-AFF.DEMSUJ', 10, 11), ('PP-MOD', 18, 20), ('Srel', 18, 31), ('NP', 16, 31), ('PP', 15, 31), ('PP-P_OBJ', 12, 31)]
+p : 0.8571428571428571 r : 0.8727272727272727 f : 0.8648648648648648
+
+201  :  La Commission n a donné aucune indication à_ce_sujet .'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+202  :  Plus_tard , le bombardement des tranchées françaises fera l objet d' une polémique , à_la_suite_d' un témoignage : Le général Réveilhac , ordonnateur de l' attaque , aurait demandé à l' artillerie de pilonner les positions française pour obliger les soldats à sortir de leurs tranchées .'
+Spans gold non trouvés : [('PP', 10, 13), ('NP-OBJ', 8, 13), ('NP-MOD', 22, 27), ('NP-SUJ', 18, 27), ('PP-P_OBJ', 29, 32), ('VPinf-MOD', 41, 46), ('VPinf-DE_OBJ', 37, 46), ('VPinf-MOD', 32, 46), ('Srel', 18, 46), ('NP', 15, 46), ('PP-MOD', 14, 46)]
+Spans supplémentaires : [('NP-OBJ', 8, 10), ('PP-DE_OBJ', 10, 13), ('NP', 15, 17), ('PP-MOD', 14, 17), ('NP-MOD', 22, 26), ('NP-SUJ', 18, 26), ('PP-A_OBJ', 29, 32), ('VPinf-A_OBJ', 41, 46), ('VPinf-MOD', 37, 46), ('VPinf-OBJ', 32, 46), ('Sint-MOD', 18, 46)]
+p : 0.8571428571428571 r : 0.8571428571428571 f : 0.8571428571428571
+
+203  :  Le 16 mars , les inculpés comparaissent devant le Conseil de guerre de la 60e division demandé par le général Réveilhac avec le motif : " refus de bondir hors_des tranchées " .
+Spans gold non trouvés : [('PP-MOD', 17, 21), ('NP', 22, 24), ('PP-MOD', 21, 24), ('VPpart', 16, 24), ('NP', 13, 24), ('PP', 12, 24), ('NP', 11, 24), ('PP', 10, 24), ('NP', 8, 24), ('PP-P_OBJ', 7, 24), ('PP-A_OBJ', 29, 31), ('NP', 26, 32), ('COORD', 25, 32)]
+Spans supplémentaires : [('NP', 11, 12), ('PP', 10, 12), ('NP', 13, 16), ('PP', 12, 16), ('PP-P_OBJ', 17, 21), ('PP-P_OBJ', 29, 31), ('NP-MOD', 25, 32), ('NP', 22, 32), ('PP-MOD', 21, 32), ('VPpart', 16, 32), ('NP', 8, 32), ('PP-P_OBJ', 7, 32)]
+p : 0.7592592592592593 r : 0.7735849056603774 f : 0.7663551401869159
+
+204  :  - Blanche Maupas , Le Fusillé , Éditions Isoète , réédition 2002 avec des illustrations de Tardi -RRB- .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+205  :  ils étaient issus du fonctionnement habituel de l établissement , mais avaient été présentés comme trouvés dans des charniers résultant de tortures et de massacres du régime en_place .'
+Spans gold non trouvés : [('NP', 4, 6), ('PP', 3, 6), ('AP-ATS', 2, 6), ('COORD', 10, 14), ('PP-MOD', 6, 14), ('PP-P_OBJ', 20, 22), ('VPpart', 19, 22), ('NP', 17, 22), ('PP-P_OBJ', 16, 22), ('VPpart', 15, 22), ('PP-MOD', 14, 22)]
+Spans supplémentaires : [('PP', 6, 9), ('NP', 4, 9), ('PP-DE_OBJ', 3, 9), ('AP-ATS', 2, 9), ('PP-DE_OBJ', 20, 28), ('VPpart', 19, 28), ('NP', 17, 28), ('PP-MOD', 16, 28), ('VPpart', 15, 28), ('PP-P_OBJ', 14, 28), ('COORD', 10, 28)]
+p : 0.7884615384615384 r : 0.7884615384615384 f : 0.7884615384615384
+
+206  :  Histoire de la Roumanie
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+207  :  [ ... ] Pendant_que j étais là , j' ai vu les soldats irakiens entrer dans l' hôpital avec leurs armes .'
+Spans gold non trouvés : []
+Spans supplémentaires : [('PONCT', 0, 1), ('PONCT', 1, 2), ('PONCT', 2, 3), ('CS', 3, 4), ('CLS-SUJ', 4, 5), ('V', 5, 6), ('VN', 4, 6), ('ADV-P_OBJ', 6, 7), ('PONCT', 7, 8), ('Ssub-MOD', 3, 8), ('CLS-SUJ', 8, 9), ('V', 9, 10), ('VPP', 10, 11), ('VN', 8, 11), ('DET', 11, 12), ('NC', 12, 13), ('ADJ', 13, 14), ('AP', 13, 14), ('NP-OBJ', 11, 14), ('VINF', 14, 15), ('VN', 14, 15), ('P', 15, 16), ('DET', 16, 17), ('NC', 17, 18), ('NP', 16, 18), ('PP-P_OBJ', 15, 18), ('P', 18, 19), ('DET', 19, 20), ('NC', 20, 21), ('NP', 19, 21), ('PP-MOD', 18, 21), ('VPinf-ATO', 14, 21), ('PONCT', 21, 22)]
+p : 1.0 r : 0.029411764705882353 f : 0.05714285714285715
+
+208  :  J étais horrifiée .'
+Spans gold non trouvés : [('VPinf', 0, 3)]
+Spans supplémentaires : []
+p : 0.8571428571428571 r : 1.0 f : 0.923076923076923
+
+209  :  Ils ont vidé les supermarchés de nourriture , les pharmacies de médicaments , les usines de matériel médical , ils ont cambriolé les maisons et torturé des voisins et des amis .
+Spans gold non trouvés : [('PP', 5, 7), ('NP-OBJ', 3, 7), ('PP', 10, 12), ('NP', 8, 12), ('COORD', 7, 12), ('PP', 15, 18), ('NP-SUJ', 13, 18), ('P+D', 26, 27), ('NP', 27, 28), ('PP-A_OBJ', 26, 28), ('VPpart', 25, 28), ('COORD', 24, 28), ('P+D', 29, 30), ('NP', 30, 31), ('PP', 29, 31), ('NP-OBJ', 22, 31), ('Sint-MOD', 13, 31)]
+Spans supplémentaires : [('NP-OBJ', 3, 5), ('PP-DE_OBJ', 5, 7), ('NP-OBJ', 8, 10), ('PP-DE_OBJ', 10, 12), ('NP-OBJ', 13, 15), ('PP-DE_OBJ', 15, 18), ('NP-OBJ', 22, 24), ('DET', 26, 27), ('DET', 29, 30), ('NP', 29, 31), ('NP-OBJ', 26, 31), ('VPpart', 25, 31), ('COORD', 24, 31), ('Sint-MOD', 19, 31)]
+p : 0.6909090909090909 r : 0.7307692307692307 f : 0.7102803738317757
+
+210  :  Les Irakiens lui avaient plongé la tête dans un bassin , jusqu_à_ce_qu' il soit presque noyé .'
+Spans gold non trouvés : [('CLO-A_OBJ', 2, 3), ('PP', 7, 10), ('NP-OBJ', 5, 10), ('VN', 12, 14), ('VPpart', 14, 16), ('COORD', 14, 16)]
+Spans supplémentaires : [('CLO-OBJ', 2, 3), ('NP-OBJ', 5, 7), ('PP-P_OBJ', 7, 10), ('VN', 12, 16)]
+p : 0.7777777777777778 r : 0.84 f : 0.8076923076923077
+
+211  :  Ils lui ont arraché les ongles .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+212  :  Il a beaucoup de chance d avoir survécu . "'
+Spans gold non trouvés : [('VPinf-DE_OBJ', 5, 8)]
+Spans supplémentaires : [('VPinf-MOD', 5, 8)]
+p : 0.9333333333333333 r : 0.9333333333333333 f : 0.9333333333333333
+
+213  :  - -LRB- fr -RRB- L Humanité , 10 juin 1993 , analyse de l' impact médiatique [ 2 ]'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+214  :  - -LRB- en -RRB- Maggie OKane , This time I  m scared , The Guardian , December 5 , 2002 .
+Spans gold non trouvés : [('NC', 2, 3), ('NP', 7, 10), ('NP', 12, 13), ('NP-MOD', 11, 13), ('NP', 4, 13), ('ADJ', 18, 19), ('AP', 18, 19), ('NP', 17, 19), ('NP', 20, 21)]
+Spans supplémentaires : [('ET', 2, 3), ('NP', 4, 6), ('NP', 7, 13), ('NC', 18, 19), ('NP', 17, 21)]
+p : 0.71875 r : 0.8214285714285714 f : 0.7666666666666666
+
+215  :  Il contestera son appartenance supposée à l extrême droite affirmée par VGE dans son livre et le fera condamner à un franc de dommages et intérêts pour diffamation en 1991 .'
+Spans gold non trouvés : [('VPpart', 9, 12), ('NP', 6, 12), ('PP-P_OBJ', 5, 12), ('VPpart', 4, 12), ('NP-ATS', 2, 12), ('PP-DE_OBJ', 12, 15), ('VN', 16, 18), ('VN', 18, 19), ('NP', 23, 24), ('PP', 22, 24), ('NP', 20, 24), ('PP-A_OBJ', 19, 24), ('PP', 28, 30), ('NP', 27, 30), ('PP', 26, 30), ('NP', 25, 30), ('COORD', 24, 30), ('VPinf-OBJ', 18, 30)]
+Spans supplémentaires : [('VPpart', 4, 5), ('NP', 6, 9), ('PP', 5, 9), ('PP-MOD', 12, 15), ('VPpart', 9, 15), ('NP-OBJ', 2, 15), ('VN', 16, 19), ('NP', 25, 26), ('COORD', 24, 26), ('NP', 23, 26), ('PP', 22, 26), ('NP', 20, 26), ('PP-A_OBJ', 19, 26), ('NP', 27, 28), ('PP-MOD', 26, 28), ('PP-MOD', 28, 30)]
+p : 0.6785714285714286 r : 0.7037037037037037 f : 0.6909090909090909
+
+216  :  Quelques personnes pourront échapper à ce destin tragique , et viendront témoigner .
+Spans gold non trouvés : [('VN', 2, 4), ('PP-MOD', 4, 8), ('VN', 10, 12)]
+Spans supplémentaires : [('VN', 2, 3), ('VN', 3, 4), ('PP-A_OBJ', 4, 8), ('VPinf-OBJ', 3, 8), ('VN', 10, 11), ('VN', 11, 12), ('VPinf-OBJ', 11, 12)]
+p : 0.8571428571428571 r : 0.72 f : 0.782608695652174
+
+217  :  Procès
+Spans gold non trouvés : []
+Spans supplémentaires : [('NP', 0, 1)]
+p : 1.0 r : 0.6666666666666666 f : 0.8
+
+218  :  Seules quelques familles oseront porter plainte pour la disparition de 353 personnes .
+Spans gold non trouvés : [('PP-MOD', 6, 12)]
+Spans supplémentaires : [('PP-P_OBJ', 6, 12)]
+p : 0.9565217391304348 r : 0.9565217391304348 f : 0.9565217391304348
+
+219  :  En 1634 , dans un couvent d Ursulines à Loudun , les soeurs affirmèrent avoir été ensorcelées par le curé Urbain Grandier .'
+Spans gold non trouvés : [('NP', 4, 8), ('PP', 3, 8), ('COORD', 2, 8), ('NP', 1, 10), ('PP-MOD', 0, 10), ('VN', 14, 16), ('VPinf-OBJ', 14, 16), ('VPpart-MOD', 16, 22)]
+Spans supplémentaires : [('NP', 1, 2), ('PP-MOD', 0, 2), ('NP', 4, 10), ('PP-MOD', 3, 10), ('VN', 14, 17), ('VPinf-OBJ', 14, 22)]
+p : 0.8 r : 0.8421052631578947 f : 0.8205128205128205
+
+220  :  Voir aussi
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+221  :  - Affaire des faux chargés de mission
+Spans gold non trouvés : [('COORD', 0, 7)]
+Spans supplémentaires : []
+p : 0.9285714285714286 r : 1.0 f : 0.962962962962963
+
+222  :  L affaire des faux chargés de mission du cabinet du maire de Paris est une affaire d' emplois fictifs connexe aux différentes affaires politico- financières de la ville de Paris et du financement illégal du RPR .'
+Spans gold non trouvés : [('NP', 6, 13), ('PP', 5, 13), ('AP', 19, 20), ('NP', 17, 20), ('PP', 16, 20), ('DET', 21, 22), ('PP', 25, 30), ('NP', 21, 30), ('PP', 20, 30), ('NP-OBJ', 14, 30)]
+Spans supplémentaires : [('NP', 6, 7), ('PP', 5, 7), ('NP', 17, 19), ('PP', 16, 19), ('ADJ', 21, 22), ('PP', 25, 36), ('NP', 21, 36), ('PP', 20, 36), ('AP', 19, 36), ('NP-ATS', 14, 36)]
+p : 0.8529411764705882 r : 0.8529411764705882 f : 0.8529411764705882
+
+223  :  - 15 février 1989 : La Cour de cassation renvoie le dossier à Amiens en_vertu_du privilège de juridiction qui impose alors le dépaysement des dossiers mettant en_cause des élus .
+Spans gold non trouvés : [('PP', 12, 14), ('NP', 24, 25), ('PP', 23, 25), ('NP-OBJ', 21, 25), ('Srel', 18, 25), ('NP', 17, 25), ('PP', 16, 25), ('NP', 15, 25), ('PP', 14, 25), ('NP-OBJ', 10, 25), ('VPpart', 9, 25), ('NP', 8, 25), ('PP', 7, 25), ('NP-SUJ', 5, 25)]
+Spans supplémentaires : [('NP', 8, 9), ('PP', 7, 9), ('NP-SUJ', 5, 9), ('NP-OBJ', 10, 12), ('PP-P_OBJ', 12, 14), ('NP', 17, 18), ('PP', 16, 18), ('VPpart', 25, 29), ('NP', 24, 29), ('PP', 23, 29), ('NP-OBJ', 21, 29), ('Srel', 18, 29), ('NP', 15, 29), ('PP-MOD', 14, 29)]
+p : 0.7307692307692307 r : 0.7307692307692307 f : 0.7307692307692306
+
+224  :  - 7 février 1996 : Une nouvelle information judiciaire est ouverte à Paris par le juge Hervé Stéphan .
+Spans gold non trouvés : [('PP-P_OBJ', 11, 13), ('PP-MOD', 13, 18)]
+Spans supplémentaires : [('PP-MOD', 11, 13), ('PP-P_OBJ', 13, 18)]
+p : 0.9285714285714286 r : 0.9285714285714286 f : 0.9285714285714286
+
+225  :  - 6 février 1998 : Les recours formés contre Laurent Dominati par Dominique Bertinotti -LRB- PS -RRB- et Yves Contassot -LRB- Vert -RRB- devant le Conseil constitutionnel sont rejetés au_motif_que les erreurs dans les inscriptions sur les listes électorales relevées dans le 3e arrondissement durant les élections législatives de 1997 ne constituent pas des " manoeuvres " .
+Spans gold non trouvés : [('PP-P_OBJ', 8, 11), ('NP-MOD', 15, 16), ('NP', 18, 20), ('COORD', 17, 20), ('COORD', 20, 22), ('NP', 12, 22), ('PP-MOD', 11, 22), ('PP', 44, 50), ('NP', 41, 50), ('PP-P_OBJ', 40, 50), ('NP', 36, 50), ('PP', 35, 50), ('NP', 33, 50), ('PP', 32, 50), ('Ssub-OBJ', 29, 57)]
+Spans supplémentaires : [('PP-MOD', 8, 11), ('NP', 15, 16), ('NP', 18, 23), ('COORD', 17, 23), ('NP', 12, 23), ('PP-P_OBJ', 11, 23), ('NP', 36, 39), ('PP', 35, 39), ('NP', 33, 39), ('PP', 32, 39), ('NP', 41, 44), ('PP-MOD', 40, 44), ('PP-MOD', 44, 50), ('Ssub-MOD', 29, 57)]
+p : 0.8369565217391305 r : 0.8461538461538461 f : 0.8415300546448088
+
+226  :  - 11 septembre 2006 : Ouverture du procès à Paris .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+227  :  Quinze prévenus comparaissent pour " manoeuvres frauduleuses " lors_des élections municipales de 1989 et 1995 .
+Spans gold non trouvés : [('NP', 12, 13), ('PP', 11, 13), ('NP', 9, 13), ('PP', 8, 13), ('NP', 4, 13), ('PP-MOD', 3, 13)]
+Spans supplémentaires : [('NP', 12, 15), ('PP', 11, 15), ('NP', 9, 15), ('PP', 8, 15), ('NP', 4, 15), ('PP-P_OBJ', 3, 15)]
+p : 0.7931034482758621 r : 0.7931034482758621 f : 0.7931034482758621
+
+228  :  Le procureur Laurent Zuchowicz a souligné que cette peine demandée était le maximum prévu par le code pénal et qu elle n' était pas amnistiable .'
+Spans gold non trouvés : [('NP-OBJ', 11, 18)]
+Spans supplémentaires : [('NP-ATS', 11, 18)]
+p : 0.9761904761904762 r : 0.9761904761904762 f : 0.9761904761904762
+
+229  :  Contre dix autres prévenus , élus ou fonctionnaires , des peines allant d une simple amende à dix mois de prison avec sursis , assortie ou non d' inéligibilité , ont été réclamées .'
+Spans gold non trouvés : [('PP-MOD', 0, 8), ('NP-SUJ', 9, 11), ('NP', 17, 21), ('PP', 16, 21), ('PP', 27, 29), ('COORD', 25, 29), ('PP-MOD', 12, 29), ('Sint-MOD', 30, 33)]
+Spans supplémentaires : [('PP-P_OBJ', 0, 8), ('NP', 17, 23), ('PP', 16, 23), ('COORD', 25, 27), ('PP-DE_OBJ', 27, 29), ('PP-P_OBJ', 12, 29), ('VPpart', 11, 29), ('NP-SUJ', 9, 29)]
+p : 0.8571428571428571 r : 0.8571428571428571 f : 0.8571428571428571
+
+230  :  Les origines de l affaire'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+231  :  En_outre , suite_à l affaire Dreyfus , le service de renseignement de l' armée -LRB- 2ème Bureau -RRB- , considéré comme subversif , a déjà été épuré et complètement désorganisé durant un certain temps , ce qui donnera aux services allemands une longueur d' avance dans ce domaine en plein développement de l' art de la guerre .'
+Spans gold non trouvés : [('NP-MOD', 15, 17), ('NP', 12, 18), ('PP', 11, 18), ('NP', 10, 18), ('PP', 9, 18), ('PP-MOD', 20, 22), ('NP-SUJ', 7, 23), ('Srel', 36, 41), ('NP-MOD', 35, 41), ('NP', 31, 41), ('PP-P_OBJ', 30, 41), ('VPpart', 28, 41), ('COORD', 27, 41), ('Srel', 7, 41), ('NP', 3, 41), ('PP', 2, 41), ('NP', 49, 57), ('PP', 48, 57), ('PP', 45, 57), ('NP', 44, 57), ('PP', 43, 57), ('NP', 41, 57), ('Srel', 2, 57)]
+Spans supplémentaires : [('NP', 3, 6), ('PP-MOD', 2, 6), ('NP', 10, 11), ('PP', 9, 11), ('NP', 12, 14), ('PP', 11, 14), ('NP', 15, 17), ('PP-ATS', 20, 22), ('NP-SUJ', 7, 22), ('NP', 31, 34), ('PP-MOD', 30, 34), ('VPpart', 28, 34), ('COORD', 27, 34), ('NP', 44, 45), ('PP', 43, 45), ('NP-OBJ', 41, 45), ('NP', 49, 51), ('PP', 48, 51), ('PP-MOD', 45, 57), ('Srel', 36, 57), ('NP-MOD', 35, 57)]
+p : 0.7578947368421053 r : 0.7741935483870968 f : 0.7659574468085107
+
+232  :  Voir Chronologie de l affaire des frégates de Taïwan'
+Spans gold non trouvés : [('NP-OBJ', 1, 2), ('NP', 6, 7), ('PP', 5, 7), ('NP', 3, 7), ('PP-DE_OBJ', 2, 7), ('PP-MOD', 7, 9)]
+Spans supplémentaires : [('PP', 7, 9), ('NP', 6, 9), ('PP', 5, 9), ('NP', 3, 9), ('PP', 2, 9), ('NP-OBJ', 1, 9)]
+p : 0.6842105263157895 r : 0.6842105263157895 f : 0.6842105263157895
+
+233  :  L enquête suisse confiée au juge Paul Perraudin continue , mais l' argent des Wang n' a pas été redistribué .'
+Spans gold non trouvés : [('VPpart', 3, 4), ('NP', 5, 6), ('PP-MOD', 4, 6), ('NP-SUJ', 6, 8), ('Sint', 11, 21), ('COORD', 10, 21), ('Srel', 4, 21), ('NP', 0, 21)]
+Spans supplémentaires : [('NP', 5, 8), ('PP-A_OBJ', 4, 8), ('VPpart', 3, 8), ('NP-SUJ', 0, 8), ('Sint', 11, 20), ('COORD', 10, 20)]
+p : 0.7777777777777778 r : 0.8235294117647058 f : 0.7999999999999999
+
+234  :  Références
+Spans gold non trouvés : []
+Spans supplémentaires : [('NP', 0, 1)]
+p : 1.0 r : 0.6666666666666666 f : 0.8
+
+235  :  " J ai signé , comme ministre chargé de l' administration des douanes et des impôts , la commission douanière , ce qu' on appelle les frais de prospection de marché , qui a été allouée aux intermédiaires étrangers qui ont facilité l' acquisition des frégates de Taïwan " , a expliqué Michel Charasse .'
+Spans gold non trouvés : [('PP-P_OBJ', 8, 13), ('NP-SUJ', 22, 23), ('NP', 45, 46), ('PP', 44, 46), ('NP-OBJ', 42, 46), ('Srel', 39, 46), ('NP', 37, 46), ('PP-A_OBJ', 36, 46), ('Srel', 32, 46), ('NP', 17, 46), ('NP', 6, 49), ('PP-MOD', 5, 49), ('Sint', 5, 54), ('VPinf', 1, 55), ('COORD', 0, 55)]
+Spans supplémentaires : [('PP-DE_OBJ', 8, 16), ('NP', 6, 16), ('PP-MOD', 5, 16), ('NP-OBJ', 22, 23), ('NP', 45, 48), ('PP', 44, 48), ('NP-OBJ', 42, 48), ('Srel', 39, 48), ('NP', 37, 48), ('PP-A_OBJ', 36, 48), ('Srel', 32, 48), ('NP-OBJ', 17, 48), ('Sint-MOD', 49, 54)]
+p : 0.845360824742268 r : 0.8631578947368421 f : 0.8541666666666666
+
+236  :  - Une information judiciaire française , ouverte contre X en juin 2001 , pour " abus de biens sociaux et recel " , concerne d éventuelles rétrocommissions versées à des personnalités françaises en marge de la vente des frégates .'
+Spans gold non trouvés : [('AP', 3, 5), ('PP-MOD', 13, 22), ('P', 24, 25), ('NP', 29, 32), ('PP-P_OBJ', 28, 32), ('VPpart', 27, 32), ('NP', 25, 32), ('PP-A_OBJ', 24, 32), ('PP-MOD', 32, 39)]
+Spans supplémentaires : [('AP', 3, 4), ('PP-P_OBJ', 13, 22), ('DET', 24, 25), ('PP', 32, 39), ('NP', 29, 39), ('PP-A_OBJ', 28, 39), ('VPpart', 27, 39), ('NP-OBJ', 24, 39)]
+p : 0.8695652173913043 r : 0.8823529411764706 f : 0.8759124087591241
+
+237  :  Ils n ont cependant pu établir la réalité de rétro- commissions versées à des intermédiaires français .'
+Spans gold non trouvés : [('PP-P_OBJ', 12, 16)]
+Spans supplémentaires : [('PP-A_OBJ', 12, 16)]
+p : 0.9642857142857143 r : 0.9642857142857143 f : 0.9642857142857143
+
+238  :  Il est probable que ce blocage a eu lieu avant la dispersion des commissions occultes .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+239  :  - Le retour vers l Europe d' une partie de cette masse énorme -LRB- rétrocommissions -RRB- a nourri d' importants fantasmes dont le prolongement a été trouvé dans l' affaire Clearstream 2 , dont la base est la scénarisation par le " corbeau " de distribution de ces rétrocommissions à_travers la boîte noire financière Clearstream .'
+Spans gold non trouvés : [('NP', 4, 13), ('PP', 3, 13), ('NP-MOD', 14, 15), ('P', 18, 19), ('NP-OBJ', 21, 22), ('ADJ', 31, 32), ('AP', 31, 32), ('NP', 33, 34), ('NP', 40, 43), ('PP', 39, 43), ('NP-OBJ', 37, 43), ('Srel', 34, 43), ('NP-MOD', 33, 43), ('NP', 28, 44), ('PP-MOD', 27, 44), ('Srel', 21, 44), ('NP', 19, 44), ('PP-ATS', 18, 44), ('NP', 45, 46), ('PP-MOD', 44, 46), ('NP', 50, 53), ('PP', 49, 53), ('NP', 47, 55), ('PP-MOD', 46, 55)]
+Spans supplémentaires : [('NP', 4, 6), ('PP', 3, 6), ('DET', 18, 19), ('PP-MOD', 21, 22), ('NC', 31, 32), ('PP-MOD', 33, 34), ('NP', 40, 44), ('PP', 39, 44), ('NP', 47, 49), ('PP', 46, 49), ('NP', 50, 55), ('PP', 49, 55), ('NP', 45, 55), ('PP', 44, 55), ('NP-ATS', 37, 55), ('Srel', 33, 55), ('NP', 28, 55), ('PP-MOD', 27, 55), ('Srel', 21, 55), ('NP-OBJ', 18, 55)]
+p : 0.7391304347826086 r : 0.7727272727272727 f : 0.7555555555555555
+
+240  :  - Cette procédure risque de conduire l État français à payer une amende d' un montant évalué en l' état de l' enquête à 599 millions de dollars -LRB- près_de 500 millions d' euros -RRB- .'
+Spans gold non trouvés : [('NP', 24, 28), ('PP', 23, 28), ('NP', 21, 28), ('PP', 20, 28), ('NP', 18, 28), ('PP-P_OBJ', 17, 28), ('VPpart', 16, 28), ('NP', 14, 28), ('PP', 13, 28), ('NP-OBJ', 11, 28), ('NP', 30, 34), ('PP-MOD', 29, 34), ('VPpart', 3, 35), ('NP', 1, 35)]
+Spans supplémentaires : [('NP-SUJ', 1, 3), ('NP', 21, 23), ('PP', 20, 23), ('NP', 18, 23), ('PP-MOD', 17, 23), ('NP-MOD', 29, 34), ('NP', 24, 35), ('PP-A_OBJ', 23, 35), ('VPpart', 16, 35), ('NP', 14, 35), ('PP', 13, 35), ('NP-OBJ', 11, 35)]
+p : 0.7741935483870968 r : 0.8 f : 0.7868852459016393
+
+241  :  Le 7 juin 2006 , Dominique de Talancé a été désaisi du dossier et remplacé par Xavière Simeoni , puis Françoise Desset .
+Spans gold non trouvés : [('NP', 5, 6), ('COORD', 4, 6), ('NP-MOD', 0, 6), ('DET', 6, 7), ('NP-SUJ', 6, 8), ('NP', 16, 18), ('PP-P_OBJ', 15, 18), ('VPpart', 14, 18), ('COORD', 13, 18), ('PP-P_OBJ', 11, 18)]
+Spans supplémentaires : [('NP-MOD', 0, 4), ('P', 6, 7), ('NP', 7, 8), ('PP', 6, 8), ('NP-SUJ', 5, 8), ('PP-DE_OBJ', 11, 13), ('NP', 16, 22), ('PP-P_OBJ', 15, 22), ('VPpart', 14, 22), ('COORD', 13, 22)]
+p : 0.7297297297297297 r : 0.7297297297297297 f : 0.7297297297297297
+
+242  :  Les parties ont vingt jours pour demander des actes supplémentaires .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+243  :  Secret Défense
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+244  :  L enquête sur sa mort a été classée sans suite , étant considérée comme accidentelle .'
+Spans gold non trouvés : [('NP', 14, 15), ('PP-DE_OBJ', 13, 15)]
+Spans supplémentaires : [('AP', 14, 15), ('PP-ATS', 13, 15)]
+p : 0.9259259259259259 r : 0.9259259259259259 f : 0.9259259259259259
+
+245  :  - Le 21 juillet 2006 , pour la troisième fois , la commission consultative du secret de la défense nationale rejette la demande de déclassification d un document des douanes demandée par les juges Pons et d' Huy .'
+Spans gold non trouvés : [('NP', 24, 25), ('PP', 23, 25), ('NP-OBJ', 21, 25), ('NP', 32, 35), ('PP-P_OBJ', 31, 35), ('NP', 29, 38), ('PP', 28, 38), ('NP', 26, 38), ('PP-P_OBJ', 25, 38)]
+Spans supplémentaires : [('NP', 29, 30), ('PP', 28, 30), ('NP', 26, 30), ('PP', 25, 30), ('NP', 34, 38), ('NP', 32, 38), ('PP-P_OBJ', 31, 38), ('NP', 24, 38), ('PP', 23, 38), ('NP-OBJ', 21, 38)]
+p : 0.859375 r : 0.8461538461538461 f : 0.8527131782945736
+
+246  :  En avril 2006 , les investigations judiciaires ont montré que le ministre de la Défense Michèle Alliot-Marie , et le ministre des Affaires étrangères de l époque Dominique de Villepin , auraient été au courant de la circulation de ces listes falsifiées dans les milieux du renseignement avant_même la réception des lettres anonymes par le juge Ruymbeke .'
+Spans gold non trouvés : [('NP-MOD', 10, 15), ('NP', 25, 28), ('PP', 24, 28), ('NP', 22, 28), ('PP', 21, 28), ('NP-SUJ', 15, 30), ('NP', 48, 53), ('PP', 47, 53), ('NP', 46, 53), ('PP', 45, 53), ('NP', 43, 53), ('PP-P_OBJ', 42, 53), ('VPpart', 41, 53), ('NP', 39, 53), ('PP', 38, 53), ('NP', 36, 53), ('PP', 35, 53), ('NP', 34, 53), ('PP-MOD', 33, 53), ('PP-MOD', 53, 57), ('Ssub-MOD', 9, 57)]
+Spans supplémentaires : [('NP', 22, 24), ('PP', 21, 24), ('NP', 25, 27), ('PP', 24, 27), ('NP-SUJ', 10, 30), ('VPpart', 41, 42), ('NP', 39, 42), ('PP', 38, 42), ('NP', 46, 47), ('PP', 45, 47), ('NP', 43, 47), ('PP', 42, 47), ('NP', 36, 47), ('PP', 35, 47), ('NP', 34, 47), ('PP-ATS', 33, 47), ('PP', 53, 57), ('NP', 48, 57), ('PP-MOD', 47, 57), ('Ssub-OBJ', 9, 57)]
+p : 0.7835051546391752 r : 0.7916666666666666 f : 0.7875647668393783
+
+247  :  Roland Dumas , ancien ministre des Affaires étrangères , et ancien proche de François Mitterrand , reconnaît alors avoir entendu parler du " versement d une commission de 500 millions de dollars autorisée par le gouvernement français " et " d' un possible retour en France " des fonds -LRB- Voir Affaire Dumas -RRB- .'
+Spans gold non trouvés : [('NP-MOD', 3, 8), ('NP-MOD', 0, 15), ('DET', 47, 48), ('NP-MOD', 47, 49), ('PP-MOD', 40, 49), ('COORD', 38, 53), ('NP', 28, 53), ('PP', 27, 53), ('NP', 25, 53), ('PP', 24, 53), ('NP', 22, 54), ('PP-A_OBJ', 21, 54), ('VPinf-OBJ', 20, 54), ('VPinf-OBJ', 18, 54)]
+Spans supplémentaires : [('NP-MOD', 3, 15), ('NP-SUJ', 0, 15), ('NP', 28, 32), ('PP', 27, 32), ('NP', 25, 37), ('PP', 24, 37), ('NP', 22, 38), ('P+D', 47, 48), ('NP', 48, 49), ('PP', 47, 49), ('PP', 39, 49), ('COORD', 38, 49), ('PP-DE_OBJ', 21, 49), ('VPinf-ATO', 20, 49), ('VPinf-OBJ', 18, 49), ('VPinf', 50, 53), ('Sint-MOD', 50, 53)]
+p : 0.8444444444444444 r : 0.8172043010752689 f : 0.8306010928961749
+
+248  :  - Les para-politiques : Christine Deviers-Joncour
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+249  :  - Jean-Claude Desjeux , l ancien directeur juridique de Thomson CSF , a reconnu avoir reçu un million de francs en 1997 sur un compte domicilié en Suisse .'
+Spans gold non trouvés : [('NP-SUJ', 1, 12), ('PP', 20, 22), ('NP', 19, 22), ('PP', 18, 22), ('NP-OBJ', 16, 22), ('VPpart-MOD', 14, 22)]
+Spans supplémentaires : [('NP-SUJ', 1, 11), ('NP', 19, 20), ('PP', 18, 20), ('NP-OBJ', 16, 20), ('PP-MOD', 20, 22), ('VPinf-OBJ', 14, 28)]
+p : 0.875 r : 0.875 f : 0.875
+
+250  :  La justice française a conclu à un accident domestique .
+Spans gold non trouvés : [('PP-MOD', 5, 9)]
+Spans supplémentaires : [('PP-A_OBJ', 5, 9)]
+p : 0.9411764705882353 r : 0.9411764705882353 f : 0.9411764705882353
+
+251  :  Épilogue
+Spans gold non trouvés : []
+Spans supplémentaires : [('NP', 0, 1)]
+p : 1.0 r : 0.6666666666666666 f : 0.8
+
+252  :  - Les frégates de Taïwan cherchent preneurs , Libération , 29 octobre 2004
+Spans gold non trouvés : [('NP-ATS', 6, 9), ('NP', 10, 13)]
+Spans supplémentaires : [('NP-OBJ', 6, 7), ('NP-MOD', 10, 13)]
+p : 0.9047619047619048 r : 0.9047619047619048 f : 0.9047619047619048
+
+253  :  ISBN 2226116214
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+254  :  Broché - 437 pages .
+Spans gold non trouvés : [('AP', 0, 5)]
+Spans supplémentaires : [('AP', 0, 1)]
+p : 0.875 r : 0.875 f : 0.875
+
+255  :  - Christine Deviers-Joncour , Opération Bravo , Pocket -LRB- 2000 -RRB- .
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+256  :  Huit jours après , Didier Schuller prenait la fuite en République dominicaine sur les conseil de son avocat Me Francis Szpiner et de la cellule juridique de l Elysée -LRB- le  cabinet noir  -RRB- .'
+Spans gold non trouvés : [('NP', 0, 2), ('P', 2, 3), ('PP-MOD', 0, 3), ('NC', 10, 11), ('NP', 23, 29), ('PP', 22, 29), ('COORD', 21, 29), ('NP', 18, 29), ('NP', 30, 35), ('NP', 16, 36), ('PP', 12, 36), ('NP', 10, 36), ('PP', 9, 36), ('NP-OBJ', 7, 36)]
+Spans supplémentaires : [('ADV', 2, 3), ('NP-MOD', 0, 3), ('NP-OBJ', 7, 9), ('NPP', 10, 11), ('NP', 10, 12), ('PP-P_OBJ', 9, 12), ('NP', 16, 21), ('NP-MOD', 30, 35), ('NP', 23, 36), ('PP', 22, 36), ('COORD', 21, 36), ('PP-MOD', 12, 36)]
+p : 0.7627118644067796 r : 0.7894736842105263 f : 0.7758620689655172
+
+257  :  Patrick Balkany est disculpé et relaxé .
+Spans gold non trouvés : [('VN', 2, 4), ('VPpart', 5, 6)]
+Spans supplémentaires : [('VN', 2, 6)]
+p : 0.8333333333333334 r : 0.9090909090909091 f : 0.8695652173913043
+
+258  :  - Financement illégal des partis politiques français
+Spans gold non trouvés : [('COORD', 0, 7)]
+Spans supplémentaires : []
+p : 0.9333333333333333 r : 1.0 f : 0.9655172413793104
+
+259  :  - 20 janvier 1994 : la Direction générale des impôts -LRB- DGI -RRB- transmet au parquet de Créteil une enquête sur une entreprise appartenant à Francis Poullain , soupçonné d avoir réglé des fausses factures par l' intermédiaire de ses sociétés , lesquelles auraient bénéficié de marchés passés par l' OPAC -LRB- Office public d' aménagement et de construction de la ville de Paris -RRB- .'
+Spans gold non trouvés : [('NP', 11, 12), ('NP', 25, 27), ('PP-P_OBJ', 24, 27), ('VPpart', 23, 27), ('NP', 21, 27), ('PP', 20, 27), ('NP', 39, 41), ('PP', 38, 41), ('NP', 36, 41), ('PP', 35, 41), ('NP-OBJ', 32, 41), ('VPinf-A_OBJ', 29, 41), ('VPpart', 28, 41), ('NP', 49, 51), ('PP-P_OBJ', 48, 51), ('VPpart', 47, 51), ('NP', 52, 54), ('NP', 58, 64), ('PP', 57, 64), ('COORD', 56, 64), ('PP', 54, 64), ('PP-P_OBJ', 45, 65)]
+Spans supplémentaires : [('NP-MOD', 11, 12), ('NP-OBJ', 32, 35), ('NP', 58, 59), ('PP', 57, 59), ('COORD', 56, 59), ('PP', 54, 59), ('NP-MOD', 52, 64), ('NP', 49, 65), ('PP-P_OBJ', 48, 65), ('VPpart', 47, 65), ('PP-DE_OBJ', 45, 65), ('NP', 39, 65), ('PP', 38, 65), ('NP', 36, 65), ('PP-MOD', 35, 65), ('VPinf-DE_OBJ', 29, 65), ('VPpart', 28, 65), ('NP', 25, 65), ('PP-A_OBJ', 24, 65), ('VPpart', 23, 65), ('NP', 21, 65), ('PP', 20, 65)]
+p : 0.8035714285714286 r : 0.8035714285714286 f : 0.8035714285714286
+
+260  :  - 3 août 1994 : le juge Éric Halphen place sous mandat de dépôt Francis Poullain .
+Spans gold non trouvés : [('NP', 11, 12), ('PP-P_OBJ', 10, 12), ('NP', 13, 16), ('PP-MOD', 12, 16)]
+Spans supplémentaires : [('NP', 13, 14), ('PP', 12, 14), ('NP', 11, 14), ('PP-P_OBJ', 10, 14), ('NP-OBJ', 14, 16)]
+p : 0.84 r : 0.8076923076923077 f : 0.8235294117647058
+
+261  :  Une femme , Françoise Montfort , présidente de la société AVS -LRB- Assainissement voierie service -RRB- , s apprête à remettre 46_000 francs dans une enveloppe à un homme d' affaires , Jean-Paul Schimpf , ex- gérant d' une filiale de la Screg .'
+Spans gold non trouvés : [('NP', 8, 11), ('PP', 7, 11), ('NP-MOD', 6, 11), ('NP', 13, 15), ('NP-MOD', 3, 15), ('NP-MOD', 0, 16), ('NP', 27, 31), ('PP', 26, 31), ('NP', 24, 31), ('PP', 23, 31), ('NP-OBJ', 21, 31), ('NP-MOD', 32, 43), ('VPinf-DE_OBJ', 19, 43)]
+Spans supplémentaires : [('NP-MOD', 3, 5), ('NP', 8, 16), ('PP', 7, 16), ('NP-MOD', 6, 16), ('NP-SUJ', 0, 16), ('NP-OBJ', 21, 23), ('NP', 24, 26), ('PP-MOD', 23, 26), ('NP-MOD', 32, 34), ('NP', 27, 43), ('PP-A_OBJ', 26, 43), ('VPinf-A_OBJ', 19, 43)]
+p : 0.8088235294117647 r : 0.8208955223880597 f : 0.8148148148148148
+
+262  :  - 4 avril 2001 : le président Jacques Chirac est mis en_cause par François Ciolina , qui le désigne comme l inspirateur d' un système de fraude sur les marchés publics , ne se rend pas chez le juge .'
+Spans gold non trouvés : [('NP-SUJ', 7, 9), ('NP', 26, 31), ('PP', 25, 31), ('PP-P_OBJ', 19, 31), ('NP', 13, 32), ('PP-MOD', 12, 32), ('Srel', 7, 32), ('NP-SUJ', 5, 32)]
+Spans supplémentaires : [('NP-SUJ', 5, 9), ('NP', 26, 27), ('PP', 25, 27), ('PP-ATO', 19, 31), ('NP', 13, 31), ('PP-P_OBJ', 12, 31)]
+p : 0.873015873015873 r : 0.9016393442622951 f : 0.8870967741935485
+
+263  :  - 2002-2004 : successeur d Éric Halphen , le juge d' instruction Armand Riberolles s' est évertué à reprendre les actes annulés par la cour d' appel de Paris .'
+Spans gold non trouvés : [('NP', 1, 2), ('NP', 26, 29), ('PP', 25, 29), ('VPinf-OBJ', 17, 29), ('Srel', 8, 29), ('NP', 5, 29), ('PP', 4, 29), ('NP', 3, 29)]
+Spans supplémentaires : [('NP-MOD', 1, 2), ('NP', 5, 7), ('PP', 4, 7), ('NP-MOD', 3, 7), ('NP', 26, 27), ('PP', 25, 27), ('VPinf-A_OBJ', 17, 29)]
+p : 0.84 r : 0.8571428571428571 f : 0.8484848484848485
+
+264  :  Selon l accusation : " L' instruction n' est pas parvenue à établir formellement l' implication personnelle des responsables au_sein_de l' appareil politique du RPR . "'
+Spans gold non trouvés : [('PP-MOD', 0, 4), ('NPP', 24, 25), ('NP', 18, 26), ('PP', 17, 26), ('NP-OBJ', 14, 26), ('VPinf-OBJ', 11, 26)]
+Spans supplémentaires : [('PP-MOD', 0, 3), ('NC', 24, 25), ('NP', 18, 25), ('PP', 17, 25), ('NP-OBJ', 14, 25), ('VPinf-A_OBJ', 11, 26)]
+p : 0.8604651162790697 r : 0.8604651162790697 f : 0.8604651162790697
+
+265  :  - En l absence de tout responsable politique , c' est l' ancien directeur général de l' Office public HLM de Paris et élu corrézien , Georges Pérol , qui fait figure de clé de voûte de ce vaste système de versements de commissions par les entreprises et de détournement de procédures dans l' attribution de marchés publics .'
+Spans gold non trouvés : [('ADV', 0, 1), ('PP', 1, 8), ('AdP-MOD', 0, 8), ('NP', 16, 18), ('PP', 15, 18), ('NP-ATS', 11, 18), ('NP', 23, 29), ('COORD', 22, 29), ('NP-MOD', 18, 29), ('V', 31, 32), ('VN', 31, 32), ('NP', 41, 44), ('PP', 40, 44), ('NP', 51, 58), ('PP', 50, 58), ('NP', 35, 58), ('PP', 34, 58), ('PP-MOD', 32, 58), ('VPinf-OBJ', 31, 58), ('Srel-MOD', 18, 58)]
+Spans supplémentaires : [('PONCT', 0, 1), ('PP-MOD', 1, 8), ('AP', 18, 19), ('NP', 19, 20), ('NP', 16, 22), ('PP', 15, 22), ('NP', 23, 25), ('COORD', 22, 25), ('NP-ATS', 11, 28), ('NC', 31, 32), ('NP-OBJ', 31, 32), ('NP', 35, 36), ('PP', 34, 36), ('NP', 41, 47), ('NP', 51, 52), ('PP', 50, 52), ('PP', 40, 58), ('PP-DE_OBJ', 32, 58), ('Srel-MOD', 29, 58)]
+p : 0.8095238095238095 r : 0.8173076923076923 f : 0.8133971291866029
+
+266  :  - Le Monde du 22 septembre 2000
+Spans gold non trouvés : [('COORD', 0, 7)]
+Spans supplémentaires : []
+p : 0.9166666666666666 r : 1.0 f : 0.9565217391304348
+
+267  :  Histoire de Paris
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+268  :  L affaire des marchés publics d' Île-de-France ou Affaire des marchés truqués des lycées d' Île-de-France est un dossier emblématique des dérives du financement des partis politiques dans les années 1990 .'
+Spans gold non trouvés : [('PP-A_OBJ', 12, 16), ('VPpart', 11, 16), ('PP', 5, 16), ('NP', 3, 16), ('PP', 2, 16), ('AP', 19, 20), ('NP', 25, 31), ('PP', 24, 31), ('NP-OBJ', 17, 31)]
+Spans supplémentaires : [('PP', 5, 7), ('NP', 3, 7), ('PP', 2, 7), ('VPpart', 11, 12), ('PP', 12, 16), ('NP', 25, 27), ('PP', 24, 27), ('AP', 19, 31), ('NP-ATS', 17, 31)]
+p : 0.85 r : 0.85 f : 0.85
+
+269  :  Chargé des lycées depuis les premières lois de décentralisation , le conseil régional dirigé par le RPR et dont le président était Michel Giraud a engagé , entre 1988 et 1997 , 24 milliards de francs de travaux de rénovation , extension et construction dans 471 établissements , il a été prélevé 2 % de " commissions occultes " que se sont partagés ces grands partis , au prorata de leur représentation à l assemblée régionale -LRB- 0,8 % pour la gauche et 1,2 % pour la droite -RRB- .'
+Spans gold non trouvés : [('PP', 3, 9), ('NP', 2, 9), ('PP-A_OBJ', 1, 9), ('NP', 28, 29), ('PP', 27, 31), ('COORD', 26, 31), ('Sint-MOD', 10, 31), ('NP', 39, 40), ('PP', 38, 40), ('NP', 37, 40), ('PP', 36, 40), ('NP', 35, 40), ('PP', 34, 40), ('NP', 43, 47), ('COORD', 42, 47), ('NP-MOD', 41, 47), ('NP-SUJ', 32, 48), ('NP-SUJ', 59, 60), ('NP', 68, 69), ('PP', 67, 69), ('NP-OBJ', 63, 69), ('Srel', 59, 69), ('NP-OBJ', 52, 69), ('NP', 73, 89), ('PP', 72, 89), ('NP', 70, 89), ('PP-MOD', 69, 89)]
+Spans supplémentaires : [('NP', 2, 3), ('PP-DE_OBJ', 1, 3), ('PP-MOD', 3, 9), ('NP', 28, 31), ('PP-MOD', 27, 31), ('NP', 35, 36), ('PP', 34, 36), ('NP', 41, 42), ('COORD', 40, 42), ('NP', 43, 44), ('COORD', 42, 44), ('NP', 39, 44), ('PP', 38, 44), ('NP', 37, 47), ('PP', 36, 47), ('NP-OBJ', 32, 47), ('NP-OBJ', 59, 60), ('NP-SUJ', 63, 66), ('NP', 73, 76), ('PP', 72, 76), ('NP', 70, 76), ('PP', 69, 76), ('NP', 68, 89), ('PP-MOD', 67, 89), ('Srel', 59, 89), ('NP-OBJ', 52, 89), ('Sint-MOD', 48, 89)]
+p : 0.8211920529801324 r : 0.8211920529801324 f : 0.8211920529801325
+
+270  :  La plus grosse part -LRB- 1,2 % -RRB- du " racket " revint au RPR , alors dirigé par Jacques Chirac , secondé par Michel Roussin .
+Spans gold non trouvés : [('NP', 0, 4), ('NP', 5, 7), ('DET', 8, 9), ('NP', 14, 15), ('PP-DE_OBJ', 13, 15), ('VPpart', 12, 15), ('NP', 8, 26)]
+Spans supplémentaires : [('NP-MOD', 5, 7), ('P+D', 8, 9), ('NP', 9, 12), ('PP', 8, 12), ('NP-SUJ', 0, 12), ('NP', 14, 26), ('PP-A_OBJ', 13, 26)]
+p : 0.8333333333333334 r : 0.8333333333333334 f : 0.8333333333333334
+
+271  :  Le dossier d instruction comporte ses célèbres " confessions " posthumes , publiées en 2000 -LRB- Cassette Méry -RRB- .'
+Spans gold non trouvés : [('AP', 9, 12), ('PP-P_OBJ', 13, 15), ('COORD', 12, 15), ('NP-MOD', 16, 18), ('NP-MOD', 8, 19), ('NP-ATS', 5, 19)]
+Spans supplémentaires : [('AP', 10, 11), ('PP-MOD', 13, 15), ('NP', 16, 18), ('NP-OBJ', 5, 19)]
+p : 0.8181818181818182 r : 0.8709677419354839 f : 0.84375
+
+272  :  - Louise-Yvonne Casetta , trésorière occulte du RPR , a été reconnue coupable de complicité et recel de corruption , et a été condamnée à 20 mois de prison avec sursis et 10_000 euros d amende .'
+Spans gold non trouvés : [('NP', 14, 15), ('NP', 16, 19), ('COORD', 15, 19), ('NP', 28, 31), ('PP', 27, 31), ('NP', 25, 31), ('PP-P_OBJ', 24, 31), ('Sint', 21, 36), ('PP', 13, 36), ('AP-ATS', 12, 36)]
+Spans supplémentaires : [('NP', 16, 17), ('COORD', 15, 17), ('NP', 14, 19), ('PP', 13, 19), ('AP-ATS', 12, 19), ('NP', 28, 29), ('PP', 27, 29), ('NP', 25, 36), ('PP-A_OBJ', 24, 36)]
+p : 0.84375 r : 0.8571428571428571 f : 0.8503937007874015
+
+273  :  En grande majorité , les condamnés ont renoncé à faire appel , comme l ex- président du conseil régional Michel Giraud , l' ex- trésorier du Parti républicain Jean-Pierre Thomas et Gérard Peybernès , ancien président de l' association nationale de financement du PS .'
+Spans gold non trouvés : [('NP', 17, 18), ('PP', 16, 18), ('NP', 26, 27), ('PP', 25, 27), ('NP', 31, 33), ('COORD', 30, 33), ('NP', 28, 33), ('NP', 22, 33), ('NP', 37, 40), ('PP', 36, 40), ('NP', 19, 44), ('VPinf-OBJ', 8, 44)]
+Spans supplémentaires : [('VPinf-A_OBJ', 8, 11), ('NP', 17, 19), ('PP', 16, 19), ('NP', 26, 28), ('PP', 25, 28), ('NP', 22, 30), ('COORD', 21, 30), ('NP', 37, 44), ('PP', 36, 44), ('NP', 31, 44), ('COORD', 30, 44)]
+p : 0.8378378378378378 r : 0.8493150684931506 f : 0.8435374149659863
+
+274  :  - Claude-Annick Tissot
+Spans gold non trouvés : [('COORD', 0, 3)]
+Spans supplémentaires : []
+p : 0.8333333333333334 r : 1.0 f : 0.9090909090909091
+
+275  :  Le public prend connaissance des conversations de Luciano Moggi , directeur général de la Juventus , et Pierluigi Pairetto , ancien arbitre , chargé par la fédération italienne de football de sélectionner les arbitres pour les rencontres de championnat entre 1999 et 2004 .
+Spans gold non trouvés : [('NC', 14, 15), ('NP', 7, 15), ('PP', 6, 15), ('NP', 5, 15), ('VPpart', 23, 30), ('NP', 17, 30), ('COORD', 16, 30), ('PP-A_OBJ', 4, 30), ('NP', 40, 41), ('PP', 39, 41), ('NP', 38, 41), ('PP', 37, 41), ('NP', 35, 41), ('PP', 34, 41), ('NP-OBJ', 32, 41), ('VPinf-MOD', 30, 41)]
+Spans supplémentaires : [('NPP', 14, 15), ('NP-OBJ', 32, 34), ('NP', 38, 39), ('PP', 37, 39), ('NP', 35, 39), ('PP-MOD', 34, 39), ('VPinf-DE_OBJ', 30, 39), ('NP', 40, 43), ('PP-MOD', 39, 43), ('VPpart', 23, 43), ('NP', 17, 43), ('COORD', 16, 43), ('NP', 7, 43), ('PP', 6, 43), ('NP', 5, 43), ('PP-DE_OBJ', 4, 43)]
+p : 0.7894736842105263 r : 0.7894736842105263 f : 0.7894736842105263
+
+276  :  Condamnations intermédiaires
+Spans gold non trouvés : [('NC', 1, 2)]
+Spans supplémentaires : [('ADJ', 1, 2), ('AP', 1, 2)]
+p : 0.75 r : 0.6 f : 0.6666666666666665
+
+277  :  Notes & références
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+278  :  - ^ Relégation en Série B et annulation des deux derniers titres de Champion d Italie'
+Spans gold non trouvés : [('DET', 9, 10), ('PP', 3, 16)]
+Spans supplémentaires : [('PP', 3, 6), ('ADJ', 9, 10)]
+p : 0.9285714285714286 r : 0.9285714285714286 f : 0.9285714285714286
+
+279  :  Affaire des otages du Liban
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+280  :  Puis , les sommes étaient retirées par des proches de Safa et apportées à l association France Orient , où elles étaient réceptionnées par J.-C. Marchianni ou sa secrétaire .'
+Spans gold non trouvés : [('NP', 7, 9), ('PP-MOD', 6, 9), ('PP-MOD', 9, 11), ('NP-SUJ', 16, 20), ('NP', 24, 26), ('PP-MOD', 23, 26), ('Srel', 16, 29), ('PP-P_OBJ', 13, 29)]
+Spans supplémentaires : [('PP', 9, 11), ('NP', 7, 11), ('PP-P_OBJ', 6, 11), ('NP', 24, 29), ('PP-P_OBJ', 23, 29), ('Srel', 19, 29), ('PP-A_OBJ', 13, 29)]
+p : 0.8367346938775511 r : 0.8541666666666666 f : 0.845360824742268
+
+281  :  Dernier élément non négligeable et pourtant souvent " oublié par la presse " .
+Spans gold non trouvés : [('COORD', 4, 6), ('AP', 2, 6), ('AP', 6, 7), ('PP-ATS', 9, 12), ('VPpart', 8, 13), ('NP', 1, 14), ('AP', 0, 14)]
+Spans supplémentaires : [('PP-P_OBJ', 9, 12), ('VPpart', 5, 13), ('COORD', 4, 13), ('AP', 2, 13), ('NP', 0, 13)]
+p : 0.6956521739130435 r : 0.7619047619047619 f : 0.7272727272727272
+
+282  :  Catégorie : Affaire politico- financière française
+Spans gold non trouvés : [('NP', 0, 6)]
+Spans supplémentaires : [('NP', 0, 1), ('NP', 2, 6)]
+p : 0.9 r : 0.8181818181818182 f : 0.8571428571428572
+
+283  :  Le 26 avril , cinq gendarmes et le colonel Mazères sont mis en examen et incarcérés .
+Spans gold non trouvés : [('NP-MOD', 4, 10), ('NP-SUJ', 0, 10), ('PP-MOD', 12, 14), ('VPpart', 15, 16)]
+Spans supplémentaires : [('NP-MOD', 0, 3), ('NP-SUJ', 4, 10), ('PP-P_OBJ', 12, 14)]
+p : 0.8518518518518519 r : 0.8846153846153846 f : 0.8679245283018868
+
+284  :  Maître Vergès , plaide : l opération paillote n' a été qu' une " manipulation barbouzarde " visant à " éliminer un préfet de Corse qui devenait gênant pour un gouvernement qui s' apprêtait à dialoguer avec les clandestins " .'
+Spans gold non trouvés : [('NP-MOD', 0, 2), ('NP', 5, 8), ('COORD', 4, 8), ('VN', 3, 8), ('VN', 9, 11), ('CS', 11, 12), ('NP', 12, 17), ('NP-SUJ', 12, 17), ('VPinf-OBJ', 34, 39), ('VPinf-OBJ', 27, 39), ('Ssub-OBJ', 11, 40), ('VPinf-OBJ', 9, 40)]
+Spans supplémentaires : [('NP-SUJ', 0, 2), ('VN', 3, 4), ('NP-SUJ', 5, 8), ('VN', 8, 11), ('ADV', 11, 12), ('VPinf-A_OBJ', 34, 39), ('VPpart-ATS', 27, 39), ('VPpart', 17, 40), ('NP-OBJ', 12, 40), ('Sint-MOD', 5, 40)]
+p : 0.8333333333333334 r : 0.8571428571428571 f : 0.8450704225352113
+
+285  :  - 18 novembre 2002 : L affaire en appel'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+286  :  - Mars 2005 : Recours en grâce rejeté
+Spans gold non trouvés : [('NP', 6, 8), ('PP', 5, 8)]
+Spans supplémentaires : [('NP', 6, 7), ('PP', 5, 7)]
+p : 0.8571428571428571 r : 0.8571428571428571 f : 0.8571428571428571
+
+287  :  -LRB- Jean-Michel Dumay , Le Monde du 11.01.02. -RRB-
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+288  :  Plusieurs clichés de ce photographe sont particulièrement dénoncées au début du mois d août 2006 , comme ayant subi d' importantes retouches ou des mises en scène [ 2 ] .'
+Spans gold non trouvés : [('NP', 11, 12), ('PP', 10, 12), ('NP', 9, 12), ('PP-A_OBJ', 8, 12), ('PP-MOD', 12, 15), ('CS', 16, 17), ('P', 19, 20), ('NP', 20, 22), ('PP-MOD', 19, 22), ('P+D', 23, 24), ('ADJ', 28, 29), ('AP', 28, 29), ('NP', 24, 30), ('PP', 23, 30), ('COORD', 22, 30), ('Ssub-MOD', 16, 30)]
+Spans supplémentaires : [('PP', 12, 15), ('NP', 11, 15), ('PP', 10, 15), ('NP', 9, 15), ('PP-MOD', 8, 15), ('P', 16, 17), ('DET', 19, 20), ('DET', 23, 24), ('NP', 23, 27), ('COORD', 22, 27), ('NP-OBJ', 19, 27), ('VPpart', 17, 27), ('PP-MOD', 16, 27), ('NC', 28, 29), ('NP-MOD', 28, 29)]
+p : 0.6923076923076923 r : 0.7058823529411765 f : 0.6990291262135924
+
+289  :  Le 7 août , les neuf_cent_vingt photos de Hajj sont retirées de la base de données de Reuters [ 8 ] .
+Spans gold non trouvés : [('NP', 12, 16), ('PP-MOD', 11, 16), ('ADJ', 19, 20), ('AP', 19, 20), ('NP', 17, 21), ('PP-P_OBJ', 16, 21)]
+Spans supplémentaires : [('NP', 17, 18), ('PP', 16, 18), ('NP', 12, 18), ('PP-P_OBJ', 11, 18), ('NC', 19, 20), ('NP-MOD', 19, 20)]
+p : 0.8285714285714286 r : 0.8285714285714286 f : 0.8285714285714286
+
+290  :  Dernier accès à l URL : 2006-08-07 .'
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+291  :  - ^ " Reuters withdraws all photos by Lebanese freelance " , Reuters , August 7 , 2006 .
+Spans gold non trouvés : []
+Spans supplémentaires : [('PONCT', 0, 1), ('PONCT', 1, 2), ('PONCT', 2, 3), ('NPP', 3, 4), ('ET', 4, 5), ('ET', 5, 6), ('NC', 6, 7), ('ET', 7, 8), ('ET', 8, 9), ('ET', 9, 10), ('PONCT', 10, 11), ('NP', 2, 11), ('PONCT', 11, 12), ('NPP', 12, 13), ('NP', 12, 13), ('PONCT', 13, 14), ('NC', 14, 15), ('ADJ', 15, 16), ('NP', 14, 16), ('PONCT', 16, 17), ('NC', 17, 18), ('NP', 17, 18), ('PONCT', 18, 19)]
+p : 1.0 r : 0.041666666666666664 f : 0.07999999999999999
+
+292  :  Liens externes
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+293  :  Pour bénéficier de ce taux avantageux et subventionné , il fallait justifier le transfert et obtenir l aval de l' Office indochinois des changes -LRB- OIC -RRB- .'
+Spans gold non trouvés : [('PP-P_OBJ', 2, 8), ('NP-OBJ', 12, 27)]
+Spans supplémentaires : [('PP-DE_OBJ', 2, 8), ('NP-OBJ', 12, 14), ('VPinf', 15, 27)]
+p : 0.9591836734693877 r : 0.94 f : 0.9494949494949495
+
+294  :  - Lucien Bodard , " La guerre d Indochine : L' enlisement , l' humiliation , l' aventure " , Grasset , 1_500 p. Paris 1997 .'
+Spans gold non trouvés : [('NP', 8, 13), ('PP', 7, 13), ('NP-MOD', 16, 18), ('NP', 5, 18), ('COORD', 4, 18), ('NP', 1, 19)]
+Spans supplémentaires : [('NP', 1, 3), ('NP', 8, 9), ('PP', 7, 9), ('NP', 5, 9), ('NP', 16, 18)]
+p : 0.85 r : 0.8717948717948718 f : 0.8607594936708861
+
+295  :  Liens externes
+Spans gold non trouvés : []
+Spans supplémentaires : []
+p : 1.0 r : 1.0 f : 1.0
+
+Statistiques pour l'ensemble des spans étiquetés
+Précision globale : 0.8294106745737584  précision moyenne : 0.866150230896806
+Rappel global : 0.8277998705262184 rappel moyen : 0.8576214550197337
+F-mesure globale : 0.8286044897014581 f-mesure moyenne : 0.8558538619177846
