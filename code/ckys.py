@@ -76,13 +76,20 @@ def CYKmaker(cnf):
 		
 		
 		#Remplissage des rangs supérieurs du tableau
+		#i correspond aux longueurs de spans de plus en plus larges que CYK 
+		#va tenter d'associer à des non-terminaux
 		for i in range(2,len(u)+1):
 			
+			#Y correspond à l'index de l'élément de départ de la case en cours
+			#de remplissage T[span]
 			for y in range(1,(len(u)-i+2)) :
 				span=(y,i+y)
 				if span not in T:
 					T[span]=dict()
-								
+				
+				#J est le pivot qui détermine quelle paire de non-terminaux B C
+				#Va correspondre aux non-terminaux de la case T[span]
+				#Qui doivent pouvoir se récrire BC
 				for j in range(y+1,i+y) :
 					
 					sp1=(y,j)
@@ -103,7 +110,6 @@ def CYKmaker(cnf):
 								
 								for c in cds:
 									if c in suite:
-										#backpointer
 										r=(g,(c,sp2))
 										recrits=suite[c]
 										
@@ -145,6 +151,9 @@ def treemaker(T,u):
 	longueur=len(u)
 	
 	def maketree(Z):
+		"""Fonction interne qui fait effectivement le backtracking descendant dans la charte
+		en prenant les meilleures probabilités pour chaque récriture à chaque étage.
+		"""
 		retour=[]
 		for tup in Z:
 			if len(tup) > 1:
@@ -169,6 +178,11 @@ def treemaker(T,u):
 	maxprob=0
 	maxZ=[]
 	maxelem=None
+	
+	#Boucle qui démarre le backtracking pour les non-terminaux commençant par SENT.
+	#Du fait de la création de nouveau non-terminaux lors de l'élimination des productions singulières
+	#Il y a en effet plusieurs axiomes dans la grammaire utilisée 
+	#Cette boucle permet de gérer ce cas particulier 
 	for elem in T[1,1+longueur]:
 		if elem.startswith("SENT"):
 			Z=max(T[1,1+longueur][elem],key=lambda x : (T[1,1+longueur][elem][x] ))
