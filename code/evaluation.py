@@ -283,7 +283,7 @@ if __name__ == "__main__":
 					#Badspans sont les constituants uniquement dans l'arbre prédit
 					#spans2 les constituants uniquement dans l'arbre gold
 					if VERBOSE:
-						print(i," : ",re.sub(r"'([^']+)'",r"\1", " ".join(goldleaves)))
+						print("Phrase n°",i," : ",re.sub(r"'([^']+)'",r"\1", " ".join(goldleaves)))
 					
 					corr,err1,err2,badspans,spans2=goodconst( goldspans, predspans,verbose=VERBOSE)
 					
