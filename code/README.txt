@@ -65,6 +65,8 @@ I - Exemple
 
 II - Le script ckys.py
 	
+	Le script ckys implémente l'algorithme CYK et permet l'analyse de phrases tirées d'un corpus au format mrg.
+	
 	I.1
 		Le script ckys.py se lance avec deux arguments. 
 		Le premier est un pickle (objet python sérialisé) contenant une PCFG 
