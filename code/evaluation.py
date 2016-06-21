@@ -255,7 +255,6 @@ if __name__ == "__main__":
 				pred=untab(pred)
 				gold=untab(gold)
 				
-				#On retire les feuilles des arbres
 				predtree=readtree(tokenize(pred))[0]
 				goldtree=readtree(tokenize(gold))[0]
 				
@@ -281,6 +280,8 @@ if __name__ == "__main__":
 					#Corr contient le nombre de constituants communs aux deux arbres
 					#Err1 contient le nombre de constituants présents uniquement dans le gold
 					#Err2 contient le nombre de constituants présents uniquement dans l'arbre prédit
+					#Badspans sont les constituants uniquement dans l'arbre prédit
+					#spans2 les constituants uniquement dans l'arbre gold
 					if VERBOSE:
 						print(i," : ",re.sub(r"'([^']+)'",r"\1", " ".join(goldleaves)))
 					
