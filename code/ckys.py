@@ -32,7 +32,7 @@ def CYKmaker(cnf):
 				else:
 						#print(n,p)
 					if n in debuts[p[0]][p[1]]:
-						print("Warning :",n,"=>",p, gr[n][p] )
+						logging.warn("Production déjà connue :"+str(n)+"=>"str(p)+" " +str(gr[n][p] ))
 					
 					debuts[p[0]][p[1]][n] = float( gr[n][p] )
 			
