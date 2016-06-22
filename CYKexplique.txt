@@ -39,7 +39,7 @@ On répète toutes ces étapes jusqu'au point fixe.
 Notre implémentation du CYK
 
 Notre implémentation du CYK va suivre le principe général du CYK exposé plus haut, avec cette différence qu'en pratique, pour parcourir la grammaire et remplir les cases, on préfère utiliser une table de hachage (dictionnaire python) adressée par les parties gauches puis droites des règles, de sorte qu'on trouvera plus rapidement les non-terminaux susceptibles de récrire les cases, que si on reparcourait intégralement la grammaire à chaque étape.
-D'autre part, le fait que chaque règle soit associée à une probabilité permet de récupérer la probabilité maximale de chaque récriture et donc de diminuer le nombre d'éléments présents dans chaque case. 
+D'autre part, le fait que chaque règle soit associée à une probabilité permet de récupérer la probabilité maximale de chaque récriture et donc de diminuer le nombre d'éléments présents dans chaque case, en cherchant la probabilité maximale pour chaque partie gauche.
 
 Une fois la demi-matrice du CYK remplie jusqu'à la dernière case, il n'y a plus ensuite qu'à faire du backtracking, c'est à dire de récupérer parmi les versions de l'axiome présents dans la dernière case, celle qui a la meilleure probabilité et qui contient des pointeurs vers les cases correspondants aux enfants de l'axiome, et de descendre ainsi récursivement dans la demi-matrice en récupérant les constituants ayant les meilleures probabilités.
 
