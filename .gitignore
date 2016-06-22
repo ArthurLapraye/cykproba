@@ -5,7 +5,6 @@
 #Tex auxiliary files
 *.aux
 *.log
-*.pdf
 *.snm
 *.gz
 *.nav
