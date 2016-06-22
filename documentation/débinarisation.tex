@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+
+
+\begin{document}
+
+\begin{algorithm}
+\caption{Débinariation}
+\label{unbin}
+	\begin{algorithmic}
+		\Function{Binaire2Naire}{$tree: list$}
+			\State $tmp \gets \Call{list} ;$
+			\State $bin \gets \downarrow;$
+			\For{$feuille \in tree$}
+				\If{$\Call{isinstance}{feuille, list}$}
+					\If{$bin \in feuille[0]$}
+						\State $tmp = tmp + \Call{unbin}{$feuille[1:]$};$
+					\Else
+						\State $tmp.append(\Call{unbin}{$feuille$})$
+					\EndIf
+				\Else
+					\State $tmp.append(feuille)$
+				\EndIf
+			\EndFor
+			\State \Return tmp
+		\EndFunction
+		\Function{Lexicale2Unaire}{$tree$}
+			\If{$|tree| == 3$}
+				\State $head, leftchild, rightchild \gets tree;$
+				\If{$\uparrow \in head$}
+					\State $gauche, droite \gets \Call{split}{$bin, head, 1$}$
+					\State \Return $[gauche, \Call{generalUnbin}{$[droite, leftchild, rightchild]$}]$
+				\Else
+					\State \Return $[head, \Call{Lexicale2Unaire}{$leftchild$}, \Call{Lexicale2Unaire}{$rightchild$}]$
+				\EndIf
+			\ElsIf{$|tree| == 2$}
+				\State $head, child \gets tree;$
+				\If{$\uparrow \in head$}
+					\State $gauche, droite \gets \Call{split}{$bin, head, 1$}$
+					\State \Return $[$gauche$, \Call{Lexicale2Unaire}{$[droite, child]$}]$
+				\Else
+					\State \Return $[$head$, $child$]$
+				\EndIf
+			\EndIf
+		\EndFunction
+		\Function{generalUnbin}{tree}
+			\State $firststep \gets \Call{Lexicale2Unaire}{$tree$}$
+			\State \Return $\Call{generalUnbin}{$firststep$}$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\end{document}
