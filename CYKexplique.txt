@@ -1,0 +1,49 @@
+Mettre la grammaire en forme normale de Chomsky (CNF)
+
+Une grammaire est en forme normale de Chomsky si l'axiome S est inaccessible, et si toutes les règles de production sont de la forme A => B C  ou D => e ou S => Ɛ, avec A,B,C,D non-terminaux quelconques, e terminal quelconque et Ɛ la production vide.
+
+Par conséquent, la transformation d'une grammaire en grammaire CNF faiblement équivalente comporte les étapes suivantes : 
+
+1 - Faire en sorte que l'axiome n'apparaisse plus dans les parties droites de règles
+2 - Supprimer les règles d'effacement (c'est à dire de la forme A => Ɛ ) pour les non-terminaux autres que l'axiome.
+3 - Faire en sorte que tout les terminaux apparaissent uniquement dans la partie droite de règles unaires 
+4 - Remplacer les règles de production n-aire par des règles binaires équivalentes
+5 - Supprimer les productions singulières de non-terminaux, c'est à dire les règles de la forme A => B avec A et B non-terminaux.
+
+Étant donné que nous construisons la grammaire à partir d'un corpus déjà étiqueté et parsé, nous n'avons pas eu besoin d'implémenter les étapes 1 à 3 : le corpus SEQUOIA est déjà construit de telle façon qu'il n'y a pas de non-terminal sans descendant, donc pas de règle d'effacement, l'axiome SENT n'a jamais de parent, et tout les terminaux sont déjà exclusivement enfants uniques d'un non-terminal.
+
+Par conséquent, seules les deux dernières étapes de cette transformation ont été effectivement implémentées. 
+
+Une contrainte supplémentaire a pesé sur notre implémentation de la conversion en CNF : la nécessité de pouvoir transformer les arbres obtenus avec notre parser en arbres correspondant à la grammaire originale. 
+
+Notre référence principale (Roark&Sproat) propose une implémentation où l'étape de suppression des productions singulières est effectuée avant la binarisation. Or, si l'étape de binarisation provoque un accroissement linéaire de la taille de la grammaire, l'étape de désingularisation provoque quant à elle un accroissement exponentiel, de l'ordre de 2^n règles supplémentaires où n est dans le pire des cas la longueur d'une partie droite de règle. 
+On a donc tout intérêt à binariser avant de supprimer les productions singulières, ainsi  que le fait remarquer l'article de Leiß et Lange. (To CNF or not to CNF? An Efficient Yet Presentable Version of the CYK Algorithm, M. Lange et H Leiß, 2009, Zeitschrift für fachdidaktische Grundlagen der Informatik)
+
+Pour binariser, pour toutes les règles A => B γ où γ est une suite quelconque de non-terminaux, on remplace cette règle par une règle A => B Γ qui prend la probabilité de A => B γ où Γ est un non-terminal qui représente la suite de non-terminaux γ, et on introduit une nouvelle règle Γ => γ de probabilité 1. On répète cette étape jusqu'au point fixe (c'est à dire jusqu'à ce que cette étape ne change plus rien).
+
+Pour supprimer les productions singulières : 
+	Pour toutes les règles de la forme A => B avec une probabilité p1, on introduit un nouveau terminal AB. 
+		Pour toutes les règles de la forme B => μ (où μ est une suite quelconque de non-terminaux), 
+		on introduit une règle de la forme AB => μ, avec la même probabilité. 
+	Puis, pour toutes les règles de la forme C => αAβ ayant une probabilité p2 
+	on introduit une règle de la forme C => αABβ avec une probabilité p1*p2 et 
+	on change la probabilité de C => αAβ en p2*(1-p1). 
+	( C'est cette étape qui peut provoquer une explosion de la taille de la grammaire 
+	puisque si les règles sont encore n-aires alors la partie droite 
+	peut contenir un nombre abitraires de A, qui peuvent tous être remplacés par des AB indépendamment les uns des autres.)
+
+
+On répète toutes ces étapes jusqu'au point fixe.
+
+
+Notre implémentation du CYK
+
+Notre implémentation du CYK va suivre le principe général du CYK exposé plus haut, avec cette différence qu'en pratique, pour parcourir la grammaire et remplir les cases, on préfère utiliser une table de hachage adressée par les parties gauches puis droites des règles, de sorte qu'on trouvera plus rapidement les non-terminaux susceptibles de récrire les cases, que si on reparcourait intégralement la grammaire à chaque étape.
+D'autre part, le fait que chaque règle soit associée à une probabilité permet de récupérer la probabilité maximale de chaque récriture et donc de diminuer le nombre d'éléments présents dans chaque case. 
+
+Une fois la table du CYK remplie, il n'y a plus ensuite qu'à faire du backtracking, c'est à dire de récupérer parmi les versions de l'axiome présents dans la dernière case, celle qui a la meilleure probabilité et qui contient des pointeurs vers les cases correspondants aux enfants de l'axiome, et de descendre ainsi récursivement dans le tableau en récupérant les meilleurs constituants.
+
+
+Remettre la grammaire en forme n-aire
+
+Afin d'évaluer notre parseur, il nous faut retransformer les arbres binaires qu'il produit en arbre correspondant à la grammaire plate utilisée dans le corpus. Pour cela on utilise le fait que les non-terminaux introduits à l'étape de transformation en CNF présentent des signes distinctifs 
