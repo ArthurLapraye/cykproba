@@ -21,7 +21,7 @@
 			\For{$feuille \in tree$}
 				\If{$\Call{isinstance}{feuille, list}$}
 					\If{$bin \in feuille[0]$}
-						\State $tmp = tmp + \Call{unbin}{$feuille[1:]$};$
+						\State $tmp.extend(\Call{unbin}{$feuille[1:]$});$
 					\Else
 						\State $tmp.append(\Call{unbin}{$feuille$})$
 					\EndIf
