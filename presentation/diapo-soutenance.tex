@@ -7,12 +7,15 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 \usepackage{biblatex}
+\usepackage{float}
+\usepackage{tikz}
+
 
 
 \begin{document}
 
 \title{CYK Probabiliste}  %PAGE 1
-\author{Mélanie Viegas \& Arthur Lapraye \& Korantin Lévêque}
+\author{ Arthur Lapraye \& Korantin Lévêque \& Mélanie Viegas }
 
 \institute{Paris Diderot VII}
 \date{\today}
@@ -25,11 +28,29 @@
 
 \begin{frame}
 \frametitle{L'Algorithme CYK}
+\begin{itemize}
+  \item<1-4>{Un algorithme de parsing ascendant}
+  \item<2-4>{Complexité $\mathcal{O}(|G|n^3) $ } %
+  \item<3-4>{Parsing tabulaire}
+  \item<4>{Extention aux grammaire hors-contexte probabilistes (PCFG)}
+ \end{itemize}
+ 
+\end{frame}
+
+\begin{frame}
+ \frametitle{L'Algorithme CYK}
+%Ici on met le pseudo-code de l'algorithme
 
 \end{frame}
 
 \begin{frame}
  \frametitle{Les PCFG}
+ \begin{itemize}
+  \item<1-4>{Les CFG : un quadruplet $(\Sigma,V,S,P)$ }
+  \item<2-4>{Les CFG pondérées : ajout d'une fonction $ f : p \mapsto \alpha, p \in P, \alpha \in \mathbb{R} $ }
+  \item<3-4>{Les CFG probabilistes : }
+ \end{itemize}
+
 \end{frame}
 
 
