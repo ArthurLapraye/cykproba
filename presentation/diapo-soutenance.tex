@@ -1,5 +1,5 @@
 \documentclass{beamer}
-\usetheme{Szeged}
+\usetheme{CambridgeUS}
 \usepackage[utf8]{inputenc} 
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
@@ -27,6 +27,17 @@
 \end{frame}
 
 \begin{frame}
+ \frametitle{Les PCFG}
+ \begin{itemize}
+  \item<1-4>{Les CFG : un quadruplet $(\Sigma,V,S,P)$ }
+  \item<2-4>{Les CFG pondérées : ajout d'une fonction $ f : p \mapsto \alpha, p \in P, \alpha \in \mathbb{R} $ }
+  \item<3-4>{Les CFG probabilistes : toutes les réécritures d'un non-terminal doivent sommer à 1. }
+  \item<4>{Les CFG probabilistes représentent un modèle de prédiction déduit à partir du corpus dont elles sont extraites.}
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
 \frametitle{L'Algorithme CYK}
 \begin{itemize}
   \item<1-4>{Un algorithme de parsing ascendant}
@@ -44,21 +55,9 @@
 \end{frame}
 
 \begin{frame}
- \frametitle{Les PCFG}
- \begin{itemize}
-  \item<1-4>{Les CFG : un quadruplet $(\Sigma,V,S,P)$ }
-  \item<2-4>{Les CFG pondérées : ajout d'une fonction $ f : p \mapsto \alpha, p \in P, \alpha \in \mathbb{R} $ }
-  \item<3-4>{Les CFG probabilistes : toutes les réécritures d'un non-terminal doivent sommer à 1. }
-  \item<4>{  }
- \end{itemize}
-
-\end{frame}
-
-
-\begin{frame}
  \frametitle{Transformer la grammaire en CNF}
  \begin{itemize}
-  \item<1>
+  \item<1-4>
  \end{itemize}
 
  
@@ -119,6 +118,8 @@
     Martin Lange, Hans Leiss
     \newblock{« To CNF or not to CNF : An Efficient Yet Presentable Version of the CYK Algorithm », 2009}
     \newblock{{\em Informatica Didactica} \No 8}
+    
+    ("A Procedure for Quantitatively Comparing the Syntactic Coverage of English Grammars", E. Black, S.Abney et al. 1991, DARPA Speech and Natural Language Workshop, pp.306-311. Morgan Kaufmann )
   
   \end{thebibliography}
 \end{frame}
