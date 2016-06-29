@@ -15,7 +15,7 @@
 \begin{document}
 
 \title{CYK Probabiliste}  %PAGE 1
-\author{ Lapraye \& Lévêque \& Viegas }
+\author{Lapraye \& Lévêque \& Viegas}
 
 \institute{Paris VII}
 \date{\today}
@@ -27,11 +27,13 @@
 \end{frame}
 
 \begin{frame}
+\setbeamercovered{transparent}
  \frametitle{Les PCFG}
  \begin{itemize}
   \item<1-4>{Les CFG : un quadruplet $(\Sigma,V,S,P)$ }
-  \item<2-4>{Les CFG pondérées : ajout d'une fonction de poids $ f : p \mapsto \alpha, p \in P, \alpha \in \mathbb{R} $ }
-  \item<3-4>{Les CFG probabilistes : les poids correspondent à des probabilités pour une réécriture donnée.  $ f : p \mapsto \alpha, p \in P, \alpha \in [0,1] $ }
+  \item<2>{Les CFG pondérées : ajout d'une fonction de poids $ f : p \mapsto \alpha, w \in W, \alpha \in \mathbb{R} $ }
+  \item<3-4>{Les CFG probabilistes : les poids correspondent à des probabilités pour une réécriture donnée.  
+  $$ f : p \mapsto \alpha, p \in P, \alpha \in [0,1]$$ $$ \forall X \in V, \sum_{X\to\alpha\in [0,1]}p(X\to\alpha)=1 $$ }
   \item<4>{Les CFG probabilistes représentent un modèle de prédiction déduit à partir du corpus dont elles sont extraites.}
  \end{itemize}
 
@@ -54,11 +56,31 @@
 
 \end{frame}
 
-\begin{frame}
- \frametitle{Transformer la grammaire en CNF}
+\begin{frame} 
+\frametitle{La forme normale de Chomsky (CNF)}
  \begin{itemize}
-  \item<1-4>
+ \item {l'axiome S est inaccessible}
+ \item {Les règles de production adoptent une des formes suivantes : 
+     $$A \rightarrow B C $$  
+     $$ D \rightarrow e $$
+     $$ S \rightarrow \varepsilon$$, 
+avec $$A,B,C,D \in V, e \in \Sigma$$ et $\varepsilon$ la production vide.}
+
  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\setbeamercovered{transparent}
+ \frametitle{Transformer la grammaire en CNF}
+ \begin{enumerate}
+ \item<1>{ Faire en sorte que l'axiome n'apparaisse plus dans les parties droites de règles}
+ \item<1>{Supprimer les règles d'effacement (c'est à dire de la forme $A \rightarrow^*\varepsilon$ ) pour les non-terminaux autres que l'axiome.}
+ \item<1>{Faire en sorte que tout les terminaux apparaissent uniquement dans la partie droite de règles unaires }
+ \item<1-2>{Remplacer les règles de production n-aire par des règles binaires équivalentes.}
+ \item<1-2>{Supprimer les productions singulières de non-terminaux, c'est à dire les règles de la forme $A \rightarrow B$ avec $A,B \in V$ }
+ \end{enumerate}
+ 
 
  
 \end{frame}
@@ -75,7 +97,10 @@
   \begin{columns}
   \begin{column}{0.5\textwidth}
     \begin{itemize}
-     \item Un corpus diversifié
+     \item{ Un corpus diversifié}
+     \item{ Des phrases de longueur variable}
+     \item{ }
+     
      
     \end{itemize}
    
@@ -91,6 +116,11 @@
 
 \begin{frame}
 \frametitle{Notre implémentation du CYK}
+
+\begin{itemize}
+ \item{}
+\end{itemize}
+
 
  
 \end{frame}
@@ -127,6 +157,9 @@
   
   \end{thebibliography}
   }
+
+  %   ¯\_(ツ)_/¯
+
 \end{frame}
 
 
