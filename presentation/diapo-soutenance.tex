@@ -80,6 +80,36 @@
 \end{frame}
 
 
+\begin{frame}
+ \frametitle{L'Algorithme CYK}
+	\begin{algorithm}[H]
+	\caption{CYK probabiliste (Max Product)}
+		\small{\begin{algorithmic}
+			\Function{CYK}{$w[1..n]$, $G: < NT, T, P, \rho>$, R[1..n, 1..n]} \Comment w : mot; G: Grammaire; C: charte
+				\ForAll{$k \gets 2, |n|$} \Comment Boucle \text{gérant} l'empan
+					\ForAll{$i \gets k-2, 0$}
+						\ForAll{$nt \in NT$}
+							\State $best = 0;$
+							\ForAll{${nt \rightarrow nt^1 nt^2 \subset P}$}
+								\ForAll{$j \gets i+1, k-1$}
+									\State $t1 = R[i,j][nt^1]$ 
+									\State $t2 = R[j,k][nt^2]$
+									\State $candidate = t1 * t2 * \rho(binary);$
+									\If{$candidate > best$}
+										\State $best = candidate;$
+									\EndIf
+								\EndFor
+							\EndFor
+							\State $R[i,k][nt] = best;$
+						\EndFor
+					\EndFor
+				\EndFor
+			\EndFunction
+		\end{algorithmic} }
+	\end{algorithm}
+
+\end{frame}
+
 
 \begin{frame}
  \frametitle{Les PCFG}
