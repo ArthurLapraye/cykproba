@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage{algpseudocode}
+\usepackage[noend]{algpseudocode}
 \usepackage{algorithm}
 \usepackage{biblatex}
 \usepackage{float}
@@ -39,16 +39,17 @@
   \item<1-4>{Un algorithme de parsing ascendant}
   \item<2-4>{Complexité $\mathcal{O}(|G|n^3) $ } %
   \item<3-4>{Parsing tabulaire}
-  \item<4>{Extention aux grammaire hors-contexte probabilistes (PCFG)}
+  \item<4-4>{Extention aux grammaire hors-contexte probabilistes (PCFG)}
  \end{itemize}
  
 \end{frame}
 
 \begin{frame}
 \frametitle{L'Algorithme CYK}
-% 	\label{cky}
-\fontsize{6}{7.2}\selectfont
+\begin{algorithm}[H]
+	\caption{CYK normal}
 	\begin{algorithmic}
+	\small{
 		\Function{CKY}{$w[1..n]$, $G: < NT, T, P, \rho>$, R[1..n, 1..n]}
 			\ForAll {i de 1 à m}
 			    \If{$N \rightarrow w_i$}
@@ -75,24 +76,21 @@
 		  \Return True
 		\EndIf
 		\EndFunction
-	\end{algorithmic} 
+	\end{algorithmic} }
+\end{algorithm}
 \end{frame}
 
 
-\begin{frame}
- \frametitle{L'Algorithme CYK}
-
-\end{frame}
 
 \begin{frame}
  \frametitle{Les PCFG}
  \begin{itemize}
   \item<1-5>{Les CFG : un quadruplet $(\Sigma,V,S,P)$ }
-  \item<2>{Les CFG pondérées : ajout d'une fonction de poids $ f : p \mapsto \alpha, w \in W, \alpha \in \mathbb{R} $ }
+  \item<2-5>{Les CFG pondérées : ajout d'une fonction de poids $ f : p \mapsto \alpha, w \in W, \alpha \in \mathbb{R} $ }
   \item<3-5>{Les CFG probabilistes : les poids correspondent à des probabilités pour une réécriture donnée.  
   $$ f : p \mapsto \alpha, p \in P, \alpha \in [0,1]$$ $$ \forall X \in V, \sum_{X\to\alpha}p(X\to\alpha)=1 $$ }
   \item<4-5>{Les CFG probabilistes représentent un modèle de prédiction déduit à partir du corpus dont elles sont extraites.}
-  \item<5>{Extraction des PCFG}
+  \item<5-5>{Extraction des PCFG}
  \end{itemize}
 
 \end{frame}
@@ -148,9 +146,9 @@
    
   \end{column}
   
-  \begin{column}{0.5\textwidth}
-  \includegraphics[width=80pt,]{PSM_V03_D341_Sequoia_gigantea_of_california.jpg}  
-  \end{column}
+  %\begin{column}{0.5\textwidth}
+  %\includegraphics[width=80pt,]{PSM_V03_D341_Sequoia_gigantea_of_california.jpg}  
+  %\end{column}
 
   \end{columns}
 
