@@ -46,13 +46,41 @@
 
 \begin{frame}
 \frametitle{L'Algorithme CYK}
- 
+% 	\label{cky}
+\fontsize{6}{7.2}\selectfont
+	\begin{algorithmic}
+		\Function{CKY}{$w[1..n]$, $G: < NT, T, P, \rho>$, R[1..n, 1..n]}
+			\ForAll {i de 1 à m}
+			    \If{$N \rightarrow w_i$}
+			      \State{$R[i,i+1]\gets N$ }
+			    \EndIf 
+			\EndFor
+			
+			\ForAll{ k de 2 à n}
+			    \ForAll{i de 1 à $n-i+2$}
+				\ForAll {j de i+1 à i+k}
+				      \ForAll{$A \in R[i,j]$}
+					    \ForAll{$ $}
+						\ForAll{$NT \in P$}
+							\If{$NT \rightarrow A B$}
+							  \State $R[i,i+k] = R[i,i+k] \cup \{NT\}$
+							\EndIf
+						\EndFor
+					    \EndFor
+				      \EndFor
+			      \EndFor
+			  \EndFor
+		      \EndFor
+		\If{$S \in R[0,n]$}
+		  \Return True
+		\EndIf
+		\EndFunction
+	\end{algorithmic} 
 \end{frame}
 
 
 \begin{frame}
  \frametitle{L'Algorithme CYK}
-%Ici on met le pseudo-code de l'algorithme
 
 \end{frame}
 
