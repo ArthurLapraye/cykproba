@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[table]{beamer}
 \usetheme{CambridgeUS}
 \usepackage[utf8]{inputenc} 
 \usepackage{amsmath}
@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{tikz}
 \usepackage[french]{babel}
+\usepackage{multirow}
 
 
 \begin{document}
@@ -155,12 +156,12 @@
 \begin{frame}
  \frametitle{L'Algorithme CYK}
 	\begin{algorithm}[H]
-	\caption{CYK probabiliste (Max Product)}
+	\caption{CYK probabiliste (argmax)}
 		\small{\begin{algorithmic}
 			\Function{CYK}{$w[1..n]$, $G: < NT, T, P, \rho>$, R[1..n, 1..n]} \Comment w : mot; G: Grammaire; C: charte
 				\ForAll{$k \gets 2, |n|$} \Comment Boucle \text{gérant} l'empan
 					\ForAll{$i \gets k-2, 0$}
-						\ForAll{$nt \in NT$}
+						\ForAll{$nt \in NT$} \Comment{Boucle faisant l'argmax }
 							\State $best = 0;$
 							\ForAll{${nt \rightarrow nt^1 nt^2 \subset P}$}
 								\ForAll{$j \gets i+1, k-1$}
@@ -187,7 +188,9 @@
 \frametitle{Notre implémentation du CYK}
 
 \begin{itemize}
- \item{}
+ \item{Un algorithme gourmand en temps et en mémoire}
+ \item{Optimiser la recherche de récritures possibles}
+ \item{Le backtracking}
 \end{itemize}
 
 
@@ -199,9 +202,28 @@
 \begin{itemize}
  \item {Une évaluation problématique.}
  \item {La mesure dite de PARSEVAL}
- \item {Résultats}
+ \item {Précision, Rappel et f-mesure}
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Résultats}
+\begin{center}
+\begin{tabular}{|l|r|r|}
+
+    & Étiqueté & Non-étiqueté \\
+%    \hline
+   Précision & 0.829 & 0.870 \\
+%    \hline
+   Rappel & 0.828 & 0.868 \\
+%    \hline
+   F-mesure & 0.829 & 0.869 \\
+%    \hline
+\end{tabular}
+
+
+\end{center}
 
 \end{frame}
 
