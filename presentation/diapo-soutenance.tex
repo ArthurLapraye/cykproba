@@ -187,9 +187,9 @@
  \frametitle{Les PCFG}
  \begin{itemize}
   \item<1-4>{Les CFG : un quadruplet $(\Sigma,V,S,P)$ }
-  \item<2-4>{Les CFG pondérées : ajout d'une fonction de poids $ f : \rho \mapsto \alpha, \rho \in P, \alpha \in \mathbb{R} $ }
+  \item<2-4>{Les CFG pondérées : ajout d'une fonction de poids $ p : \rho \mapsto \alpha, \rho \in P, \alpha \in \mathbb{R} $ }
   \item<3-4>{Les CFG probabilistes : les poids correspondent à des probabilités pour une réécriture donnée.  
-  $$ f : \rho \mapsto \alpha, \rho \in P, \alpha \in [0,1]$$ $$ \forall X \in V, \sum_{(X\to \rho ) \in P }p(X \to \rho)=1 $$ }
+  $$ p : \rho \mapsto \alpha, \rho \in P, \alpha \in [0,1]$$ $$ \forall X \in V, \sum_{(X\to \rho ) \in P } p(X \to \rho)=1 $$ }
   \item<4>{Les CFG probabilistes servent à représenter un modèle de langue extrait à partir d'un corpus }
 %   \item<>{Extraction des PCFG}
  \end{itemize}
